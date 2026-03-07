@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deepak Jha — Architect &amp; Product Builder. 10+ years of engineering craft. I partner with founders to ship resilient, production-ready software.">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://dpkay.com">
+    <meta property="og:title"       content="Deepak Jha | Product Builder">
+    <meta property="og:description" content="Architect &amp; Product Builder. I partner with founders to ship resilient, production-ready software.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="Deepak Jha | Product Builder">
+    <meta name="twitter:description" content="Architect &amp; Product Builder. 10+ years of engineering craft.">
+
+    <title>Deepak Jha | Product Builder</title>
+
+    <!-- Inline SVG favicon — no extra file needed -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>">
+
+    <!-- Preconnect before the font request to eliminate a round-trip -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap">
+
+    <style>
+        /* ── Design Tokens ─────────────────────────────────────────── */
+        :root {
+            --bg:     #0a0a0a;
+            --fg:     #ededed;
+            --accent: #3b82f6;
+            --border: rgba(255, 255, 255, 0.08);
+            --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+            --max-w:  72rem;
+        }
+
+        /* ── Reset ─────────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            /* overflow-x: clip does NOT create a containing block, so
+               position: sticky on the header continues to work correctly. */
+            overflow-x: clip;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
+        a           { color: inherit; text-decoration: none; }
+        ::selection { background: #fff; color: #000; }
+
+        .container  { max-width: var(--max-w); margin-inline: auto; padding-inline: 2rem; }
+
+        /* ── Reduced Motion ─────────────────────────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal, .reveal-zoom, .reveal-left {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ── Scroll Reveal (replaces AOS — ~24 KB saved) ───────────── */
+        .reveal      { opacity: 0; transform: translateY(1.5rem); }
+        .reveal-zoom { opacity: 0; transform: scale(0.95); }
+        .reveal-left { opacity: 0; transform: translateX(1rem); }
+
+        .reveal.visible {
+            opacity: 1; transform: none;
+            transition:
+                opacity   0.8s var(--ease) var(--delay, 0s),
+                transform 0.8s var(--ease) var(--delay, 0s);
+        }
+        .reveal-zoom.visible {
+            opacity: 1; transform: none;
+            transition:
+                opacity   0.7s var(--ease) var(--delay, 0s),
+                transform 0.7s var(--ease) var(--delay, 0s);
+        }
+        .reveal-left.visible {
+            opacity: 1; transform: none;
+            transition:
+                opacity   0.6s var(--ease) var(--delay, 0s),
+                transform 0.6s var(--ease) var(--delay, 0s);
+        }
+
+        /* ── Site Header ────────────────────────────────────────────── */
+        /* Wrapper spans full viewport width so the blur strip is edge-to-edge */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .site-header > nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-block: 2rem;
+        }
+        .logo              { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.03em; }
+        .nav-links         { display: flex; gap: 2rem; list-style: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; }
+        .nav-links a       { color: rgba(255, 255, 255, 0.6); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--fg); }
+
+        /* ── Hero ───────────────────────────────────────────────────── */
+        .hero {
+            min-height: 90vh;
+            min-height: 90svh; /* svh excludes mobile browser chrome — better on iOS/Android */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-block: 4rem;
+        }
+        .eyebrow     { color: var(--accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+        .hero h1     { font-size: clamp(2.75rem, 8vw, 6rem); margin-bottom: 2rem; }
+        .lead        { max-width: 38rem; font-size: 1.25rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; margin-bottom: 2.5rem; }
+
+        .btn-group         { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+        .btn               { padding: 1rem 2.5rem; border-radius: 99px; font-weight: 600; font-size: 0.9375rem; transition: 0.25s; display: inline-block; }
+        .btn-primary       { background: #fff; color: #000; }
+        .btn-primary:hover { background: #e5e5e5; }
+        .btn-ghost         { border: 1px solid rgba(255,255,255,0.2); }
+        .btn-ghost:hover   { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.35); }
+
+        /* ── Stats ──────────────────────────────────────────────────── */
+        .stats {
+            padding-block: 5rem;
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .stats-grid  { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; text-align: center; }
+        @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+        .stat-value  { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .stat-label  { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); }
+
+        /* ── Craft / Work ───────────────────────────────────────────── */
+        .craft              { padding-block: 8rem; }
+        .section-header     { margin-bottom: 5rem; }
+        .section-header h2  { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.75rem; }
+        .section-sub        { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); }
+
+        .cards { display: grid; gap: 2rem; }
+        @media (min-width: 768px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            will-change: transform; /* promote to compositor layer for smooth hover */
+            transition:
+                background   0.4s var(--ease),
+                border-color 0.4s var(--ease),
+                transform    0.4s var(--ease);
+        }
+        .glass:hover  { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); transform: translateY(-8px); }
+        .card-num     { color: var(--accent); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .glass h3     { font-size: 1.125rem; margin-bottom: 1rem; }
+        .glass p      { color: rgba(255,255,255,0.5); font-size: 0.875rem; line-height: 1.75; }
+
+        /* ── Tech Ecosystem ─────────────────────────────────────────── */
+        .tech        { padding-block: 6rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        .tech-layout { display: flex; flex-direction: column; gap: 3rem; }
+        @media (min-width: 768px) {
+            .tech-layout  { flex-direction: row; align-items: center; }
+            .tech-heading { flex: 0 0 25%; }
+        }
+        .tech-heading h3 { font-size: 1.5rem; }
+        .tags        { display: flex; flex-wrap: wrap; gap: 0.75rem; flex: 1; }
+        .tag         { border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1.25rem; border-radius: 99px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); transition: border-color 0.25s, color 0.25s; }
+        .tag:hover   { border-color: var(--accent); color: var(--accent); }
+
+        /* ── Philosophy ─────────────────────────────────────────────── */
+        .philosophy { padding-block: 8rem; }
+        .quote-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 3rem;
+            padding: clamp(3rem, 5vw, 5rem);
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        @media (min-width: 768px) {
+            .quote-card  { flex-direction: row; align-items: center; }
+            .quote-label { flex: 0 0 33%; }
+        }
+        .quote-label h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+        .quote-text     { font-size: clamp(1.125rem, 2vw, 1.375rem); font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.75; font-style: italic; }
+        .quote-attr     { margin-top: 2rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; }
+
+        /* ── Contact ────────────────────────────────────────────────── */
+        .contact          { padding-block: 8rem; text-align: center; max-width: 56rem; }
+        .contact h2       { font-size: clamp(2.5rem, 7vw, 5rem); margin-bottom: 3rem; }
+        .email-link       { display: inline-block; font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 300; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem; transition: color 0.25s; }
+        .email-link:hover { color: var(--accent); }
+        .footer-links     { margin-top: 8rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; }
+        .footer-links a   { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); transition: color 0.25s; }
+        .footer-links a:hover { color: var(--fg); }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">DEEPAK JHA</div>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero container">
+            <div class="reveal">
+                <p class="eyebrow">Architect &amp; Product Builder</p>
+                <h1>I build digital<br>products that scale.</h1>
+                <p class="lead">More than a decade of engineering craft. I partner with stakeholders and teams to transform complex visions into resilient, production-ready software.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn btn-primary">Start a Project</a>
+                    <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Read My Blog</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats">
+            <div class="container stats-grid">
+                <div class="reveal-zoom" style="--delay: .1s">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="reveal-zoom" style="--delay: .2s">
+                    <div class="stat-value">20+</div>
+                    <div class="stat-label">Products Built</div>
+                </div>
+                <div class="reveal-zoom" style="--delay: .3s">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">Uptime Focus</div>
+                </div>
+                <div class="reveal-zoom" style="--delay: .4s">
+                    <div class="stat-value">10x</div>
+                    <div class="stat-label">Scale Oriented</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Craft / Work -->
+        <section id="work" class="craft container">
+            <div class="section-header reveal">
+                <h2>The Craft</h2>
+                <p class="section-sub">Architectural Design &amp; Full-Stack Implementation</p>
+            </div>
+            <div class="cards">
+                <div class="glass reveal" style="--delay: .1s">
+                    <div class="card-num">01</div>
+                    <h3>Product Architecture</h3>
+                    <p>Designing foundations that don't break. Expertise in distributed systems, microservices, and cloud-native scaling.</p>
+                </div>
+                <div class="glass reveal" style="--delay: .25s">
+                    <div class="card-num">02</div>
+                    <h3>Full-Stack Lifecycle</h3>
+                    <p>From mobile UX to robust backend services. I own the development journey from the first line of code to production.</p>
+                </div>
+                <div class="glass reveal" style="--delay: .4s">
+                    <div class="card-num">03</div>
+                    <h3>MVP Engineering</h3>
+                    <p>Helping founders launch fast without technical debt. I build high-integrity products ready for immediate user scale.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Ecosystem -->
+        <section class="tech container">
+            <div class="tech-layout">
+                <div class="tech-heading reveal">
+                    <h3>Proven Tech<br>Ecosystem</h3>
+                </div>
+                <div class="tags">
+                    <span class="tag reveal-left" style="--delay: .05s">C# / .NET</span>
+                    <span class="tag reveal-left" style="--delay: .10s">Node.js</span>
+                    <span class="tag reveal-left" style="--delay: .15s">React / Next.js</span>
+                    <span class="tag reveal-left" style="--delay: .20s">AWS Cloud</span>
+                    <span class="tag reveal-left" style="--delay: .25s">Azure Services</span>
+                    <span class="tag reveal-left" style="--delay: .30s">Redis</span>
+                    <span class="tag reveal-left" style="--delay: .35s">Database (SQL/NoSQL)</span>
+                    <span class="tag reveal-left" style="--delay: .40s">Mobile (Flutter/RN)</span>
+                    <span class="tag reveal-left" style="--delay: .45s">AI / Agentic Development</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="philosophy container">
+            <div class="quote-card reveal-zoom">
+                <div class="quote-label">
+                    <h2>The Builder<br>Philosophy</h2>
+                </div>
+                <div>
+                    <p class="quote-text">"I don't just deliver features; I deliver foundations. My goal is to build software that is an asset to your business growth, not a technical bottleneck."</p>
+                    <p class="quote-attr">— Deepak Jha</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact container">
+            <div class="reveal">
+                <h2>Ready to build?</h2>
+                <a href="mailto:hello@dpkay.com" class="email-link">hello@dpkay.com</a>
+            </div>
+            <nav class="footer-links" aria-label="Social links">
+                <a href="https://in.linkedin.com/in/dpkjha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Medium</a>
+            </nav>
+        </section>
+
+    </main>
+
+    <script>
+        // Native scroll reveal — zero dependencies, replaces AOS library (~24 KB)
+        const observer = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            }
+        }, { threshold: 0.12, rootMargin: '-40px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-zoom, .reveal-left')
+                .forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
