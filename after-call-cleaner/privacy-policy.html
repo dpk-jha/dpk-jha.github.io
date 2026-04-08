@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — AfterCall Shield</title>
+  <style>
+    :root {
+      --brand:       #1556B8;
+      --brand-light: #D9E4FF;
+      --brand-dark:  #001848;
+      --text:        #1B1B24;
+      --muted:       #767688;
+      --body-text:   #374151;
+      --border:      #E8ECF4;
+      --bg:          #F5F7FF;
+      --card:        #FAFBFF;
+      --radius:      14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--brand);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .app-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,.15);
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      font-size: 2.25rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    header p {
+      margin-top: .4rem;
+      color: #fff;
+      font-size: .95rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: .75rem;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      padding: .2rem .85rem;
+      font-size: .78rem;
+      font-family: "SF Mono", "Fira Code", Consolas, monospace;
+      letter-spacing: .02em;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      max-width: 980px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem 3rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar nav ── */
+    .toc {
+      position: sticky;
+      top: 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+    }
+
+    .toc-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .75rem;
+      padding-left: .4rem;
+    }
+
+    .toc a {
+      display: block;
+      padding: .35rem .6rem;
+      font-size: .875rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 7px;
+      transition: background .15s, color .15s;
+      line-height: 1.4;
+    }
+
+    .toc a:hover {
+      background: var(--brand-light);
+      color: var(--brand);
+    }
+
+    /* ── Article ── */
+    article { min-width: 0; }
+
+    .highlight {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      background: var(--brand-light);
+      border-left: 4px solid var(--brand);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: .95rem;
+    }
+
+    .highlight-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: .05rem; }
+    .highlight strong { color: var(--brand); }
+
+    section { margin-bottom: 2.25rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .85rem;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 7px;
+      font-size: .75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -.01em;
+    }
+
+    p { margin-bottom: .7rem; color: var(--body-text); }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: .7rem;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: .5rem;
+      color: var(--body-text);
+    }
+
+    ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .7em;
+      width: 6px;
+      height: 6px;
+      background: var(--brand);
+      border-radius: 50%;
+    }
+
+    /* Permission cards */
+    .perm-grid { display: grid; gap: .75rem; }
+
+    .perm-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .875rem 1rem;
+    }
+
+    .perm-name {
+      display: inline-block;
+      font-family: "SF Mono", "Fira Code", Consolas, monospace;
+      font-size: .78rem;
+      font-weight: 600;
+      background: #EEF2FF;
+      color: #3730A3;
+      border: 1px solid #C7D2FE;
+      border-radius: 5px;
+      padding: .1rem .45rem;
+      margin-bottom: .35rem;
+    }
+
+    .perm-card p {
+      font-size: .9rem;
+      margin-bottom: 0;
+    }
+
+    /* No-data grid */
+    .no-data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+    }
+
+    .no-data-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .6rem .8rem;
+      font-size: .875rem;
+      color: var(--body-text);
+    }
+
+    .no-data-item .check {
+      color: #1B8A4C;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--brand); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 0 1rem 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .toc { display: none; }
+
+      .no-data-grid { grid-template-columns: 1fr; }
+
+      header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="app-icon">🛡️</div>
+    <h1>Privacy Policy</h1>
+    <p>AfterCall Shield</p>
+    <span class="badge">com.dpkay.apps.after_call_cleaner</span>
+  </header>
+
+  <div class="layout">
+
+    <!-- ── Sidebar ── -->
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">On this page</p>
+      <a href="#what-it-does">What the App Does</a>
+      <a href="#permissions">Permissions</a>
+      <a href="#data">Data Collection &amp; Storage</a>
+      <a href="#billing">In-App Purchases</a>
+      <a href="#ads">Advertising</a>
+      <a href="#third-party">Third-Party Services</a>
+      <a href="#children">Children's Privacy</a>
+      <a href="#changes">Policy Changes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ── Content ── -->
+    <article>
+
+      <div class="highlight">
+        <span class="highlight-icon">🔒</span>
+        <div>
+          <strong>Short version:</strong> AfterCall Shield works entirely on your device. It does not collect, transmit, or sell any personal data. Your usage data never leaves your phone.
+        </div>
+      </div>
+
+      <!-- 1 -->
+      <section id="what-it-does">
+        <div class="section-header">
+          <span class="section-num">1</span>
+          <h2>What the App Does</h2>
+        </div>
+        <p>
+          AfterCall Shield monitors when a phone call ends and automatically dismisses overlay screens — such as post-call pop-ups — that appear on your device immediately afterward. All detection and dismissal logic runs locally on your device in real time and produces no logs or records.
+        </p>
+        <p>The app works out-of-the-box with zero configuration, automatically dismissing any non-system app overlay that appears in the brief window after a call ends.</p>
+        <p>
+          The app operates as a background service so it can act the moment a call ends, even when the app is not in the foreground. A free tier allows up to 15 automatic dismissals; an optional one-time in-app purchase unlocks unlimited dismissals.
+        </p>
+      </section>
+
+      <!-- 2 -->
+      <section id="permissions">
+        <div class="section-header">
+          <span class="section-num">2</span>
+          <h2>Permissions Used &amp; Why</h2>
+        </div>
+        <div class="perm-grid">
+
+          <div class="perm-card">
+            <span class="perm-name">READ_PHONE_STATE</span>
+            <p>Detects when a call transitions to the idle state (call ended). This is the core trigger. The app reads only the call state (idle / ringing / off-hook) — it does not access phone numbers, call logs, IMEI, or any device identifiers.</p>
+          </div>
+
+          <div class="perm-card">
+            <span class="perm-name">Accessibility Service</span>
+            <p>Inspects the visible window immediately after a call ends to detect and dismiss overlay windows. The service is active only during a brief post-call window (5 seconds for answered calls, 8 seconds after unlock for missed calls). It does not read text you type, capture passwords, monitor clipboard content, or observe any activity outside of these post-call moments.</p>
+          </div>
+
+          <div class="perm-card">
+            <span class="perm-name">QUERY_ALL_PACKAGES</span>
+            <p>Enumerates installed apps so the autonomous mode can identify overlays and so you can build a personalised block-list or whitelist. This list is stored only on your device and is never transmitted or shared.</p>
+          </div>
+
+          <div class="perm-card">
+            <span class="perm-name">POST_NOTIFICATIONS</span>
+            <p>Displays a persistent notification required by Android to keep the background service running. No notification content is sent to any server.</p>
+          </div>
+
+          <div class="perm-card">
+            <span class="perm-name">FOREGROUND_SERVICE / FOREGROUND_SERVICE_SPECIAL_USE</span>
+            <p>Keeps the monitoring service alive in the background so overlay dismissal works reliably between calls, even when the app is not open.</p>
+          </div>
+
+          <div class="perm-card">
+            <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
+            <p>Restarts the monitoring service automatically after a device reboot so you do not need to reopen the app manually.</p>
+          </div>
+
+          <div class="perm-card">
+            <span class="perm-name">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</span>
+            <p>Prompts you to exclude AfterCall Shield from battery optimisation, which prevents the operating system from killing the service during extended periods of inactivity.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="data">
+        <div class="section-header">
+          <span class="section-num">3</span>
+          <h2>Data Collection &amp; Storage</h2>
+        </div>
+        <p>AfterCall Shield does <strong>not</strong> collect, store remotely, or transmit any data. None of the following are ever accessed or recorded:</p>
+
+        <div class="no-data-grid">
+          <div class="no-data-item"><span class="check">✓</span> No personal information</div>
+          <div class="no-data-item"><span class="check">✓</span> No phone numbers or call logs</div>
+          <div class="no-data-item"><span class="check">✓</span> No call duration or timestamps</div>
+          <div class="no-data-item"><span class="check">✓</span> No device identifiers (IMEI, Android ID)</div>
+          <div class="no-data-item"><span class="check">✓</span> No advertising ID</div>
+          <div class="no-data-item"><span class="check">✓</span> No location data</div>
+          <div class="no-data-item"><span class="check">✓</span> No contacts or address book</div>
+          <div class="no-data-item"><span class="check">✓</span> No analytics or usage telemetry</div>
+        </div>
+
+        <p style="margin-top:.85rem;">
+          Your dismissal counter, service state, and settings are saved on your device using Android DataStore. This data is backed up to Google Drive via Android Auto Backup when Google Backup is enabled on your device, allowing your usage counter and preferences to persist across reinstalls on the same Google account. Your block-list and whitelist (the apps you chose to monitor or exclude) are stored using Room (SQLite) and are <strong>not</strong> backed up — they will be cleared on uninstall. No data is ever transmitted to the developer's servers.
+        </p>
+      </section>
+
+      <!-- 4 -->
+      <section id="billing">
+        <div class="section-header">
+          <span class="section-num">4</span>
+          <h2>In-App Purchases</h2>
+        </div>
+        <p>
+          AfterCall Shield offers an optional one-time purchase (<em>Unlimited Dismissals</em>) processed entirely through the <strong>Google Play Billing</strong> system. The developer does not receive, store, or process any payment card details or billing information.
+        </p>
+        <p>
+          All financial transactions are handled by Google. Google's collection and use of data related to purchases is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. AfterCall Shield receives only a boolean signal confirming whether a valid purchase exists — no payment details are shared with the app.
+        </p>
+        <p>
+          The purchase status (premium unlocked: yes/no) is stored locally on your device and is used solely to remove the 15-dismissal free-tier limit.
+        </p>
+      </section>
+
+      <!-- 5 -->
+      <section id="ads">
+        <div class="section-header">
+          <span class="section-num">5</span>
+          <h2>Advertising</h2>
+        </div>
+        <p>AfterCall Shield contains no advertisements and does not integrate any advertising SDK or use the Android Advertising ID.</p>
+      </section>
+
+      <!-- 6 -->
+      <section id="third-party">
+        <div class="section-header">
+          <span class="section-num">6</span>
+          <h2>Third-Party Services</h2>
+        </div>
+        <p>
+          AfterCall Shield does not integrate any third-party analytics, crash-reporting, or tracking services. The only external system the app communicates with is the Google Play Billing API — solely to verify and process in-app purchases as described in Section 4 above. No other data leaves your device.
+        </p>
+      </section>
+
+      <!-- 7 -->
+      <section id="children">
+        <div class="section-header">
+          <span class="section-num">7</span>
+          <h2>Children's Privacy</h2>
+        </div>
+        <p>
+          AfterCall Shield is not directed at children under the age of 13. Because the app collects no personal data from any user, there is no risk of inadvertent data collection from minors.
+        </p>
+      </section>
+
+      <!-- 8 -->
+      <section id="changes">
+        <div class="section-header">
+          <span class="section-num">8</span>
+          <h2>Changes to This Policy</h2>
+        </div>
+        <p>
+          If this policy is updated, the revised version will be published at the same URL with an updated effective date. Continued use of the app after any changes constitutes acceptance of the revised policy. Significant changes will be noted in the app's Play Store release notes.
+        </p>
+      </section>
+
+      <!-- 9 -->
+      <section id="contact">
+        <div class="section-header">
+          <span class="section-num">9</span>
+          <h2>Contact</h2>
+        </div>
+        <p>
+          If you have questions or concerns about this privacy policy, please contact the developer via the Google Play Store listing or open an issue on the project's GitHub repository. We aim to respond within 5 business days.
+        </p>
+      </section>
+
+    </article>
+  </div>
+
+  <footer>
+    <span>AfterCall Shield &mdash; Privacy Policy</span>
+    <span>Effective date: April 14, 2026 &nbsp;&middot;&nbsp; Last updated: April 14, 2026</span>
+  </footer>
+
+</body>
+</html>
