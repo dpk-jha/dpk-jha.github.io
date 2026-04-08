@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — TogglDev</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: #1565c0;
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 2.5rem auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      padding: 2rem 2.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1565c0;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #e3ecfa;
+    }
+
+    p { margin-bottom: 0.9rem; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      padding-left: 1.35rem;
+      margin-bottom: 0.9rem;
+    }
+
+    ul li { margin-bottom: 0.35rem; }
+
+    .badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+
+    a { color: #1565c0; }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      padding-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TogglDev — Privacy Policy</h1>
+  <p>Last updated: April 8, 2026</p>
+</header>
+
+<main>
+
+  <div class="card">
+    <span class="badge">No personal data collected</span>
+    <h2>Overview</h2>
+    <p>
+      TogglDev ("the App") is an Android utility that lets you quickly enable or disable Android
+      Developer Options from a home screen widget, Quick Settings tile, or the app itself.
+    </p>
+    <p>
+      This policy describes how Deepak Jha ("we", "our", or "us") handles information in
+      connection with the App. <strong>We do not collect, store, or share any personal
+      information.</strong>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Information We Do Not Collect</h2>
+    <p>The App does not collect, transmit, or store:</p>
+    <ul>
+      <li>Personal identification information (name, email, phone number, etc.)</li>
+      <li>Location data</li>
+      <li>Device identifiers or advertising IDs</li>
+      <li>Usage analytics or crash reports sent to our servers</li>
+      <li>Any content from your device</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Permissions Used</h2>
+    <p>The App requests the following Android permissions solely to perform its core function:</p>
+    <ul>
+      <li>
+        <strong>WRITE_SECURE_SETTINGS</strong> — Required to toggle Developer Options on or off.
+        This permission must be granted manually via ADB and is never used for any purpose other
+        than writing the developer options system setting.
+      </li>
+      <li>
+        <strong>INTERNET</strong> — Used only by the Google Play Billing library to verify
+        in-app purchases. No other network traffic is initiated by the App.
+      </li>
+      <li>
+        <strong>BILLING (com.android.vending.BILLING)</strong> — Used to process optional
+        in-app purchases (e.g., tip/support the developer) through the Google Play Store.
+        All billing is handled entirely by Google Play; we do not receive or store your
+        payment details.
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>In-App Purchases</h2>
+    <p>
+      The App may offer optional in-app purchases to support development. All transactions are
+      processed by Google Play Billing. We do not have access to your payment information.
+      Purchase history is managed by your Google account.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Third-Party Services</h2>
+    <p>The App uses the following third-party component:</p>
+    <ul>
+      <li>
+        <strong>Google Play Billing Library</strong> — Governed by
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+      </li>
+    </ul>
+    <p>No analytics SDKs, advertising networks, or other third-party trackers are included.</p>
+  </div>
+
+  <div class="card">
+    <h2>Data Retention</h2>
+    <p>
+      Because we do not collect any personal data, there is nothing to retain or delete.
+      The App stores only your in-app preferences (such as UI settings) locally on your device
+      using Android DataStore. This data never leaves your device and is removed when you
+      uninstall the App.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Children's Privacy</h2>
+    <p>
+      The App is not directed at children under the age of 13. We do not knowingly collect
+      any information from children. This is a developer utility intended for technically
+      proficient adult users.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. Any changes will be reflected on
+      this page with an updated date. Continued use of the App after changes constitutes
+      acceptance of the revised policy.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p>
+      If you have any questions about this Privacy Policy, please contact:
+    </p>
+    <p>
+      <strong>Deepak Jha</strong><br />
+      Developer of TogglDev<br />
+      Package: <code>com.dpkay.apps.developer_options_toggler</code>
+    </p>
+    <p>
+      You can reach us via the contact email on the
+      <a href="https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler"
+         target="_blank" rel="noopener">Google Play Store listing</a>.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 Deepak Jha &mdash; TogglDev
+</footer>
+
+</body>
+</html>
