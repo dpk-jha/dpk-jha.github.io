@@ -6,16 +6,21 @@
   <title>Privacy Policy — AfterCall Shield</title>
   <style>
     :root {
-      --brand:       #1556B8;
-      --brand-light: #D9E4FF;
-      --brand-dark:  #001848;
-      --text:        #1B1B24;
-      --muted:       #767688;
-      --body-text:   #374151;
-      --border:      #E8ECF4;
-      --bg:          #F5F7FF;
-      --card:        #FAFBFF;
-      --radius:      14px;
+      --brand:        #1556B8;
+      --brand-light:  #D9E4FF;
+      --brand-dark:   #001848;
+      --secondary:    #5A5F80;
+      --amber:        #C66000;
+      --amber-light:  #FFDCBC;
+      --success:      #1B8A4C;
+      --text:         #1B1B24;
+      --muted:        #767688;
+      --body-text:    #374151;
+      --border:       #E8ECF4;
+      --bg:           #F5F7FF;
+      --card:         #FAFBFF;
+      --fog:          #E8ECF4;
+      --radius:       14px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,7 +52,11 @@
       background: rgba(255,255,255,.15);
       border-radius: 20px;
       margin-bottom: 1rem;
-      font-size: 2.25rem;
+    }
+
+    .app-icon svg {
+      width: 44px;
+      height: 44px;
     }
 
     header h1 {
@@ -58,7 +67,7 @@
 
     header p {
       margin-top: .4rem;
-      color: #fff;
+      color: rgba(255,255,255,.85);
       font-size: .95rem;
     }
 
@@ -139,6 +148,21 @@
     .highlight-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: .05rem; }
     .highlight strong { color: var(--brand); }
 
+    .note {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      background: var(--amber-light);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.25rem;
+      margin-top: .85rem;
+      font-size: .9rem;
+      color: var(--body-text);
+    }
+
+    .note strong { color: var(--amber); }
+
     section { margin-bottom: 2.25rem; }
 
     .section-header {
@@ -169,6 +193,15 @@
       letter-spacing: -.01em;
     }
 
+    h3 {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin: 1.25rem 0 .5rem;
+    }
+
     p { margin-bottom: .7rem; color: var(--body-text); }
 
     ul {
@@ -193,6 +226,50 @@
       height: 6px;
       background: var(--brand);
       border-radius: 50%;
+    }
+
+    /* How-it-works flow */
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: 1rem 0 .85rem;
+    }
+
+    .flow-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .875rem 1rem;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--body-text);
+      position: relative;
+    }
+
+    .flow-step .step-icon {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: .35rem;
+    }
+
+    .flow-step strong {
+      display: block;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: .2rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1.1rem;
+      padding-top: .5rem;
     }
 
     /* Permission cards */
@@ -243,10 +320,45 @@
     }
 
     .no-data-item .check {
-      color: #1B8A4C;
+      color: var(--success);
       font-size: 1rem;
       flex-shrink: 0;
     }
+
+    /* Storage table */
+    .storage-grid { display: grid; gap: .6rem; margin: .85rem 0; }
+
+    .storage-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 110px;
+      gap: .75rem;
+      align-items: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .7rem .9rem;
+      font-size: .875rem;
+    }
+
+    .storage-row .store-label {
+      font-family: "SF Mono", "Fira Code", Consolas, monospace;
+      font-size: .76rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .storage-row .store-desc { color: var(--body-text); }
+
+    .backup-badge {
+      display: inline-block;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 600;
+      padding: .15rem .6rem;
+    }
+
+    .backup-yes { background: #DCFCE7; color: #166534; }
+    .backup-no  { background: var(--fog); color: var(--muted); }
 
     /* ── Footer ── */
     footer {
@@ -278,6 +390,11 @@
 
       .no-data-grid { grid-template-columns: 1fr; }
 
+      .flow { grid-template-columns: 1fr; }
+
+      .storage-row { grid-template-columns: 1fr; }
+      .storage-row .store-label { margin-bottom: .2rem; }
+
       header h1 { font-size: 1.5rem; }
     }
   </style>
@@ -286,7 +403,15 @@
 
   <!-- ── Header ── -->
   <header>
-    <div class="app-icon">🛡️</div>
+    <div class="app-icon">
+      <!-- Shield + phone matching app icon -->
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M22 3L6 9.5V21c0 8.5 6.8 16.4 16 18.7C31.2 37.4 38 29.5 38 21V9.5L22 3Z"
+              fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M17.2 16c.2-.5.7-.8 1.2-.8h.5c.5 0 1 .3 1.2.8l1 2.4c.2.5.1 1-.3 1.4l-.8.8c.8 1.7 2.1 3 3.8 3.8l.8-.8c.4-.4.9-.5 1.4-.3l2.4 1c.5.2.8.7.8 1.2v.5c0 .8-.5 1.4-1.2 1.6C20.7 29.3 14.7 23.3 17.2 16Z"
+              fill="white"/>
+      </svg>
+    </div>
     <h1>Privacy Policy</h1>
     <p>AfterCall Shield</p>
     <span class="badge">com.dpkay.apps.after_call_cleaner</span>
@@ -314,7 +439,7 @@
       <div class="highlight">
         <span class="highlight-icon">🔒</span>
         <div>
-          <strong>Short version:</strong> AfterCall Shield works entirely on your device. It does not collect, transmit, or sell any personal data. Your usage data never leaves your phone.
+          <strong>Short version:</strong> AfterCall Shield works entirely on your device. It never reads what's on your screen, captures keystrokes, or accesses personal data. Your usage data never leaves your phone — fully offline.
         </div>
       </div>
 
@@ -324,12 +449,45 @@
           <span class="section-num">1</span>
           <h2>What the App Does</h2>
         </div>
+
+        <div class="flow">
+          <div class="flow-step">
+            <span class="step-icon">📞</span>
+            <strong>Call Ends</strong>
+            Phone state changes to idle; app wakes up
+          </div>
+          <div class="flow-step">
+            <span class="step-icon">🔍</span>
+            <strong>Short Window</strong>
+            Scans visible windows for overlay activity (5 s answered · 8 s missed)
+          </div>
+          <div class="flow-step">
+            <span class="step-icon">🛡️</span>
+            <strong>Overlay Dismissed</strong>
+            Intrusive overlay closed; screen returned to you
+          </div>
+        </div>
+
         <p>
-          AfterCall Shield monitors when a phone call ends and automatically dismisses overlay screens — such as post-call pop-ups — that appear on your device immediately afterward. All detection and dismissal logic runs locally on your device in real time and produces no logs or records.
+          AfterCall Shield monitors when a phone call ends and automatically dismisses overlay screens — such as post-call pop-ups and interstitial ads — that appear on your device immediately afterward. All detection and dismissal logic runs locally on your device in real time and produces no logs or records.
         </p>
-        <p>The app works out-of-the-box with zero configuration, automatically dismissing any non-system app overlay that appears in the brief window after a call ends.</p>
         <p>
-          The app operates as a background service so it can act the moment a call ends, even when the app is not in the foreground. A free tier allows up to 15 automatic dismissals; an optional one-time in-app purchase unlocks unlimited dismissals.
+          For <strong>answered calls</strong>, the app watches for overlays in a 5-second window once the call ends. For <strong>missed or rejected calls</strong>, the window opens after the device is unlocked (up to 8 seconds), since overlays often appear on the home or lock screen after dismissing a missed-call notification.
+        </p>
+
+        <h3>Auto-Cleanup Configuration</h3>
+        <p>
+          The <strong>Auto-Cleanup</strong> screen lets you choose exactly which apps' overlays are dismissed. Each installed app can be toggled on or off; essential system apps (such as Phone, Messages, and launcher apps) are off by default with a confirmation warning if you choose to enable them. A "Suggested Apps" sheet surfaces apps that are known to show post-call overlays, making initial setup fast and transparent.
+        </p>
+
+        <h3>Protection Toggle</h3>
+        <p>
+          A master switch on the Dashboard lets you pause or resume protection at any time. The switch is clearly labelled with its current state (Active, Paused, or Not set up) so you always know whether the service is running.
+        </p>
+
+        <h3>Free Tier &amp; Upgrade</h3>
+        <p>
+          The app operates as a background service so it can act the moment a call ends, even when the app is not in the foreground. A free tier allows up to 15 automatic dismissals; an optional one-time in-app purchase unlocks unlimited dismissals permanently.
         </p>
       </section>
 
@@ -348,17 +506,17 @@
 
           <div class="perm-card">
             <span class="perm-name">Accessibility Service</span>
-            <p>Inspects the visible window immediately after a call ends to detect and dismiss overlay windows. The service is active only during a brief post-call window (5 seconds for answered calls, 8 seconds after unlock for missed calls). It does not read text you type, capture passwords, monitor clipboard content, or observe any activity outside of these post-call moments.</p>
+            <p>Inspects the visible window immediately after a call ends to detect and dismiss overlay windows. The service is active only during the brief post-call windows described in Section 1 — 5 seconds for answered calls, up to 8 seconds after the device is unlocked for missed calls. It does <strong>not</strong> read text you type, capture passwords, monitor clipboard content, or observe any activity outside these post-call moments.</p>
           </div>
 
           <div class="perm-card">
-            <span class="perm-name">QUERY_ALL_PACKAGES</span>
-            <p>Enumerates installed apps so the autonomous mode can identify overlays and so you can build a personalised block-list or whitelist. This list is stored only on your device and is never transmitted or shared.</p>
+            <span class="perm-name">Package Visibility Query (android:queries)</span>
+            <p>Enumerates launcher apps installed on your device so the Auto-Cleanup list can be populated with real app names and icons. This uses Android's targeted <code>android:queries</code> mechanism (scoped to launcher-category intents), not the blanket <code>QUERY_ALL_PACKAGES</code> permission. The resulting list is stored only on your device and is never transmitted or shared.</p>
           </div>
 
           <div class="perm-card">
             <span class="perm-name">POST_NOTIFICATIONS</span>
-            <p>Displays a persistent notification required by Android to keep the background service running. No notification content is sent to any server.</p>
+            <p>Displays a persistent notification required by Android to keep the background service running reliably. The notification shows the current protection status (Active / Paused) and a dismissal count. No notification content is sent to any server.</p>
           </div>
 
           <div class="perm-card">
@@ -373,9 +531,16 @@
 
           <div class="perm-card">
             <span class="perm-name">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</span>
-            <p>Prompts you to exclude AfterCall Shield from battery optimisation, which prevents the operating system from killing the service during extended periods of inactivity.</p>
+            <p>Prompts you to exclude AfterCall Shield from battery optimisation, which prevents the operating system from killing the background service during extended periods of inactivity. This is especially important on OEM skins (Samsung OneUI, MIUI, OxygenOS, ColorOS) that aggressively restrict background processes. You can decline this prompt — the app will still work but may be less reliable.</p>
           </div>
 
+        </div>
+
+        <div class="note">
+          <span>⚠️</span>
+          <div>
+            <strong>About the Accessibility Service:</strong> Android requires apps that use the Accessibility API to declare this in a privacy policy. AfterCall Shield uses the Accessibility Service <em>only</em> to inspect which window is in the foreground during the short post-call window described above — for no other purpose.
+          </div>
         </div>
       </section>
 
@@ -398,8 +563,27 @@
           <div class="no-data-item"><span class="check">✓</span> No analytics or usage telemetry</div>
         </div>
 
-        <p style="margin-top:.85rem;">
-          Your dismissal counter, service state, and settings are saved on your device using Android DataStore. This data is backed up to Google Drive via Android Auto Backup when Google Backup is enabled on your device, allowing your usage counter and preferences to persist across reinstalls on the same Google account. Your block-list and whitelist (the apps you chose to monitor or exclude) are stored using Room (SQLite) and are <strong>not</strong> backed up — they will be cleared on uninstall. No data is ever transmitted to the developer's servers.
+        <h3>What Is Stored Locally</h3>
+        <p>The following data is stored <strong>only on your device</strong>. None of it is transmitted to the developer or any third party.</p>
+
+        <div class="storage-grid">
+          <div class="storage-row">
+            <span class="store-label">DataStore</span>
+            <span class="store-desc">App settings (protection on/off, toast preference), dismissal counter, and premium purchase status.</span>
+            <span class="backup-badge backup-yes">Backed up ✓</span>
+          </div>
+          <div class="storage-row">
+            <span class="store-label">Room (SQLite)</span>
+            <span class="store-desc">Auto-Cleanup configuration — which apps you have toggled on or off for overlay dismissal.</span>
+            <span class="backup-badge backup-no">Not backed up</span>
+          </div>
+        </div>
+
+        <p>
+          Settings and your dismissal counter are backed up to Google Drive via Android Auto Backup when Google Backup is enabled on your device, allowing your preferences and usage counter to persist across reinstalls on the same Google account. Your Auto-Cleanup configuration is stored in a local SQLite database and is <strong>not</strong> backed up — it will be cleared on uninstall.
+        </p>
+        <p>
+          No data is ever transmitted to the developer's servers. The app has no network calls, no analytics endpoints, and no remote logging.
         </p>
       </section>
 
@@ -410,13 +594,13 @@
           <h2>In-App Purchases</h2>
         </div>
         <p>
-          AfterCall Shield offers an optional one-time purchase (<em>Unlimited Dismissals</em>) processed entirely through the <strong>Google Play Billing</strong> system. The developer does not receive, store, or process any payment card details or billing information.
+          AfterCall Shield offers an optional one-time purchase (<em>Unlock Unlimited Dismissals</em>) processed entirely through the <strong>Google Play Billing</strong> system. The developer does not receive, store, or process any payment card details or billing information.
         </p>
         <p>
           All financial transactions are handled by Google. Google's collection and use of data related to purchases is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. AfterCall Shield receives only a boolean signal confirming whether a valid purchase exists — no payment details are shared with the app.
         </p>
         <p>
-          The purchase status (premium unlocked: yes/no) is stored locally on your device and is used solely to remove the 15-dismissal free-tier limit.
+          The purchase status (premium unlocked: yes/no) is stored locally on your device using DataStore and is used solely to remove the 15-dismissal free-tier limit. You can restore a previous purchase at any time from the Settings screen.
         </p>
       </section>
 
@@ -436,7 +620,7 @@
           <h2>Third-Party Services</h2>
         </div>
         <p>
-          AfterCall Shield does not integrate any third-party analytics, crash-reporting, or tracking services. The only external system the app communicates with is the Google Play Billing API — solely to verify and process in-app purchases as described in Section 4 above. No other data leaves your device.
+          AfterCall Shield does not integrate any third-party analytics, crash-reporting, or tracking services. The only external system the app communicates with is the <strong>Google Play Billing API</strong> — solely to verify and process in-app purchases as described in Section 4 above. No other data leaves your device.
         </p>
       </section>
 
@@ -478,7 +662,7 @@
 
   <footer>
     <span>AfterCall Shield &mdash; Privacy Policy</span>
-    <span>Effective date: April 14, 2026 &nbsp;&middot;&nbsp; Last updated: April 14, 2026</span>
+    <span>Effective date: April 14, 2026 &nbsp;&middot;&nbsp; Last updated: May 10, 2026</span>
   </footer>
 
 </body>
