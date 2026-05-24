@@ -1,0 +1,45 @@
+# Deepak Jha — dpkay.com
+
+> Full-Stack Architect & Product Builder with 10+ years of engineering experience.
+
+## About
+
+Deepak Jha specializes in distributed systems, real-time platforms, and cloud-native architecture. He has designed and shipped high-availability infrastructure serving thousands of concurrent users across multiple regions — in domains spanning IoT, enterprise security, and retail. Based in India, collaborating with teams globally.
+
+## Contact
+
+- Email: hello@dpkay.com
+- LinkedIn: https://linkedin.com/in/dpkjha
+- GitHub: https://github.com/dpkay-io
+- Blog: https://medium.com/@dpkay
+
+## Key Experience Areas
+
+- High-availability video surveillance (8,000+ concurrent cameras, multi-region)
+- Real-time dashboards with custom Canvas rendering (millions of data points at 60 FPS)
+- E-commerce middleware with offline state resolution and transactional consistency
+
+## Core Tech Stack
+
+- Backend: C# / .NET, Node.js, Go, Rust
+- Frontend: React / Next.js, TypeScript
+- Cloud: AWS, Azure, Redis, SQL / NoSQL
+- Mobile: Flutter / React Native, Kotlin / Android
+- Realtime: WebSockets / SignalR, WebRTC
+- AI: Agentic AI systems
+
+## Personal Projects
+
+- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://github.com/dpkay-io/terminal-studio
+- gitreg: Zero-latency Git repository registry (Rust) — https://github.com/dpkay-io/gitreg
+- claude-ticker: Real-time status bar for Claude CLI (TypeScript) — https://www.npmjs.com/package/claude-ticker
+- splitgame: Split-terminal games for Claude Code (TypeScript, MCP) — https://www.npmjs.com/package/splitgame
+- ttag: Dynamic terminal tab coloring (Go) — https://github.com/dpkay-io/ttag
+- TogglDev: Android Developer Options toggle (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler
+- AfterCall Shield: Post-call overlay dismissal (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner
+- Workspace ID Pro: VS Code workspace identity extension (TypeScript) — https://marketplace.visualstudio.com/items?itemName=dpkay.ws-id
+
+## Pages
+
+- Home: https://dpkay.com/
+- Projects: https://dpkay.com/projects.html

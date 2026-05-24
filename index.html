@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
     <meta name="description" content="Deepak Jha — Full-Stack Architect &amp; Product Builder. 10+ years of engineering craft, partnering with teams to ship resilient, production-ready software.">
 
     <!-- Open Graph -->
@@ -11,17 +12,14 @@
     <meta property="og:title"       content="Deepak Jha | Product Builder">
     <meta property="og:description" content="Architect &amp; Product Builder. I partner with teams to ship resilient, production-ready software.">
 
-    <meta property="og:image"       content="https://dpkay.com/og-image.png">
-
     <!-- Twitter Card -->
-    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:card"        content="summary">
     <meta name="twitter:title"       content="Deepak Jha | Product Builder">
     <meta name="twitter:description" content="Full-Stack Architect &amp; Product Builder. 10+ years of engineering craft.">
-    <meta name="twitter:image"       content="https://dpkay.com/og-image.png">
 
     <title>Deepak Jha | Product Builder</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="canonical" href="https://dpkay.com/">
 
     <script type="application/ld+json">
     {
@@ -58,212 +56,10 @@
             padding-block: 4rem;
         }
         .hero h1     { font-size: clamp(2.75rem, 8vw, 6rem); margin-bottom: 2rem; }
-        .lead        { max-width: 38rem; font-size: 1.25rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; margin-bottom: 2.5rem; }
-
-        .section-header     { margin-bottom: 5rem; }
-        .section-header h2  { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.75rem; }
-        .section-sub        { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
-
-        /* ── Case Studies ──────────────────────────────────────── */
-        .case-studies { padding-block: 8rem; }
-
-        .cs-tabs {
-            display: flex;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 3rem;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .cs-tabs::-webkit-scrollbar { display: none; }
-
-        .cs-tab {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 0.875rem;
-            padding: 1.25rem 1.5rem;
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            color: rgba(255, 255, 255, 0.35);
-            cursor: pointer;
-            transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
-            font-family: inherit;
-            text-align: left;
-            white-space: nowrap;
-        }
-        .cs-tab:hover { color: rgba(255, 255, 255, 0.7); }
-        .cs-tab--active { color: var(--fg); border-bottom-color: var(--accent); }
-        .cs-tab-num {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        .cs-tab-title {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        @media (max-width: 600px) {
-            .cs-tab { flex: none; padding: 1rem 1.25rem; }
-        }
-
-        .cs-viewport { min-height: 26rem; position: relative; }
-        .cs-panel { display: none; }
-        .cs-panel--active { display: block; animation: csFadeIn 0.4s var(--ease); }
-        @keyframes csFadeIn {
-            from { opacity: 0; transform: translateY(0.5rem); }
-            to   { opacity: 1; transform: none; }
-        }
-
-        .cs-metric {
-            background: rgba(59, 130, 246, 0.05);
-            border: 1px solid rgba(59, 130, 246, 0.12);
-            border-radius: 1rem;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: baseline;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-        }
-        .cs-metric-label {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-        .cs-metric-value {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            font-size: 1.0625rem;
-            color: var(--fg);
-            font-weight: 600;
-        }
-
-        .cs-focus {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .cs-focus-text {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .cs-block-label {
-            font-family: 'Inter', system-ui, sans-serif;
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: rgba(255, 255, 255, 0.35);
-            margin-bottom: 0.875rem;
-            font-weight: 600;
-        }
-
-        .cs-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin-bottom: 2.5rem;
-        }
-        .cs-step {
-            display: flex;
-            gap: 1.5rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .cs-step:last-child { border-bottom: none; }
-        .cs-step-num {
-            flex-shrink: 0;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-top: 0.125rem;
-        }
-        .cs-step-body { flex: 1; min-width: 0; }
-        .cs-step-body p {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
-        }
-        .cs-step-body p strong { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
-
-        .cs-step-body ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.625rem;
-        }
-        .cs-step-body li {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-        .cs-step-body li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.75em;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-        .cs-step-body li strong { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
-
-        /* Step color variants */
-        .cs-step--challenge .cs-step-num {
-            border-color: rgba(245, 158, 11, 0.35);
-            color: #f59e0b;
-        }
-        .cs-step--challenge .cs-block-label { color: rgba(245, 158, 11, 0.6); }
-
-        .cs-step--arch .cs-step-num {
-            border-color: rgba(59, 130, 246, 0.35);
-            color: var(--accent);
-        }
-        .cs-step--arch .cs-block-label { color: rgba(59, 130, 246, 0.6); }
-
-        .cs-step--outcome .cs-step-num {
-            border-color: rgba(34, 197, 94, 0.4);
-            color: #22c55e;
-            background: rgba(34, 197, 94, 0.08);
-        }
-        .cs-step--outcome .cs-block-label { color: rgba(34, 197, 94, 0.6); }
-        .cs-step--outcome .cs-step-body p { color: rgba(255, 255, 255, 0.75); }
-
-        .cs-stack { padding-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-        .cs-tags { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1rem; }
-        .cs-tag {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            font-size: 0.6875rem;
-            padding: 0.375rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 99px;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 0.05em;
-            transition: border-color 0.25s, color 0.25s;
-        }
-        .cs-tag:hover { border-color: var(--accent); color: var(--accent); }
+        .lead        { max-width: 38rem; font-size: 1.25rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 2.5rem; }
 
         .philosophy { padding-block: 8rem; }
+        @media (max-width: 640px) { .philosophy { padding-block: 4rem; } }
         .quote-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(59, 130, 246, 0.1);
@@ -295,7 +91,7 @@
                 <p class="lead">10+ years of engineering craft. I partner with stakeholders and teams to transform complex visions into resilient, production-ready software.</p>
                 <div class="btn-group">
                     <a href="mailto:hello@dpkay.com" class="btn btn-primary">Let's Talk</a>
-                    <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Read My Blog</a>
+                    <a href="/projects.html" class="btn btn-ghost">See Projects</a>
                 </div>
             </div>
         </section>
@@ -305,7 +101,7 @@
             <div class="about-layout">
                 <div class="about-text reveal">
                     <p class="eyebrow">About</p>
-                    <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem;">Full-Stack Architect.<br>Hands-On Builder.</h2>
+                    <h2 class="section-title">Full-Stack Architect.<br>Hands-On Builder.</h2>
                     <p class="about-desc">I specialize in distributed systems, real-time platforms, and cloud-native architecture. Over the past decade, I've designed and shipped high-availability infrastructure serving thousands of concurrent users across multiple regions and time zones — in domains spanning IoT, enterprise security, and retail.</p>
                     <p class="about-desc">I work with startups and enterprises as a hands-on technical partner — from system design through deployment and scale. Based in India, collaborating with teams globally across time zones.</p>
                 </div>
@@ -320,7 +116,7 @@
                     </div>
                     <div>
                         <p class="about-fact-label">Agentic AI</p>
-                        <p class="about-fact-value">10X Productivity<br>Faster Shipment</p>
+                        <p class="about-fact-value">10X Productivity<br>Faster Shipping</p>
                     </div>
                     <div>
                         <p class="about-fact-label">Approach</p>
@@ -330,185 +126,46 @@
             </div>
         </section>
 
-        <!-- Case Studies -->
-        <section class="case-studies container">
-            <div class="section-header reveal">
-                <h2>Key Experiences</h2>
-                <p class="section-sub">Architectural Case Studies</p>
+        <!-- Key Experiences -->
+        <section class="featured container">
+            <div class="featured-header reveal">
+                <div>
+                    <h2 class="section-title">Key Experiences</h2>
+                    <p class="section-sub">Architectural Case Studies</p>
+                </div>
+                <a href="/projects.html" class="featured-link">
+                    View All
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </a>
             </div>
-
-            <div class="cs-tabs reveal" style="--delay: .1s">
-                <button class="cs-tab cs-tab--active" data-cs="0" type="button">
-                    <span class="cs-tab-num">01</span>
-                    <span class="cs-tab-title">Video Surveillance System</span>
-                </button>
-                <button class="cs-tab" data-cs="1" type="button">
-                    <span class="cs-tab-num">02</span>
-                    <span class="cs-tab-title">Realtime Multi-purpose Dashboard</span>
-                </button>
-                <button class="cs-tab" data-cs="2" type="button">
-                    <span class="cs-tab-num">03</span>
-                    <span class="cs-tab-title">E-Commerce Middleware</span>
-                </button>
-            </div>
-
-            <div class="cs-viewport reveal" style="--delay: .2s">
-
-                <!-- Panel 01: Video Surveillance -->
-                <div class="cs-panel cs-panel--active" data-cs-panel="0">
-                    <div class="cs-metric">
-                        <span class="cs-metric-label">Scale</span>
-                        <span class="cs-metric-value">8,000+ active concurrent cameras across multi-tenant regions</span>
+            <div class="featured-grid">
+                <a href="/projects.html" class="featured-card reveal" style="--delay: .05s">
+                    <h3 class="featured-card-name">8,000+ Cameras</h3>
+                    <p class="featured-card-desc">Multi-region live streaming &amp; telemetry at scale</p>
+                    <div class="featured-card-stack">
+                        <span class="stack-tag">IoT</span>
+                        <span class="stack-tag">WebRTC</span>
+                        <span class="stack-tag">Azure</span>
                     </div>
-                    <div class="cs-focus">
-                        <h4 class="cs-block-label">Focus Area</h4>
-                        <span class="cs-focus-text">High-Availability, Multi-Region Live Streaming &amp; Telemetry at Scale</span>
+                </a>
+                <a href="/projects.html" class="featured-card reveal" style="--delay: .1s">
+                    <h3 class="featured-card-name">Locked 60 FPS</h3>
+                    <p class="featured-card-desc">Millions of real-time data points on custom Canvas engine</p>
+                    <div class="featured-card-stack">
+                        <span class="stack-tag">Canvas</span>
+                        <span class="stack-tag">Web Workers</span>
+                        <span class="stack-tag">React</span>
                     </div>
-                    <div class="cs-steps">
-                        <div class="cs-step cs-step--challenge">
-                            <span class="cs-step-num">1</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Challenge</h4>
-                                <p>Orchestrating stable, <strong>low-latency live streams</strong>, configuration changes, and event captures for thousands of <strong>geo-distributed cameras</strong> across multiple tenants and regions without service degradation.</p>
-                            </div>
-                        </div>
-                        <div class="cs-step cs-step--arch">
-                            <span class="cs-step-num">2</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Architecture</h4>
-                                <ul>
-                                    <li>Engineered a scalable middleware layer with <strong>localized brokers and edge protocols</strong> for camera interfacing</li>
-                                    <li>Leveraged a <strong>distributed service bus</strong> for reliable cross-region message routing</li>
-                                    <li>Implemented <strong>real-time signaling and streaming state management</strong> across cloud boundaries for multi-region tenant isolation and seamless failovers</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="cs-step cs-step--outcome">
-                            <span class="cs-step-num">3</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Outcome</h4>
-                                <p>Achieved <strong>zero-downtime regional failovers</strong> and sub-second stream switching — enabling the platform to scale to <strong>8,000+ concurrent cameras</strong> while onboarding new enterprise tenants without additional infrastructure investment.</p>
-                            </div>
-                        </div>
+                </a>
+                <a href="/projects.html" class="featured-card reveal" style="--delay: .15s">
+                    <h3 class="featured-card-name">Zero Data Loss</h3>
+                    <p class="featured-card-desc">Offline-to-cloud sync across fragmented POS networks</p>
+                    <div class="featured-card-stack">
+                        <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">C#</span>
+                        <span class="stack-tag">Queues</span>
                     </div>
-                    <div class="cs-stack">
-                        <h4 class="cs-block-label">Core Tech Stack</h4>
-                        <div class="cs-tags">
-                            <span class="cs-tag">C#</span>
-                            <span class="cs-tag">React</span>
-                            <span class="cs-tag">WebSockets</span>
-                            <span class="cs-tag">SignalR</span>
-                            <span class="cs-tag">Azure Service Bus</span>
-                            <span class="cs-tag">MQTT</span>
-                            <span class="cs-tag">WebRTC</span>
-                            <span class="cs-tag">ONVIF</span>
-                            <span class="cs-tag">Milestone VMS</span>
-                            <span class="cs-tag">Azure Functions</span>
-                            <span class="cs-tag">Redis</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Panel 02: Access Control Dashboard -->
-                <div class="cs-panel" data-cs-panel="1">
-                    <div class="cs-metric">
-                        <span class="cs-metric-label">Performance</span>
-                        <span class="cs-metric-value">Millions of real-time telemetry data points at a locked 60 FPS</span>
-                    </div>
-                    <div class="cs-focus">
-                        <h4 class="cs-block-label">Focus Area</h4>
-                        <span class="cs-focus-text">Memory-Optimized UI Pipelines &amp; Custom Canvas Rendering Engine</span>
-                    </div>
-                    <div class="cs-steps">
-                        <div class="cs-step cs-step--challenge">
-                            <span class="cs-step-num">1</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Challenge</h4>
-                                <p>Rendering hundreds of <strong>live updating widgets</strong> and <strong>millions of concurrent data points</strong> on a complex, cross-building timeline without blocking the <strong>UI main thread</strong> or causing browser memory leaks.</p>
-                            </div>
-                        </div>
-                        <div class="cs-step cs-step--arch">
-                            <span class="cs-step-num">2</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Architecture</h4>
-                                <ul>
-                                    <li>Engineered a <strong>custom HTML5 Canvas rendering pipeline</strong> from scratch, bypassing traditional DOM limitations</li>
-                                    <li>Offloaded heavy calculations, stream parsing, and data manipulation to background <strong>Web Workers</strong></li>
-                                    <li>Applied <strong>progressive data fetching</strong>, localized slice queries, and <strong>lazy evaluation</strong> of off-screen states to minimize memory overhead</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="cs-step cs-step--outcome">
-                            <span class="cs-step-num">3</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Outcome</h4>
-                                <p>Sustained a <strong>locked 60 FPS</strong> across millions of live data points with <strong>zero browser memory leaks</strong> — powering 24/7 facility operations across multi-building security and access-control environments.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cs-stack">
-                        <h4 class="cs-block-label">Core Tech Stack</h4>
-                        <div class="cs-tags">
-                            <span class="cs-tag">React</span>
-                            <span class="cs-tag">HTML5 Canvas</span>
-                            <span class="cs-tag">Web Workers</span>
-                            <span class="cs-tag">WebSockets</span>
-                            <span class="cs-tag">TypeScript</span>
-                            <span class="cs-tag">Virtualization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Panel 03: E-Commerce Middleware -->
-                <div class="cs-panel" data-cs-panel="2">
-                    <div class="cs-metric">
-                        <span class="cs-metric-label">Capability</span>
-                        <span class="cs-metric-value">Multi-Terminal Offline State Resolution Engine</span>
-                    </div>
-                    <div class="cs-focus">
-                        <h4 class="cs-block-label">Focus Area</h4>
-                        <span class="cs-focus-text">Distributed Data Synchronization &amp; Transactional Consistency</span>
-                    </div>
-                    <div class="cs-steps">
-                        <div class="cs-step cs-step--challenge">
-                            <span class="cs-step-num">1</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Challenge</h4>
-                                <p>Managing inventory updates, <strong>real-time order notifications</strong>, pricing changes, and <strong>digital payment state flows</strong> across <strong>fragmented networks</strong> where physical POS systems frequently drop connectivity.</p>
-                            </div>
-                        </div>
-                        <div class="cs-step cs-step--arch">
-                            <span class="cs-step-num">2</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Architecture</h4>
-                                <ul>
-                                    <li>Built a robust <strong>transaction-handling and queuing mechanism</strong> within the middleware layer for reliable data syncing</li>
-                                    <li>Implemented safe <strong>offline state management</strong> to eliminate <strong>race conditions</strong> during POS resynchronization with the cloud backend</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="cs-step cs-step--outcome">
-                            <span class="cs-step-num">3</span>
-                            <div class="cs-step-body">
-                                <h4 class="cs-block-label">The Outcome</h4>
-                                <p>Eliminated <strong>double-selling and inventory lock conflicts</strong> — enabling uninterrupted retail operations with <strong>zero data loss</strong> during offline-to-cloud resynchronization across fragmented POS networks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cs-stack">
-                        <h4 class="cs-block-label">Core Tech Stack</h4>
-                        <div class="cs-tags">
-                            <span class="cs-tag">Node.js</span>
-                            <span class="cs-tag">C#</span>
-                            <span class="cs-tag">React</span>
-                            <span class="cs-tag">WebSockets</span>
-                            <span class="cs-tag">Payment Gateways</span>
-                            <span class="cs-tag">Distributed Databases</span>
-                            <span class="cs-tag">State Queues</span>
-                        </div>
-                    </div>
-                </div>
-
+                </a>
             </div>
         </section>
 
@@ -516,12 +173,12 @@
         <section class="featured container">
             <div class="featured-header reveal">
                 <div>
-                    <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.75rem;">Side Projects</h2>
+                    <h2 class="section-title">Personal Projects</h2>
                     <p class="section-sub">Built &amp; Shipped</p>
                 </div>
                 <a href="/projects.html" class="featured-link">
                     View All
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                 </a>
             </div>
             <div class="featured-grid">
@@ -535,18 +192,20 @@
                     </div>
                 </a>
                 <a href="/projects.html" class="featured-card reveal" style="--delay: .1s">
-                    <h3 class="featured-card-name">claude-ticker</h3>
-                    <p class="featured-card-desc">Real-time status bar for Claude CLI — context window, rate limits, costs, and git state in one glanceable line.</p>
+                    <h3 class="featured-card-name">splitgame</h3>
+                    <p class="featured-card-desc">Play games in a split terminal panel alongside Claude Code and other CLI workflows.</p>
                     <div class="featured-card-stack">
                         <span class="stack-tag">TypeScript</span>
                         <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">MCP</span>
                     </div>
                 </a>
                 <a href="/projects.html" class="featured-card reveal" style="--delay: .15s">
-                    <h3 class="featured-card-name">gitreg</h3>
-                    <p class="featured-card-desc">Zero-latency repository registry that tracks, tags, and runs bulk operations across all your Git repos.</p>
+                    <h3 class="featured-card-name">AfterCall Shield</h3>
+                    <p class="featured-card-desc">Automatically dismisses intrusive overlay pop-ups that appear on your screen after phone calls end.</p>
                     <div class="featured-card-stack">
-                        <span class="stack-tag">Rust</span>
+                        <span class="stack-tag">Android</span>
+                        <span class="stack-tag">Kotlin</span>
                     </div>
                 </a>
             </div>
@@ -568,18 +227,6 @@
 
     <footer id="contact" class="site-footer"></footer>
 
-    <script>
-    document.querySelector('.cs-tabs').addEventListener('click', function(e) {
-        var tab = e.target.closest('.cs-tab');
-        if (!tab || tab.classList.contains('cs-tab--active')) return;
-        var idx = tab.dataset.cs;
-        this.querySelector('.cs-tab--active').classList.remove('cs-tab--active');
-        tab.classList.add('cs-tab--active');
-        var viewport = document.querySelector('.cs-viewport');
-        viewport.querySelector('.cs-panel--active').classList.remove('cs-panel--active');
-        viewport.querySelector('[data-cs-panel="' + idx + '"]').classList.add('cs-panel--active');
-    });
-    </script>
 
 </body>
 </html>

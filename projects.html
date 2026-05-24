@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal projects by Deepak Jha — developer tools, system utilities, and apps built for performance and shipped to production.">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Work &amp; projects by Deepak Jha — enterprise architecture case studies, developer tools, and apps built for performance and shipped to production.">
 
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://dpkay.com/projects">
-    <meta property="og:title"       content="Deepak Jha | Personal Projects">
-    <meta property="og:description" content="Developer tools, system utilities, and apps — built for performance and shipped to production.">
+    <meta property="og:title"       content="Deepak Jha | Work &amp; Projects">
+    <meta property="og:description" content="Enterprise architecture case studies, developer tools, and apps — built for performance and shipped to production.">
 
-    <meta property="og:image"       content="https://dpkay.com/og-image.png">
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="Deepak Jha | Work &amp; Projects">
+    <meta name="twitter:description" content="Enterprise architecture case studies, developer tools, and apps — built and shipped to production.">
 
-    <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="Deepak Jha | Personal Projects">
-    <meta name="twitter:description" content="Developer tools, system utilities, and apps — built and shipped to production.">
-    <meta name="twitter:image"       content="https://dpkay.com/og-image.png">
+    <title>Deepak Jha | Work &amp; Projects</title>
 
-    <title>Deepak Jha | Personal Projects</title>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="canonical" href="https://dpkay.com/projects">
 
     <script type="application/ld+json">
     {
@@ -50,7 +48,7 @@
         }
 
         .projects-hero {
-            padding: 7rem 0 3rem;
+            padding-block: 7rem 3rem;
             position: relative;
         }
         .projects-hero::before {
@@ -75,6 +73,235 @@
             line-height: 1.7;
             font-weight: 300;
         }
+
+        .section-header     { margin-bottom: 5rem; }
+
+        /* ── Case Studies ──────────────────────────────────────── */
+        .case-studies { padding-block: 4rem 6rem; }
+
+        .cs-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 3rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            position: sticky;
+            top: 5rem;
+            z-index: 40;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: opacity 0.3s ease;
+        }
+        .cs-tabs.unstuck {
+            position: relative;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .cs-tabs::-webkit-scrollbar { display: none; }
+
+        .cs-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+            font-family: inherit;
+            text-align: left;
+            white-space: nowrap;
+        }
+        .cs-tab:hover { color: rgba(255, 255, 255, 0.7); }
+        .cs-tab--active { color: var(--fg); border-bottom-color: var(--accent); }
+        .cs-tab-num {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .cs-tab-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        @media (max-width: 600px) {
+            .cs-tab { flex: none; padding: 1rem 1.25rem; }
+        }
+
+        .cs-viewport { min-height: 26rem; position: relative; }
+        .cs-panel { display: none; }
+        .cs-panel--active {
+            display: block;
+            animation: csFadeIn 0.4s var(--ease);
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 1.25rem;
+            padding: 2.5rem;
+        }
+        @media (max-width: 600px) {
+            .cs-panel--active { padding: 1.5rem; }
+        }
+        @keyframes csFadeIn {
+            from { opacity: 0; transform: translateY(0.5rem); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        .cs-metric {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.875rem;
+            flex-wrap: wrap;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.12);
+            border-radius: 99px;
+            padding: 0.625rem 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+        .cs-metric-label {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.5625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+        .cs-metric-value {
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .cs-focus {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .cs-focus .cs-block-label {
+            margin-bottom: 0.5rem;
+        }
+        .cs-focus-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.375rem;
+            color: var(--fg);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .cs-block-label {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.5625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 0.625rem;
+            font-weight: 600;
+        }
+
+        .cs-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 1.5rem;
+        }
+        .cs-step {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .cs-step:first-child { padding-top: 0; }
+        .cs-step:last-child  { border-bottom: none; padding-bottom: 0; }
+        .cs-step-num {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.6875rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.125rem;
+        }
+        .cs-step-body { flex: 1; min-width: 0; }
+        .cs-step-body p {
+            font-size: 0.9375rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+        }
+        .cs-step-body p strong { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
+
+        .cs-step-body ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+        }
+        .cs-step-body li {
+            font-size: 0.9375rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .cs-step-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75em;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .cs-step-body li strong { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
+
+        .cs-step--challenge .cs-step-num {
+            border-color: rgba(245, 158, 11, 0.35);
+            color: #f59e0b;
+        }
+        .cs-step--challenge .cs-block-label { color: rgba(245, 158, 11, 0.6); }
+
+        .cs-step--arch .cs-step-num {
+            border-color: rgba(59, 130, 246, 0.35);
+            color: var(--accent);
+        }
+        .cs-step--arch .cs-block-label { color: rgba(59, 130, 246, 0.6); }
+
+        .cs-step--outcome .cs-step-num {
+            border-color: rgba(34, 197, 94, 0.4);
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.08);
+        }
+        .cs-step--outcome .cs-block-label { color: rgba(34, 197, 94, 0.6); }
+        .cs-step--outcome .cs-step-body p { color: rgba(255, 255, 255, 0.75); }
+
+        .cs-stack { padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+        .cs-tags { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1rem; }
+        .cs-tag {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.6875rem;
+            padding: 0.375rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 99px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.05em;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .cs-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+        .projects-divider { padding-block: 6rem 0; }
 
         .filters {
             padding: 3rem 0 1rem;
@@ -110,7 +337,7 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             cursor: pointer;
-            padding: 0.5rem 0;
+            padding: 0.875rem 0.5rem;
             position: relative;
             transition: color 0.3s;
             white-space: nowrap;
@@ -118,9 +345,9 @@
         .filter-btn::after {
             content: '';
             position: absolute;
-            bottom: -1rem;
-            left: 0;
-            right: 0;
+            bottom: 0;
+            left: 0.5rem;
+            right: 0.5rem;
             height: 1px;
             background: var(--accent);
             transform: scaleX(0);
@@ -138,7 +365,7 @@
         }
 
         .projects-section {
-            padding: 3rem 0 8rem;
+            padding-block: 3rem 8rem;
         }
         .projects-grid {
             display: grid;
@@ -162,7 +389,6 @@
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            will-change: transform;
             transition:
                 background   0.4s var(--ease),
                 border-color 0.4s var(--ease),
@@ -190,6 +416,7 @@
             transition: opacity 0.4s var(--ease);
         }
         .project-card:hover {
+            will-change: transform;
             background: rgba(255, 255, 255, 0.045);
             border-color: color-mix(in srgb, var(--card-accent) 30%, transparent);
             transform: translateY(-8px);
@@ -313,6 +540,7 @@
             letter-spacing: 0.12em;
             color: rgba(255, 255, 255, 0.45);
             transition: color 0.3s, gap 0.3s;
+            padding: 0.75rem 0;
         }
         .card-link:hover,
         .project-card:hover .card-link {
@@ -326,7 +554,7 @@
         }
 
         .tech        { padding-block: 6rem; border-top: 1px solid rgba(255,255,255,0.05); }
-        .tech-heading h3 { font-size: 1.5rem; margin-bottom: 3rem; }
+        .tech-heading h2 { font-size: 1.5rem; margin-bottom: 3rem; }
         .tech-groups { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
         @media (min-width: 640px) { .tech-groups { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .tech-groups { grid-template-columns: repeat(3, 1fr); } }
@@ -342,6 +570,17 @@
         .tags        { display: flex; flex-wrap: wrap; gap: 0.625rem; }
         .tag         { border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1.25rem; border-radius: 99px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); transition: border-color 0.25s, color 0.25s; }
         .tag:hover   { border-color: var(--accent); color: var(--accent); }
+
+        @media (max-width: 640px) {
+            .projects-hero { padding-block: 5rem 2rem; }
+            .case-studies { padding-block: 2rem 4rem; }
+            .projects-section { padding-block: 2rem 4rem; }
+            .projects-divider { padding-block: 4rem 0; }
+            .tech { padding-block: 4rem; }
+            .section-header { margin-bottom: 3rem; }
+            .filter-row { gap: 1.5rem; }
+            .cs-metric { border-radius: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -353,9 +592,199 @@
         <!-- Hero -->
         <section class="projects-hero container">
             <div class="reveal">
-                <p class="eyebrow">Built &amp; Shipped</p>
-                <h1>Personal Projects</h1>
-                <p class="projects-lead">Developer tools, system utilities, and apps — built for performance and shipped to production.</p>
+                <p class="eyebrow">Work &amp; Projects</p>
+                <h1>What I've Built</h1>
+                <p class="projects-lead">Enterprise systems at scale, developer tools, and apps — from architecture to production.</p>
+            </div>
+        </section>
+
+        <!-- Key Experiences -->
+        <section id="case-studies" class="case-studies container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Key Experiences</h2>
+                <p class="section-sub">Architectural Case Studies</p>
+            </div>
+
+            <div class="cs-tabs reveal" style="--delay: .1s">
+                <button class="cs-tab cs-tab--active" data-cs="0" type="button">
+                    <span class="cs-tab-num">01</span>
+                    <span class="cs-tab-title">Video Surveillance System</span>
+                </button>
+                <button class="cs-tab" data-cs="1" type="button">
+                    <span class="cs-tab-num">02</span>
+                    <span class="cs-tab-title">Realtime Multi-purpose Dashboard</span>
+                </button>
+                <button class="cs-tab" data-cs="2" type="button">
+                    <span class="cs-tab-num">03</span>
+                    <span class="cs-tab-title">E-Commerce Middleware</span>
+                </button>
+            </div>
+
+            <div class="cs-viewport reveal" style="--delay: .2s">
+
+                <!-- Panel 01: Video Surveillance -->
+                <div class="cs-panel cs-panel--active" data-cs-panel="0">
+                    <div class="cs-metric">
+                        <span class="cs-metric-label">Scale</span>
+                        <span class="cs-metric-value">8,000+ active concurrent cameras across multi-tenant regions</span>
+                    </div>
+                    <div class="cs-focus">
+                        <h3 class="cs-block-label">Focus Area</h3>
+                        <span class="cs-focus-text">High-Availability, Multi-Region Live Streaming &amp; Telemetry at Scale</span>
+                    </div>
+                    <div class="cs-steps">
+                        <div class="cs-step cs-step--challenge">
+                            <span class="cs-step-num">1</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Challenge</h3>
+                                <p>Orchestrating stable, <strong>low-latency live streams</strong>, configuration changes, and event captures for thousands of <strong>geo-distributed cameras</strong> across multiple tenants and regions without service degradation.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step cs-step--arch">
+                            <span class="cs-step-num">2</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Architecture</h3>
+                                <ul>
+                                    <li>Engineered a scalable middleware layer with <strong>localized brokers and edge protocols</strong> for camera interfacing</li>
+                                    <li>Leveraged a <strong>distributed service bus</strong> for reliable cross-region message routing</li>
+                                    <li>Implemented <strong>real-time signaling and streaming state management</strong> across cloud boundaries for multi-region tenant isolation and seamless failovers</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cs-step cs-step--outcome">
+                            <span class="cs-step-num">3</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Outcome</h3>
+                                <p>Achieved <strong>zero-downtime regional failovers</strong> and sub-second stream switching — enabling the platform to scale to <strong>8,000+ concurrent cameras</strong> while onboarding new enterprise tenants without additional infrastructure investment.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs-stack">
+                        <h3 class="cs-block-label">Core Tech Stack</h3>
+                        <div class="cs-tags">
+                            <span class="cs-tag">C#</span>
+                            <span class="cs-tag">React</span>
+                            <span class="cs-tag">WebSockets</span>
+                            <span class="cs-tag">SignalR</span>
+                            <span class="cs-tag">Azure Service Bus</span>
+                            <span class="cs-tag">MQTT</span>
+                            <span class="cs-tag">WebRTC</span>
+                            <span class="cs-tag">ONVIF</span>
+                            <span class="cs-tag">Milestone VMS</span>
+                            <span class="cs-tag">Azure Functions</span>
+                            <span class="cs-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 02: Access Control Dashboard -->
+                <div class="cs-panel" data-cs-panel="1">
+                    <div class="cs-metric">
+                        <span class="cs-metric-label">Performance</span>
+                        <span class="cs-metric-value">Millions of real-time telemetry data points at a locked 60 FPS</span>
+                    </div>
+                    <div class="cs-focus">
+                        <h3 class="cs-block-label">Focus Area</h3>
+                        <span class="cs-focus-text">Memory-Optimized UI Pipelines &amp; Custom Canvas Rendering Engine</span>
+                    </div>
+                    <div class="cs-steps">
+                        <div class="cs-step cs-step--challenge">
+                            <span class="cs-step-num">1</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Challenge</h3>
+                                <p>Rendering hundreds of <strong>live updating widgets</strong> and <strong>millions of concurrent data points</strong> on a complex, cross-building timeline without blocking the <strong>UI main thread</strong> or causing browser memory leaks.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step cs-step--arch">
+                            <span class="cs-step-num">2</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Architecture</h3>
+                                <ul>
+                                    <li>Engineered a <strong>custom HTML5 Canvas rendering pipeline</strong> from scratch, bypassing traditional DOM limitations</li>
+                                    <li>Offloaded heavy calculations, stream parsing, and data manipulation to background <strong>Web Workers</strong></li>
+                                    <li>Applied <strong>progressive data fetching</strong>, localized slice queries, and <strong>lazy evaluation</strong> of off-screen states to minimize memory overhead</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cs-step cs-step--outcome">
+                            <span class="cs-step-num">3</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Outcome</h3>
+                                <p>Sustained a <strong>locked 60 FPS</strong> across millions of live data points with <strong>zero browser memory leaks</strong> — powering 24/7 facility operations across multi-building security and access-control environments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs-stack">
+                        <h3 class="cs-block-label">Core Tech Stack</h3>
+                        <div class="cs-tags">
+                            <span class="cs-tag">React</span>
+                            <span class="cs-tag">HTML5 Canvas</span>
+                            <span class="cs-tag">Web Workers</span>
+                            <span class="cs-tag">WebSockets</span>
+                            <span class="cs-tag">TypeScript</span>
+                            <span class="cs-tag">Virtualization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 03: E-Commerce Middleware -->
+                <div class="cs-panel" data-cs-panel="2">
+                    <div class="cs-metric">
+                        <span class="cs-metric-label">Capability</span>
+                        <span class="cs-metric-value">Multi-Terminal Offline State Resolution Engine</span>
+                    </div>
+                    <div class="cs-focus">
+                        <h3 class="cs-block-label">Focus Area</h3>
+                        <span class="cs-focus-text">Distributed Data Synchronization &amp; Transactional Consistency</span>
+                    </div>
+                    <div class="cs-steps">
+                        <div class="cs-step cs-step--challenge">
+                            <span class="cs-step-num">1</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Challenge</h3>
+                                <p>Managing inventory updates, <strong>real-time order notifications</strong>, pricing changes, and <strong>digital payment state flows</strong> across <strong>fragmented networks</strong> where physical POS systems frequently drop connectivity.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step cs-step--arch">
+                            <span class="cs-step-num">2</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Architecture</h3>
+                                <ul>
+                                    <li>Built a robust <strong>transaction-handling and queuing mechanism</strong> within the middleware layer for reliable data syncing</li>
+                                    <li>Implemented safe <strong>offline state management</strong> to eliminate <strong>race conditions</strong> during POS resynchronization with the cloud backend</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cs-step cs-step--outcome">
+                            <span class="cs-step-num">3</span>
+                            <div class="cs-step-body">
+                                <h3 class="cs-block-label">The Outcome</h3>
+                                <p>Eliminated <strong>double-selling and inventory lock conflicts</strong> — enabling uninterrupted retail operations with <strong>zero data loss</strong> during offline-to-cloud resynchronization across fragmented POS networks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs-stack">
+                        <h3 class="cs-block-label">Core Tech Stack</h3>
+                        <div class="cs-tags">
+                            <span class="cs-tag">Node.js</span>
+                            <span class="cs-tag">C#</span>
+                            <span class="cs-tag">React</span>
+                            <span class="cs-tag">WebSockets</span>
+                            <span class="cs-tag">Payment Gateways</span>
+                            <span class="cs-tag">Distributed Databases</span>
+                            <span class="cs-tag">State Queues</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Personal Projects Divider -->
+        <section class="projects-divider container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Personal Projects</h2>
+                <p class="section-sub">Built &amp; Shipped</p>
             </div>
         </section>
 
@@ -376,9 +805,59 @@
         <section class="projects-section container">
             <div class="projects-grid">
 
+                <!-- AfterCall Shield -->
+                <article class="project-card reveal" style="--delay: .05s" data-category="mobile">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span class="card-category">Mobile</span>
+                    <h3 class="card-name">AfterCall Shield</h3>
+                    <p class="card-desc">Automatically dismisses intrusive overlay pop-ups that appear on your screen after phone calls end.</p>
+                    <div class="card-divider"></div>
+                    <ul class="card-features">
+                        <li>Real-time post-call overlay detection & dismissal</li>
+                        <li>Per-app Auto-Cleanup configuration</li>
+                        <li>Fully offline — zero data collection</li>
+                    </ul>
+                    <div class="card-stack">
+                        <span class="stack-tag">Android</span>
+                        <span class="stack-tag">Kotlin</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.22 0.27C1.08 0.41 1 0.64 1 0.94V15.06C1 15.36 1.08 15.59 1.22 15.73L1.28 15.79L8.92 8.15V8V7.85L1.28 0.21L1.22 0.27Z"/><path d="M11.47 10.7L8.92 8.15V8V7.85L11.47 5.3L11.54 5.34L14.57 7.04C15.44 7.53 15.44 8.33 14.57 8.83L11.54 10.53L11.47 10.7Z"/><path d="M11.54 10.66L8.92 8L1.22 15.73C1.51 16.04 1.99 16.07 2.53 15.77L11.54 10.66Z"/><path d="M11.54 5.34L2.53 0.23C1.99-0.07 1.51-0.04 1.22 0.27L8.92 8L11.54 5.34Z"/></svg>
+                        View on Play Store
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </article>
+
+                <!-- TogglDev -->
+                <article class="project-card reveal" style="--delay: .1s" data-category="mobile">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="22" height="14" rx="7" ry="7"/><circle cx="16" cy="12" r="3"/></svg>
+                    </div>
+                    <span class="card-category">Mobile</span>
+                    <h3 class="card-name">TogglDev</h3>
+                    <p class="card-desc">One-tap Android Developer Options toggle via home screen widget, Quick Settings tile, or app shortcut.</p>
+                    <div class="card-divider"></div>
+                    <ul class="card-features">
+                        <li>Toggle Developer Options, USB Debugging & animation speed</li>
+                        <li>Home screen widget + Quick Settings tile</li>
+                        <li>Settings snapshot — save & restore on re-enable</li>
+                    </ul>
+                    <div class="card-stack">
+                        <span class="stack-tag">Android</span>
+                        <span class="stack-tag">Kotlin</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.22 0.27C1.08 0.41 1 0.64 1 0.94V15.06C1 15.36 1.08 15.59 1.22 15.73L1.28 15.79L8.92 8.15V8V7.85L1.28 0.21L1.22 0.27Z"/><path d="M11.47 10.7L8.92 8.15V8V7.85L11.47 5.3L11.54 5.34L14.57 7.04C15.44 7.53 15.44 8.33 14.57 8.83L11.54 10.53L11.47 10.7Z"/><path d="M11.54 10.66L8.92 8L1.22 15.73C1.51 16.04 1.99 16.07 2.53 15.77L11.54 10.66Z"/><path d="M11.54 5.34L2.53 0.23C1.99-0.07 1.51-0.04 1.22 0.27L8.92 8L11.54 5.34Z"/></svg>
+                        View on Play Store
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </article>
+
                 <!-- Terminal Studio -->
-                <article class="project-card reveal" style="--delay: .05s" data-category="terminal">
-                    <div class="card-icon">
+                <article class="project-card reveal" style="--delay: .15s" data-category="terminal">
+                    <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                     </div>
                     <span class="card-category">Terminal</span>
@@ -396,114 +875,15 @@
                         <span class="stack-tag">egui</span>
                     </div>
                     <a href="https://github.com/dpkay-io/terminal-studio" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                         View on GitHub
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                    </a>
-                </article>
-
-                <!-- gitreg -->
-                <article class="project-card reveal" style="--delay: .1s" data-category="cli">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 009 9"/></svg>
-                    </div>
-                    <span class="card-category">CLI Tools</span>
-                    <h3 class="card-name">gitreg</h3>
-                    <p class="card-desc">Zero-latency repository registry that tracks, tags, and runs bulk operations across all your Git repos.</p>
-                    <div class="card-divider"></div>
-                    <ul class="card-features">
-                        <li>Background tracking of all visited repositories</li>
-                        <li>Bulk Git operations across tagged repos</li>
-                        <li>Emergency panic button for instant code backup</li>
-                    </ul>
-                    <div class="card-stack">
-                        <span class="stack-tag">Rust</span>
-                    </div>
-                    <a href="https://github.com/dpkay-io/gitreg" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                        View on GitHub
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                    </a>
-                </article>
-
-                <!-- claude-ticker -->
-                <article class="project-card reveal" style="--delay: .15s" data-category="cli">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                    </div>
-                    <span class="card-category">CLI Tools</span>
-                    <h3 class="card-name">claude-ticker</h3>
-                    <p class="card-desc">Real-time status bar for Claude CLI — context window, rate limits, costs, and git state in one glanceable line.</p>
-                    <div class="card-divider"></div>
-                    <ul class="card-features">
-                        <li>17 customizable fields with color thresholds</li>
-                        <li>Zero dependencies, sub-millisecond rendering</li>
-                        <li>Integrates as Claude CLI hook at zero token cost</li>
-                    </ul>
-                    <div class="card-stack">
-                        <span class="stack-tag">TypeScript</span>
-                        <span class="stack-tag">Node.js</span>
-                    </div>
-                    <a href="https://www.npmjs.com/package/claude-ticker" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 0v16h16V0H0zm13 13H8V5H5v8H3V3h10v10z"/></svg>
-                        View on npm
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                    </a>
-                </article>
-
-                <!-- TogglDev -->
-                <article class="project-card reveal" style="--delay: .2s" data-category="mobile">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="22" height="14" rx="7" ry="7"/><circle cx="16" cy="12" r="3"/></svg>
-                    </div>
-                    <span class="card-category">Mobile</span>
-                    <h3 class="card-name">TogglDev</h3>
-                    <p class="card-desc">One-tap Android Developer Options toggle via home screen widget, Quick Settings tile, or app shortcut.</p>
-                    <div class="card-divider"></div>
-                    <ul class="card-features">
-                        <li>Toggle Developer Options, USB Debugging & animation speed</li>
-                        <li>Home screen widget + Quick Settings tile</li>
-                        <li>Settings snapshot — save & restore on re-enable</li>
-                    </ul>
-                    <div class="card-stack">
-                        <span class="stack-tag">Android</span>
-                        <span class="stack-tag">Kotlin</span>
-                    </div>
-                    <a href="https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.22 0.27C1.08 0.41 1 0.64 1 0.94V15.06C1 15.36 1.08 15.59 1.22 15.73L1.28 15.79L8.92 8.15V8V7.85L1.28 0.21L1.22 0.27Z"/><path d="M11.47 10.7L8.92 8.15V8V7.85L11.47 5.3L11.54 5.34L14.57 7.04C15.44 7.53 15.44 8.33 14.57 8.83L11.54 10.53L11.47 10.7Z"/><path d="M11.54 10.66L8.92 8L1.22 15.73C1.51 16.04 1.99 16.07 2.53 15.77L11.54 10.66Z"/><path d="M11.54 5.34L2.53 0.23C1.99-0.07 1.51-0.04 1.22 0.27L8.92 8L11.54 5.34Z"/></svg>
-                        View on Play Store
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                    </a>
-                </article>
-
-                <!-- AfterCall Shield -->
-                <article class="project-card reveal" style="--delay: .25s" data-category="mobile">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <span class="card-category">Mobile</span>
-                    <h3 class="card-name">AfterCall Shield</h3>
-                    <p class="card-desc">Automatically dismisses intrusive overlay pop-ups that appear on your screen after phone calls end.</p>
-                    <div class="card-divider"></div>
-                    <ul class="card-features">
-                        <li>Real-time post-call overlay detection & dismissal</li>
-                        <li>Per-app Auto-Cleanup configuration</li>
-                        <li>Fully offline — zero data collection</li>
-                    </ul>
-                    <div class="card-stack">
-                        <span class="stack-tag">Android</span>
-                        <span class="stack-tag">Kotlin</span>
-                    </div>
-                    <a href="https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.22 0.27C1.08 0.41 1 0.64 1 0.94V15.06C1 15.36 1.08 15.59 1.22 15.73L1.28 15.79L8.92 8.15V8V7.85L1.28 0.21L1.22 0.27Z"/><path d="M11.47 10.7L8.92 8.15V8V7.85L11.47 5.3L11.54 5.34L14.57 7.04C15.44 7.53 15.44 8.33 14.57 8.83L11.54 10.53L11.47 10.7Z"/><path d="M11.54 10.66L8.92 8L1.22 15.73C1.51 16.04 1.99 16.07 2.53 15.77L11.54 10.66Z"/><path d="M11.54 5.34L2.53 0.23C1.99-0.07 1.51-0.04 1.22 0.27L8.92 8L11.54 5.34Z"/></svg>
-                        View on Play Store
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </a>
                 </article>
 
                 <!-- splitgame -->
-                <article class="project-card reveal" style="--delay: .3s" data-category="terminal">
-                    <div class="card-icon">
+                <article class="project-card reveal" style="--delay: .2s" data-category="terminal">
+                    <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
                     </div>
                     <span class="card-category">Terminal</span>
@@ -521,15 +901,64 @@
                         <span class="stack-tag">MCP</span>
                     </div>
                     <a href="https://www.npmjs.com/package/splitgame" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 0v16h16V0H0zm13 13H8V5H5v8H3V3h10v10z"/></svg>
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 0v16h16V0H0zm13 13H8V5H5v8H3V3h10v10z"/></svg>
                         View on npm
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </article>
+
+                <!-- gitreg -->
+                <article class="project-card reveal" style="--delay: .25s" data-category="cli">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 009 9"/></svg>
+                    </div>
+                    <span class="card-category">CLI Tools</span>
+                    <h3 class="card-name">gitreg</h3>
+                    <p class="card-desc">Zero-latency repository registry that tracks, tags, and runs bulk operations across all your Git repos.</p>
+                    <div class="card-divider"></div>
+                    <ul class="card-features">
+                        <li>Background tracking of all visited repositories</li>
+                        <li>Bulk Git operations across tagged repos</li>
+                        <li>Emergency panic button for instant code backup</li>
+                    </ul>
+                    <div class="card-stack">
+                        <span class="stack-tag">Rust</span>
+                    </div>
+                    <a href="https://github.com/dpkay-io/gitreg" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        View on GitHub
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </article>
+
+                <!-- claude-ticker -->
+                <article class="project-card reveal" style="--delay: .3s" data-category="cli">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <span class="card-category">CLI Tools</span>
+                    <h3 class="card-name">claude-ticker</h3>
+                    <p class="card-desc">Real-time status bar for Claude CLI — context window, rate limits, costs, and git state in one glanceable line.</p>
+                    <div class="card-divider"></div>
+                    <ul class="card-features">
+                        <li>17 customizable fields with color thresholds</li>
+                        <li>Zero dependencies, sub-millisecond rendering</li>
+                        <li>Integrates as Claude CLI hook at zero token cost</li>
+                    </ul>
+                    <div class="card-stack">
+                        <span class="stack-tag">TypeScript</span>
+                        <span class="stack-tag">Node.js</span>
+                    </div>
+                    <a href="https://www.npmjs.com/package/claude-ticker" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 0v16h16V0H0zm13 13H8V5H5v8H3V3h10v10z"/></svg>
+                        View on npm
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </a>
                 </article>
 
                 <!-- ttag -->
                 <article class="project-card reveal" style="--delay: .35s" data-category="cli">
-                    <div class="card-icon">
+                    <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
                     </div>
                     <span class="card-category">CLI Tools</span>
@@ -545,15 +974,15 @@
                         <span class="stack-tag">Go</span>
                     </div>
                     <a href="https://github.com/dpkay-io/ttag" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                         View on GitHub
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </a>
                 </article>
 
                 <!-- Workspace ID Pro -->
                 <article class="project-card reveal" style="--delay: .4s" data-category="extensions">
-                    <div class="card-icon">
+                    <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
                     </div>
                     <span class="card-category">Extensions</span>
@@ -570,9 +999,9 @@
                         <span class="stack-tag">VS Code API</span>
                     </div>
                     <a href="https://marketplace.visualstudio.com/items?itemName=dpkay.ws-id" target="_blank" rel="noopener noreferrer" class="card-link">
-                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M10.94 0L6 4.476 2.48 1.789.13 2.846v10.18l2.35 1.058L6 11.392 10.94 16 16 13.725V2.149L10.94 0zM6 9.523L3.26 7.934 6 6.345v3.178zm5.94 2.604l-4.1-3.28 4.1-3.281v6.561z"/></svg>
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M10.94 0L6 4.476 2.48 1.789.13 2.846v10.18l2.35 1.058L6 11.392 10.94 16 16 13.725V2.149L10.94 0zM6 9.523L3.26 7.934 6 6.345v3.178zm5.94 2.604l-4.1-3.28 4.1-3.281v6.561z"/></svg>
                         View on Marketplace
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </a>
                 </article>
 
@@ -582,7 +1011,7 @@
         <!-- Tech Ecosystem -->
         <section class="tech container">
             <div class="tech-heading reveal">
-                <h3>Proven Tech<br>Ecosystem</h3>
+                <h2>Proven Tech<br>Ecosystem</h2>
             </div>
             <div class="tech-groups">
                 <div class="reveal" style="--delay: .05s">
@@ -592,6 +1021,11 @@
                         <span class="tag">Node.js</span>
                         <span class="tag">Go</span>
                         <span class="tag">Rust</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">C / C++</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Nginx</span>
                     </div>
                 </div>
                 <div class="reveal" style="--delay: .1s">
@@ -599,6 +1033,8 @@
                     <div class="tags">
                         <span class="tag">React / Next.js</span>
                         <span class="tag">TypeScript</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">Electron</span>
                     </div>
                 </div>
                 <div class="reveal" style="--delay: .15s">
@@ -606,8 +1042,12 @@
                     <div class="tags">
                         <span class="tag">AWS</span>
                         <span class="tag">Azure</span>
+                        <span class="tag">GCP</span>
                         <span class="tag">Redis</span>
                         <span class="tag">SQL / NoSQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">CouchDB</span>
+                        <span class="tag">Neo4j</span>
                     </div>
                 </div>
                 <div class="reveal" style="--delay: .2s">
@@ -615,19 +1055,25 @@
                     <div class="tags">
                         <span class="tag">Flutter / React Native</span>
                         <span class="tag">Kotlin / Android</span>
+                        <span class="tag">Ionic</span>
+                        <span class="tag">Dart</span>
                     </div>
                 </div>
                 <div class="reveal" style="--delay: .25s">
-                    <p class="tech-group-label">Realtime</p>
+                    <p class="tech-group-label">Realtime &amp; IoT</p>
                     <div class="tags">
                         <span class="tag">WebSockets / SignalR</span>
                         <span class="tag">WebRTC</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">IoT</span>
                     </div>
                 </div>
                 <div class="reveal" style="--delay: .3s">
                     <p class="tech-group-label">AI &amp; Automation</p>
                     <div class="tags">
                         <span class="tag">AI / Agentic Systems</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">NLTK</span>
                     </div>
                 </div>
             </div>
@@ -638,6 +1084,24 @@
     <footer id="contact" class="site-footer"></footer>
 
     <script>
+        document.querySelector('.cs-tabs').addEventListener('click', function(e) {
+            var tab = e.target.closest('.cs-tab');
+            if (!tab || tab.classList.contains('cs-tab--active')) return;
+            var idx = tab.dataset.cs;
+            this.querySelector('.cs-tab--active').classList.remove('cs-tab--active');
+            tab.classList.add('cs-tab--active');
+            var viewport = document.querySelector('.cs-viewport');
+            viewport.querySelector('.cs-panel--active').classList.remove('cs-panel--active');
+            viewport.querySelector('[data-cs-panel="' + idx + '"]').classList.add('cs-panel--active');
+        });
+
+        var csTabsEl = document.querySelector('.cs-tabs');
+        var csViewport = document.querySelector('.cs-viewport');
+        var csTabsObserver = new IntersectionObserver(function (entries) {
+            csTabsEl.classList.toggle('unstuck', !entries[0].isIntersecting);
+        }, { threshold: 0 });
+        csTabsObserver.observe(csViewport);
+
         var filtersEl = document.querySelector('.filters');
         var projectsSection = document.querySelector('.projects-section');
         var stickyObserver = new IntersectionObserver(function (entries) {
