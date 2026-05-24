@@ -1,0 +1,253 @@
+:root {
+    --bg:     #0a0a0a;
+    --fg:     #ededed;
+    --accent: #3b82f6;
+    --border: rgba(255, 255, 255, 0.08);
+    --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+    --max-w:  72rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    /* overflow-x: clip does NOT create a containing block, so
+       position: sticky on the header continues to work correctly. */
+    overflow-x: clip;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
+a           { color: inherit; text-decoration: none; }
+::selection { background: #fff; color: #000; }
+
+.container { max-width: var(--max-w); margin-inline: auto; padding-inline: 2rem; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-zoom, .reveal-left {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+.reveal      { opacity: 0; transform: translateY(1.5rem); }
+.reveal-zoom { opacity: 0; transform: scale(0.95); }
+.reveal-left { opacity: 0; transform: translateX(1rem); }
+
+.reveal.visible {
+    opacity: 1; transform: none;
+    transition:
+        opacity   0.8s var(--ease) var(--delay, 0s),
+        transform 0.8s var(--ease) var(--delay, 0s);
+}
+.reveal-zoom.visible {
+    opacity: 1; transform: none;
+    transition:
+        opacity   0.7s var(--ease) var(--delay, 0s),
+        transform 0.7s var(--ease) var(--delay, 0s);
+}
+.reveal-left.visible {
+    opacity: 1; transform: none;
+    transition:
+        opacity   0.6s var(--ease) var(--delay, 0s),
+        transform 0.6s var(--ease) var(--delay, 0s);
+}
+
+/* ── Site Header ────────────────────────────────────────────── */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.site-header > nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2rem;
+}
+.logo              { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.03em; }
+.nav-links         { display: flex; gap: 2rem; list-style: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; }
+.nav-links a       { color: rgba(255, 255, 255, 0.6); transition: color 0.2s; }
+.nav-links a:hover,
+.nav-links a.active { color: var(--fg); }
+
+.eyebrow { color: var(--accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+
+.btn-group         { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.btn               { padding: 1rem 2.5rem; border-radius: 99px; font-weight: 600; font-size: 0.9375rem; transition: 0.25s; display: inline-block; }
+.btn-primary       { background: #fff; color: #000; }
+.btn-primary:hover { background: #e5e5e5; }
+.btn-ghost         { border: 1px solid rgba(255,255,255,0.2); }
+.btn-ghost:hover   { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.35); }
+
+/* ── Site Footer ────────────────────────────────────────────── */
+.site-footer {
+    padding-block: 8rem;
+    text-align: center;
+}
+.site-footer > .container {
+    max-width: 56rem;
+}
+.site-footer h2 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    margin-bottom: 3rem;
+}
+.site-footer .email-link {
+    display: inline-block;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.75rem;
+    transition: color 0.25s;
+}
+.site-footer .email-link:hover { color: var(--accent); }
+.site-footer .footer-links {
+    margin-top: 8rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+}
+.site-footer .footer-links a {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.25s;
+}
+.site-footer .footer-links a:hover { color: var(--fg); }
+
+/* ── About Section ─────────────────────────────────────────── */
+.about { padding-block: 8rem; }
+.about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+@media (min-width: 768px) {
+    .about-layout { flex-direction: row; gap: 6rem; }
+    .about-text   { flex: 1 1 55%; }
+    .about-facts  { flex: 1 1 40%; }
+}
+.about-desc {
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+.about-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.about-fact-label {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.about-fact-value {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: #22c55e;
+}
+.availability-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+/* ── Featured Projects ─────────────────────────────────────── */
+.featured { padding-block: 8rem; }
+.featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3rem;
+}
+.featured-link {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.featured-link:hover { color: var(--accent); }
+.featured-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 640px)  { .featured-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .featured-grid { grid-template-columns: repeat(3, 1fr); } }
+.featured-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.featured-card:hover {
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(59, 130, 246, 0.2);
+    transform: translateY(-4px);
+}
+.featured-card-name {
+    font-size: 1.125rem;
+    margin-bottom: 0.625rem;
+}
+.featured-card-desc {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+.featured-card-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+.stack-tag {
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.25rem 0.7rem;
+    border-radius: 99px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
