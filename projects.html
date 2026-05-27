@@ -43,8 +43,35 @@
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/projects.css">
     <script src="shared/components.js" defer></script>
+    <style>
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .page-loader.loaded { opacity: 0; pointer-events: none; }
+        .page-loader .spinner-ring {
+            width: 36px;
+            height: 36px;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: page-spin 0.7s linear infinite;
+        }
+        @keyframes page-spin { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) {
+            .page-loader { transition: none; }
+            .page-loader .spinner-ring { animation: none; }
+        }
+    </style>
 </head>
 <body>
+    <div class="page-loader" id="page-loader"><div class="spinner-ring"></div></div>
 
     <header id="site-header" class="site-header">
         <nav class="container">
@@ -613,6 +640,7 @@
                     </button>
                 </div>
             </div>
+            <div class="resume-modal-loader"><div class="spinner-ring"></div></div>
             <iframe class="resume-modal-iframe" src="" title="Resume"></iframe>
         </div>
     </div>
@@ -987,5 +1015,11 @@
         })();
     </script>
 
+    <script>
+        window.addEventListener('load', function () {
+            var l = document.getElementById('page-loader');
+            if (l) { l.classList.add('loaded'); setTimeout(function () { l.remove(); }, 600); }
+        });
+    </script>
 </body>
 </html>

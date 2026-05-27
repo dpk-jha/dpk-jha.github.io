@@ -37,12 +37,23 @@
         var overlay = modal.querySelector('.resume-modal-overlay');
         var closeBtn = modal.querySelector('.resume-modal-close');
         var printBtn = modal.querySelector('.resume-modal-print');
+        var iframeLoader = modal.querySelector('.resume-modal-loader');
 
         var scrollY = 0;
+        var iframeLoaded = false;
+
+        iframe.addEventListener('load', function () {
+            iframeLoaded = true;
+            if (iframeLoader) iframeLoader.classList.add('loaded');
+        });
 
         function openModal() {
             if (!iframe.src || iframe.src === window.location.href) {
+                iframeLoaded = false;
+                if (iframeLoader) iframeLoader.classList.remove('loaded');
                 iframe.src = '/resume-print.html';
+            } else if (iframeLoaded && iframeLoader) {
+                iframeLoader.classList.add('loaded');
             }
             scrollY = window.scrollY;
             document.body.classList.add('resume-modal-open');

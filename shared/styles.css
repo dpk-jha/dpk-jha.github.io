@@ -388,6 +388,8 @@ body.resume-modal-open {
     padding: 0.875rem 1.25rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     flex-shrink: 0;
+    position: relative;
+    z-index: 3;
 }
 .resume-modal-title {
     font-family: 'JetBrains Mono', monospace;
@@ -427,6 +429,31 @@ body.resume-modal-open {
     width: 100%;
     border: none;
     background: #fff;
+}
+.resume-modal-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    z-index: 2;
+    transition: opacity 0.4s var(--ease);
+}
+.resume-modal-loader.loaded {
+    opacity: 0;
+    pointer-events: none;
+}
+.spinner-ring {
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spinner-rotate 0.7s linear infinite;
+}
+@keyframes spinner-rotate {
+    to { transform: rotate(360deg); }
 }
 @media (max-width: 640px) {
     .resume-modal-content {
