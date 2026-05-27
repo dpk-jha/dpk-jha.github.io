@@ -1,26 +1,7 @@
 (function () {
-    var path = location.pathname;
-    var isHome = path === '/' || path === '/index.html' || path.endsWith('/index.html');
-    var page = path.split('/').pop() || 'index.html';
-
-    var header = document.getElementById('site-header');
-    if (header) {
-        header.innerHTML =
-            '<nav class="container">' +
-                '<a href="/" class="logo">DEEPAK JHA</a>' +
-                '<button class="menu-toggle" aria-label="Open menu" aria-expanded="false">' +
-                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>' +
-                '</button>' +
-                '<ul class="nav-links">' +
-                    '<li><a href="/projects.html"' + (page === 'projects.html' ? ' class="active"' : '') + '>Projects</a></li>' +
-                    '<li><a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Blog</a></li>' +
-                    '<li><a href="https://drive.google.com/file/d/0B3m4yg1enpX4T2xxazF1MkMxQ3M/view?resourcekey=0-MDksWp36QAVt6vf3Eb_rxg" target="_blank" rel="noopener noreferrer">Resume</a></li>' +
-                    '<li><a href="' + (isHome ? '#contact' : '/#contact') + '">Contact</a></li>' +
-                '</ul>' +
-            '</nav>';
-
-        var toggle = header.querySelector('.menu-toggle');
-        var navLinks = header.querySelector('.nav-links');
+    var toggle = document.querySelector('.menu-toggle');
+    var navLinks = document.querySelector('.nav-links');
+    if (toggle && navLinks) {
         toggle.addEventListener('click', function () {
             var open = navLinks.classList.toggle('open');
             toggle.setAttribute('aria-expanded', open);
@@ -37,23 +18,6 @@
         });
     }
 
-    var footer = document.getElementById('contact');
-    if (footer && footer.tagName === 'FOOTER') {
-        footer.innerHTML =
-            '<div class="container">' +
-                '<div class="reveal">' +
-                    '<h2>Get in touch.</h2>' +
-                    '<a href="mailto:hello@dpkay.com" class="email-link">hello@dpkay.com</a>' +
-                '</div>' +
-                '<nav class="footer-links" aria-label="Social links">' +
-                    (!isHome ? '<a href="/">Home</a>' : '') +
-                    '<a href="https://linkedin.com/in/dpkjha" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
-                    '<a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer">GitHub</a>' +
-                    '<a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Medium</a>' +
-                '</nav>' +
-            '</div>';
-    }
-
     var observer = new IntersectionObserver(function (entries) {
         for (var i = 0; i < entries.length; i++) {
             if (entries[i].isIntersecting) {
@@ -65,4 +29,54 @@
 
     document.querySelectorAll('.reveal, .reveal-zoom, .reveal-left')
         .forEach(function (el) { observer.observe(el); });
+
+    var MOBILE_BP = 640;
+    var modal = document.getElementById('resume-modal');
+    if (modal) {
+        var iframe = modal.querySelector('.resume-modal-iframe');
+        var overlay = modal.querySelector('.resume-modal-overlay');
+        var closeBtn = modal.querySelector('.resume-modal-close');
+        var printBtn = modal.querySelector('.resume-modal-print');
+
+        var scrollY = 0;
+
+        function openModal() {
+            if (!iframe.src || iframe.src === window.location.href) {
+                iframe.src = '/resume-print.html';
+            }
+            scrollY = window.scrollY;
+            document.body.classList.add('resume-modal-open');
+            document.body.style.top = -scrollY + 'px';
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal() {
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('resume-modal-open');
+            document.body.style.top = '';
+            window.scrollTo(0, scrollY);
+        }
+
+        document.querySelectorAll('[data-resume-modal]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= MOBILE_BP) return;
+                e.preventDefault();
+                openModal();
+            });
+        });
+
+        overlay.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+        });
+
+        printBtn.addEventListener('click', function () {
+            try {
+                iframe.contentWindow.print();
+            } catch (err) {
+                window.open('/resume-print.html', '_blank');
+            }
+        });
+    }
 })();

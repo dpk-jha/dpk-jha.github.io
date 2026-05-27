@@ -38,11 +38,12 @@
     }
     </script>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231e293b'/><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>" media="(prefers-color-scheme: light)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@700&display=swap">
     <link rel="stylesheet" href="shared/styles.css">
     <script src="shared/components.js" defer></script>
 
@@ -79,7 +80,20 @@
 </head>
 <body>
 
-    <header id="site-header" class="site-header"></header>
+    <header id="site-header" class="site-header">
+        <nav class="container">
+            <a href="/" class="logo">DEEPAK JHA</a>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/projects.html">Projects</a></li>
+                <li><a href="/DeepakJha.pdf" data-resume-modal>Resume</a></li>
+                <li><a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Blog <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:8px;height:8px;margin-left:2px;opacity:0.4" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2v6"/></svg></a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
 
@@ -90,8 +104,8 @@
                 <h1>I build digital<br>products that scale.</h1>
                 <p class="lead">10+ years of engineering craft. I partner with stakeholders and teams to transform complex visions into resilient, production-ready software.</p>
                 <div class="btn-group">
-                    <a href="mailto:hello@dpkay.com" class="btn btn-primary">Let's Talk</a>
-                    <a href="/projects.html" class="btn btn-ghost">See Projects</a>
+                    <a href="/projects.html" class="btn btn-primary">See Projects</a>
+                    <a href="mailto:hello@dpkay.com" class="btn btn-ghost">Get in Touch</a>
                 </div>
             </div>
         </section>
@@ -133,13 +147,13 @@
                     <h2 class="section-title">Key Experiences</h2>
                     <p class="section-sub">Architectural Case Studies</p>
                 </div>
-                <a href="/projects.html" class="featured-link">
+                <a href="/projects.html#case-studies" class="featured-link">
                     View All
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                 </a>
             </div>
             <div class="featured-grid">
-                <a href="/projects.html" class="featured-card reveal" style="--delay: .05s">
+                <a href="/projects.html#cs-0" class="featured-card reveal" style="--delay: .05s">
                     <h3 class="featured-card-name">8,000+ Cameras</h3>
                     <p class="featured-card-desc">Multi-region live streaming &amp; telemetry at scale</p>
                     <div class="featured-card-stack">
@@ -148,7 +162,7 @@
                         <span class="stack-tag">Azure</span>
                     </div>
                 </a>
-                <a href="/projects.html" class="featured-card reveal" style="--delay: .1s">
+                <a href="/projects.html#cs-1" class="featured-card reveal" style="--delay: .1s">
                     <h3 class="featured-card-name">Locked 60 FPS</h3>
                     <p class="featured-card-desc">Millions of real-time data points on custom Canvas engine</p>
                     <div class="featured-card-stack">
@@ -157,7 +171,7 @@
                         <span class="stack-tag">React</span>
                     </div>
                 </a>
-                <a href="/projects.html" class="featured-card reveal" style="--delay: .15s">
+                <a href="/projects.html#cs-2" class="featured-card reveal" style="--delay: .15s">
                     <h3 class="featured-card-name">Zero Data Loss</h3>
                     <p class="featured-card-desc">Offline-to-cloud sync across fragmented POS networks</p>
                     <div class="featured-card-stack">
@@ -182,7 +196,7 @@
                 </a>
             </div>
             <div class="featured-grid">
-                <a href="/projects.html" class="featured-card reveal" style="--delay: .05s">
+                <a href="/projects.html#terminal-studio" class="featured-card reveal" style="--delay: .05s">
                     <h3 class="featured-card-name">Terminal Studio</h3>
                     <p class="featured-card-desc">GPU-accelerated terminal multiplexer with integrated file browser, git diff viewer, and workspace system.</p>
                     <div class="featured-card-stack">
@@ -191,7 +205,7 @@
                         <span class="stack-tag">egui</span>
                     </div>
                 </a>
-                <a href="/projects.html" class="featured-card reveal" style="--delay: .1s">
+                <a href="/projects.html#splitgame" class="featured-card reveal" style="--delay: .1s">
                     <h3 class="featured-card-name">splitgame</h3>
                     <p class="featured-card-desc">Play games in a split terminal panel alongside Claude Code and other CLI workflows.</p>
                     <div class="featured-card-stack">
@@ -200,7 +214,7 @@
                         <span class="stack-tag">MCP</span>
                     </div>
                 </a>
-                <a href="/projects.html" class="featured-card reveal" style="--delay: .15s">
+                <a href="/projects.html#aftercall-shield" class="featured-card reveal" style="--delay: .15s">
                     <h3 class="featured-card-name">AfterCall Shield</h3>
                     <p class="featured-card-desc">Automatically dismisses intrusive overlay pop-ups that appear on your screen after phone calls end.</p>
                     <div class="featured-card-stack">
@@ -225,8 +239,41 @@
 
     </main>
 
-    <footer id="contact" class="site-footer"></footer>
+    <footer id="contact" class="site-footer">
+        <div class="container">
+            <div class="reveal">
+                <h2>Get in touch.</h2>
+                <a href="mailto:hello@dpkay.com" class="email-link">hello@dpkay.com</a>
+            </div>
+            <nav class="footer-links" aria-label="Social links">
+                <a href="/DeepakJha.pdf" data-resume-modal>Resume</a>
+                <a href="https://linkedin.com/in/dpkjha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Medium</a>
+            </nav>
+        </div>
+    </footer>
 
+    <div class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-label="Resume">
+        <div class="resume-modal-overlay"></div>
+        <div class="resume-modal-content">
+            <div class="resume-modal-header">
+                <span class="resume-modal-title">Resume</span>
+                <div class="resume-modal-actions">
+                    <a href="/DeepakJha.pdf" download="DeepakJha.pdf" class="resume-modal-btn" title="Download PDF">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </a>
+                    <button type="button" class="resume-modal-btn resume-modal-print" title="Print">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    </button>
+                    <button type="button" class="resume-modal-btn resume-modal-close" title="Close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+            <iframe class="resume-modal-iframe" src="" title="Resume"></iframe>
+        </div>
+    </div>
 
 </body>
 </html>

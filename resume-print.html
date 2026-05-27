@@ -44,6 +44,10 @@
             .print-hint { display: none !important; }
         }
 
+        html.in-iframe { overflow: auto; height: auto; background: #fff; }
+        html.in-iframe body { overflow: auto; height: auto; padding-top: 0.2in; }
+        html.in-iframe .print-hint { display: none !important; }
+
         .print-hint {
             position: fixed;
             top: 0;
@@ -579,5 +583,8 @@
 
     </div>
 
+    <script>
+        if (window !== window.top) document.documentElement.classList.add('in-iframe');
+    </script>
 </body>
 </html>
