@@ -42,4 +42,4 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 ## Pages
 
 - Home: https://dpkay.com/
-- Projects: https://dpkay.com/projects.html
+- Projects: https://dpkay.com/projects
