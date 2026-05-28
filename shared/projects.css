@@ -627,11 +627,15 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s, border-color 0.3s, color 0.3s;
-    z-index: 50;
+    z-index: 45;
 }
 .back-to-top.visible {
     opacity: 1;
     pointer-events: auto;
+}
+body:has(.nav-links.open) .back-to-top {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 .back-to-top:hover {
     border-color: var(--accent);

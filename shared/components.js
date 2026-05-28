@@ -39,7 +39,6 @@
         var printBtn = modal.querySelector('.resume-modal-print');
         var iframeLoader = modal.querySelector('.resume-modal-loader');
 
-        var scrollY = 0;
         var iframeLoaded = false;
 
         iframe.addEventListener('load', function () {
@@ -55,17 +54,14 @@
             } else if (iframeLoaded && iframeLoader) {
                 iframeLoader.classList.add('loaded');
             }
-            scrollY = window.scrollY;
             document.body.classList.add('resume-modal-open');
-            document.body.style.top = -scrollY + 'px';
             modal.setAttribute('aria-hidden', 'false');
         }
 
         function closeModal() {
             modal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('resume-modal-open');
-            document.body.style.top = '';
-            window.scrollTo(0, scrollY);
+            if (document.activeElement) document.activeElement.blur();
         }
 
         document.querySelectorAll('[data-resume-modal]').forEach(function (link) {
