@@ -248,7 +248,7 @@
     <img src="icon.png" alt="TogglDev icon" width="72" height="72" />
   </div>
   <h1>TogglDev — <span>Privacy Policy</span></h1>
-  <p>Last updated: May 8, 2026 &nbsp;·&nbsp; v1.50</p>
+  <p>Last updated: May 30, 2026 &nbsp;·&nbsp; v1.58</p>
 </header>
 
 <main>
@@ -316,6 +316,10 @@
         <div class="feature-desc">Long-press the app icon to access toggle shortcuts.</div>
       </div>
       <div class="feature-item">
+        <div class="feature-label">Auto-Disable</div>
+        <div class="feature-desc">Automatically turns off Developer Options when selected apps launch and restores them when you leave.</div>
+      </div>
+      <div class="feature-item">
         <div class="feature-label">Battery Optimization</div>
         <div class="feature-desc">Optional exclusion from battery optimization to keep the widget and tile responsive.</div>
       </div>
@@ -370,6 +374,19 @@
     </div>
 
     <div class="permission-item">
+      <div class="permission-name">BIND_ACCESSIBILITY_SERVICE</div>
+      <div class="permission-desc">
+        Used by the optional Auto-Disable feature. When enabled, the App runs an accessibility
+        service that detects when selected apps come to the foreground and automatically turns off
+        Developer Options so those apps see it as disabled. Developer Options are restored after
+        you leave the monitored app. The service does not read, collect, or transmit any screen
+        content, keystrokes, or personal data — it only observes which app is in the foreground.
+        This service must be enabled manually by you in Android Settings and can be revoked at
+        any time.
+      </div>
+    </div>
+
+    <div class="permission-item">
       <div class="permission-name">INTERNET</div>
       <div class="permission-desc">
         Used only by the Google Play Billing library to verify in-app purchases. No other
@@ -402,6 +419,7 @@
     </p>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI preferences</strong> — whether the Quick Settings tile has been added, snapshot expand state, etc.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings Snapshot</strong> — a copy of your developer settings captured before turning Developer Options off, including: USB Debugging state, window/transition/animator animation scales, Show Touches, and Stay On While Plugged In. These values are read back and restored when you re-enable Developer Options.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Auto-Disable app list</strong> — the list of apps you selected for automatic Developer Options disabling, and your chosen re-enable delay. No information about your app usage or launch history is stored.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Supporter status</strong> — whether you have completed an in-app purchase, cached locally to avoid repeated billing queries.</span></div>
     <p style="margin-top: 0.85rem;">
       Because we do not collect any personal data, there is nothing on our servers to retain
