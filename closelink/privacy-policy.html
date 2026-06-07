@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - CloseLink</title>
+    <meta name="description" content="Privacy Policy for CloseLink, a secure local peer-to-peer connectivity application. Learn how we handle your data and respect your privacy.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #4f46e5;
+            --accent-light: #e0e7ff;
+            --accent-hover: #4338ca;
+            --border: #e2e8f0;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --alert-bg: #f0fdf4;
+            --alert-border: #bbf7d0;
+            --alert-text: #166534;
+            --code-bg: #f1f5f9;
+            --code-text: #0f172a;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #6366f1;
+            --accent-light: #312e81;
+            --accent-hover: #818cf8;
+            --border: #334155;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+            --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+            --alert-bg: #064e3b;
+            --alert-border: #047857;
+            --alert-text: #a7f3d0;
+            --code-bg: #0f172a;
+            --code-text: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* Utility Layouts */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(var(--bg-secondary), 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .logo-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--border);
+            transform: scale(1.05);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 40px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, var(--accent-light) 0%, transparent 70%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+
+        .meta-info {
+            display: inline-flex;
+            gap: 16px;
+            background-color: var(--bg-secondary);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            box-shadow: var(--card-shadow);
+        }
+
+        .meta-item strong {
+            color: var(--text-primary);
+        }
+
+        /* Quick Facts Bar */
+        .quick-facts {
+            margin-top: -30px;
+            margin-bottom: 40px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .fact-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .fact-icon {
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .fact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .fact-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .fact-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-secondary);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Main Content Layout */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 48px;
+            padding-bottom: 80px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding-right: 12px;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: var(--border);
+            border-radius: 4px;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 8px;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.938rem;
+            font-weight: 500;
+            border-left: 2px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .toc-link:hover {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background-color: rgba(var(--accent-light), 0.1);
+        }
+
+        .toc-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            border-left-color: var(--accent);
+            background-color: var(--accent-light);
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        /* Policy Main Content */
+        .policy-content {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .policy-section {
+            scroll-margin-top: 100px;
+            margin-bottom: 40px;
+        }
+
+        .policy-section:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .policy-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .policy-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            color: var(--text-primary);
+        }
+
+        .policy-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .policy-content ul, .policy-content ol {
+            margin-bottom: 20px;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+
+        .policy-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .policy-content strong {
+            color: var(--text-primary);
+        }
+
+        /* Callout Box / Alert */
+        .callout {
+            background-color: var(--alert-bg);
+            border: 1px solid var(--alert-border);
+            color: var(--alert-text);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            display: flex;
+            gap: 16px;
+        }
+
+        .callout-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .callout-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .callout-content {
+            font-size: 0.95rem;
+        }
+
+        .callout-content strong {
+            color: var(--alert-text);
+        }
+
+        /* Code/Identifier style */
+        code {
+            font-family: monospace;
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Contact Section Styles */
+        .contact-card {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .contact-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Search Highlight */
+        .highlight {
+            background-color: #fde047;
+            color: #000;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .sidebar {
+                display: none; /* Hide sticky sidebar, can optionally create a dropdown on mobile */
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .policy-content {
+                padding: 24px;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 8px;
+                border-radius: 16px;
+                width: 100%;
+                align-items: center;
+            }
+        }
+
+        /* Print styling */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            header, footer, .sidebar, .theme-toggle, .search-container, .contact-btn {
+                display: none !important;
+            }
+            .content-layout {
+                display: block;
+            }
+            .policy-content {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+            .policy-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <!-- Custom Local connection SVG icon -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>CloseLink</span>
+            </a>
+            
+            <div class="controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <!-- Moon icon (for light mode) -->
+                    <svg class="moon-icon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <!-- Sun icon (for dark mode) -->
+                    <svg class="sun-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is absolute. CloseLink is designed from the ground up to respect, protect, and secure your personal information.</p>
+            
+            <div class="meta-info">
+                <div class="meta-item">Application: <strong>CloseLink</strong></div>
+                <div class="meta-item">Package: <code>com.dpkay.apps.closelink</code></div>
+                <div class="meta-item">Last Updated: <strong>June 7, 2026</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Area -->
+    <main class="container" style="margin-top: 30px;">
+        
+        <!-- Quick Facts Panel -->
+        <div class="quick-facts">
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="fact-title">100% P2P & Offline</h3>
+                        <p class="fact-desc">Data goes directly from device to device. No servers are involved.</p>
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="fact-title">Zero Data Collection</h3>
+                        <p class="fact-desc">We do not harvest, track, or sell your personal information or audio stream.</p>
+                    </div>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="fact-title">Local Connectivity</h3>
+                        <p class="fact-desc">Uses Bluetooth LE and local networking for discovery and calling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Search -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <span class="search-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search privacy policy...">
+            </div>
+        </div>
+
+        <div class="content-layout">
+            <!-- Sidebar Table of Contents -->
+            <aside class="sidebar">
+                <ul class="toc-list">
+                    <li><a href="#introduction" class="toc-link active">1. Introduction</a></li>
+                    <li><a href="#permissions" class="toc-link">2. Permissions & Data Use</a></li>
+                    <li><a href="#data-sharing" class="toc-link">3. Third-Party Services</a></li>
+                    <li><a href="#data-security" class="toc-link">4. Data Security</a></li>
+                    <li><a href="#childrens-privacy" class="toc-link">5. Children's Privacy</a></li>
+                    <li><a href="#changes" class="toc-link">6. Changes to this Policy</a></li>
+                    <li><a href="#contact-us" class="toc-link">7. Contact Information</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Policy Text -->
+            <article class="policy-content" id="policyText">
+                
+                <section id="introduction" class="policy-section">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to <strong>CloseLink</strong> ("we," "our," or "us"). CloseLink is a local peer-to-peer (P2P) audio calling and connectivity tool designed for direct communication between devices.</p>
+                    <p>We respect your privacy and are committed to protecting it. CloseLink is built with a core architecture that ensures your communications remain local. The application functions as an offline utility tool and does not employ remote servers to store, transmit, or process your personal data, audio, or messaging history.</p>
+                    
+                    <div class="callout">
+                        <div class="callout-icon">
+                            <svg viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="callout-content">
+                            <strong>Key Point:</strong> CloseLink runs completely on your own device. The voice data and connection packets are sent directly to the device you pair with via local connections (like Bluetooth LE and local audio networks).
+                        </div>
+                    </div>
+                </section>
+
+                <section id="permissions" class="policy-section">
+                    <h2>2. Device Permissions & How They Are Used</h2>
+                    <p>To provide peer-to-peer audio calling, device discovery, and call management features, CloseLink requests access to specific device hardware and system features. These permissions are used exclusively to enable the app's functionality on your device:</p>
+                    
+                    <h3>A. Bluetooth & Location-related Permissions</h3>
+                    <ul>
+                        <li><strong>Bluetooth Scan & Bluetooth Advertise</strong> (<code>android.permission.BLUETOOTH_SCAN</code>, <code>android.permission.BLUETOOTH_ADVERTISE</code>): Used to broadcast your device's availability and scan for other nearby devices running CloseLink. We use the <code>neverForLocation</code> flag, indicating that we do not use Bluetooth to determine or track your physical coordinates.</li>
+                        <li><strong>Bluetooth Connect</strong> (<code>android.permission.BLUETOOTH_CONNECT</code>): Used to establish a direct connection between your device and a selected nearby device.</li>
+                    </ul>
+
+                    <h3>B. Audio & Microphone Permissions</h3>
+                    <ul>
+                        <li><strong>Record Audio / Microphone</strong> (<code>android.permission.RECORD_AUDIO</code>): Required to capture your voice during active calls so that it can be streamed directly to the connected peer. Audio is processed in real time and is never saved, cached, or recorded on the local device or sent to any central server.</li>
+                        <li><strong>Modify Audio Settings</strong> (<code>android.permission.MODIFY_AUDIO_SETTINGS</code>): Allows the app to adjust sound levels, switch between earpiece/speaker modes, and optimize the sound profile for clear communication.</li>
+                    </ul>
+
+                    <h3>C. System & Phone Permissions</h3>
+                    <ul>
+                        <li><strong>Read Phone State</strong> (<code>android.permission.READ_PHONE_STATE</code>): Used to detect incoming cellular phone calls. This allows CloseLink to automatically pause or terminate local peer-to-peer voice sessions so you can answer incoming calls seamlessly. We do not read or record phone numbers, call histories, or contacts.</li>
+                        <li><strong>Foreground Service</strong> (<code>android.permission.FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_MICROPHONE</code>, <code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code>): Required to keep your local audio transmission and peer-to-peer connection stable in the background while you navigate out of the app. This is accompanied by persistent system notifications so you are always aware when a call is active.</li>
+                        <li><strong>Request Ignore Battery Optimizations</strong> (<code>android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>): Allows the app to stay connected during long sessions and prevents the Android OS from terminating the direct connection when the screen is turned off.</li>
+                        <li><strong>Wake Lock</strong> (<code>android.permission.WAKE_LOCK</code>): Prevents the device's processor from sleeping during an active voice session to ensure uninterrupted audio quality.</li>
+                    </ul>
+                </section>
+
+                <section id="data-sharing" class="policy-section">
+                    <h2>3. Third-Party Services & Analytics</h2>
+                    <p>We do not share any user information with third parties. CloseLink does not contain third-party software development kits (SDKs), advertising platforms, or tracking analytics services (such as Google Analytics or Firebase SDKs) that gather data about your device, behaviors, or location.</p>
+                    <p>Since no telemetry or diagnostics are gathered by us, no data is sold, traded, or distributed to third parties under any circumstances.</p>
+                </section>
+
+                <section id="data-security" class="policy-section">
+                    <h2>4. Data Security</h2>
+                    <p>CloseLink uses direct peer-to-peer communication channels. Your audio communications are transmitted directly between the connected devices. However, because the communication takes place over local peer connections, you should ensure that your Bluetooth connection and local environment are secure.</p>
+                    <p>We do not store database back-ups, user profiles, or connection histories on any server, which eliminates the risk of cloud-based data breaches.</p>
+                </section>
+
+                <section id="childrens-privacy" class="policy-section">
+                    <h2>5. Children's Privacy</h2>
+                    <p>Our application does not collect, record, request, or store any personal data from anyone, including children under the age of 13. Since CloseLink operates entirely as an offline, peer-to-peer communication tool, it complies fully with COPPA (Children's Online Privacy Protection Act) and GDPR regulations regarding child safety and privacy.</p>
+                </section>
+
+                <section id="changes" class="policy-section">
+                    <h2>6. Changes to this Privacy Policy</h2>
+                    <p>We may update this Privacy Policy from time to time to reflect modifications in our features or compliance requirements. When updates occur, we will revise the "Last Updated" date at the top of this page. You are advised to review this policy periodically for any updates.</p>
+                </section>
+
+                <section id="contact-us" class="policy-section">
+                    <h2>7. Contact Information</h2>
+                    <p>If you have any questions or suggestions regarding our Privacy Policy or need support with CloseLink, please contact us at:</p>
+                    
+                    <div class="contact-card">
+                        <p><strong>Developer:</strong> dpkay</p>
+                        <p><strong>Email Support:</strong> hello@dpkay.com</p>
+                        <p><strong>Website:</strong> <a href="https://dpkay.com" style="color: var(--accent); text-decoration: none;">dpkay.com</a></p>
+                        
+                        <a href="mailto:hello@dpkay.com" class="contact-btn">
+                            <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Send Email Inquiry
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CloseLink. All rights reserved.</p>
+            <p>Designed to be local. Secured by default.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Scripts -->
+    <script>
+        // Theme Toggle Implementation
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = 'light';
+            if (document.documentElement.getAttribute('data-theme') !== 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                theme = 'dark';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('theme', theme);
+        });
+
+        // Search highlight and filtering functionality
+        const searchInput = document.getElementById('searchInput');
+        const policySections = document.querySelectorAll('.policy-section');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            policySections.forEach(section => {
+                const paragraphs = section.querySelectorAll('p, li, h2, h3');
+                let matches = false;
+
+                paragraphs.forEach(p => {
+                    const text = p.textContent || p.innerText;
+                    
+                    // Clear previous highlights
+                    if (p.querySelector('.highlight')) {
+                        p.innerHTML = p.innerText; // reverts to clean text
+                    }
+
+                    if (query && text.toLowerCase().includes(query)) {
+                        matches = true;
+                        
+                        // Highlight matching parts
+                        const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+                        p.innerHTML = text.replace(regex, '<span class="highlight">$1</span>');
+                    }
+                });
+
+                // Soft fade sections that don't match the search
+                if (query) {
+                    section.style.opacity = matches ? '1' : '0.4';
+                } else {
+                    section.style.opacity = '1';
+                }
+            });
+        });
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        // Floating Table of Contents Active Link Highlight on Scroll
+        const tocLinks = document.querySelectorAll('.toc-link');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -60% 0px', // trigger when element is in upper-mid viewport
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.getAttribute('id');
+                    tocLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        policySections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
