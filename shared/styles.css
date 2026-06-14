@@ -351,6 +351,7 @@ a           { color: inherit; text-decoration: none; }
 .resume-modal[aria-hidden="false"] {
     opacity: 1;
     pointer-events: auto;
+    overscroll-behavior: contain;
 }
 body.resume-modal-open {
     overflow: hidden;

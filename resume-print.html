@@ -45,8 +45,8 @@
             .print-hint { display: none !important; }
         }
 
-        html.in-iframe { overflow: auto; height: auto; background: #fff; }
-        html.in-iframe body { overflow: auto; height: auto; padding-top: 0.2in; }
+        html.in-iframe { overflow-x: hidden; overflow-y: auto; height: 100%; background: #fff; }
+        html.in-iframe body { height: auto; }
         html.in-iframe .print-hint { display: none !important; }
 
         .print-hint {
@@ -586,7 +586,10 @@
     </div>
 
     <script>
-        if (window !== window.top) document.documentElement.classList.add('in-iframe');
+        if (window !== window.top) {
+            document.documentElement.classList.add('in-iframe');
+            document.body.style.zoom = window.innerWidth / (8.5 * 96);
+        }
     </script>
 </body>
 </html>
