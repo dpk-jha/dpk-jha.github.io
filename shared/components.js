@@ -30,7 +30,6 @@
     document.querySelectorAll('.reveal, .reveal-zoom, .reveal-left')
         .forEach(function (el) { observer.observe(el); });
 
-    var MOBILE_BP = 640;
     var modal = document.getElementById('resume-modal');
     if (modal) {
         var iframe = modal.querySelector('.resume-modal-iframe');
@@ -66,7 +65,6 @@
 
         document.querySelectorAll('[data-resume-modal]').forEach(function (link) {
             link.addEventListener('click', function (e) {
-                if (window.innerWidth <= MOBILE_BP) return;
                 e.preventDefault();
                 openModal();
             });

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Deepak Jha — Associate Architect | Full-Stack Systems & Agentic AI. View resume.">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://dpkay.com/resume">
+    <meta property="og:title"       content="Deepak Jha | Resume">
+    <meta property="og:description" content="Associate Architect | Full-Stack Systems & Agentic AI. View resume.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="Deepak Jha | Resume">
+    <meta name="twitter:description" content="Associate Architect | Full-Stack Systems & Agentic AI. View resume.">
+
+    <title>Deepak Jha | Resume</title>
+
+    <link rel="canonical" href="https://dpkay.com/resume">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/shared/styles.css">
+
+    <style>
+        .resume-page-bg {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+        }
+        .resume-page-bg .resume-modal {
+            position: relative;
+            inset: unset;
+            opacity: 1;
+            pointer-events: auto;
+            width: 100%;
+            height: 100vh;
+        }
+        .resume-page-bg .resume-modal-overlay {
+            display: none;
+        }
+        .resume-page-bg .resume-modal-content {
+            width: min(94vw, 56rem);
+            height: 94vh;
+            margin: auto;
+            transform: none;
+        }
+        @media (max-width: 640px) {
+            .resume-page-bg .resume-modal-content {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+                border: none;
+            }
+        }
+    </style>
+    <script src="/shared/analytics.js" defer></script>
+</head>
+<body>
+    <div class="resume-page-bg">
+        <div class="resume-modal" id="resume-modal" aria-hidden="false" role="dialog" aria-label="Resume">
+            <div class="resume-modal-overlay"></div>
+            <div class="resume-modal-content">
+                <div class="resume-modal-header">
+                    <a href="/" class="resume-modal-title" style="text-decoration:none;color:inherit;">dpkay.com</a>
+                    <div class="resume-modal-actions">
+                        <a href="/DeepakJha.pdf" download="DeepakJha.pdf" class="resume-modal-btn" title="Download PDF">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </a>
+                        <button type="button" class="resume-modal-btn resume-modal-print" title="Print">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        </button>
+                        <a href="/" class="resume-modal-btn" title="Go to website">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="resume-modal-loader"><div class="spinner-ring"></div></div>
+                <iframe class="resume-modal-iframe" src="/resume-print.html" title="Resume"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var iframe = document.querySelector('.resume-modal-iframe');
+            var loader = document.querySelector('.resume-modal-loader');
+            iframe.addEventListener('load', function () {
+                if (loader) loader.classList.add('loaded');
+            });
+
+            var printBtn = document.querySelector('.resume-modal-print');
+            printBtn.addEventListener('click', function () {
+                try { iframe.contentWindow.print(); }
+                catch (err) { window.open('/resume-print.html', '_blank'); }
+            });
+        })();
+    </script>
+</body>
+</html>
