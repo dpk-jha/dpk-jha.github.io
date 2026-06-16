@@ -962,13 +962,25 @@
                 var csMatch = hash.match(/^#cs-(\d+)$/);
                 if (csMatch) {
                     var targetPanel = parseInt(csMatch[1]);
-                    if (targetPanel > 0 && targetPanel < total) {
-                        panels[current].className = 'cs-panel';
-                        panels[targetPanel].className = 'cs-panel cs-panel--active';
-                        tabBtns[current].classList.remove('cs-tab--active');
-                        tabBtns[targetPanel].classList.add('cs-tab--active');
-                        current = targetPanel;
-                        userPaused = true;
+                    if (targetPanel >= 0 && targetPanel < total) {
+                        if (targetPanel !== current) {
+                            panels[current].className = 'cs-panel';
+                            panels[targetPanel].className = 'cs-panel cs-panel--active';
+                            tabBtns[current].classList.remove('cs-tab--active');
+                            tabBtns[targetPanel].classList.add('cs-tab--active');
+                            current = targetPanel;
+                        }
+                        setTimeout(function() {
+                            var tabsEl = document.querySelector('.cs-tabs');
+                            tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            var activeTab = tabsEl.querySelector('.cs-tab--active');
+                            if (activeTab) {
+                                var tabLeft = activeTab.offsetLeft;
+                                var tabWidth = activeTab.offsetWidth;
+                                var stripWidth = tabsEl.offsetWidth;
+                                tabsEl.scrollLeft = tabLeft - (stripWidth - tabWidth) / 2;
+                            }
+                        }, 300);
                     }
                 }
             }

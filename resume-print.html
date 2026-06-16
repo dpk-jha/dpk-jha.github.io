@@ -45,8 +45,12 @@
             .print-hint { display: none !important; }
         }
 
-        html.in-iframe { overflow-x: hidden; overflow-y: auto; height: 100%; background: #fff; }
-        html.in-iframe body { height: auto; }
+        html.in-iframe { overflow-x: hidden; overflow-y: auto; height: 100%; background: #fff; scrollbar-width: thin; scrollbar-color: #ccc transparent; }
+        html.in-iframe::-webkit-scrollbar { width: 6px; }
+        html.in-iframe::-webkit-scrollbar-track { background: transparent; }
+        html.in-iframe::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+        html.in-iframe::-webkit-scrollbar-button { display: none; }
+        html.in-iframe body { height: auto; padding-top: 0.35in; }
         html.in-iframe .print-hint { display: none !important; }
 
         .print-hint {
@@ -588,7 +592,12 @@
     <script>
         if (window !== window.top) {
             document.documentElement.classList.add('in-iframe');
-            document.body.style.zoom = window.innerWidth / (8.5 * 96);
+            var PAGE_WIDTH_PX = 8.5 * 96;
+            function fitZoom() {
+                document.body.style.zoom = window.innerWidth / PAGE_WIDTH_PX;
+            }
+            fitZoom();
+            window.addEventListener('resize', fitZoom);
         }
     </script>
 </body>

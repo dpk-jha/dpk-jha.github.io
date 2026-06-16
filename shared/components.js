@@ -45,14 +45,19 @@
             if (iframeLoader) iframeLoader.classList.add('loaded');
         });
 
+        var savedScrollY = 0;
+
         function openModal() {
-            if (!iframe.src || iframe.src === window.location.href) {
+            var pageUrl = window.location.href.split('#')[0];
+            if (!iframe.src || iframe.src === pageUrl) {
                 iframeLoaded = false;
                 if (iframeLoader) iframeLoader.classList.remove('loaded');
                 iframe.src = '/resume-print.html';
             } else if (iframeLoaded && iframeLoader) {
                 iframeLoader.classList.add('loaded');
             }
+            savedScrollY = window.scrollY;
+            document.body.style.top = -savedScrollY + 'px';
             document.body.classList.add('resume-modal-open');
             modal.setAttribute('aria-hidden', 'false');
         }
@@ -60,6 +65,8 @@
         function closeModal() {
             modal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('resume-modal-open');
+            document.body.style.top = '';
+            window.scrollTo(0, savedScrollY);
             if (document.activeElement) document.activeElement.blur();
         }
 
