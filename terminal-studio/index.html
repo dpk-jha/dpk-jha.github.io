@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e1e2e">
+    <meta name="description" content="GPU-accelerated terminal multiplexer with built-in git, file browser, editor, and workspace management. Built in Rust for developers who live in the terminal.">
+
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://dpkay.com/terminal-studio">
+    <meta property="og:title"       content="Terminal Studio — GPU-Accelerated Terminal Multiplexer">
+    <meta property="og:description" content="Terminal multiplexing, git, file browser, editor — all in one GPU-accelerated window. Built in Rust.">
+    <meta property="og:image"       content="https://dpkay.com/terminal-studio/images/screenshot.png">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Terminal Studio — GPU-Accelerated Terminal Multiplexer">
+    <meta name="twitter:description" content="One window. Every project. Built in Rust with GPU acceleration.">
+    <meta name="twitter:image"       content="https://dpkay.com/terminal-studio/images/screenshot.png">
+
+    <title>Terminal Studio — GPU-Accelerated Terminal Multiplexer</title>
+    <link rel="canonical" href="https://dpkay.com/terminal-studio">
+    <link rel="icon" href="/terminal-studio/images/icon.png" type="image/png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Terminal Studio",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "GPU-accelerated terminal multiplexer with built-in git integration, file browser, code editor, and workspace management. Built in Rust.",
+        "author": { "@type": "Person", "name": "Deepak Jha", "url": "https://dpkay.com" },
+        "url": "https://dpkay.com/terminal-studio",
+        "downloadUrl": "https://github.com/dpkay-io/terminal-studio/releases/latest",
+        "softwareVersion": "0.15.1",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+    <style>
+        /* ── Variables ─────────────────────────────────────────── */
+        :root {
+            --bg: #1e1e2e;
+            --bg-alt: #181825;
+            --bg-deep: #11111b;
+            --surface: #313244;
+            --surface1: #45475a;
+            --overlay: #585b70;
+            --text: #cdd6f4;
+            --subtext: #bac2de;
+            --muted: #a6adc8;
+            --dim: #6c7086;
+            --accent: #89b4fa;
+            --accent-hover: #b4d0fb;
+            --accent-glow: rgba(137, 180, 250, 0.12);
+            --accent-subtle: rgba(137, 180, 250, 0.06);
+            --green: #a6e3a1;
+            --green-hover: #bbeab7;
+            --green-glow: rgba(166, 227, 161, 0.15);
+            --mauve: #cba6f7;
+            --teal: #94e2d5;
+            --peach: #fab387;
+            --red: #f38ba8;
+            --yellow: #f9e2af;
+            --lavender: #b4befe;
+            --card-bg: rgba(49, 50, 68, 0.45);
+            --card-border: rgba(137, 180, 250, 0.08);
+            --card-hover-border: rgba(137, 180, 250, 0.25);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --max-w: 72rem;
+        }
+
+        /* ── Reset & Base ──────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: clip; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(rgba(137, 180, 250, 0.025) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        h1, h2, h3 { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+        a { color: inherit; text-decoration: none; }
+        ::selection { background: var(--accent); color: var(--bg-deep); }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: var(--max-w); margin-inline: auto; padding-inline: 2rem; }
+        main { position: relative; z-index: 1; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+
+        /* ── Reveal ────────────────────────────────────────────── */
+        .reveal { opacity: 0; transform: translateY(1.5rem); }
+        .reveal.visible {
+            opacity: 1; transform: none;
+            transition: opacity 0.8s var(--ease) var(--delay, 0s), transform 0.8s var(--ease) var(--delay, 0s);
+        }
+
+        /* ── Header ────────────────────────────────────────────── */
+        .site-header { position: sticky; top: 0; z-index: 50; }
+        .site-header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: rgba(30, 30, 46, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(137, 180, 250, 0.06);
+            z-index: -1;
+        }
+        .site-header nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-block: 1rem;
+        }
+        .header-logo {
+            display: flex; align-items: center; gap: 0.625rem;
+            font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em;
+        }
+        .header-logo img { width: 28px; height: 28px; border-radius: 6px; }
+        .logo-dim { color: var(--dim); font-weight: 400; margin-left: -0.15em; }
+        .nav-links {
+            display: flex; gap: 2rem; list-style: none; align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.15em;
+        }
+        .nav-links a { color: var(--muted); transition: color 0.2s; padding: 0.5rem 0; }
+        .nav-links a:hover { color: var(--text); }
+        a.nav-cta {
+            display: inline-flex; align-items: center; gap: 0.375rem;
+            background: var(--accent); color: var(--bg-deep);
+            padding: 0.5rem 1.5rem; border-radius: 99px;
+            font-weight: 600; font-size: 0.6875rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: background 0.2s, transform 0.2s;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        a.nav-cta:hover { background: var(--accent-hover); color: var(--bg-deep); transform: translateY(-1px); }
+        .menu-toggle {
+            display: none; background: none; border: none; cursor: pointer;
+            padding: 0.5rem; margin-right: -0.5rem; z-index: 101;
+        }
+        .menu-toggle svg { width: 22px; height: 22px; color: var(--text); }
+
+        /* ── Hero ──────────────────────────────────────────────── */
+        .hero { position: relative; overflow: hidden; padding-block: 5rem 3rem; text-align: center; }
+        .hero::before {
+            content: '';
+            position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 140%;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 52rem; margin-inline: auto; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.2em;
+            color: var(--accent);
+            background: var(--accent-subtle);
+            border: 1px solid rgba(137, 180, 250, 0.12);
+            padding: 0.5rem 1.25rem; border-radius: 99px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 1.5rem; }
+        .hero h1 .accent { color: var(--accent); }
+        .hero-desc {
+            font-size: 1.125rem; color: var(--muted); line-height: 1.8;
+            max-width: 38rem; margin-inline: auto; margin-bottom: 2.5rem;
+        }
+        .hero-actions {
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            justify-content: center; margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 2rem; border-radius: 99px;
+            font-weight: 600; font-size: 0.875rem;
+            transition: 0.25s var(--ease); cursor: pointer; border: none;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .btn-primary { background: var(--green); color: var(--bg-deep); }
+        .btn-primary:hover { background: var(--green-hover); transform: translateY(-2px); box-shadow: 0 8px 24px var(--green-glow); }
+        .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--surface1); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-subtle); transform: translateY(-2px); }
+        .hero-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 3.5rem; }
+        .hero-chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--dim); border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.3rem 0.75rem; border-radius: 99px;
+        }
+        .hero-chip .chip-dot {
+            display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+            margin-right: 0.25rem; vertical-align: middle;
+        }
+
+        /* ── App Frame ─────────────────────────────────────────── */
+        .app-frame-wrapper { position: relative; z-index: 1; max-width: 64rem; margin-inline: auto; }
+        .app-frame {
+            position: relative; border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(137, 180, 250, 0.1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 120px var(--accent-subtle);
+            transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+        }
+        .app-frame:hover { transform: translateY(-4px); box-shadow: 0 48px 96px rgba(0, 0, 0, 0.6), 0 0 140px rgba(137, 180, 250, 0.08); }
+        .app-frame img { display: block; width: 100%; }
+
+        /* ── Screenshot Annotations ───────────────────────────── */
+        .anno-svg {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: visible;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.8s;
+        }
+        .app-frame-wrapper.visible .anno-svg { opacity: 1; }
+        .anno-svg line {
+            stroke: rgba(205, 214, 244, 0.18);
+            stroke-width: 1;
+        }
+        .anno-svg circle { opacity: 0.85; }
+        .anno {
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--subtext);
+            white-space: nowrap;
+            cursor: default;
+            z-index: 4;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.4s ease var(--ad, 0s);
+        }
+        .app-frame-wrapper.visible .anno { opacity: 1; }
+        .anno-l { right: calc(100% + 16px); }
+        .anno-r { left: calc(100% + 16px); }
+        .anno-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        @media (max-width: 1200px) {
+            .anno, .anno-svg { display: none !important; }
+        }
+
+        /* ── Section Shared ────────────────────────────────────── */
+        .section { padding-block: 6rem; }
+        .section-alt { background: var(--bg-alt); }
+        .eyebrow {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.25em;
+            color: var(--accent); margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 1rem;
+        }
+        .section-desc {
+            font-size: 1.0625rem; color: var(--muted);
+            line-height: 1.7; max-width: 36rem;
+        }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header .section-desc { margin-inline: auto; }
+
+        /* ── Problem ───────────────────────────────────────────── */
+        .problem { padding-block: 5rem; }
+        .problem-layout {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: center;
+        }
+        .problem-text .eyebrow { color: var(--peach); }
+        .problem-title { font-size: clamp(1.5rem, 3.5vw, 2.25rem); margin-bottom: 1.25rem; }
+        .problem-desc { color: var(--muted); line-height: 1.8; font-size: 1rem; }
+        .problem-list {
+            list-style: none; display: flex; flex-direction: column; gap: 0.875rem;
+        }
+        .problem-list li {
+            display: flex; align-items: center; gap: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem; color: var(--subtext);
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            padding: 0.875rem 1.25rem; border-radius: 8px;
+        }
+        .problem-list .app-icon {
+            width: 18px; height: 18px; flex-shrink: 0; color: var(--dim);
+        }
+        .problem-list .check-icon { color: var(--green); }
+        .problem-answer {
+            margin-top: 1.5rem; padding: 1rem 1.25rem;
+            background: rgba(166, 227, 161, 0.06);
+            border: 1px solid rgba(166, 227, 161, 0.15);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem; color: var(--green);
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+
+        /* ── Highlights ────────────────────────────────────────── */
+        .highlights-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+        }
+        .highlight-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 12px; padding: 2rem;
+            transition: border-color 0.3s, transform 0.3s var(--ease), background 0.3s;
+        }
+        .highlight-card:hover { border-color: var(--card-hover-border); transform: translateY(-2px); background: rgba(49, 50, 68, 0.6); }
+        .highlight-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .highlight-icon svg { width: 20px; height: 20px; }
+        .highlight-icon--blue { background: rgba(137, 180, 250, 0.12); color: var(--accent); }
+        .highlight-icon--green { background: rgba(166, 227, 161, 0.12); color: var(--green); }
+        .highlight-icon--mauve { background: rgba(203, 166, 247, 0.12); color: var(--mauve); }
+        .highlight-icon--peach { background: rgba(250, 179, 135, 0.12); color: var(--peach); }
+        .highlight-card h3 { font-size: 1.125rem; margin-bottom: 0.625rem; letter-spacing: -0.02em; }
+        .highlight-card p { color: var(--muted); font-size: 0.9375rem; line-height: 1.7; }
+
+        /* ── Features Grid ─────────────────────────────────────── */
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .feature-category {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 12px; padding: 1.75rem;
+            transition: border-color 0.3s;
+        }
+        .feature-category:hover { border-color: var(--card-hover-border); }
+        .feature-category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .feature-cat-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .feature-cat-icon svg { width: 16px; height: 16px; }
+        .feature-category h3 { font-size: 0.9375rem; letter-spacing: -0.01em; }
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .feature-list li {
+            font-size: 0.8125rem; color: var(--muted); padding-left: 1.25rem;
+            position: relative; line-height: 1.5;
+        }
+        .feature-list li::before {
+            content: ''; position: absolute; left: 0; top: 0.5em;
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--dim);
+        }
+
+        /* ── Stats Strip ───────────────────────────────────────── */
+        .stats { padding-block: 3.5rem; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        .stats-grid {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem;
+        }
+        .stat { text-align: center; }
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700;
+            color: var(--accent); letter-spacing: -0.03em;
+        }
+        .stat-label {
+            font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--dim); margin-top: 0.375rem;
+        }
+
+        /* ── Performance ───────────────────────────────────────── */
+        .perf-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .perf-features { display: flex; flex-direction: column; gap: 1.25rem; }
+        .perf-item {
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            padding: 1.25rem; border-radius: 10px;
+        }
+        .perf-item-icon {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: rgba(137, 180, 250, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; color: var(--accent);
+        }
+        .perf-item-icon svg { width: 18px; height: 18px; }
+        .perf-item h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; letter-spacing: -0.01em; }
+        .perf-item p { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+
+        /* ── Themes ────────────────────────────────────────────── */
+        .theme-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+        }
+        .theme-swatch {
+            text-align: center; padding: 1rem 0.5rem; border-radius: 10px;
+            border: 1px solid transparent;
+            transition: border-color 0.2s, transform 0.2s;
+            cursor: default;
+        }
+        .theme-swatch:hover { border-color: var(--card-hover-border); transform: translateY(-2px); }
+        .swatch-preview {
+            width: 48px; height: 48px; border-radius: 10px;
+            margin-inline: auto; margin-bottom: 0.625rem;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .swatch-dot { width: 14px; height: 14px; border-radius: 50%; }
+        .swatch-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5625rem; color: var(--dim);
+            text-transform: uppercase; letter-spacing: 0.05em;
+            line-height: 1.4;
+        }
+
+        /* ── Open Source ───────────────────────────────────────── */
+        .oss-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .oss-card {
+            text-align: center; padding: 2rem 1.5rem;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 12px;
+        }
+        .oss-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            margin-inline: auto; margin-bottom: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(137, 180, 250, 0.08); color: var(--accent);
+        }
+        .oss-icon svg { width: 22px; height: 22px; }
+        .oss-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .oss-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+        /* ── Download CTA ──────────────────────────────────────── */
+        .download-section {
+            padding-block: 6rem; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .download-section::before {
+            content: '';
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 100%;
+            background: radial-gradient(ellipse at bottom, rgba(166, 227, 161, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .download-content { position: relative; z-index: 1; }
+        .download-section .section-title { margin-bottom: 1rem; }
+        .download-section .section-desc { margin-inline: auto; margin-bottom: 2.5rem; }
+        .download-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
+        .download-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem; color: var(--dim);
+            letter-spacing: 0.05em;
+        }
+        .alpha-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5625rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--yellow); background: rgba(249, 226, 175, 0.1);
+            border: 1px solid rgba(249, 226, 175, 0.2);
+            padding: 0.25rem 0.75rem; border-radius: 99px;
+            margin-left: 0.5rem; vertical-align: middle;
+        }
+
+        /* ── Footer ────────────────────────────────────────────── */
+        .site-footer {
+            position: relative; z-index: 1;
+            padding-block: 3rem; text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+        .footer-links {
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--dim); transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-credit { font-size: 0.8125rem; color: var(--dim); }
+        .footer-credit a { color: var(--muted); transition: color 0.2s; }
+        .footer-credit a:hover { color: var(--accent); }
+
+        /* ── Mobile Menu ───────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; inset: 0; z-index: 100;
+                flex-direction: column; justify-content: center; align-items: center;
+                gap: 2.5rem;
+                background: rgba(17, 17, 27, 0.97); backdrop-filter: blur(20px);
+                font-size: 0.875rem;
+                opacity: 0; pointer-events: none;
+                transition: opacity 0.3s;
+            }
+            .nav-links.open { opacity: 1; pointer-events: auto; }
+            .nav-links a { color: var(--text); }
+        }
+
+        /* ── Responsive ────────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .perf-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .theme-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .container { padding-inline: 1.25rem; }
+            .section { padding-block: 4rem; }
+            .hero { padding-block: 3.5rem 2rem; }
+            .problem-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .oss-grid { grid-template-columns: 1fr; }
+            .theme-grid { grid-template-columns: repeat(3, 1fr); }
+            .stats-grid { gap: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .theme-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero h1 { font-size: 2.25rem; }
+            .hero-desc { font-size: 1rem; }
+            .btn { padding: 0.75rem 1.5rem; font-size: 0.8125rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="container">
+            <a href="/terminal-studio" class="header-logo">
+                <img src="/terminal-studio/images/icon.png" alt="Terminal Studio" width="28" height="28">
+                Terminal <span class="logo-dim">Studio</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#performance">Performance</a></li>
+                <li><a href="#themes">Themes</a></li>
+                <li><a href="https://github.com/dpkay-io/terminal-studio" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a class="nav-cta" href="https://github.com/dpkay-io/terminal-studio/releases/latest" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                </a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <span class="hero-badge">GPU-Accelerated Terminal Multiplexer &middot; Built in Rust</span>
+                    <h1>One Window.<br><span class="accent">Every Project.</span></h1>
+                    <p class="hero-desc">Terminal multiplexing, git, file browser, editor &mdash; in a single GPU-accelerated application. Built in Rust for developers who live in the terminal.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="https://github.com/dpkay-io/terminal-studio/releases/latest" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </a>
+                        <a class="btn btn-outline" href="https://github.com/dpkay-io/terminal-studio" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                    <div class="hero-chips">
+                        <span class="hero-chip"><span class="chip-dot" style="background:var(--peach)"></span> Rust</span>
+                        <span class="hero-chip"><span class="chip-dot" style="background:var(--accent)"></span> GPU-Accelerated</span>
+                        <span class="hero-chip"><span class="chip-dot" style="background:var(--green)"></span> Cross-Platform</span>
+                        <span class="hero-chip"><span class="chip-dot" style="background:var(--mauve)"></span> Open Source</span>
+                        <span class="hero-chip"><span class="chip-dot" style="background:var(--teal)"></span> Apache 2.0</span>
+                    </div>
+                </div>
+                <div class="app-frame-wrapper reveal" style="--delay: .15s">
+                    <div class="app-frame">
+                        <img src="/terminal-studio/images/screenshot.png" alt="Terminal Studio — multi-pane terminal with file browser, git integration, and workspace management" loading="eager" width="1920" height="1080">
+                    </div>
+                    <svg class="anno-svg" aria-hidden="true"></svg>
+                    <div class="anno anno-l" style="top:1%;  --ad:.7s"  data-tx="25" data-ty="1"><span class="anno-dot" style="background:var(--yellow)"></span>Status Bar</div>
+                    <div class="anno anno-l" style="top:8%;  --ad:.85s" data-tx="4"  data-ty="8"><span class="anno-dot" style="background:var(--teal)"></span>Sessions</div>
+                    <div class="anno anno-l" style="top:48%; --ad:1s"   data-tx="4"  data-ty="48"><span class="anno-dot" style="background:var(--mauve)"></span>Workspaces</div>
+                    <div class="anno anno-r" style="top:5%;  --ad:1.15s" data-tx="96" data-ty="5"><span class="anno-dot" style="background:var(--green)"></span>Git Diff</div>
+                    <div class="anno anno-r" style="top:50%; --ad:1.3s" data-tx="52" data-ty="50"><span class="anno-dot" style="background:var(--accent)"></span>Split Panes</div>
+                    <div class="anno anno-r" style="top:78%; --ad:1.45s" data-tx="93" data-ty="78"><span class="anno-dot" style="background:var(--peach)"></span>Workspace Notes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="problem section-alt">
+            <div class="container">
+                <div class="problem-layout">
+                    <div class="problem-text reveal">
+                        <span class="eyebrow">The Problem</span>
+                        <h2 class="problem-title">Six apps open.<br>One workflow.</h2>
+                        <p class="problem-desc">You run a command. Check git status in another window. Open a file in your editor. Browse the directory somewhere else. Every alt-tab is a context switch. Every context switch costs focus.</p>
+                    </div>
+                    <div class="reveal" style="--delay: .1s">
+                        <ul class="problem-list">
+                            <li>
+                                <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Terminal
+                            </li>
+                            <li>
+                                <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                                File browser
+                            </li>
+                            <li>
+                                <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+                                Git client
+                            </li>
+                            <li>
+                                <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                                Code editor
+                            </li>
+                            <li>
+                                <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Another terminal
+                            </li>
+                        </ul>
+                        <div class="problem-answer">
+                            <svg class="app-icon check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Terminal Studio &mdash; all of the above, one window
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights -->
+        <section class="section" id="highlights">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow reveal">Why Terminal Studio</span>
+                    <h2 class="section-title reveal" style="--delay:.05s">Built for how you actually work.</h2>
+                    <p class="section-desc reveal" style="--delay:.1s">Not another terminal with a theme picker. A complete environment for developers who manage multiple projects and hate context switching.</p>
+                </div>
+                <div class="highlights-grid">
+                    <div class="highlight-card reveal" style="--delay:.05s">
+                        <div class="highlight-icon highlight-icon--blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                        </div>
+                        <h3>Color-Coded Workspaces</h3>
+                        <p>Assign colors to project directories. Terminal Studio auto-activates the right workspace when you <code style="font-family:'JetBrains Mono',monospace;font-size:.8125rem;color:var(--accent);background:var(--accent-subtle);padding:.1em .4em;border-radius:4px">cd</code> in. Multi-project chaos, visually organized.</p>
+                    </div>
+                    <div class="highlight-card reveal" style="--delay:.1s">
+                        <div class="highlight-icon highlight-icon--green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3>Everything Built In</h3>
+                        <p>Git diff, stage, commit, push. File browser with .gitignore support. Syntax-highlighted editor. Markdown preview. Zero plugins. Zero setup.</p>
+                    </div>
+                    <div class="highlight-card reveal" style="--delay:.15s">
+                        <div class="highlight-icon highlight-icon--peach">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3>GPU-Accelerated</h3>
+                        <p>Rust + wgpu. 60fps text rendering. Million-line scrollback without stutter. Your terminal shouldn't be what slows you down.</p>
+                    </div>
+                    <div class="highlight-card reveal" style="--delay:.2s">
+                        <div class="highlight-icon highlight-icon--mauve">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                        </div>
+                        <h3>Session Persistence</h3>
+                        <p>Close it. Reopen it. Everything's back &mdash; sessions, scrollback history, workspace state. Resume exactly where you left off.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section section-alt" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow reveal">Features</span>
+                    <h2 class="section-title reveal" style="--delay:.05s">120+ features. Zero bloat.</h2>
+                    <p class="section-desc reveal" style="--delay:.1s">Everything a developer needs in a terminal. Nothing they don't.</p>
+                </div>
+                <div class="feature-grid">
+                    <!-- Terminal -->
+                    <div class="feature-category reveal" style="--delay:.05s">
+                        <div class="feature-category-header">
+                            <div class="feature-cat-icon" style="background:rgba(137,180,250,0.1);color:var(--accent)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                            </div>
+                            <h3>Terminal Power</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Multi-pane horizontal &amp; vertical splits</li>
+                            <li>Full ANSI/VTE emulation (256 colors, SGR)</li>
+                            <li>Up to 1M lines scrollback</li>
+                            <li>Mouse reporting (SGR extended)</li>
+                            <li>Bracketed paste mode</li>
+                            <li>Alternate screen buffers</li>
+                            <li>Clickable URL detection</li>
+                            <li>OSC 7 directory tracking</li>
+                        </ul>
+                    </div>
+                    <!-- Workspaces -->
+                    <div class="feature-category reveal" style="--delay:.1s">
+                        <div class="feature-category-header">
+                            <div class="feature-cat-icon" style="background:rgba(203,166,247,0.1);color:var(--mauve)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                            </div>
+                            <h3>Workspaces</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Named project workspaces</li>
+                            <li>8 presets + full RGB color picker</li>
+                            <li>Auto-activate by CWD prefix</li>
+                            <li>Per-workspace scratch notes</li>
+                            <li>Multi-window mode</li>
+                            <li>Workspace-tinted titlebar</li>
+                            <li>Default workspace on startup</li>
+                        </ul>
+                    </div>
+                    <!-- Git -->
+                    <div class="feature-category reveal" style="--delay:.15s">
+                        <div class="feature-category-header">
+                            <div class="feature-cat-icon" style="background:rgba(166,227,161,0.1);color:var(--green)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+                            </div>
+                            <h3>Git Integration</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Inline &amp; side-by-side diff viewer</li>
+                            <li>Stage / unstage individual files</li>
+                            <li>Commit, amend, push from UI</li>
+                            <li>Branch tracking</li>
+                            <li>Unpushed commits badge</li>
+                            <li>Colored diff hunks (M/A/D/R/?)</li>
+                            <li>File watcher auto-refresh</li>
+                        </ul>
+                    </div>
+                    <!-- Files -->
+                    <div class="feature-category reveal" style="--delay:.2s">
+                        <div class="feature-category-header">
+                            <div class="feature-cat-icon" style="background:rgba(250,179,135,0.1);color:var(--peach)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                            </div>
+                            <h3>Files &amp; Editor</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Directory tree browser</li>
+                            <li>.gitignore-aware filtering</li>
+                            <li>File type icons</li>
+                            <li>Syntax-highlighted editor (syntect)</li>
+                            <li>Markdown preview</li>
+                            <li>Dirty state &amp; reload detection</li>
+                            <li>Double-click to edit any file</li>
+                        </ul>
+                    </div>
+                    <!-- Search -->
+                    <div class="feature-category reveal" style="--delay:.25s">
+                        <div class="feature-category-header">
+                            <div class="feature-cat-icon" style="background:rgba(148,226,213,0.1);color:var(--teal)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
+                            <h3>Search</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>In-terminal Ctrl+F search</li>
+                            <li>Cross-session fuzzy search</li>
+                            <li>File path fuzzy finder</li>
+                            <li>Command palette (45+ actions)</li>
+                            <li>Session list filter</li>
+                            <li>Search match navigation</li>
+                        </ul>
+                    </div>
+                    <!-- Customization -->
+                    <div class="feature-category reveal" style="--delay:.3s">
+                        <div class="feature-category-header">
+                            <div class="feature-cat-icon" style="background:rgba(249,226,175,0.1);color:var(--yellow)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                            </div>
+                            <h3>Customization</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li>15 built-in color themes</li>
+                            <li>Fully rebindable keybindings (JSON)</li>
+                            <li>Cursor: block, underline, or beam</li>
+                            <li>Configurable font size (8–32pt)</li>
+                            <li>Built-in system monitor (CPU/RAM/Net)</li>
+                            <li>Default shell override</li>
+                            <li>Scrollback limit tuning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat reveal">
+                        <div class="stat-value">120+</div>
+                        <div class="stat-label">Features</div>
+                    </div>
+                    <div class="stat reveal" style="--delay:.05s">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Themes</div>
+                    </div>
+                    <div class="stat reveal" style="--delay:.1s">
+                        <div class="stat-value">1M+</div>
+                        <div class="stat-label">Scrollback Lines</div>
+                    </div>
+                    <div class="stat reveal" style="--delay:.15s">
+                        <div class="stat-value">19K</div>
+                        <div class="stat-label">Lines of Rust</div>
+                    </div>
+                    <div class="stat reveal" style="--delay:.2s">
+                        <div class="stat-value" style="color:var(--green)">0%</div>
+                        <div class="stat-label">Electron</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance -->
+        <section class="section" id="performance">
+            <div class="container">
+                <div class="perf-layout">
+                    <div>
+                        <span class="eyebrow reveal">Performance</span>
+                        <h2 class="section-title reveal" style="--delay:.05s">Rust. Not Electron.</h2>
+                        <p class="section-desc reveal" style="--delay:.1s">Every architectural decision in Terminal Studio is about speed. Native rendering, dedicated threads, zero garbage collection pauses. Your terminal should be the fastest app on your machine.</p>
+                    </div>
+                    <div class="perf-features">
+                        <div class="perf-item reveal" style="--delay:.05s">
+                            <div class="perf-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <div>
+                                <h4>GPU-Accelerated Rendering</h4>
+                                <p>wgpu renders text at 60fps. No DOM. No virtual scrolling hacks. Raw GPU power for text.</p>
+                            </div>
+                        </div>
+                        <div class="perf-item reveal" style="--delay:.1s">
+                            <div class="perf-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            </div>
+                            <div>
+                                <h4>Per-PTY Reader Threads</h4>
+                                <p>Every terminal session gets its own reader thread. Heavy output in one pane doesn't block the others.</p>
+                            </div>
+                        </div>
+                        <div class="perf-item reveal" style="--delay:.15s">
+                            <div class="perf-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Async Everything</h4>
+                                <p>File browsing, git operations, search, system monitoring &mdash; all background threads. The UI thread stays free.</p>
+                            </div>
+                        </div>
+                        <div class="perf-item reveal" style="--delay:.2s">
+                            <div class="perf-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Alacritty's Parser</h4>
+                                <p>Uses the same VTE/ANSI parser as Alacritty. Battle-tested terminal emulation you can trust.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Themes -->
+        <section class="section section-alt" id="themes">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow reveal">Themes</span>
+                    <h2 class="section-title reveal" style="--delay:.05s">15 themes. Your favorite is here.</h2>
+                    <p class="section-desc reveal" style="--delay:.1s">Every popular developer color scheme, built in. Switch instantly from settings.</p>
+                </div>
+                <div class="theme-grid reveal" style="--delay:.15s">
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#1e1e2e"><span class="swatch-dot" style="background:#89b4fa"></span></div>
+                        <span class="swatch-name">Catppuccin Mocha</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#282a36"><span class="swatch-dot" style="background:#bd93f9"></span></div>
+                        <span class="swatch-name">Dracula</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#2e3440"><span class="swatch-dot" style="background:#88c0d0"></span></div>
+                        <span class="swatch-name">Nord</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#002b36"><span class="swatch-dot" style="background:#268bd2"></span></div>
+                        <span class="swatch-name">Solarized Dark</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#282828"><span class="swatch-dot" style="background:#fe8019"></span></div>
+                        <span class="swatch-name">Gruvbox Dark</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#1a1b26"><span class="swatch-dot" style="background:#7aa2f7"></span></div>
+                        <span class="swatch-name">Tokyo Night</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#191724"><span class="swatch-dot" style="background:#c4a7e7"></span></div>
+                        <span class="swatch-name">Rosé Pine</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#282c34"><span class="swatch-dot" style="background:#61afef"></span></div>
+                        <span class="swatch-name">One Dark</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#2d353b"><span class="swatch-dot" style="background:#a7c080"></span></div>
+                        <span class="swatch-name">Everforest</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#272822"><span class="swatch-dot" style="background:#a6e22e"></span></div>
+                        <span class="swatch-name">Monokai</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#0d1117"><span class="swatch-dot" style="background:#58a6ff"></span></div>
+                        <span class="swatch-name">GitHub Dark</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#0a0e14"><span class="swatch-dot" style="background:#ffb454"></span></div>
+                        <span class="swatch-name">Ayu Dark</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#212121"><span class="swatch-dot" style="background:#82aaff"></span></div>
+                        <span class="swatch-name">Material Darker</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#fdf6e3;border-color:rgba(0,0,0,0.1)"><span class="swatch-dot" style="background:#268bd2"></span></div>
+                        <span class="swatch-name">Solarized Light</span>
+                    </div>
+                    <div class="theme-swatch">
+                        <div class="swatch-preview" style="background:#eff1f5;border-color:rgba(0,0,0,0.1)"><span class="swatch-dot" style="background:#1e66f5"></span></div>
+                        <span class="swatch-name">Catppuccin Latte</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Source -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow reveal">Open &amp; Private</span>
+                    <h2 class="section-title reveal" style="--delay:.05s">Your tools. Your data.</h2>
+                </div>
+                <div class="oss-grid">
+                    <div class="oss-card reveal" style="--delay:.05s">
+                        <div class="oss-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3>Open Source</h3>
+                        <p>Apache 2.0 licensed. Read every line, fork it, contribute. No black boxes.</p>
+                    </div>
+                    <div class="oss-card reveal" style="--delay:.1s">
+                        <div class="oss-icon" style="background:rgba(166,227,161,0.08);color:var(--green)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Privacy-First</h3>
+                        <p>No telemetry. No analytics. No cloud. Everything stays on your machine. Period.</p>
+                    </div>
+                    <div class="oss-card reveal" style="--delay:.15s">
+                        <div class="oss-icon" style="background:rgba(203,166,247,0.08);color:var(--mauve)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <h3>Cross-Platform</h3>
+                        <p>Windows, macOS, Linux. Native performance on every OS. One tool everywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download CTA -->
+        <section class="download-section section-alt">
+            <div class="container">
+                <div class="download-content">
+                    <span class="eyebrow reveal">Get Started</span>
+                    <h2 class="section-title reveal" style="--delay:.05s">Ready to unify your workflow? <span class="alpha-badge">Alpha</span></h2>
+                    <p class="section-desc reveal" style="--delay:.1s">Terminal Studio is in early access. Core features are stable, rough edges are being polished. Built for developers who'd rather ship than wait.</p>
+                    <div class="download-actions reveal" style="--delay:.15s">
+                        <a class="btn btn-primary" href="https://github.com/dpkay-io/terminal-studio/releases/latest" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Latest Release
+                        </a>
+                        <a class="btn btn-outline" href="https://github.com/dpkay-io/terminal-studio" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            Star on GitHub
+                        </a>
+                    </div>
+                    <p class="download-meta reveal" style="--delay:.2s">Windows &bull; macOS &bull; Linux &bull; Apache 2.0 &bull; Auto-Updates</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="footer-links">
+                <a href="https://github.com/dpkay-io/terminal-studio" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://github.com/dpkay-io/terminal-studio/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+                <a href="https://github.com/dpkay-io/terminal-studio/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+            </nav>
+            <p class="footer-credit">
+                Built by <a href="https://dpkay.com">Deepak Jha</a> &middot; dpkay.com
+            </p>
+        </div>
+    </footer>
+
+    <script src="/shared/analytics.js" defer></script>
+    <script>
+        (function () {
+            var observer = new IntersectionObserver(function (entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].isIntersecting) {
+                        entries[i].target.classList.add('visible');
+                        observer.unobserve(entries[i].target);
+                    }
+                }
+            }, { threshold: 0.12, rootMargin: '-40px 0px' });
+            document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+            var toggle = document.querySelector('.menu-toggle');
+            var navLinks = document.querySelector('.nav-links');
+            if (toggle && navLinks) {
+                toggle.addEventListener('click', function () {
+                    var open = navLinks.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', open);
+                    toggle.innerHTML = open
+                        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+                        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+                });
+                navLinks.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'A') {
+                        navLinks.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+                    }
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    var target = document.querySelector(a.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        var headerH = document.querySelector('.site-header').offsetHeight;
+                        var top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+
+        // Annotation connector lines
+        (function () {
+            var NS = 'http://www.w3.org/2000/svg';
+            function draw() {
+                var w = document.querySelector('.app-frame-wrapper');
+                var svg = w && w.querySelector('.anno-svg');
+                var f = w && w.querySelector('.app-frame');
+                if (!svg || !f) return;
+                var wR = w.getBoundingClientRect();
+                var fR = f.getBoundingClientRect();
+                var ox = fR.left - wR.left, oy = fR.top - wR.top;
+                svg.innerHTML = '';
+                var annos = w.querySelectorAll('.anno[data-tx]');
+                for (var i = 0; i < annos.length; i++) {
+                    var a = annos[i];
+                    var tx = ox + (parseFloat(a.dataset.tx) / 100) * fR.width;
+                    var ty = oy + (parseFloat(a.dataset.ty) / 100) * fR.height;
+                    var ar = a.getBoundingClientRect();
+                    var isL = a.classList.contains('anno-l');
+                    var lx = (isL ? ar.right : ar.left) - wR.left;
+                    var ly = (ar.top + ar.height / 2) - wR.top;
+
+                    var line = document.createElementNS(NS, 'line');
+                    line.setAttribute('x1', lx); line.setAttribute('y1', ly);
+                    line.setAttribute('x2', tx); line.setAttribute('y2', ty);
+                    svg.appendChild(line);
+
+                    var c = document.createElementNS(NS, 'circle');
+                    c.setAttribute('cx', tx); c.setAttribute('cy', ty); c.setAttribute('r', 4);
+                    c.setAttribute('fill', getComputedStyle(a.querySelector('.anno-dot')).backgroundColor);
+                    svg.appendChild(c);
+                }
+            }
+            var t;
+            window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(draw, 80); });
+            var wr = document.querySelector('.app-frame-wrapper');
+            if (wr) {
+                wr.addEventListener('transitionend', function h(e) {
+                    if (e.propertyName === 'opacity') { draw(); wr.removeEventListener('transitionend', h); }
+                });
+                if (wr.classList.contains('visible')) setTimeout(draw, 100);
+            }
+        })();
+    </script>
+</body>
+</html>
