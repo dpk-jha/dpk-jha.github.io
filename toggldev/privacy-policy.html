@@ -248,7 +248,7 @@
     <img src="icon.png" alt="TogglDev icon" width="72" height="72" />
   </div>
   <h1>TogglDev — <span>Privacy Policy</span></h1>
-  <p>Last updated: July 4, 2026 &nbsp;·&nbsp; v1.71</p>
+  <p>Last updated: July 15, 2026 &nbsp;·&nbsp; v2.0</p>
 </header>
 
 <main>
@@ -328,6 +328,10 @@
         <div class="feature-desc">Supports Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Portuguese, Russian, Thai, and Turkish.</div>
       </div>
       <div class="feature-item">
+        <div class="feature-label">Remote Access</div>
+        <div class="feature-desc">Run a local HTTP server on your device to control developer settings remotely from your computer. Uses mDNS for automatic discovery on your local network.</div>
+      </div>
+      <div class="feature-item">
         <div class="feature-label">Battery Optimization</div>
         <div class="feature-desc">Optional exclusion from battery optimization to keep widgets and tiles responsive.</div>
       </div>
@@ -348,7 +352,7 @@
     <div class="data-row"><span class="dot dot-gray"></span><span>Device identifiers or advertising IDs</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Usage analytics or crash reports sent to our servers</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Any content from your device</span></div>
-    <div class="data-row"><span class="dot dot-gray"></span><span>Network activity (beyond what Google Play Billing requires)</span></div>
+    <div class="data-row"><span class="dot dot-gray"></span><span>Network activity (beyond Google Play Billing and the optional local-network Remote Access server)</span></div>
   </div>
 
   <!-- Permissions Used -->
@@ -397,8 +401,30 @@
     <div class="permission-item">
       <div class="permission-name">INTERNET</div>
       <div class="permission-desc">
-        Used only by the Google Play Billing library to verify in-app purchases. No other
-        network traffic is initiated by the App.
+        Used by the Google Play Billing library to verify in-app purchases. Also used by the
+        optional Remote Access feature to run a local HTTP server on your device, allowing you
+        to control developer settings from your computer over your local network. The App does
+        not initiate any connections to external servers beyond Google Play Billing.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">FOREGROUND_SERVICE</div>
+      <div class="permission-desc">
+        Required by the Remote Access feature to keep the local HTTP server running while the
+        App is in the background. The foreground service displays a persistent notification so
+        you always know when Remote Access is active. This permission is only used when you
+        explicitly enable Remote Access.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">FOREGROUND_SERVICE_SPECIAL_USE</div>
+      <div class="permission-desc">
+        Required on Android 14+ to declare the specific purpose of the foreground service.
+        TogglDev's foreground service runs a local network server for remote developer settings
+        control — this permission tells Android the exact use case. It is only active when you
+        enable Remote Access.
       </div>
     </div>
 
@@ -428,6 +454,7 @@
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI preferences</strong> — whether the Quick Settings tile has been added, snapshot expand state, etc.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings Snapshot</strong> — a copy of your developer settings captured before turning Developer Options off, including: USB Debugging state, window/transition/animator animation scales, Show Touches, and Stay On While Plugged In. These values are read back and restored when you re-enable Developer Options.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Auto-Disable app list</strong> — the list of apps you selected for automatic Developer Options disabling, and your chosen re-enable delay. No information about your app usage or launch history is stored.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Remote Access preferences</strong> — server port, auto-stop duration, pairing token, and usage statistics (total time active). All stored locally and never transmitted. The pairing token is used to authenticate connections from your computer on the local network.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Supporter status</strong> — whether you have completed an in-app purchase, cached locally to avoid repeated billing queries.</span></div>
     <p style="margin-top: 0.85rem;">
       Because we do not collect any personal data, there is nothing on our servers to retain
