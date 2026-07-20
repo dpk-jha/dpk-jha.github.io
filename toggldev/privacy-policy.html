@@ -248,7 +248,7 @@
     <img src="icon.png" alt="TogglDev icon" width="72" height="72" />
   </div>
   <h1>TogglDev — <span>Privacy Policy</span></h1>
-  <p>Last updated: July 15, 2026 &nbsp;·&nbsp; v2.0</p>
+  <p>Last updated: July 19, 2026 &nbsp;·&nbsp; v2.3</p>
 </header>
 
 <main>
@@ -305,15 +305,15 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">More Toggles</div>
-        <div class="feature-desc">Show Touches, Stay Awake While Plugged In, Force RTL Layout, Don't Keep Activities, and Wait for Debugger.</div>
+        <div class="feature-desc">Stay Awake While Plugged In, Force RTL Layout, Don't Keep Activities, Wait for Debugger, Debug App, Wi-Fi Scan Throttling, Force Resizable Activities, View Attribute Inspection, Mobile Data Always On, Freeform Windows, Simulate Display, Disable BT Absolute Volume, and Demo Mode.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Home Screen Widgets</div>
-        <div class="feature-desc">5 widgets for one-tap control: Dev Options, USB Debugging, Wireless Debugging, open Developer Settings, and open Accessibility Settings.</div>
+        <div class="feature-desc">6 widgets for one-tap control: Dev Options, USB Debugging, Wireless Debugging, Dev Options &amp; Accessibility, open Developer Settings, and open Accessibility Settings.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Quick Settings Tiles</div>
-        <div class="feature-desc">5 tiles in the notification shade for instant access to toggles and settings shortcuts.</div>
+        <div class="feature-desc">6 tiles in the notification shade for instant access to toggles and settings shortcuts.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">App Shortcuts</div>
@@ -324,8 +324,12 @@
         <div class="feature-desc">Automatically turns off Developer Options when selected apps launch and restores them after a configurable delay.</div>
       </div>
       <div class="feature-item">
-        <div class="feature-label">17 Languages</div>
-        <div class="feature-desc">Supports Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Portuguese, Russian, Thai, and Turkish.</div>
+        <div class="feature-label">Accessibility Hide</div>
+        <div class="feature-desc">Temporarily hides TogglDev's accessibility service from selected apps that crash or block access when an accessibility service is detected.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">18 Languages</div>
+        <div class="feature-desc">Supports Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Portuguese, Russian, Spanish, Thai, and Turkish.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Remote Access</div>
@@ -388,13 +392,25 @@
     <div class="permission-item">
       <div class="permission-name">BIND_ACCESSIBILITY_SERVICE</div>
       <div class="permission-desc">
-        Used by the optional Auto-Disable feature. When enabled, the App runs an accessibility
-        service that detects when selected apps come to the foreground and automatically turns off
-        Developer Options so those apps see it as disabled. Developer Options are restored after
-        you leave the monitored app. The service does not read, collect, or transmit any screen
-        content, keystrokes, or personal data — it only observes which app is in the foreground.
-        This service must be enabled manually by you in Android Settings and can be revoked at
-        any time.
+        Used by the optional Auto-Disable and Accessibility Hide features. When enabled, the App
+        runs an accessibility service that detects when selected apps come to the foreground and
+        automatically turns off Developer Options (Auto-Disable) or temporarily hides the
+        accessibility service itself (Accessibility Hide) so those apps don't detect it. Settings
+        are restored after you leave the monitored app. The service does not read, collect, or
+        transmit any screen content, keystrokes, or personal data — it only observes which app
+        is in the foreground. This service must be enabled manually by you in Android Settings
+        and can be revoked at any time.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">PACKAGE_USAGE_STATS</div>
+      <div class="permission-desc">
+        Used by the Accessibility Hide feature to detect which app is currently in the foreground.
+        This is required so TogglDev can determine when to hide its accessibility service from
+        apps that would crash or block access. This permission is entirely opt-in, must be granted
+        manually by you in Android Settings, and is only used for real-time foreground app
+        detection — no usage history is collected, stored, or transmitted.
       </div>
     </div>
 
@@ -452,8 +468,9 @@
       information is stored locally:
     </p>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI preferences</strong> — whether the Quick Settings tile has been added, snapshot expand state, etc.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings Snapshot</strong> — a copy of your developer settings captured before turning Developer Options off, including: USB Debugging state, window/transition/animator animation scales, Show Touches, and Stay On While Plugged In. These values are read back and restored when you re-enable Developer Options.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings Snapshot</strong> — a copy of your developer settings captured before turning Developer Options off, including: USB Debugging state, animation scales, Stay On While Plugged In, accessibility service list, and all other toggleable developer settings. These values are read back and restored when you re-enable Developer Options.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Auto-Disable app list</strong> — the list of apps you selected for automatic Developer Options disabling, and your chosen re-enable delay. No information about your app usage or launch history is stored.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Accessibility Hide app list</strong> — the list of apps you selected for accessibility service hiding. No information about your app usage or launch history is stored.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Remote Access preferences</strong> — server port, auto-stop duration, pairing token, and usage statistics (total time active). All stored locally and never transmitted. The pairing token is used to authenticate connections from your computer on the local network.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Supporter status</strong> — whether you have completed an in-app purchase, cached locally to avoid repeated billing queries.</span></div>
     <p style="margin-top: 0.85rem;">
