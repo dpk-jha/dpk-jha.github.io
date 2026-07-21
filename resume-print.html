@@ -305,7 +305,7 @@
         }
         .oss-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 0.08in 0.15in;
             margin-bottom: 0.06in;
         }
@@ -337,6 +337,14 @@
             font-weight: 600;
             color: var(--muted);
         }
+        .ai-star { display: inline-block; font-size: 5pt; color: var(--blue); vertical-align: super; margin-left: 1pt; opacity: 0.6; }
+        .oss-ai-tools { font-size: 7pt; line-height: 1.5; margin-top: 0.04in; }
+        .oss-ai-tools strong { font-weight: 700; color: var(--blue); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+        .oss-ai-tools span { color: var(--body); font-weight: 500; }
+        .bottom-row { display: flex; gap: 0.2in; margin-top: 0.1in; padding-top: 0.08in; border-top: 1pt solid #eee; }
+        .bottom-row .oss-section { flex: 1; margin-top: 0; padding-top: 0; border-top: none; }
+        .exp-col { flex-shrink: 0; }
+        .exp-col .exp-entry { margin-bottom: 0.08in; }
     </style>
     <script src="/shared/analytics.js" defer></script>
 </head>
@@ -355,13 +363,13 @@
         <div class="header-right">
             <div>+91 9572 36 2138</div>
             <div>deepakjha.dpk@gmail.com</div>
-            <div><a href="https://linkedin.com/in/dpkjha">linkedin.com/in/dpkjha</a> &middot; <a href="https://github.com/dpkay-io">github.com/dpkay-io</a> &middot; <a href="https://dpkay.com">dpkay.com</a></div>
+            <div><a href="https://dpkay.com">dpkay.com</a> &middot; <a href="https://github.com/dpkay-io">github.com/dpkay-io</a> &middot; <a href="https://linkedin.com/in/dpkjha">linkedin.com/in/dpkjha</a></div>
         </div>
     </div>
 
     <!-- Summary -->
     <div class="summary-section">
-        <p class="summary-text">Associate Architect with full-stack engineering experience specializing in <strong>distributed real-time systems</strong>, memory-optimized UI pipelines, and scalable cloud-native architecture. Proven track record of designing and shipping enterprise platforms orchestrating <strong>8,000+ concurrent devices</strong> across multi-tenant, multi-region deployments with <strong>zero-downtime failovers</strong>. Prolific builder and shipper &mdash; published apps, <strong>agentic AI developer tools</strong> with MCP integrations, and open-source projects across <strong>Rust, Go, TypeScript, and Kotlin</strong>. Known for <strong>rapid end-to-end execution</strong> from system design through production delivery at high velocity, while <strong>mentoring engineers</strong> and aligning cross-functional stakeholders.</p>
+        <p class="summary-text">Associate Architect with full-stack engineering depth across <strong>distributed real-time systems</strong>, memory-optimized UI pipelines, and scalable cloud-native architecture. Built production systems orchestrating <strong>8,000+ concurrent devices</strong> across multi-tenant, multi-region deployments with <strong>zero-downtime failovers</strong>. <strong>Authored product specifications and defined features from scratch</strong>, collaborating directly with stakeholders to translate vision into shipped software. Prolific builder &mdash; published apps, <strong>agentic AI developer tools</strong> with MCP integrations, and open-source projects across <strong>Rust, Go, TypeScript, and Kotlin</strong>. Championed and drove <strong>end-to-end agent-driven development</strong> practices. Known for owning the <strong>full product lifecycle</strong> &mdash; from requirement discovery and system design through production delivery &mdash; while <strong>mentoring engineers</strong> and driving cross-functional alignment.</p>
     </div>
 
     <!-- Main Two-Column Layout -->
@@ -379,8 +387,8 @@
                 <ul class="skill-list">
                     <li>C#</li>
                     <li>JavaScript / TypeScript</li>
-                    <li>Go</li>
-                    <li>Rust</li>
+                    <li>Go <span class="ai-star" title="AI-assisted development">✦</span></li>
+                    <li>Rust <span class="ai-star" title="AI-assisted development">✦</span></li>
                     <li>Python</li>
                     <li>Java</li>
                     <li>C / C++</li>
@@ -436,7 +444,7 @@
                 </div>
                 <ul class="skill-list">
                     <li>Flutter</li>
-                    <li>Kotlin / Android</li>
+                    <li>Kotlin<span class="ai-star" title="AI-assisted development">✦</span> / Android</li>
                     <li>React Native</li>
                     <li>Ionic</li>
                 </ul>
@@ -494,7 +502,7 @@
                     <span class="project-dates">2020 &ndash; Present</span>
                 </div>
                 <p class="project-role">Apra Labs &middot; Associate Architect / Lead</p>
-                <p class="project-desc">Architected an end-to-end cloud platform for orchestrating stable, <strong>low-latency live streams</strong>, configuration changes, and event captures for thousands of <strong>geo-distributed cameras</strong> across multiple tenants and regions. Engineered a scalable middleware layer with <strong>localized brokers and edge protocols</strong> for camera interfacing. Leveraged a <strong>distributed service bus</strong> for reliable cross-region message routing and implemented <strong>real-time signaling and streaming state management</strong> across cloud boundaries for multi-region tenant isolation and seamless failovers. Led and mentored a cross-functional team of 4 &mdash; developers, QA, and support &mdash; aligning stakeholders across engineering, operations, and client teams through development and multi-region production rollouts.</p>
+                <p class="project-desc">Architected an end-to-end cloud platform for orchestrating stable, <strong>low-latency live streams</strong>, configuration changes, and event captures for thousands of <strong>geo-distributed cameras</strong> across multiple tenants and regions. Engineered a scalable middleware layer with <strong>localized brokers and edge protocols</strong> for camera interfacing. Implemented reliable cross-region message routing via a <strong>distributed service bus</strong> and engineered <strong>real-time signaling and streaming state management</strong> across cloud boundaries for multi-region tenant isolation and seamless failovers. Led and mentored a cross-functional team &mdash; developers, QA, and support &mdash; driving stakeholder alignment across engineering, operations, and client teams from requirements through multi-region production rollouts.</p>
                 <p class="project-meta">
                     <span class="project-meta-label">Impact: </span>
                     <span class="project-meta-value">Achieved <strong>zero-downtime regional failovers</strong> and sub-second stream switching, scaling to <strong>8,000+ concurrent cameras</strong> while onboarding new enterprise tenants without additional infrastructure investment</span>
@@ -508,7 +516,7 @@
             <!-- Project 2: Dashboard -->
             <div class="project">
                 <div class="project-header">
-                    <span class="project-name">Realtime Multi-purpose Dashboard</span>
+                    <span class="project-name">Real-Time Multipurpose Dashboard</span>
                     <span class="project-dates">2023 &ndash; Present</span>
                 </div>
                 <p class="project-role">Apra Labs &middot; Associate Architect / Lead</p>
@@ -530,7 +538,7 @@
                     <span class="project-dates">2017 &ndash; 2019</span>
                 </div>
                 <p class="project-role">AlienHu &middot; Software Engineer</p>
-                <p class="project-desc">Designed and developed a full-stack <strong>B2B point-of-sale application</strong> with a team, and <strong>single-handedly built</strong> the end-to-end <strong>B2C e-commerce mobile app</strong> and the shared sync middleware layer managing inventory updates, <strong>real-time order notifications</strong>, pricing changes, and <strong>digital payment state flows</strong> across <strong>fragmented networks</strong> where physical POS terminals frequently drop connectivity. Built a robust <strong>transaction-handling and queuing mechanism</strong> for reliable data syncing with safe <strong>offline state management</strong> to eliminate <strong>race conditions</strong> during POS resynchronization with the cloud backend.</p>
+                <p class="project-desc">Designed and developed a full-stack <strong>B2B point-of-sale application</strong> with a team, and <strong>single-handedly built</strong> the end-to-end <strong>B2C e-commerce mobile app</strong> and the shared sync middleware layer managing inventory updates, <strong>real-time order notifications</strong>, pricing changes, and <strong>digital payment state flows</strong> across <strong>fragmented networks</strong> where physical POS terminals frequently drop connectivity. Engineered a fault-tolerant <strong>transaction queue with offline state management</strong>, eliminating <strong>race conditions</strong> during POS resynchronization with the cloud backend.</p>
                 <p class="project-meta">
                     <span class="project-meta-label">Impact: </span>
                     <span class="project-meta-value">Eliminated <strong>double-selling and inventory lock conflicts</strong> — enabling uninterrupted retail operations with <strong>zero data loss</strong> during offline-to-cloud resynchronization across fragmented POS networks</span>
@@ -545,33 +553,27 @@
                 </p>
             </div>
 
-            <!-- OSS Section -->
-            <div class="oss-section">
-                <h2 class="section-title">Open Source &amp; Shipped Products</h2>
-                <div class="oss-grid">
-                    <div class="oss-entry">
-                        <p class="oss-name">Terminal Studio</p>
-                        <p class="oss-desc">GPU-accelerated terminal multiplexer with built-in file browser, git diff viewer, and workspace persistence.</p>
-                        <p class="oss-tech">Rust, wgpu, egui</p>
+            <!-- Bottom: OSS + Experience side by side -->
+            <div class="bottom-row">
+                <div class="oss-section">
+                    <h2 class="section-title">Open Source &amp; Shipped Products</h2>
+                    <div class="oss-grid">
+                        <div class="oss-entry">
+                            <p class="oss-name">TogglDev</p>
+                            <p class="oss-desc">Toggle Android Developer Options instantly &mdash; widget, Quick Settings tile, Banking App Shield, Remote Access Control, Automation, and more. 4.5&#9733; rated &middot; 5K+ downloads.</p>
+                            <p class="oss-tech">Kotlin, Android</p>
+                        </div>
+                        <div class="oss-entry">
+                            <p class="oss-name">Terminal Studio</p>
+                            <p class="oss-desc">GPU-accelerated terminal multiplexer with built-in file browser, git diff viewer, code editor, and workspace persistence. Cross-platform, 120+ features, 15 themes.</p>
+                            <p class="oss-tech">Rust, wgpu, egui</p>
+                        </div>
                     </div>
-                    <div class="oss-entry">
-                        <p class="oss-name">AfterCall Shield</p>
-                        <p class="oss-desc">Auto-dismisses post-call overlay pop-ups on Android. Published on Google Play Store.</p>
-                        <p class="oss-tech">Kotlin, Android</p>
-                    </div>
-                    <div class="oss-entry">
-                        <p class="oss-name">splitgame</p>
-                        <p class="oss-desc">Split-terminal game panel with Claude AI opponent via MCP integration. Published on npm.</p>
-                        <p class="oss-tech">TypeScript, Node.js</p>
-                    </div>
+                    <p class="oss-ai-tools"><strong>Agentic AI Tools:</strong> <span>Claude Shift &middot; Claude Lifecycle Core &middot; Claude Comedy &middot; AntiBluff &middot; AntiClimax &middot; Ingred &middot; SplitGame &middot; Claude Ticker</span></p>
+                    <p class="oss-ai-tools"><strong>Also:</strong> <span>CloseLink (Kotlin) &middot; AfterCall Shield (Kotlin) &middot; GitReg (Rust) &middot; tTag (Go) &middot; Workspace ID Pro (VS Code)</span></p>
                 </div>
-                <p class="oss-also"><strong>Also:</strong> gitreg (Rust) &middot; claude-ticker (TypeScript) &middot; ttag (Go) &middot; TogglDev (Kotlin) &middot; Workspace ID Pro (VS Code)</p>
-            </div>
-
-            <!-- Experience -->
-            <div class="exp-section" style="margin-top: 0.1in; padding-top: 0.08in; border-top: 1pt solid #eee; border-bottom: none;">
-                <h2 class="section-title">Experience</h2>
-                <div style="display: flex; gap: 0.4in;">
+                <div class="exp-col">
+                    <h2 class="section-title">Experience</h2>
                     <div class="exp-entry">
                         <div class="exp-company">Apra Labs</div>
                         <div class="exp-role">Associate Architect</div>
@@ -588,6 +590,7 @@
         </div>
 
     </div>
+
 
     <script>
         if (window !== window.top) {
