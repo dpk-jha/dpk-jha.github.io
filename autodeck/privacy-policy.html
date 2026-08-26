@@ -232,7 +232,7 @@
 
 <header>
   <h1>AutoDeck — <span>Privacy Policy</span></h1>
-  <p>Last updated: July 10, 2026 &nbsp;·&nbsp; v1.0.0</p>
+  <p>Last updated: August 27, 2026 &nbsp;·&nbsp; v1.4.0</p>
 </header>
 
 <main>
@@ -258,7 +258,16 @@
     <p>
       This policy describes how Deepak Jha ("we", "our", or "us") handles information in
       connection with the App. <strong>We do not collect, store, or share any personal
-      information.</strong>
+      information.</strong> The App has no accounts, no servers, and no analytics — everything
+      you create stays on your device.
+    </p>
+    <p>
+      The App does use a small number of Google services that are part of the Android platform
+      and the Google Play ecosystem: <strong>Google Play services Location</strong> (geofencing),
+      the <strong>Google Maps SDK</strong> (only inside the map picker used to choose a location
+      trigger), and <strong>Google Play Billing</strong> (only if you take the optional Pro
+      subscription). These are described in the
+      <a href="#third-party">Third-Party Services</a> section below.
     </p>
   </div>
 
@@ -270,7 +279,7 @@
       </div>
       <h2>What the App Does</h2>
     </div>
-    <p>All processing happens entirely on your device. The App provides the following features:</p>
+    <p>All drawer and trigger processing happens entirely on your device. The App provides the following features:</p>
     <div class="feature-grid">
       <div class="feature-item">
         <div class="feature-label">App Drawers</div>
@@ -298,7 +307,11 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">Call Triggers</div>
-        <div class="feature-desc">Switch drawers when a phone call starts or ends.</div>
+        <div class="feature-desc">Switch drawers when a cellular or internet (VoIP) call starts or ends.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Navigation Triggers</div>
+        <div class="feature-desc">Switch drawers when turn-by-turn navigation starts or ends in a maps app.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">NFC Triggers</div>
@@ -311,6 +324,34 @@
       <div class="feature-item">
         <div class="feature-label">Multi-Condition Rules</div>
         <div class="feature-desc">Combine multiple trigger conditions (AND/OR) to create complex automation rules.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Static Drawer Widget</div>
+        <div class="feature-desc">Pin a specific drawer to your home screen as its own widget, independent of the active drawer.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Widget Grid Customisation</div>
+        <div class="feature-desc">Adjust widget grid size, spacing, distribution, labels, and appearance with a live preview.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Favorites (Sticky Apps)</div>
+        <div class="feature-desc">Choose apps and shortcuts that appear in every drawer, before or after the drawer's own apps.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Shortcuts &amp; Deep Links</div>
+        <div class="feature-desc">Activate drawers from launcher shortcuts, <code>autodeck://</code> deep links, or broadcasts sent by automation apps such as Samsung Modes &amp; Routines, Tasker, and MacroDroid.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Activity Log</div>
+        <div class="feature-desc">An on-device log of drawer switches and trigger events that you can review and share for troubleshooting.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Languages</div>
+        <div class="feature-desc">The App interface is available in 18 languages, selectable per-app in Android's language settings.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Pro Upgrade</div>
+        <div class="feature-desc">An optional monthly or yearly subscription that unlocks the Location (geofence) trigger, handled by Google Play Billing.</div>
       </div>
     </div>
   </div>
@@ -328,7 +369,7 @@
     <div class="data-row"><span class="dot dot-gray"></span><span>Device identifiers or advertising IDs</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Usage analytics or crash reports sent to our servers</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Call logs, contact lists, or message content</span></div>
-    <div class="data-row"><span class="dot dot-gray"></span><span>Notification content from other apps</span></div>
+    <div class="data-row"><span class="dot dot-gray"></span><span>Notification content from other apps (see <code>BIND_NOTIFICATION_LISTENER_SERVICE</code> below for the narrow, in-memory exception used to detect navigation and VoIP calls)</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Browsing history or network traffic</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Location history (geofence events are processed on-device and not stored beyond the active session)</span></div>
   </div>
@@ -344,7 +385,7 @@
     <p>The App requests the following Android permissions solely to perform its core functions. Each permission is tied to a specific trigger type and is only used when you enable that trigger:</p>
 
     <div class="permission-item">
-      <div class="permission-name">BLUETOOTH · BLUETOOTH_CONNECT · BLUETOOTH_SCAN</div>
+      <div class="permission-name">BLUETOOTH · BLUETOOTH_CONNECT</div>
       <div class="permission-desc">
         Used by Bluetooth triggers to detect when paired Bluetooth devices connect or disconnect.
         The App reads device names to let you select which device to use as a trigger. No Bluetooth
@@ -364,7 +405,7 @@
     </div>
 
     <div class="permission-item">
-      <div class="permission-name">ACCESS_WIFI_STATE · CHANGE_WIFI_STATE</div>
+      <div class="permission-name">ACCESS_WIFI_STATE</div>
       <div class="permission-desc">
         Used by Wi-Fi triggers to detect which Wi-Fi network you are connected to. The App reads
         the network name (SSID) to match against your configured triggers. No Wi-Fi data is
@@ -392,16 +433,19 @@
     <div class="permission-item">
       <div class="permission-name">BIND_NOTIFICATION_LISTENER_SERVICE</div>
       <div class="permission-desc">
-        Used by notification triggers to detect when a notification arrives from a specific app.
-        The App reads only the source package name of the notification to match against your
-        configured triggers. It does not read, store, or transmit notification content, message
-        text, or any other notification data. This service must be enabled manually by you in
-        Android Settings and can be revoked at any time.
+        Used by the navigation and internet-call triggers to detect when turn-by-turn navigation
+        (Google Maps, Waze) or a VoIP call starts and ends. To recognise those two cases the App
+        inspects, in memory and on your device only, the notification's source package name, its
+        notification channel, its category, its ongoing flag, and — for Google Maps only — its
+        title text, which it matches against a fixed navigation pattern. Nothing is read from
+        notifications belonging to any other app, and no notification content is stored, logged,
+        transmitted off your device, sold, or shared. This service must be enabled manually by you
+        in Android Settings and can be revoked at any time.
       </div>
     </div>
 
     <div class="permission-item">
-      <div class="permission-name">SCHEDULE_EXACT_ALARM · USE_EXACT_ALARM</div>
+      <div class="permission-name">SCHEDULE_EXACT_ALARM</div>
       <div class="permission-desc">
         Used by schedule triggers to fire drawer switches at specific times. Alarms are managed
         by Android's AlarmManager and processed entirely on-device.
@@ -445,8 +489,10 @@
     <div class="permission-item">
       <div class="permission-name">INTERNET</div>
       <div class="permission-desc">
-        Included in the manifest but not actively used by the App to transmit data. No network
-        calls are made to our servers or any third-party service.
+        Required by the Google libraries the App uses: the Google Maps SDK (to load map tiles in
+        the location-trigger map picker) and Google Play Billing (to process the optional Pro
+        purchase). <strong>We operate no servers, and the App never sends your drawers, rules,
+        app list, or logs anywhere.</strong>
       </div>
     </div>
   </div>
@@ -467,15 +513,69 @@
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Drawers &amp; app lists</strong> — the names and contents of drawers you create, and which drawer is currently active.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Trigger rules</strong> — your configured automation rules (Bluetooth device names, Wi-Fi SSIDs, geofence coordinates, schedule times, etc.).</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Trigger session state</strong> — which triggers are currently active, used to evaluate multi-condition rules. Cleaned up automatically.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>UI preferences</strong> — active drawer selection, widget state, and user preferences via DataStore.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Favorites (sticky apps)</strong> — the apps and shortcuts you pin to every drawer, and their position.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>UI &amp; widget preferences</strong> — active drawer selection, widget grid size, spacing, label and appearance settings, and other user preferences via DataStore.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Activity log</strong> — a plain-text log of drawer switches and trigger events (see <a href="#logs">Activity Log &amp; Diagnostics</a>), kept in the App's private storage and deleted automatically after 7 days.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Pro subscription status</strong> — a single true/false flag caching whether an active Pro subscription was reported by Google Play. No payment details are stored by the App.</span></div>
     <p style="margin-top: 0.85rem;">
       Because we do not collect any personal data, there is nothing on our servers to retain
       or delete on your behalf.
     </p>
   </div>
 
+  <!-- Activity Log & Diagnostics -->
+  <div class="card" id="logs">
+    <div class="card-header">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="#D0BCFF"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      </div>
+      <h2>Activity Log &amp; Diagnostics</h2>
+    </div>
+    <p>
+      To help you understand and troubleshoot your automation rules, the App keeps a plain-text
+      activity log in its private storage. Each entry is a timestamp, a category, and a short
+      line such as which drawer was activated, which rule fired, or which Bluetooth device
+      connected. Log files rotate weekly and are <strong>deleted automatically after 7 days</strong>.
+    </p>
+    <p>The log records only events the App itself handles, for example:</p>
+    <div class="data-row"><span class="dot dot-green"></span><span>Drawer activations, deactivations and restores, by drawer name</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span>Rule and trigger evaluation results, by rule label</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span>Bluetooth device name and address, Wi-Fi network name (SSID), geofence entry/exit, alarm start/end, NFC tag scans</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span>Whether a cellular or VoIP call, or navigation, started or ended — never phone numbers, contacts, or call or notification content</span></div>
+    <p style="margin-top: 0.85rem;">
+      <strong>Sharing is always your choice.</strong> Logs never leave your device unless you tap
+      <em>Share Logs</em> in Settings. When you do, the App assembles the stored logs together
+      with a diagnostic header — app version, device manufacturer and model, Android version,
+      your default launcher, and which permissions are granted or denied — into a single text
+      file and hands it to the app you pick in the Android share sheet. Nothing is uploaded to
+      us, and we receive it only if you deliberately send it to us.
+    </p>
+  </div>
+
+  <!-- Purchases -->
+  <div class="card" id="purchases">
+    <div class="card-header">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="#D0BCFF"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A.996.996 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      </div>
+      <h2>Purchases</h2>
+    </div>
+    <p>
+      The App offers an optional <strong>Pro</strong> subscription (monthly or yearly) that
+      unlocks the Location (geofence) trigger. All other features are free. Subscriptions are
+      sold, billed, renewed, and cancelled entirely through <strong>Google Play Billing</strong>
+      and your Google Play account. We never see or handle your payment method, billing address,
+      or Google account details — the App only receives from Google Play whether an active
+      subscription exists, and stores that as a single true/false flag on your device.
+    </p>
+    <p>
+      Google's handling of purchase data is governed by the
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
+    </p>
+  </div>
+
   <!-- Third-Party Services -->
-  <div class="card">
+  <div class="card" id="third-party">
     <div class="card-header">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="#D0BCFF"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
@@ -483,8 +583,42 @@
       <h2>Third-Party Services</h2>
     </div>
     <p>
-      The App does not include any third-party SDKs, analytics libraries, advertising networks,
-      or crash reporting tools. All functionality is implemented using Android platform APIs.
+      The App contains <strong>no analytics libraries, no advertising networks, and no crash
+      reporting tools</strong>. It does rely on three Google libraries, each limited to a single
+      feature:
+    </p>
+
+    <div class="permission-item">
+      <div class="permission-name">Google Play services — Location</div>
+      <div class="permission-desc">
+        Provides Android's geofencing APIs used by Location triggers. Geofences are registered
+        with Google Play services on your device, which notifies the App on entry or exit. The
+        App does not send your location anywhere and does not store location history.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">Google Maps SDK for Android</div>
+      <div class="permission-desc">
+        Used <em>only</em> in the map picker you open when creating a location trigger, so you
+        can see and drop a pin on a map. Displaying the map requires Google to serve map tiles,
+        so opening the picker contacts Google's servers. If you never create a location trigger,
+        no map is ever loaded.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">Google Play Billing</div>
+      <div class="permission-desc">
+        Used only to offer and verify the optional Pro subscription. See
+        <a href="#purchases">Purchases</a> above.
+      </div>
+    </div>
+
+    <p style="margin-top: 0.85rem;">
+      Data handled by these Google services is governed by the
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
+      Everything else in the App is implemented using Android platform APIs.
     </p>
   </div>
 
