@@ -16,7 +16,12 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dpkay.com/developer-options-toggler/privacy-policy.html</loc>
+    <loc>https://dpkay.com/toggldev</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dpkay.com/toggldev/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

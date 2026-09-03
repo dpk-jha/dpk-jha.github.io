@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0a0a">
   <meta name="description" content="Privacy Policy for TogglDev — an Android utility to toggle Developer Options with one tap.">
-  <link rel="canonical" href="https://dpkay.com/toggldev/privacy-policy.html">
+  <link rel="canonical" href="https://dpkay.com/toggldev/privacy-policy">
   <title>Privacy Policy — TogglDev</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -248,7 +248,7 @@
     <img src="icon.png" alt="TogglDev icon" width="72" height="72" />
   </div>
   <h1>TogglDev — <span>Privacy Policy</span></h1>
-  <p>Last updated: July 19, 2026 &nbsp;·&nbsp; v2.3</p>
+  <p>Last updated: September 3, 2026 &nbsp;·&nbsp; App v2.87</p>
 </header>
 
 <main>
@@ -305,11 +305,11 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">More Toggles</div>
-        <div class="feature-desc">Stay Awake While Plugged In, Force RTL Layout, Don't Keep Activities, Wait for Debugger, Debug App, Wi-Fi Scan Throttling, Force Resizable Activities, View Attribute Inspection, Mobile Data Always On, Freeform Windows, Simulate Display, Disable BT Absolute Volume, and Demo Mode.</div>
+        <div class="feature-desc">Stay Awake While Plugged In, Force RTL Layout, Don't Keep Activities, Wait for Debugger, Debug App, Force Resizable Activities, View Attribute Inspection, Mobile Data Always On, Freeform Windows, Simulate Display, and Demo Mode.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Home Screen Widgets</div>
-        <div class="feature-desc">6 widgets for one-tap control: Dev Options, USB Debugging, Wireless Debugging, Dev Options &amp; Accessibility, open Developer Settings, and open Accessibility Settings.</div>
+        <div class="feature-desc">9 widgets for one-tap control: Dev Options, USB Debugging, Wireless Debugging, Dev Options &amp; Accessibility, open Developer Settings, open Accessibility Settings, Remote Access status, Safe Apps, and a configurable Action widget that runs one App Rule or command.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Quick Settings Tiles</div>
@@ -317,7 +317,7 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">App Shortcuts</div>
-        <div class="feature-desc">Long-press the app icon to toggle Developer Options on or off.</div>
+        <div class="feature-desc">Long-press the app icon to turn Developer Options on or off, toggle it, open Safe Apps, or jump to Developer Settings. Individual safe apps can also be pinned to the home screen.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Auto-Disable</div>
@@ -329,7 +329,7 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">18 Languages</div>
-        <div class="feature-desc">Supports Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Portuguese, Russian, Spanish, Thai, and Turkish.</div>
+        <div class="feature-desc">Supports English, Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Portuguese (Brazil), Russian, Spanish, Thai, and Turkish.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Remote Access</div>
@@ -338,6 +338,30 @@
       <div class="feature-item">
         <div class="feature-label">Battery Optimization</div>
         <div class="feature-desc">Optional exclusion from battery optimization to keep widgets and tiles responsive.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">App Rules</div>
+        <div class="feature-desc">Rules you create that apply a chosen set of developer settings to a group of apps — turn off, turn on, or a custom combination — when those apps come to the foreground, and revert when you leave.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Command Automation</div>
+        <div class="feature-desc">Optional shell commands that you write yourself, run by the App on your device when a toggle changes state. Commands run with the App's own privileges; if a root shell is present on the device the App can detect it and use it. Nothing is executed unless you create and enable a command.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Safe Apps &amp; Safe Launch</div>
+        <div class="feature-desc">A drawer listing the apps covered by your rules. Launching one from here applies that app's settings first. Individual safe apps can be pinned to your home screen.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Ask to Close</div>
+        <div class="feature-desc">Optional prompt shown when you leave a safe app, offering to close it and clear it from Recents.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Toggle Zone</div>
+        <div class="feature-desc">Lets you choose exactly which developer settings the App is permitted to change. Unchecked settings are never written by the master toggle, tiles, auto-disable, or turn on/off rules.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Diagnostic &amp; Execution Logs</div>
+        <div class="feature-desc">On-device logs of toggle events, timings, and command results, kept for the last 7 days. You can view them in the App and optionally save them to Downloads or share them yourself. They are never uploaded anywhere.</div>
       </div>
     </div>
   </div>
@@ -355,7 +379,7 @@
     <div class="data-row"><span class="dot dot-gray"></span><span>Location data</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Device identifiers or advertising IDs</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Usage analytics or crash reports sent to our servers</span></div>
-    <div class="data-row"><span class="dot dot-gray"></span><span>Any content from your device</span></div>
+    <div class="data-row"><span class="dot dot-gray"></span><span>Any content from your device — screen contents, keystrokes, messages, files, contacts, or other apps' data</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Network activity (beyond Google Play Billing and the optional local-network Remote Access server)</span></div>
   </div>
 
@@ -445,6 +469,34 @@
     </div>
 
     <div class="permission-item">
+      <div class="permission-name">KILL_BACKGROUND_PROCESSES</div>
+      <div class="permission-desc">
+        Used only by the optional "Ask to Close" feature. When you leave an app covered by a rule
+        and confirm the prompt, the App asks Android to stop that app's background processes and
+        clear it from Recents, so it cannot quietly return and re-read your developer settings.
+        This never runs without your explicit confirmation, is limited to the app you just left,
+        and reads nothing from that app.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">RECEIVE_BOOT_COMPLETED</div>
+      <div class="permission-desc">
+        Lets the App restore your widgets, Quick Settings tiles, and any pending settings restore
+        after your device restarts. No data is collected or transmitted at boot.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">POST_NOTIFICATIONS</div>
+      <div class="permission-desc">
+        Required on Android 13+ to show the App's own notifications — the Remote Access foreground
+        service notice, restore reminders, and accessibility-service warnings. Notifications are
+        generated entirely on your device; nothing is sent to or received from a server.
+      </div>
+    </div>
+
+    <div class="permission-item">
       <div class="permission-name">com.android.vending.BILLING</div>
       <div class="permission-desc">
         Used to process optional in-app purchases (tip/support the developer) through the
@@ -463,9 +515,10 @@
       <h2>Local Data &amp; Storage</h2>
     </div>
     <p>
-      The App stores data <strong>only on your device</strong> using Android DataStore. This data
-      never leaves your device and is removed when you uninstall the App. The following
-      information is stored locally:
+      The App stores data <strong>only on your device</strong>, using Android DataStore, shared
+      preferences, a local database, and plain-text log files in the App's private storage. This
+      data never leaves your device unless you choose to export or share it yourself, and it is
+      removed when you uninstall the App. The following information is stored locally:
     </p>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI preferences</strong> — whether the Quick Settings tile has been added, snapshot expand state, etc.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings Snapshot</strong> — a copy of your developer settings captured before turning Developer Options off, including: USB Debugging state, animation scales, Stay On While Plugged In, accessibility service list, and all other toggleable developer settings. These values are read back and restored when you re-enable Developer Options.</span></div>
@@ -473,6 +526,11 @@
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Accessibility Hide app list</strong> — the list of apps you selected for accessibility service hiding. No information about your app usage or launch history is stored.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Remote Access preferences</strong> — server port, auto-stop duration, pairing token, and usage statistics (total time active). All stored locally and never transmitted. The pairing token is used to authenticate connections from your computer on the local network.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Supporter status</strong> — whether you have completed an in-app purchase, cached locally to avoid repeated billing queries.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>App Rules</strong> — stored in a local database: the rules you create, the apps you attached to each one, the settings each rule changes, and a snapshot of the values a rule replaced so they can be put back. No app usage or launch history is stored.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Command Automation</strong> — the shell commands you wrote, their triggers, and whether each is enabled, plus the last 100 execution results (timestamp, exit code, and command output). Command output can contain whatever the command you wrote prints, so review it before sharing a log.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Toggle Zone selection</strong> — which developer settings you have allowed the App to change.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Diagnostic logs</strong> — plain-text files in the App's private storage recording toggle events and timings, automatically deleted after 7 days. They contain no personal data and are only ever exported when you tap Save or Share.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Toggle counter</strong> — a single lifetime number of Developer Options flips, used to display the "time saved" figure. It records a count only, not what you toggled or when.</span></div>
     <p style="margin-top: 0.85rem;">
       Because we do not collect any personal data, there is nothing on our servers to retain
       or delete on your behalf.

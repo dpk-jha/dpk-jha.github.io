@@ -903,7 +903,7 @@
                     <div class="access-card reveal" style="--delay: .1s">
                         <svg class="access-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                         <h3>Home Screen Widgets</h3>
-                        <p>6 widgets showing real-time status at a glance. See if Developer Options, USB Debugging, or Wireless Debugging is on or off. Tap to toggle instantly.</p>
+                        <p>9 widgets showing real-time status at a glance. See if Developer Options, USB Debugging, or Wireless Debugging is on or off &mdash; tap to toggle instantly. Plus widgets that run a single App Rule or command, open a safe app, or show Remote Access pairing details.</p>
                         <div class="access-items">
                             <span class="access-item">Dev Options</span>
                             <span class="access-item">USB Debug</span>
@@ -911,16 +911,20 @@
                             <span class="access-item">Dev &amp; A11y</span>
                             <span class="access-item">Dev Settings</span>
                             <span class="access-item">Accessibility</span>
+                            <span class="access-item">Remote Access</span>
+                            <span class="access-item">Safe Apps</span>
+                            <span class="access-item">Action</span>
                         </div>
                     </div>
                     <div class="access-card reveal" style="--delay: .15s">
                         <svg class="access-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
                         <h3>App Shortcuts</h3>
-                        <p>Long-press the TogglDev icon for instant shortcuts &mdash; Turn On, Turn Off, Toggle, or jump to Dev Settings. Works without opening the app.</p>
+                        <p>Long-press the TogglDev icon for instant shortcuts &mdash; Turn On, Turn Off, Toggle, open Safe Apps, or jump to Dev Settings. Individual safe apps can be pinned to your home screen too. Works without opening the app.</p>
                         <div class="access-items">
                             <span class="access-item">Turn On</span>
                             <span class="access-item">Turn Off</span>
                             <span class="access-item">Toggle</span>
+                            <span class="access-item">Safe Apps</span>
                             <span class="access-item">Dev Settings</span>
                         </div>
                     </div>
@@ -996,6 +1000,21 @@
                         <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                         <h3>Command Automation</h3>
                         <p>Define custom ADB/shell commands that run automatically on toggle events. Execution logs with timestamps, exit codes, and privilege detection.</p>
+                    </div>
+                    <div class="feature-card reveal" style="--delay: .55s">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        <h3>Safe Apps</h3>
+                        <p>A drawer of every app covered by a rule. Tap to launch it with its settings already applied &mdash; long-press to pin that app straight to your home screen.</p>
+                    </div>
+                    <div class="feature-card reveal" style="--delay: .6s">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        <h3>Ask to Close</h3>
+                        <p>When you leave a safe app, TogglDev asks whether to close it and clear it from Recents &mdash; so it can&rsquo;t quietly come back and re-detect your settings.</p>
+                    </div>
+                    <div class="feature-card reveal" style="--delay: .65s">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <h3>Toggle Zone</h3>
+                        <p>Pick exactly which settings TogglDev is allowed to change. Anything you uncheck is left untouched by the master toggle, tiles, auto-disable, and Turn On / Turn Off rules.</p>
                     </div>
                 </div>
                 <div class="more-toggles reveal" style="--delay: .15s">
