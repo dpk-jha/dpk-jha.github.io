@@ -232,7 +232,7 @@
 
 <header>
   <h1>AutoDeck — <span>Privacy Policy</span></h1>
-  <p>Last updated: August 27, 2026 &nbsp;·&nbsp; v1.4.0</p>
+  <p>Last updated: September 7, 2026 &nbsp;·&nbsp; v1.7.1</p>
 </header>
 
 <main>
@@ -251,9 +251,9 @@
     </div>
     <p>
       AutoDeck (<code>com.dpkay.apps.autodeck</code>) is an Android app that lets you create named
-      app lists ("drawers") and automatically switch between them based on triggers such as
-      Bluetooth connections, Wi-Fi networks, location, time schedules, phone calls, NFC tags,
-      and app notifications.
+      app lists ("profiles", also called "drawers") and automatically switch between them based on
+      triggers such as Bluetooth connections, Wi-Fi networks, location, time schedules, phone and
+      internet calls, turn-by-turn navigation, and NFC tags.
     </p>
     <p>
       This policy describes how Deepak Jha ("we", "our", or "us") handles information in
@@ -318,10 +318,6 @@
         <div class="feature-desc">Tap an NFC tag to activate a specific drawer.</div>
       </div>
       <div class="feature-item">
-        <div class="feature-label">Notification Triggers</div>
-        <div class="feature-desc">Activate a drawer when a notification arrives from a specific app.</div>
-      </div>
-      <div class="feature-item">
         <div class="feature-label">Multi-Condition Rules</div>
         <div class="feature-desc">Combine multiple trigger conditions (AND/OR) to create complex automation rules.</div>
       </div>
@@ -348,6 +344,18 @@
       <div class="feature-item">
         <div class="feature-label">Languages</div>
         <div class="feature-desc">The App interface is available in 18 languages, selectable per-app in Android's language settings.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Theme</div>
+        <div class="feature-desc">Choose whether the App follows the system light/dark setting, or stays light or dark.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">&ldquo;More apps&rdquo; View</div>
+        <div class="feature-desc">Pick how extra apps open from the widget: a bottom sheet, a launcher-style folder, or a full screen.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Keep Alive</div>
+        <div class="feature-desc">An optional, off-by-default service that keeps AutoDeck resident so widget taps and automation commands respond without a cold start.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Pro Upgrade</div>
@@ -443,13 +451,17 @@
       <div class="permission-name">BIND_NOTIFICATION_LISTENER_SERVICE</div>
       <div class="permission-desc">
         Used by the navigation and internet-call triggers to detect when turn-by-turn navigation
-        (Google Maps, Waze) or a VoIP call starts and ends. To recognise those two cases the App
-        inspects, in memory and on your device only, the notification's source package name, its
-        notification channel, its category, its ongoing flag, and — for Google Maps only — its
-        title text, which it matches against a fixed navigation pattern. Nothing is read from
-        notifications belonging to any other app, and no notification content is stored, logged,
-        transmitted off your device, sold, or shared. This service must be enabled manually by you
-        in Android Settings and can be revoked at any time.
+        or an internet call starts and ends. For every notification posted on the device the App
+        looks at two things only — the source package name and the notification's category — to
+        decide whether it is one of those two cases; for any other app it stops there. It looks
+        further only for a fixed list of apps: <strong>Google Maps</strong> and <strong>Waze</strong>
+        for navigation, and <strong>WhatsApp</strong>, <strong>WhatsApp Business</strong>,
+        <strong>Microsoft Teams</strong> and <strong>Google Meet</strong> for internet calls. For
+        those it additionally reads, in memory and on your device only, the notification channel,
+        the ongoing flag, and — for Google Maps alone — the title text, which it matches against a
+        fixed distance pattern such as &ldquo;400 m&rdquo;. No notification content is stored,
+        logged, transmitted off your device, sold, or shared. This service must be enabled manually
+        by you in Android Settings and can be revoked at any time.
       </div>
     </div>
 
@@ -476,6 +488,28 @@
         Used to run a foreground service for Wi-Fi monitoring and location-based geofence
         triggers. A visible notification is shown while the service is active, as required
         by Android.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">FOREGROUND_SERVICE_SPECIAL_USE</div>
+      <div class="permission-desc">
+        Used only by the optional <strong>Keep alive</strong> setting (Settings &rsaquo; System,
+        <strong>off by default</strong>). When you turn it on, the App runs an empty foreground
+        service with a permanent low-priority notification so the system keeps AutoDeck resident,
+        and widget taps and automation commands do not have to cold-start it. The service reads no
+        data of any kind and does nothing but exist; turning the setting off stops it immediately.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</div>
+      <div class="permission-desc">
+        Declared only so Settings &rsaquo; System &rsaquo; <strong>Battery optimization</strong> can
+        show Android's one-tap exemption dialog instead of dropping you into the system-wide battery
+        list. Triggers are long-running background listeners, and an optimised process stops
+        receiving them. Granting the exemption is entirely your choice, it is never requested
+        silently, and it can be revoked from Android Settings at any time.
       </div>
     </div>
 
@@ -521,9 +555,11 @@
     </p>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Drawers &amp; app lists</strong> — the names and contents of drawers you create, and which drawer is currently active.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Trigger rules</strong> — your configured automation rules (Bluetooth device names, Wi-Fi SSIDs, geofence coordinates, schedule times, etc.).</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Wi-Fi network history</strong> — the names (SSIDs) of Wi-Fi networks this device connected to while a Wi-Fi trigger was active, each with the time it was last seen. This exists only so the Wi-Fi trigger picker can offer you networks you have already used instead of an empty list. It stays on your device and is never transmitted; you can erase it at any time from Android Settings &rsaquo; Apps &rsaquo; AutoDeck &rsaquo; Storage &rsaquo; Clear data, or by uninstalling the App.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Trigger session state</strong> — which triggers are currently active, used to evaluate multi-condition rules. Cleaned up automatically.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Favorites (sticky apps)</strong> — the apps and shortcuts you pin to every drawer, and their position.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>UI &amp; widget preferences</strong> — active drawer selection, widget grid size, spacing, label and appearance settings, and other user preferences via DataStore.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>UI &amp; widget preferences</strong> — active drawer selection, widget grid size, spacing, label and appearance settings, your theme choice (system / light / dark), the &ldquo;More apps&rdquo; view style, the keep-alive on/off flag, and other user preferences via DataStore.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Setup state</strong> — whether you have finished onboarding, and which permission disclosures you have already accepted, so you are not shown them again.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Activity log</strong> — a plain-text log of drawer switches and trigger events (see <a href="#logs">Activity Log &amp; Diagnostics</a>), kept in the App's private storage and deleted automatically after 7 days.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Pro subscription status</strong> — a single true/false flag caching whether an active Pro subscription was reported by Google Play. No payment details are stored by the App.</span></div>
     <p style="margin-top: 0.85rem;">
@@ -550,7 +586,8 @@
     <div class="data-row"><span class="dot dot-green"></span><span>Drawer activations, deactivations and restores, by drawer name</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span>Rule and trigger evaluation results, by rule label</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span>Bluetooth device name and address, Wi-Fi network name (SSID), geofence entry/exit, alarm start/end, NFC tag scans</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span>Whether a cellular or VoIP call, or navigation, started or ended — never phone numbers, contacts, or call or notification content</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span>Whether a cellular or internet call started or ended, and whether navigation started or ended and in which app (Google Maps or Waze) — never phone numbers, contacts, or call or notification content</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span>App lifecycle lines such as the keep-alive service starting or stopping</span></div>
     <p style="margin-top: 0.85rem;">
       <strong>Sharing is always your choice.</strong> Logs never leave your device unless you tap
       <em>Share Logs</em> in Settings. When you do, the App assembles the stored logs together
