@@ -232,7 +232,7 @@
 
 <header>
   <h1>AutoDeck — <span>Privacy Policy</span></h1>
-  <p>Last updated: September 7, 2026 &nbsp;·&nbsp; v1.7.1</p>
+  <p>Last updated: September 13, 2026 &nbsp;·&nbsp; v1.7.1</p>
 </header>
 
 <main>
@@ -318,6 +318,26 @@
         <div class="feature-desc">Tap an NFC tag to activate a specific drawer.</div>
       </div>
       <div class="feature-item">
+        <div class="feature-label">Media Triggers</div>
+        <div class="feature-desc">Switch drawers when music, a podcast, or a video starts or stops playing.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Flight Mode Triggers</div>
+        <div class="feature-desc">Switch drawers when Airplane Mode is turned on or off.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Charging Triggers</div>
+        <div class="feature-desc">Switch drawers when the device starts or stops charging.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Do Not Disturb Triggers</div>
+        <div class="feature-desc">Switch drawers when Do Not Disturb is turned on or off.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Wired Audio Triggers</div>
+        <div class="feature-desc">Switch drawers when wired earphones, speakers, or other wired audio are connected or disconnected.</div>
+      </div>
+      <div class="feature-item">
         <div class="feature-label">Multi-Condition Rules</div>
         <div class="feature-desc">Combine multiple trigger conditions (AND/OR) to create complex automation rules.</div>
       </div>
@@ -377,7 +397,7 @@
     <div class="data-row"><span class="dot dot-gray"></span><span>Device identifiers or advertising IDs</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Usage analytics or crash reports sent to our servers</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Call logs, contact lists, or message content</span></div>
-    <div class="data-row"><span class="dot dot-gray"></span><span>Notification content from other apps (see <code>BIND_NOTIFICATION_LISTENER_SERVICE</code> below for the narrow, in-memory exception used to detect navigation and VoIP calls)</span></div>
+    <div class="data-row"><span class="dot dot-gray"></span><span>Notification content from other apps (see <code>BIND_NOTIFICATION_LISTENER_SERVICE</code> below for the narrow, in-memory exception used to detect navigation, VoIP calls, and media session state)</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Browsing history or network traffic</span></div>
     <div class="data-row"><span class="dot dot-gray"></span><span>Location history (geofence events are processed on-device and not stored beyond the active session)</span></div>
   </div>
@@ -450,18 +470,22 @@
     <div class="permission-item">
       <div class="permission-name">BIND_NOTIFICATION_LISTENER_SERVICE</div>
       <div class="permission-desc">
-        Used by the navigation and internet-call triggers to detect when turn-by-turn navigation
-        or an internet call starts and ends. For every notification posted on the device the App
-        looks at two things only — the source package name and the notification's category — to
-        decide whether it is one of those two cases; for any other app it stops there. It looks
-        further only for a fixed list of apps: <strong>Google Maps</strong> and <strong>Waze</strong>
-        for navigation, and <strong>WhatsApp</strong>, <strong>WhatsApp Business</strong>,
+        Used by the navigation, internet-call, and media triggers. For every notification posted
+        on the device the App looks at two things only — the source package name and the
+        notification's category — to decide whether it is navigation or an internet call; for
+        any other app it stops there. It looks further only for a fixed list of apps:
+        <strong>Google Maps</strong> and <strong>Waze</strong> for navigation, and
+        <strong>WhatsApp</strong>, <strong>WhatsApp Business</strong>,
         <strong>Microsoft Teams</strong> and <strong>Google Meet</strong> for internet calls. For
         those it additionally reads, in memory and on your device only, the notification channel,
         the ongoing flag, and — for Google Maps alone — the title text, which it matches against a
-        fixed distance pattern such as &ldquo;400 m&rdquo;. No notification content is stored,
-        logged, transmitted off your device, sold, or shared. This service must be enabled manually
-        by you in Android Settings and can be revoked at any time.
+        fixed distance pattern such as &ldquo;400 m&rdquo;. The media trigger uses this same
+        permission differently: it is not notification parsing, but authorization to call
+        Android's <code>MediaSessionManager</code>, which reports only whether a media session
+        exists and whether it is currently playing — never the track title, artist, or artwork.
+        No notification or media content is stored, logged, transmitted off your device, sold, or
+        shared. This service must be enabled manually by you in Android Settings and can be
+        revoked at any time.
       </div>
     </div>
 
@@ -530,6 +554,16 @@
     </div>
 
     <div class="permission-item">
+      <div class="permission-name">PACKAGE_USAGE_STATS</div>
+      <div class="permission-desc">
+        Optional, and only if you turn on Recent apps. Used to see which apps you opened in the last
+        few minutes so they can be shown on your widget. This is read on your device each time the
+        widget updates, is never stored by the App, and is never transmitted off your device. You
+        can revoke it at any time in Android Settings &rarr; Usage access.
+      </div>
+    </div>
+
+    <div class="permission-item">
       <div class="permission-name">INTERNET</div>
       <div class="permission-desc">
         Required by the Google libraries the App uses: the Google Maps SDK (to load map tiles in
@@ -558,6 +592,7 @@
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Wi-Fi network history</strong> — the names (SSIDs) of Wi-Fi networks this device connected to while a Wi-Fi trigger was active, each with the time it was last seen. This exists only so the Wi-Fi trigger picker can offer you networks you have already used instead of an empty list. It stays on your device and is never transmitted; you can erase it at any time from Android Settings &rsaquo; Apps &rsaquo; AutoDeck &rsaquo; Storage &rsaquo; Clear data, or by uninstalling the App.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Trigger session state</strong> — which triggers are currently active, used to evaluate multi-condition rules. Cleaned up automatically.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Favorites (sticky apps)</strong> — the apps and shortcuts you pin to every drawer, and their position.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Recent apps settings</strong> — whether Recent apps is on, how many to show, the time window, their position, and the list of apps you chose to hide from it.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI &amp; widget preferences</strong> — active drawer selection, widget grid size, spacing, label and appearance settings, your theme choice (system / light / dark), the &ldquo;More apps&rdquo; view style, the keep-alive on/off flag, and other user preferences via DataStore.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Setup state</strong> — whether you have finished onboarding, and which permission disclosures you have already accepted, so you are not shown them again.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Activity log</strong> — a plain-text log of drawer switches and trigger events (see <a href="#logs">Activity Log &amp; Diagnostics</a>), kept in the App's private storage and deleted automatically after 7 days.</span></div>

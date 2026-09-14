@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Deepak Jha — Full-Stack Architect &amp; Product Builder. 10+ years of engineering craft, partnering with teams to ship resilient, production-ready software.">
+    <meta name="description" content="Deepak Jha — Full-Stack Architect &amp; Product Builder. 9+ years in industry, 15+ products shipped, partnering with teams to ship resilient, production-ready software.">
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website">
@@ -15,7 +15,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card"        content="summary">
     <meta name="twitter:title"       content="Deepak Jha | Product Builder">
-    <meta name="twitter:description" content="Full-Stack Architect &amp; Product Builder. 10+ years of engineering craft.">
+    <meta name="twitter:description" content="Full-Stack Architect &amp; Product Builder. 9+ years in industry, 15+ products shipped.">
 
     <title>Deepak Jha | Product Builder</title>
 
@@ -59,6 +59,43 @@
         .hero h1     { font-size: clamp(2.75rem, 8vw, 6rem); margin-bottom: 2rem; }
         .lead        { max-width: 38rem; font-size: 1.25rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 2.5rem; }
 
+        .hero-stats {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+            max-width: 46rem;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        @media (max-width: 767px) { .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.5rem; } }
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        .hero-stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+        .hero-stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            font-variant-numeric: lining-nums;
+            line-height: 1;
+            color: var(--fg);
+            transition: color 0.25s var(--ease);
+        }
+        .hero-stat:hover .hero-stat-value { color: var(--accent); }
+        .hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         .philosophy { padding-block: 8rem; }
         @media (max-width: 640px) { .philosophy { padding-block: 4rem; } }
         .quote-card {
@@ -79,7 +116,7 @@
     </style>
     <style>
         /* ── Career Timeline ──────────────────────────────────── */
-        .timeline { padding-block: 8rem; }
+        .timeline { padding-block: 8rem; scroll-margin-top: 2rem; }
         @media (max-width: 640px) { .timeline { padding-block: 4rem; } }
 
         .timeline-header { margin-bottom: 3rem; }
@@ -284,12 +321,18 @@
             <div class="reveal">
                 <p class="eyebrow">Architect &amp; Product Builder</p>
                 <h1>I build digital<br>products that scale.</h1>
-                <p class="lead">10+ years of engineering craft. I partner with stakeholders and teams to transform complex visions into resilient, production-ready software.</p>
+                <p class="lead">9+ years in industry, shipping web apps since 2014. I partner with stakeholders and teams to transform complex visions into resilient, production-ready software.</p>
                 <div class="btn-group">
                     <a href="/projects" class="btn btn-primary">See Projects</a>
                     <a href="mailto:hello@dpkay.com" class="btn btn-ghost">Get in Touch</a>
                 </div>
             </div>
+            <ul class="hero-stats reveal" style="--delay: .15s" aria-label="Highlights">
+                <li><a href="#career" class="hero-stat"><span class="hero-stat-value">9+</span><span class="hero-stat-label">Years in industry</span></a></li>
+                <li><a href="/projects" class="hero-stat" title="4 Google Play apps, 10 npm packages, a VS Code extension and 3 desktop/CLI tools"><span class="hero-stat-value">15+</span><span class="hero-stat-label">Products shipped</span></a></li>
+                <li><a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer" class="hero-stat" title="MIT / Apache-2.0 licensed on GitHub"><span class="hero-stat-value">11</span><span class="hero-stat-label">Open-source repos</span></a></li>
+                <li><a href="/projects" class="hero-stat" title="Across Google Play, npm, GitHub Releases and VS Code Marketplace"><span class="hero-stat-value">20K+</span><span class="hero-stat-label">Users</span></a></li>
+            </ul>
         </section>
 
         <!-- About -->
@@ -298,13 +341,13 @@
                 <div class="about-text reveal">
                     <p class="eyebrow">About</p>
                     <h2 class="section-title">Full-Stack Architect.<br>Hands-On Builder.</h2>
-                    <p class="about-desc">I specialize in distributed systems, real-time platforms, and cloud-native architecture. Over the past decade, I've designed and shipped high-availability infrastructure serving thousands of concurrent users across multiple regions and time zones — in domains spanning IoT, enterprise security, and retail.</p>
+                    <p class="about-desc">I specialize in distributed systems, real-time platforms, and cloud-native architecture. Over the past 9+ years, I've designed and shipped high-availability infrastructure serving thousands of concurrent users across multiple regions and time zones — in domains spanning IoT, enterprise security, and retail.</p>
                     <p class="about-desc">I work with startups and enterprises as a hands-on technical partner — from system design through deployment and scale. Based in India, collaborating with teams globally across time zones.</p>
                 </div>
                 <div class="about-facts reveal" style="--delay: .15s">
                     <div>
-                        <p class="about-fact-label">Experience</p>
-                        <p class="about-fact-value">10+ Years<br>Full-Stack Architecture</p>
+                        <p class="about-fact-label">Platforms</p>
+                        <p class="about-fact-value">Web &middot; Android<br>Desktop &middot; CLI</p>
                     </div>
                     <div>
                         <p class="about-fact-label">Domains</p>
@@ -312,7 +355,7 @@
                     </div>
                     <div>
                         <p class="about-fact-label">Agentic AI</p>
-                        <p class="about-fact-value">10X Productivity<br>Faster Shipping</p>
+                        <p class="about-fact-value">10 Published npm Tools<br>MCP &middot; Claude Code Plugins</p>
                     </div>
                     <div>
                         <p class="about-fact-label">Approach</p>
@@ -323,7 +366,7 @@
         </section>
 
         <!-- Career Timeline -->
-        <section class="timeline container">
+        <section id="career" class="timeline container">
             <div class="timeline-header reveal">
                 <p class="eyebrow">Career Progression</p>
                 <h2 class="section-title">The Journey So Far</h2>
@@ -422,7 +465,7 @@
             <div class="featured-grid">
                 <a href="/projects#toggldev" class="featured-card reveal" style="--delay: .05s">
                     <h3 class="featured-card-name">TogglDev</h3>
-                    <p class="featured-card-desc">One-tap Android Developer Options toggle via home screen widget, Quick Settings tile, or app shortcut. 4.6★ rated · 6K+ users.</p>
+                    <p class="featured-card-desc">One-tap Android Developer Options toggle via home screen widget, Quick Settings tile, or app shortcut. 4.2★ rated · 8K+ downloads.</p>
                     <div class="featured-card-stack">
                         <span class="stack-tag">Android</span>
                         <span class="stack-tag">Kotlin</span>
