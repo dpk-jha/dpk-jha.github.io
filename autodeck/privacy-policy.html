@@ -232,7 +232,7 @@
 
 <header>
   <h1>AutoDeck — <span>Privacy Policy</span></h1>
-  <p>Last updated: September 13, 2026 &nbsp;·&nbsp; v1.7.1</p>
+  <p>Last updated: September 17, 2026 &nbsp;·&nbsp; v2.3.0</p>
 </header>
 
 <main>
@@ -350,6 +350,14 @@
         <div class="feature-desc">Adjust widget grid size, spacing, distribution, labels, and appearance with a live preview.</div>
       </div>
       <div class="feature-item">
+        <div class="feature-label">Quick Switch</div>
+        <div class="feature-desc">Tap a dot on the widget to temporarily add a second drawer's apps to it, without changing which drawer is active or interrupting a running rule.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Icon Packs</div>
+        <div class="feature-desc">Use any installed icon pack app to theme drawer icons. Set one globally, or let a specific drawer override it with its own.</div>
+      </div>
+      <div class="feature-item">
         <div class="feature-label">Favorites (Sticky Apps)</div>
         <div class="feature-desc">Choose apps and shortcuts that appear in every drawer, before or after the drawer's own apps.</div>
       </div>
@@ -379,7 +387,7 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">Pro Upgrade</div>
-        <div class="feature-desc">An optional monthly or yearly subscription that unlocks the Location (geofence) trigger, handled by Google Play Billing.</div>
+        <div class="feature-desc">An optional monthly, yearly, or lifetime purchase that raises the free automation-rule limit and unlocks multi-condition (AND/OR) rules, handled by Google Play Billing. No trigger type is Pro-only.</div>
       </div>
     </div>
   </div>
@@ -548,8 +556,10 @@
     <div class="permission-item">
       <div class="permission-name">QUERY_ALL_PACKAGES</div>
       <div class="permission-desc">
-        Used to list installed apps so you can select which apps to include in a drawer. The
-        list of installed apps is never transmitted off your device.
+        Used to list installed apps so you can select which apps to include in a drawer, and to
+        find installed icon pack apps (those declaring the standard Nova/ADW/GO-style icon-pack
+        intents) so their icon sets can be used to theme your drawers. The list of installed apps
+        and icon packs is never transmitted off your device.
       </div>
     </div>
 
@@ -558,8 +568,10 @@
       <div class="permission-desc">
         Optional, and only if you turn on Recent apps. Used to see which apps you opened in the last
         few minutes so they can be shown on your widget. This is read on your device each time the
-        widget updates, is never stored by the App, and is never transmitted off your device. You
-        can revoke it at any time in Android Settings &rarr; Usage access.
+        widget updates and, while your phone is unlocked, every few seconds (you choose how often in
+        Recent apps &rarr; Update every) so an app you just opened shows up right away. It is never
+        stored by the App and is never transmitted off your device. You can revoke it at any time in
+        Android Settings &rarr; Usage access.
       </div>
     </div>
 
@@ -592,11 +604,11 @@
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Wi-Fi network history</strong> — the names (SSIDs) of Wi-Fi networks this device connected to while a Wi-Fi trigger was active, each with the time it was last seen. This exists only so the Wi-Fi trigger picker can offer you networks you have already used instead of an empty list. It stays on your device and is never transmitted; you can erase it at any time from Android Settings &rsaquo; Apps &rsaquo; AutoDeck &rsaquo; Storage &rsaquo; Clear data, or by uninstalling the App.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Trigger session state</strong> — which triggers are currently active, used to evaluate multi-condition rules. Cleaned up automatically.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Favorites (sticky apps)</strong> — the apps and shortcuts you pin to every drawer, and their position.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>Recent apps settings</strong> — whether Recent apps is on, how many to show, the time window, their position, and the list of apps you chose to hide from it.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Recent apps settings</strong> — whether Recent apps is on, how many to show, the time window, how often to check for newly opened apps, their position, and the list of apps you chose to hide from it.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI &amp; widget preferences</strong> — active drawer selection, widget grid size, spacing, label and appearance settings, your theme choice (system / light / dark), the &ldquo;More apps&rdquo; view style, the keep-alive on/off flag, and other user preferences via DataStore.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Setup state</strong> — whether you have finished onboarding, and which permission disclosures you have already accepted, so you are not shown them again.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Activity log</strong> — a plain-text log of drawer switches and trigger events (see <a href="#logs">Activity Log &amp; Diagnostics</a>), kept in the App's private storage and deleted automatically after 7 days.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>Pro subscription status</strong> — a single true/false flag caching whether an active Pro subscription was reported by Google Play. No payment details are stored by the App.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Pro status</strong> — a single true/false flag caching whether an active Pro subscription or lifetime purchase was reported by Google Play. No payment details are stored by the App.</span></div>
     <p style="margin-top: 0.85rem;">
       Because we do not collect any personal data, there is nothing on our servers to retain
       or delete on your behalf.
@@ -642,12 +654,13 @@
       <h2>Purchases</h2>
     </div>
     <p>
-      The App offers an optional <strong>Pro</strong> subscription (monthly or yearly) that
-      unlocks the Location (geofence) trigger. All other features are free. Subscriptions are
+      The App offers an optional <strong>Pro</strong> upgrade (monthly, yearly, or a one-time
+      lifetime purchase) that raises the free automation-rule limit and unlocks multi-condition
+      (AND/OR) rules. Every trigger type, including Location, is free. Purchases are
       sold, billed, renewed, and cancelled entirely through <strong>Google Play Billing</strong>
       and your Google Play account. We never see or handle your payment method, billing address,
       or Google account details — the App only receives from Google Play whether an active
-      subscription exists, and stores that as a single true/false flag on your device.
+      Pro entitlement exists, and stores that as a single true/false flag on your device.
     </p>
     <p>
       Google's handling of purchase data is governed by the
