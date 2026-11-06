@@ -46,6 +46,7 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 - ttag: Dynamic terminal tab coloring (Go) — https://github.com/dpkay-io/ttag
 - GhostPM: MCP project-management interface for AI coding agents (TypeScript) — https://www.npmjs.com/package/ghostpm
 - toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://www.npmjs.com/package/toggldev-remote
+- claude-wingman: Use all your computers from one Claude Code session; hand work to Claude agents on your other Mac, Windows or Linux machines over Tailscale (Node.js) — https://www.npmjs.com/package/claude-wingman
 - claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://www.npmjs.com/package/claude-shift
 - claude-ticker: Real-time status bar for Claude CLI (TypeScript) — https://www.npmjs.com/package/claude-ticker
 - Claude Comedy: Situational developer humor for Claude Code sessions (TypeScript) — https://www.npmjs.com/package/claude-comedy

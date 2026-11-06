@@ -745,6 +745,9 @@
                     <div class="card-divider"></div>
                     <ul class="card-features">
                         <li>Auto-discovers devices via mDNS with secure 6-digit pairing</li>
+                        <li>Multiple named phones — target any with <code>--device</code></li>
+                        <li><code>connect-adb</code> turns on wireless debugging and connects adb in one step</li>
+                        <li>Verified toggles — reads the phone back so a silently reverted change is caught</li>
                         <li>MCP server for Claude, Cursor, Gemini & any MCP client</li>
                         <li>Remote access from any network via Tailscale</li>
                     </ul>
@@ -759,8 +762,34 @@
                     </a>
                 </article>
 
+                <!-- claude-wingman -->
+                <article id="claude-wingman" class="project-card reveal" style="--delay: .9s" data-category="cli">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <span class="card-category">CLI Tools</span>
+                    <h3 class="card-name">claude-wingman</h3>
+                    <p class="card-desc">Use all your computers from one Claude Code session — ask Claude to run the tests on your Windows laptop and a real agent does it there, then reports back.</p>
+                    <div class="card-divider"></div>
+                    <ul class="card-features">
+                        <li>Mac, Windows, Linux & WSL in any mix — one <code>pair</code> command per machine, no SSH</li>
+                        <li>Agents work in a separate git worktree, so your checkout stays untouched</li>
+                        <li>Status, pause, resume & cancel for every machine's agents from one place</li>
+                        <li>Private by default — Tailscale network, password on every connection</li>
+                    </ul>
+                    <div class="card-stack">
+                        <span class="stack-tag">Node.js</span>
+                        <span class="stack-tag">Tailscale</span>
+                    </div>
+                    <a href="https://www.npmjs.com/package/claude-wingman" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 0v16h16V0H0zm13 13H8V5H5v8H3V3h10v10z"/></svg>
+                        View on npm
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </article>
+
                 <!-- Workspace ID Pro -->
-                <article id="workspace-id-pro" class="project-card reveal" style="--delay: .9s" data-category="extensions">
+                <article id="workspace-id-pro" class="project-card reveal" style="--delay: .95s" data-category="extensions">
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
                     </div>
