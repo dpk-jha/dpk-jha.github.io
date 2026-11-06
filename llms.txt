@@ -1,13 +1,13 @@
 # Deepak Jha — dpkay.com
 
-> Full-Stack Architect & Product Builder with 9+ years of industry experience, building web apps since 2014.
+> Full-Stack Architect & Product Builder with 10 years of industry experience, building web apps since 2014.
 
 ## Highlights
 
-- 9+ years in industry (since 2017); building web apps since 2014
-- 15+ products shipped: 4 Google Play apps, 10 npm packages, 1 VS Code extension, 3 desktop/CLI tools
+- 10 years in industry (since 2017); building web apps since 2014
+- 15+ products shipped: 4 Google Play apps, 11 npm packages, 1 VS Code extension, 3 desktop/CLI tools
 - 11 open-source repositories (MIT / Apache-2.0)
-- 20K+ users across Google Play, npm, GitHub Releases and VS Code Marketplace
+- 25K+ users across Google Play, npm, GitHub Releases and VS Code Marketplace
 
 ## About
 
@@ -37,24 +37,24 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 
 ## Personal Projects
 
-- TogglDev: Android Developer Options toggle, 8K+ downloads (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler
+- TogglDev: Android Developer Options toggle, 10K+ downloads, 4.5★ on Google Play (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler
 - AutoDeck: Android home screen apps that switch by themselves via profiles, rules and one widget (Kotlin) — https://dpkay.com/autodeck/ — https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck
-- CloseLink: Offline Bluetooth voice intercom for Android (Kotlin, C++) — https://play.google.com/store/apps/details?id=com.dpkay.apps.closelink
 - AfterCall Shield: Post-call overlay dismissal (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner
-- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://dpkay.com/terminal-studio — https://github.com/dpkay-io/terminal-studio
-- gitreg: Zero-latency Git repository registry (Rust) — https://github.com/dpkay-io/gitreg
-- ttag: Dynamic terminal tab coloring (Go) — https://github.com/dpkay-io/ttag
-- GhostPM: local-first task ledger for AI coding sessions, with optional GitHub Issues / Azure DevOps sync (TypeScript, MCP) — https://www.npmjs.com/package/ghostpm
-- toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://dpkay.com/toggldev — https://www.npmjs.com/package/toggldev-remote
-- claude-wingman: Use all your computers from one Claude Code session; hand work to Claude agents on your other Mac, Windows or Linux machines over Tailscale (Node.js) — https://www.npmjs.com/package/claude-wingman
-- claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://dpkay.com/claude-shift — https://www.npmjs.com/package/claude-shift
-- claude-ticker: Real-time status bar for Claude CLI (TypeScript) — https://www.npmjs.com/package/claude-ticker
-- Claude Comedy: Situational developer humor for Claude Code sessions (TypeScript) — https://www.npmjs.com/package/claude-comedy
-- ingred: Compile AI coding instructions into native agent config files (TypeScript) — https://www.npmjs.com/package/ingred
-- AntiBluff: Honesty and verification rules for AI coding agents (JavaScript) — https://www.npmjs.com/package/antibluff
-- AntiClimax: Zero-bug self-review loop for AI coding agents (JavaScript) — https://www.npmjs.com/package/anticlimax
-- claude-lifecycle-core: Middleware hub for Claude Code plugins (JavaScript) — https://www.npmjs.com/package/claude-lifecycle-core
+- CloseLink: Offline Bluetooth voice intercom for Android (Kotlin, C++) — https://play.google.com/store/apps/details?id=com.dpkay.apps.closelink
 - splitgame: Split-terminal games for Claude Code (TypeScript, MCP) — https://www.npmjs.com/package/splitgame
+- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://dpkay.com/terminal-studio — https://github.com/dpkay-io/terminal-studio
+- claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://dpkay.com/claude-shift — https://www.npmjs.com/package/claude-shift
+- Claude Comedy: Situational developer humor for Claude Code sessions (TypeScript) — https://www.npmjs.com/package/claude-comedy
+- claude-ticker: Real-time status bar for Claude CLI (TypeScript) — https://www.npmjs.com/package/claude-ticker
+- GhostPM: local-first task ledger for AI coding sessions, with optional GitHub Issues / Azure DevOps sync (TypeScript, MCP) — https://www.npmjs.com/package/ghostpm
+- gitreg: Zero-latency Git repository registry (Rust) — https://github.com/dpkay-io/gitreg
+- ingred: Compile AI coding instructions into native agent config files (TypeScript) — https://www.npmjs.com/package/ingred
+- toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://dpkay.com/toggldev — https://www.npmjs.com/package/toggldev-remote
+- AntiBluff: Honesty and verification rules for AI coding agents (JavaScript) — https://www.npmjs.com/package/antibluff
+- claude-wingman: Use all your computers from one Claude Code session; hand work to Claude agents on your other Mac, Windows or Linux machines over Tailscale (Node.js) — https://www.npmjs.com/package/claude-wingman
+- claude-lifecycle-core: Middleware hub for Claude Code plugins (JavaScript) — https://www.npmjs.com/package/claude-lifecycle-core
+- AntiClimax: Zero-bug self-review loop for AI coding agents (JavaScript) — https://www.npmjs.com/package/anticlimax
+- ttag: Dynamic terminal tab coloring (Go) — https://github.com/dpkay-io/ttag
 - Workspace ID Pro: VS Code workspace identity extension (TypeScript) — https://marketplace.visualstudio.com/items?itemName=dpkay.ws-id
 
 ## Pages

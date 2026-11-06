@@ -1,0 +1,13 @@
+#!/bin/sh
+# Keeps DeepakJha.pdf in sync with resume-print.html (the resume's single source of truth).
+# Enable once per clone:  git config core.hooksPath .githooks
+# Bypass for one commit:  git commit --no-verify
+if git diff --cached --name-only | grep -qx 'resume-print.html'; then
+  echo "pre-commit: resume-print.html changed, regenerating DeepakJha.pdf ..."
+  if ! node scripts/build-resume-pdf.mjs; then
+    echo "pre-commit: PDF build failed, commit aborted so the PDF cannot go stale." >&2
+    echo "            Fix the error above, or bypass with: git commit --no-verify" >&2
+    exit 1
+  fi
+  git add DeepakJha.pdf
+fi
