@@ -232,7 +232,7 @@
 
 <header>
   <h1>AutoDeck — <span>Privacy Policy</span></h1>
-  <p>Last updated: September 17, 2026 &nbsp;·&nbsp; v2.3.0</p>
+  <p>Last updated: November 6, 2026 &nbsp;·&nbsp; v3.0.1</p>
 </header>
 
 <main>
@@ -438,14 +438,24 @@
         Background location access is required so geofence triggers can fire when the App is not
         in the foreground.
       </div>
+      <div class="permission-desc">
+        <strong>Wi-Fi triggers also need this permission.</strong> Android treats the name of the
+        Wi-Fi network you are connected to as location information, so the App can only read it
+        while location access is granted and location is switched on. For a Wi-Fi trigger the App
+        reads the network name when it starts monitoring and when you connect to a network, not
+        continuously, and it does not read your position for this. If the name cannot be read
+        (for example, location is switched off), the App tries again about every 30 seconds while
+        a Wi-Fi network is connected. Approximate location alone is not enough to read the name.
+      </div>
     </div>
 
     <div class="permission-item">
       <div class="permission-name">ACCESS_WIFI_STATE</div>
       <div class="permission-desc">
         Used by Wi-Fi triggers to detect which Wi-Fi network you are connected to. The App reads
-        the network name (SSID) to match against your configured triggers. No Wi-Fi data is
-        transmitted off your device.
+        the network name (SSID) to match against your configured triggers, once per connection
+        rather than continuously (reading it also requires the location permission above). No
+        Wi-Fi data is transmitted off your device.
       </div>
     </div>
 
