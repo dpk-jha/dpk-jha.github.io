@@ -431,7 +431,7 @@
                 </article>
 
                 <!-- Terminal Studio -->
-                <article id="terminal-studio" class="project-card reveal" style="--delay: .25s" data-category="terminal">
+                <article id="terminal-studio" class="project-card reveal" style="--delay: .25s" data-category="terminal" data-detail-page="/terminal-studio/">
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                     </div>
@@ -714,13 +714,13 @@
                     </div>
                     <span class="card-category">CLI Tools</span>
                     <h3 class="card-name">GhostPM</h3>
-                    <p class="card-desc">Vendor-agnostic PM interface for AI coding agents — connects GitHub Issues and Azure DevOps work items via MCP with zero-latency local cache.</p>
+                    <p class="card-desc">Local-first task ledger for AI coding sessions — captures what you work on in Claude Code into one machine-wide ledger, and can mirror it to GitHub Issues or Azure DevOps.</p>
                     <div class="card-divider"></div>
                     <ul class="card-features">
-                        <li>Local-first outbox pattern — reads from SQLite cache, zero network latency</li>
-                        <li>Auto-detects vendor from git config, one-command init</li>
-                        <li>Conflict detection with resolve workflow for concurrent edits</li>
-                        <li>In-session slash command — browse, update & close tasks without leaving the CLI</li>
+                        <li>Captures work automatically — tasks, phases, edited files, commits and PRs, as a Claude Code plugin</li>
+                        <li>One ledger for every session on your machine — live <code>dashboard</code>, <code>standup</code> and statusline</li>
+                        <li>Optional sync to GitHub Issues or Azure DevOps — off by default, secrets redacted before anything is pushed</li>
+                        <li>MCP tools in-session — query, update, merge and publish tasks by just asking</li>
                     </ul>
                     <div class="card-stack">
                         <span class="stack-tag">TypeScript</span>

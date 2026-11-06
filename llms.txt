@@ -41,13 +41,13 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 - AutoDeck: Android home screen apps that switch by themselves via profiles, rules and one widget (Kotlin) — https://dpkay.com/autodeck/ — https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck
 - CloseLink: Offline Bluetooth voice intercom for Android (Kotlin, C++) — https://play.google.com/store/apps/details?id=com.dpkay.apps.closelink
 - AfterCall Shield: Post-call overlay dismissal (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner
-- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://github.com/dpkay-io/terminal-studio
+- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://dpkay.com/terminal-studio — https://github.com/dpkay-io/terminal-studio
 - gitreg: Zero-latency Git repository registry (Rust) — https://github.com/dpkay-io/gitreg
 - ttag: Dynamic terminal tab coloring (Go) — https://github.com/dpkay-io/ttag
-- GhostPM: MCP project-management interface for AI coding agents (TypeScript) — https://www.npmjs.com/package/ghostpm
-- toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://www.npmjs.com/package/toggldev-remote
+- GhostPM: local-first task ledger for AI coding sessions, with optional GitHub Issues / Azure DevOps sync (TypeScript, MCP) — https://www.npmjs.com/package/ghostpm
+- toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://dpkay.com/toggldev — https://www.npmjs.com/package/toggldev-remote
 - claude-wingman: Use all your computers from one Claude Code session; hand work to Claude agents on your other Mac, Windows or Linux machines over Tailscale (Node.js) — https://www.npmjs.com/package/claude-wingman
-- claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://www.npmjs.com/package/claude-shift
+- claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://dpkay.com/claude-shift — https://www.npmjs.com/package/claude-shift
 - claude-ticker: Real-time status bar for Claude CLI (TypeScript) — https://www.npmjs.com/package/claude-ticker
 - Claude Comedy: Situational developer humor for Claude Code sessions (TypeScript) — https://www.npmjs.com/package/claude-comedy
 - ingred: Compile AI coding instructions into native agent config files (TypeScript) — https://www.npmjs.com/package/ingred
