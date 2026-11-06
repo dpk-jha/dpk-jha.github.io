@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#080A12" media="(prefers-color-scheme: dark)">
+
+    <title>AutoDeck: Android home screen apps that switch by themselves</title>
+    <meta name="description" content="AutoDeck swaps the apps on your Android home screen when you join Wi-Fi, connect to your car, arrive somewhere or the clock says so. Works with any launcher. Free to use.">
+    <link rel="canonical" href="https://dpkay.com/autodeck/">
+    <link rel="icon" href="/autodeck/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/autodeck/images/apple-touch-icon.png">
+
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://dpkay.com/autodeck/">
+    <meta property="og:title"       content="AutoDeck: the right apps, at the right moment">
+    <meta property="og:description" content="Your Android home screen changes by itself: car, office, gym, bedtime. Works with any launcher.">
+    <meta property="og:image"       content="https://dpkay.com/autodeck/images/og.jpg">
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="AutoDeck: the right apps, at the right moment">
+    <meta name="twitter:description" content="Your Android home screen changes by itself. Works with any launcher.">
+    <meta name="twitter:image"       content="https://dpkay.com/autodeck/images/og.jpg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AutoDeck",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android 8.0+",
+        "description": "AutoDeck switches the apps on your Android home screen automatically. Group apps into profiles, set rules (Bluetooth, Wi-Fi, a place, a schedule and more) and let one resizable widget show whichever profile is on. Works with any launcher that supports widgets and with your favourite icon pack.",
+        "image": "https://dpkay.com/autodeck/images/icon.png",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Deepak Jha",
+            "url": "https://dpkay.com"
+        },
+        "url": "https://dpkay.com/autodeck/",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck",
+        "inLanguage": [
+            "en",
+            "ar",
+            "zh",
+            "da",
+            "nl",
+            "fr",
+            "de",
+            "el",
+            "id",
+            "ja",
+            "ko",
+            "fa",
+            "pl",
+            "pt-BR",
+            "ru",
+            "es",
+            "th",
+            "tr"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Does it work with my launcher?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AutoDeck is a normal home screen widget, so it works with any launcher that supports widgets, such as Samsung One UI, Pixel Launcher, Nova, Lawnchair, Microsoft Launcher and Action Launcher. You keep the launcher you already use."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is AutoDeck a launcher?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. It’s an app plus a home screen widget. The widget is the part that changes as your profile changes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use my own icon pack?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Pick an installed icon pack for every profile, or give one profile its own. Packs made for Nova, ADW and GO launchers are supported."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does a Wi-Fi rule ask for location?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Android treats the name of the Wi-Fi network you are connected to as location information, so an app can only read it with the location permission. AutoDeck reads the name when you connect, not all the time, and it does not read your position for a Wi-Fi rule."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does it need an account or the internet?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "There is no account. Rules run on your phone. The internet is used by the map where you pick a place, and by Google Play when you buy Pro."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is free and what is Pro?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every trigger is free, and so is every customisation. The free plan runs 2 rules; Pro removes that limit and lets a rule combine conditions. Switching profiles from Tasker, MacroDroid, Samsung Routines or a shortcut is free too."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which Android versions and languages?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Android 8.0 or newer. The app is available in 18 languages: English, Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Brazilian Portuguese, Russian, Spanish, Thai and Turkish."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        /* Tokens come from the app: ui/theme/GlassColors.kt (colours), Dimens.kt (radii), Theme.kt (follows the system light/dark setting). */
+        :root {
+            --bg: #FAFAFA;              /* BaseTintLight */
+            --alt: #EFF2F8;             /* PanelLight */
+            --card: #FFFFFF;
+            --ink: #1B1B1F;             /* Ink */
+            --muted: rgba(27, 27, 31, .74);
+            --line: rgba(0, 0, 0, .09); /* hairline */
+            --indicator: rgba(27, 27, 31, .07);
+            --accent: #1B36A0;          /* the icon's deep blue */
+            --on: #084D20;              /* OnLight */
+            --btn-bg: #1B1B1F; --btn-fg: #FFFFFF;
+            --header: rgba(250, 250, 250, .78);
+            --stage: linear-gradient(160deg, #E3E9F8, #D5DEF4);
+            --glow-a: rgba(42, 79, 208, .10); --glow-b: rgba(120, 150, 240, .16);
+            --layer-a: #D7E0FB; --layer-b: #C2CFF7;
+            --shadow: 0 1px 2px rgba(20,24,50,.05), 0 14px 34px -14px rgba(30,40,100,.25);
+            --sans: "Google Sans Text", "Google Sans", Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+            --r-card: 20px; --r-row: 14px; --r-chip: 12px; --r-sheet: 28px;
+            --max: 70rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #080A12;          /* BaseTintDark */
+                --alt: #0D1019;
+                --card: #10121C;        /* PanelDark */
+                --ink: #FFFFFF;
+                --muted: rgba(255, 255, 255, .78);
+                --line: rgba(255, 255, 255, .14);
+                --indicator: rgba(255, 255, 255, .14);
+                --accent: #A9BBFF;
+                --on: #6DFFA8;          /* OnDark */
+                --btn-bg: #FFFFFF; --btn-fg: #1B1B1F;
+                --header: rgba(8, 10, 18, .66);
+                --stage: linear-gradient(160deg, #141A33, #0E1226);
+                --glow-a: rgba(80, 110, 255, .20); --glow-b: rgba(60, 90, 200, .14);
+                --layer-a: #1B2347; --layer-b: #26306A;
+                --shadow: 0 1px 2px rgba(0,0,0,.4), 0 18px 40px -16px rgba(0,0,0,.7);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 5rem; overflow-x: clip; color-scheme: light dark; }
+        body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 1.0625rem; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; }
+        ::selection { background: var(--accent); color: var(--bg); }
+        .wrap { max-width: var(--max); margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
+        .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--bg); padding: .6rem 1rem; z-index: 100; border-radius: 0 0 .5rem 0; }
+        .skip:focus { left: 0; }
+        :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+        h1, h2, h3 { font-weight: 400; line-height: 1.06; letter-spacing: -0.03em; }
+        h1 { font-size: clamp(2.8rem, 6.4vw, 5rem); letter-spacing: -0.04em; }
+        h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); }
+        h3 { font-size: 1.35rem; font-weight: 500; letter-spacing: -0.015em; line-height: 1.2; }
+        em { font-style: normal; color: var(--accent); }
+        .eyebrow { font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block; }
+        .lead { font-size: 1.2rem; color: var(--muted); max-width: 38rem; }
+        section { padding-block: clamp(4rem, 9vw, 7rem); }
+
+        /* header */
+        .site-header { position: sticky; top: 0; z-index: 50; background: var(--header); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); }
+        .site-header .wrap { display: flex; align-items: center; justify-content: space-between; padding-block: .85rem; gap: 1rem; }
+        .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-weight: 500; font-size: 1.1rem; }
+        .brand img { width: 34px; height: 34px; }
+        .nav { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
+        .nav a { text-decoration: none; font-size: .95rem; color: var(--muted); }
+        .nav a:hover { color: var(--ink); }
+        .btn { display: inline-flex; align-items: center; gap: .55rem; background: var(--btn-bg); color: var(--btn-fg) !important; text-decoration: none; padding: .8rem 1.4rem; border-radius: 999px; font-weight: 500; font-size: 1rem; transition: transform .2s, opacity .2s; }
+        .btn:hover { opacity: .88; transform: translateY(-1px); }
+        .btn svg { width: 18px; height: 18px; }
+        .btn-sm { padding: .55rem 1rem; font-size: .9rem; }
+        .btn-ghost { background: transparent; color: var(--ink) !important; border: 1px solid var(--line); }
+        .btn-ghost:hover { background: var(--indicator); opacity: 1; }
+        @media (max-width: 760px) { .nav li:not(:last-child) { display: none; } }
+
+        /* hero */
+        .hero { padding-block: clamp(3rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: -20% -10% auto auto; width: 60rem; height: 60rem; background: radial-gradient(closest-side, var(--glow-a), transparent 70%), radial-gradient(closest-side at 70% 70%, var(--glow-b), transparent 70%); z-index: -1; }
+        .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+        .hero h1 { margin-bottom: 1.5rem; }
+        .hero .lead { margin-bottom: 2rem; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+        .hero-note { margin-top: 1.4rem; font-size: .92rem; color: var(--muted); }
+        .stage { position: relative; display: grid; place-items: center; padding: 1rem 0 3.5rem; }
+        .stage::before, .stage::after { content: ''; position: absolute; border-radius: 40px; z-index: 0; }
+        .stage::before { width: 290px; height: 82%; background: var(--layer-a); transform: translate(26px, 22px) rotate(4deg); }
+        .stage::after  { width: 290px; height: 82%; background: var(--layer-b); transform: translate(50px, 44px) rotate(8deg); z-index: -1; }
+        .phone { position: relative; z-index: 1; width: min(290px, 70vw); padding: 8px; background: #14131A; border-radius: 38px; box-shadow: 0 30px 60px -24px rgba(25,25,80,.55), 0 0 0 1px rgba(255,255,255,.10) inset; }
+        .phone img { border-radius: 30px; width: 100%; }
+        .float-widget { position: absolute; z-index: 2; left: -1rem; bottom: 0; width: min(330px, 86%); background: var(--card); border-radius: var(--r-card); padding: .55rem; box-shadow: var(--shadow); border: 1px solid var(--line); }
+        .float-widget img { border-radius: var(--r-row); }
+        .float-widget small { display: block; font-size: .78rem; color: var(--muted); padding: .45rem .5rem .1rem; }
+        @media (max-width: 880px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } .stage { margin-top: 1rem; } .float-widget { left: 0; } }
+
+        /* day */
+        .day { background: var(--alt); border-block: 1px solid var(--line); }
+        .section-head { max-width: 44rem; margin-bottom: 3rem; }
+        .section-head h2 { margin-bottom: 1rem; }
+        .day-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+        [role="tablist"] { display: grid; gap: .6rem; }
+        [role="tab"] { text-align: left; font: inherit; cursor: pointer; border: 1px solid var(--line); background: var(--card); border-radius: var(--r-row); padding: 1rem 1.2rem 1rem 2.6rem; color: var(--ink); transition: background .2s, border-color .2s; position: relative; }
+        [role="tab"] strong { display: block; font-weight: 500; font-size: 1.05rem; }
+        [role="tab"] span { display: block; color: var(--muted); font-size: .92rem; margin-top: .15rem; }
+        [role="tab"]::before { content: ''; position: absolute; left: 1.2rem; top: 1.45rem; width: .6rem; height: .6rem; border-radius: 50%; background: var(--line); transition: background .2s, box-shadow .2s; }
+        [role="tab"][aria-selected="true"] { background: var(--indicator); border-color: var(--ink); }
+        [role="tab"][aria-selected="true"]::before { background: var(--on); box-shadow: 0 0 0 4px color-mix(in srgb, var(--on) 22%, transparent); }
+        .pane { margin: 0; }
+        .js .pane { display: none; }
+        .js .pane.active { display: block; animation: rise .5s cubic-bezier(.16,1,.3,1); }
+        @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+        .pane-card { background: var(--stage); border: 1px solid var(--line); border-radius: var(--r-sheet); padding: clamp(1rem, 3vw, 2rem); }
+        .pane-card img { border-radius: var(--r-card); box-shadow: var(--shadow); width: 100%; }
+        .rule-line { font-size: .95rem; margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: .5rem .7rem; align-items: center; }
+        .chip { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-chip); padding: .35rem .8rem; }
+        .chip.on { color: var(--on); border-color: color-mix(in srgb, var(--on) 40%, transparent); }
+        .pane figcaption { margin-top: 1rem; color: var(--muted); }
+        .day-foot { margin-top: 1.2rem; font-size: .9rem; color: var(--muted); }
+        @media (max-width: 880px) { .day-grid { grid-template-columns: minmax(0, 1fr); } }
+
+        /* value */
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .value-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 1.8rem; }
+        .value-card h3 { margin-bottom: .6rem; }
+        .value-card p { color: var(--muted); }
+        @media (max-width: 880px) { .value-grid { grid-template-columns: 1fr; } }
+
+        /* how */
+        .how { background: var(--alt); border-block: 1px solid var(--line); }
+        .how-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+        .steps { list-style: none; counter-reset: s; display: grid; gap: 1.6rem; }
+        .steps li { counter-increment: s; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; }
+        .steps li::before { content: counter(s); font-size: 2.4rem; line-height: 1; font-weight: 300; color: var(--accent); }
+        .steps h3 { margin-bottom: .25rem; }
+        .steps p { color: var(--muted); }
+        .how-visual { display: grid; place-items: center; background: var(--stage); border: 1px solid var(--line); border-radius: var(--r-sheet); padding: 2.2rem 1rem; }
+        @media (max-width: 880px) { .how-grid { grid-template-columns: minmax(0, 1fr); } }
+
+        /* yours */
+        .yours { background: var(--alt); border-block: 1px solid var(--line); }
+        .styles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
+        .styles figure { background: var(--stage); border: 1px solid var(--line); border-radius: var(--r-card); padding: .8rem; }
+        .styles img { border-radius: var(--r-row); }
+        .styles figcaption { font-size: .9rem; color: var(--muted); padding: .7rem .3rem .1rem; }
+        .yours-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem 3rem; }
+        .yours-grid h3 { margin-bottom: .3rem; }
+        .yours-grid p { color: var(--muted); }
+        @media (max-width: 760px) { .styles, .yours-grid { grid-template-columns: 1fr; } }
+
+        /* plays well */
+        .tools { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+        @media (max-width: 880px) { .two { grid-template-columns: minmax(0, 1fr); } }
+
+        /* privacy: always the app's dark glass, in either theme */
+        .privacy { background: #080A12; color: #FFFFFF; border-block: 1px solid rgba(255,255,255,.14); }
+        .privacy .eyebrow { color: rgba(255,255,255,.78); }
+        .privacy em { color: #A9BBFF; }
+        .privacy .lead { color: rgba(255,255,255,.78); }
+        .priv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+        .priv-card { border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-card); padding: 1.6rem; background: #10121C; }
+        .priv-card h3 { margin-bottom: .5rem; }
+        .priv-card p { color: rgba(255,255,255,.78); font-size: .98rem; }
+        .quote { margin-top: 2rem; border-left: 3px solid #6DFFA8; padding: .3rem 0 .3rem 1.2rem; color: rgba(255,255,255,.9); max-width: 44rem; font-size: 1.02rem; }
+        .quote cite { display: block; margin-top: .4rem; font-style: normal; font-size: .85rem; color: rgba(255,255,255,.6); }
+        .privacy a.link { color: #A9BBFF; }
+        @media (max-width: 880px) { .priv-grid { grid-template-columns: 1fr; } }
+
+        /* pricing */
+        .plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; max-width: 52rem; }
+        .plan { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 2rem; }
+        .plan.pro { border-color: var(--ink); }
+        .plan h3 { font-size: 1.7rem; font-weight: 400; }
+        .plan .sub { color: var(--muted); margin: .3rem 0 1.2rem; }
+        .plan ul { list-style: none; display: grid; gap: .6rem; }
+        .plan li { display: grid; grid-template-columns: 1.4rem 1fr; gap: .4rem; }
+        .plan li::before { content: ''; width: 1rem; height: 1rem; margin-top: .35rem; background: var(--on); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; }
+        .plans-foot { margin-top: 1.2rem; color: var(--muted); font-size: .95rem; max-width: 52rem; }
+        @media (max-width: 700px) { .plans { grid-template-columns: 1fr; } }
+
+        /* faq */
+        .faq { background: var(--alt); border-top: 1px solid var(--line); }
+        .faq-list { max-width: 48rem; }
+        details { border-bottom: 1px solid var(--line); padding-block: 1.1rem; }
+        summary { cursor: pointer; font-weight: 500; font-size: 1.08rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; color: var(--muted); font-size: 1.4rem; line-height: 1; font-weight: 300; }
+        details[open] summary::after { content: '\2212'; }
+        details p { color: var(--muted); margin-top: .7rem; max-width: 42rem; }
+
+        /* cta + footer */
+        .cta { text-align: center; padding-block: clamp(4rem, 9vw, 7rem); }
+        .cta img { width: 88px; margin: 0 auto 1.6rem; }
+        .cta h2 { margin-bottom: 1rem; }
+        .cta p { color: var(--muted); max-width: 32rem; margin: 0 auto 2rem; }
+        footer { border-top: 1px solid var(--line); padding-block: 2rem; font-size: .92rem; color: var(--muted); }
+        footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
+        footer nav { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+        footer a { text-decoration: none; } footer a:hover { color: var(--ink); text-decoration: underline; }
+
+
+        /* data */
+        .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+        .stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 1.6rem; }
+        .stat b { display: block; font-size: clamp(2.6rem, 5vw, 3.6rem); font-weight: 300; letter-spacing: -.04em; line-height: 1; color: var(--accent); }
+        .stat p { margin-top: .6rem; }
+        .stat small { display: block; margin-top: .7rem; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+        .stat small a { text-underline-offset: 3px; }
+        .calc { background: var(--stage); border: 1px solid var(--line); border-radius: var(--r-sheet); padding: clamp(1.4rem, 3vw, 2.2rem); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 2rem; align-items: center; }
+        .calc h3 { font-size: 1.6rem; font-weight: 400; margin-bottom: .5rem; }
+        .calc .sub { color: var(--muted); font-size: .98rem; }
+        .sliders { display: grid; gap: 1.1rem; margin-top: 1.2rem; }
+        .sliders label { display: flex; justify-content: space-between; gap: 1rem; font-size: .98rem; }
+        .sliders output { font-weight: 500; font-variant-numeric: tabular-nums; }
+        input[type=range] { width: 100%; accent-color: var(--accent); margin-top: .4rem; }
+        .answer { text-align: center; }
+        .answer b { display: block; font-size: clamp(3rem, 6vw, 4.6rem); font-weight: 300; letter-spacing: -.04em; line-height: 1; color: var(--accent); }
+        .answer span { color: var(--muted); }
+        @media (max-width: 880px) { .stats { grid-template-columns: minmax(0, 1fr); } .calc { grid-template-columns: minmax(0, 1fr); } }
+
+        /* triggers */
+        .tg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+        .tg-card { --c: hsl(var(--h) 62% 36%); background: color-mix(in srgb, hsl(var(--h) 80% 55%) 9%, var(--card)); border: 1px solid color-mix(in srgb, hsl(var(--h) 70% 50%) 22%, var(--line)); border-radius: var(--r-card); padding: 1.3rem 1.3rem 1.4rem; transition: transform .25s cubic-bezier(.16,1,.3,1), border-color .25s; }
+        .tg-card:hover { transform: translateY(-3px); border-color: var(--c); }
+        .tg-ico { width: 3rem; height: 3rem; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--c); margin-bottom: 1rem; }
+        .tg-ico svg { width: 26px; height: 26px; }
+        .tg-card h3 { font-size: 1.12rem; font-weight: 500; letter-spacing: -.01em; line-height: 1.25; margin-bottom: .3rem; }
+        .tg-card p { color: var(--muted); font-size: .92rem; line-height: 1.45; }
+        @media (prefers-color-scheme: dark) { .tg-card { --c: hsl(var(--h) 90% 76%); } }
+        @media (max-width: 1000px) { .tg { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (max-width: 700px) { .tg { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tg-card { padding: 1.05rem; } }
+        @media (max-width: 400px) { .tg { grid-template-columns: minmax(0, 1fr); } }
+        .mix { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.6rem; align-items: center; justify-content: space-between; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 1.2rem 1.5rem; }
+        .mix p { color: var(--muted); max-width: 40rem; }
+        .mix p b { color: var(--ink); font-weight: 500; }
+
+        /* note */
+        .note { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 1.4rem 1.6rem; }
+        .note b { display: block; margin-bottom: .3rem; font-weight: 500; }
+        .note p { color: var(--muted); font-size: .98rem; }
+        /* sizes */
+        .sizes { display: flex; flex-wrap: wrap; gap: 1.2rem 1.2rem; align-items: flex-end; justify-content: center; }
+        .sizes figure { width: var(--w); max-width: 100%; text-align: center; }
+        .sizes img { width: 100%; border-radius: var(--r-card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+        .sizes figcaption { margin-top: .6rem; font-size: .9rem; color: var(--muted); }
+        .sizes figcaption b { color: var(--ink); font-weight: 500; }
+        .sizes-note { text-align: center; color: var(--muted); margin-top: 1.6rem; max-width: 40rem; margin-inline: auto; }
+
+        /* quick switch */
+        .qs { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+        .qs-pair { display: grid; gap: .8rem; }
+        .qs-pair figure { background: var(--stage); border: 1px solid var(--line); border-radius: var(--r-card); padding: .7rem; }
+        .qs-pair img { border-radius: var(--r-row); }
+        .qs-pair figcaption { font-size: .9rem; color: var(--muted); padding: .6rem .3rem .1rem; }
+        .qs-pair .arrow { text-align: center; color: var(--muted); font-size: .9rem; }
+        @media (max-width: 880px) { .qs { grid-template-columns: minmax(0, 1fr); } }
+
+        /* packs */
+        .packs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .packs figure { grid-column: span 2; }
+        .packs figure:nth-child(n+4) { grid-column: span 3; }
+        .packs figure { background: var(--stage); border: 1px solid var(--line); border-radius: var(--r-card); padding: .7rem; }
+        .packs img { border-radius: var(--r-row); }
+        .packs figcaption { font-size: .9rem; color: var(--muted); padding: .6rem .3rem .1rem; }
+        @media (max-width: 760px) { .packs { grid-template-columns: minmax(0, 1fr); } .packs figure, .packs figure:nth-child(n+4) { grid-column: auto; } }
+        .knobs { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+
+        /* launchers + automation */
+        .tools { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+        .free-badge { display: inline-flex; align-items: center; gap: .5rem; background: color-mix(in srgb, var(--on) 14%, transparent); color: var(--on); border: 1px solid color-mix(in srgb, var(--on) 35%, transparent); border-radius: 999px; padding: .35rem .9rem; font-size: .9rem; font-weight: 500; margin-bottom: 1.1rem; }
+
+        /* reveal */
+        .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+        .js .reveal.visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .js .reveal { opacity: 1; transform: none; transition: none; }
+            .js .pane.active { animation: none; }
+            .btn, [role="tab"], [role="tab"]::before { transition: none; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="/autodeck/"><img src="/autodeck/images/icon-96.webp" alt="" width="34" height="34" decoding="async"><span>AutoDeck</span></a>
+            <ul class="nav">
+                <li><a href="#day">A day with it</a></li>
+                <li><a href="#triggers">What starts it</a></li>
+                <li><a href="#yours">Make it yours</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a class="btn btn-sm" href="https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck" target="_blank" rel="noopener noreferrer">Get it on Google Play</a></li>
+            </ul>
+        </div>
+    </header>
+    <main id="main">
+
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <span class="eyebrow">AutoDeck for Android</span>
+                    <h1>The right apps, at the <em>right moment.</em></h1>
+                    <p class="lead">Your home screen changes by itself. Get in the car and it&rsquo;s maps and music. Reach the office and it&rsquo;s mail and calendar. No folders to open, no pages to swipe, no searching.</p>
+                    <div class="hero-actions">
+                        <a class="btn" href="https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.22 0.27C1.08 0.41 1 0.64 1 0.94V15.06C1 15.36 1.08 15.59 1.22 15.73L1.28 15.79L8.92 8.15V8V7.85L1.28 0.21L1.22 0.27Z"/><path d="M11.47 10.7L8.92 8.15V8V7.85L11.47 5.3L11.54 5.34L14.57 7.04C15.44 7.53 15.44 8.33 14.57 8.83L11.54 10.53L11.47 10.7Z"/><path d="M11.54 10.66L8.92 8L1.22 15.73C1.51 16.04 1.99 16.07 2.53 15.77L11.54 10.66Z"/><path d="M11.54 5.34L2.53 0.23C1.99-0.07 1.51-0.04 1.22 0.27L8.92 8L11.54 5.34Z"/></svg>Get it on Google Play</a>
+                        <a class="btn btn-ghost" href="#day">See a day with it</a>
+                    </div>
+                    <p class="hero-note">Free to use &middot; Works with any launcher &middot; No account &middot; No ads</p>
+                </div>
+                <div class="stage" aria-label="AutoDeck profiles screen and the widget it controls">
+                    <div class="phone"><img src="/autodeck/images/app-profiles-hero-560.webp" srcset="/autodeck/images/app-profiles-hero-280.webp 280w, /autodeck/images/app-profiles-hero-560.webp 560w" sizes="(max-width: 414px) 66vw, 274px" width="560" height="907" alt="AutoDeck Profiles screen: Driving is on, with Evening, Gym and Work listed under it, each showing its apps and the rule that starts it" decoding="async"></div>
+                    <div class="float-widget"><img src="/autodeck/images/widget-drive-960.webp" srcset="/autodeck/images/widget-drive-480.webp 480w, /autodeck/images/widget-drive-960.webp 960w" sizes="(max-width: 880px) 86vw, 312px" width="960" height="356" alt="The AutoDeck widget on a home screen showing Maps, YouTube Music, Messages and a group of more driving apps" loading="lazy" decoding="async"><small>On the home screen while Driving is on</small></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="day" id="day">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow">An example day</span>
+                    <h2>One home screen. <em>Four moments.</em></h2>
+                    <p class="lead">Real screenshots from a phone set up with these four rules. Pick a moment to see what the widget shows while that profile is on.</p>
+                </div>
+                <div class="day-grid">
+                    <div role="tablist" aria-label="Moments in the day" class="reveal">
+                        <button role="tab" id="t-drive" aria-selected="true" aria-controls="p-drive"><strong>You get in the car</strong><span>Bluetooth connects to the car stereo</span></button>
+                        <button role="tab" id="t-work" aria-selected="false" aria-controls="p-work" tabindex="-1"><strong>You reach the office</strong><span>Your phone joins the office Wi-Fi</span></button>
+                        <button role="tab" id="t-gym" aria-selected="false" aria-controls="p-gym" tabindex="-1"><strong>You arrive at the gym</strong><span>You enter a place you picked on the map</span></button>
+                        <button role="tab" id="t-eve" aria-selected="false" aria-controls="p-eve" tabindex="-1"><strong>It&rsquo;s 7:30 in the evening</strong><span>A schedule, every day until 11 pm</span></button>
+                    </div>
+                    <div class="reveal" style="--d:.1s">
+                        <figure class="pane active" id="p-drive" role="tabpanel" aria-labelledby="t-drive"><div class="pane-card"><img src="/autodeck/images/widget-drive-960.webp" srcset="/autodeck/images/widget-drive-480.webp 480w, /autodeck/images/widget-drive-960.webp 960w" sizes="(max-width: 880px) calc(100vw - 72px), 525px" width="960" height="356" alt="Widget showing Maps, YouTube Music and Messages, with Phone, Contacts and Clock in a group" loading="lazy" decoding="async"><div class="rule-line"><span class="chip">When I connect to My Car</span><span>&rarr;</span><span class="chip on">Switch to Driving</span></div></div><figcaption>Maps up front, music and messages one tap away.</figcaption></figure>
+                        <figure class="pane" id="p-work" role="tabpanel" aria-labelledby="t-work"><div class="pane-card"><img src="/autodeck/images/widget-work-960.webp" srcset="/autodeck/images/widget-work-480.webp 480w, /autodeck/images/widget-work-960.webp 960w" sizes="(max-width: 880px) calc(100vw - 72px), 525px" width="960" height="356" alt="Widget showing Gmail, Calendar and Drive, with Messages, Chrome and Contacts in a group" loading="lazy" decoding="async"><div class="rule-line"><span class="chip">When I join Studio-5G</span><span>&rarr;</span><span class="chip on">Switch to Work</span></div></div><figcaption>Mail, calendar and files. The weekend apps step aside.</figcaption></figure>
+                        <figure class="pane" id="p-gym" role="tabpanel" aria-labelledby="t-gym"><div class="pane-card"><img src="/autodeck/images/widget-gym-960.webp" srcset="/autodeck/images/widget-gym-480.webp 480w, /autodeck/images/widget-gym-960.webp 960w" sizes="(max-width: 880px) calc(100vw - 72px), 525px" width="960" height="356" alt="Widget showing YouTube Music, Clock and Photos, with Maps and YouTube in a group" loading="lazy" decoding="async"><div class="rule-line"><span class="chip">When I arrive at Gym</span><span>&rarr;</span><span class="chip on">Switch to Gym</span></div></div><figcaption>A playlist, a timer and your photos. Nothing to scroll past.</figcaption></figure>
+                        <figure class="pane" id="p-eve" role="tabpanel" aria-labelledby="t-eve"><div class="pane-card"><img src="/autodeck/images/widget-eve-960.webp" srcset="/autodeck/images/widget-eve-480.webp 480w, /autodeck/images/widget-eve-960.webp 960w" sizes="(max-width: 880px) calc(100vw - 72px), 525px" width="960" height="356" alt="Widget showing YouTube, Photos and Messages, with Chrome and Maps in a group" loading="lazy" decoding="async"><div class="rule-line"><span class="chip">Every day, 19:30 &ndash; 23:00</span><span>&rarr;</span><span class="chip on">Switch to Evening</span></div></div><figcaption>Wind down with video, photos and the chat.</figcaption></figure>
+                        <p class="day-foot">The profiles, apps and place names are an example setup; yours are whatever you make. Each picture shows the widget while that profile is on.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Why it exists</span>
+                    <h2>Your phone does different things at different times. <em>Your home screen should too.</em></h2>
+                    <p class="lead">A normal home screen shows the same apps all day. So you hunt for maps while driving, scroll past work chat on a Sunday, and keep rearranging folders that were right yesterday.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat reveal"><b>186</b><p>times a day the average American checks their phone.</p><small>Reviews.org survey of about 1,000 US adults, Q4 2025, &plusmn;4%. <a href="https://www.reviews.org/mobile/cell-phone-addiction/" target="_blank" rel="noopener noreferrer">Source</a></small></div>
+                    <div class="stat reveal" style="--d:.08s"><b>80</b><p>times a day the average iPhone is unlocked, according to Apple.</p><small>Said by Apple in 2016, so older and iPhone-only. <a href="https://www.macrumors.com/2016/04/18/average-iphone-unlocked-80-times-per-day/" target="_blank" rel="noopener noreferrer">Source</a></small></div>
+                    <div class="stat reveal" style="--d:.16s"><b>9</b><p>different apps a day, out of about 30 a month, for the typical smartphone owner.</p><small>App Annie report, 2017, so also older. <a href="https://techcrunch.com/2017/05/04/report-smartphone-owners-are-using-9-apps-per-day-30-per-month/" target="_blank" rel="noopener noreferrer">Source</a></small></div>
+                </div>
+                <div class="calc reveal">
+                    <div>
+                        <h3>So how much time goes on looking?</h3>
+                        <p class="sub">Nobody has published a number for how long we spend hunting for the right app, so we won&rsquo;t make one up. Try your own. AutoDeck&rsquo;s job is to put the apps for the moment right in front of you, so there&rsquo;s less hunting.</p>
+                        <div class="sliders">
+                            <div><label for="c-n">Times a day I go looking for an app <output id="c-nv">30</output></label><input id="c-n" type="range" min="5" max="100" step="5" value="30"></div>
+                            <div><label for="c-s">Seconds each time <output id="c-sv">5</output></label><input id="c-s" type="range" min="2" max="20" step="1" value="5"></div>
+                        </div>
+                    </div>
+                    <div class="answer"><b id="c-out">15</b><span>hours a year, with your numbers. An example, not a measured average.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how" id="how">
+            <div class="wrap how-grid">
+                <div class="reveal">
+                    <span class="eyebrow">How it works</span>
+                    <h2>Three pieces. <em>Then it runs itself.</em></h2>
+                    <ol class="steps" style="margin-top:2.2rem">
+                        <li><div><h3>Make a profile</h3><p>A profile is a named set of apps: Work, Driving, Gym, Weekend. Pick the apps and the order.</p></div></li>
+                        <li><div><h3>Add a rule</h3><p>A rule says when to switch: <em style="color:var(--ink)">&ldquo;When I connect to My Car, switch to Driving.&rdquo;</em> When you disconnect, it can switch back by itself.</p></div></li>
+                        <li><div><h3>Place the widget</h3><p>One widget on your home screen shows the apps of whichever profile is on. That&rsquo;s the only thing that changes.</p></div></li>
+                    </ol>
+                </div>
+                <div class="how-visual reveal" style="--d:.1s">
+                    <div class="phone"><img src="/autodeck/images/app-rules-560.webp" srcset="/autodeck/images/app-rules-280.webp 280w, /autodeck/images/app-rules-560.webp 560w" sizes="(max-width: 414px) 66vw, 274px" width="560" height="1119" alt="AutoDeck Rules screen listing four rules in plain sentences: arrive at Gym, connect to My Car, every day 7:30 PM to 11:00 PM, join Studio-5G" loading="lazy" decoding="async"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="triggers">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow">What starts a switch</span>
+                    <h2>Twelve things your phone <em>already notices.</em></h2>
+                    <p class="lead">Pick the moments that matter to you. AutoDeck listens for them and changes the apps. Every one is free.</p>
+                </div>
+                <div class="tg"><div class="tg-card reveal" style="--h:150"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg></div><h3>Arrive at, or leave, a place</h3><p>The gym, the office, home, picked on a map.</p></div><div class="tg-card reveal" style="--h:200"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10.5 10.5 0 0 1 14 0M8.5 16a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></div><h3>Join a Wi-Fi network</h3><p>Office Wi-Fi on, work apps on.</p></div><div class="tg-card reveal" style="--h:225"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></div><h3>Connect to Bluetooth</h3><p>Your car stereo, headphones, a speaker.</p></div><div class="tg-card reveal" style="--h:265"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>It&rsquo;s a certain time</h3><p>Pick the days and hours. Overnight works too.</p></div><div class="tg-card reveal" style="--h:120"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div><h3>A phone call starts</h3><p>Including WhatsApp, Teams and Google Meet calls.</p></div><div class="tg-card reveal" style="--h:20"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg></div><h3>You start navigating</h3><p>Google Maps or Waze turns on or off.</p></div><div class="tg-card reveal" style="--h:340"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg></div><h3>Music or video plays</h3><p>Starts or stops.</p></div><div class="tg-card reveal" style="--h:45"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>You plug in the charger</h3><p>Plugged in or unplugged.</p></div><div class="tg-card reveal" style="--h:175"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H5a1 1 0 0 1-1-1zM20 15h-3v5h2a1 1 0 0 0 1-1z"/></svg></div><h3>Headphones plug in</h3><p>Wired headphones or an aux cable.</p></div><div class="tg-card reveal" style="--h:300"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a8 8 0 0 1 0 8M10 5.5a12 12 0 0 1 0 13M14 3a16 16 0 0 1 0 18"/></svg></div><h3>You tap an NFC tag</h3><p>A sticker on your desk or in your car.</p></div><div class="tg-card reveal" style="--h:290"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></div><h3>Do Not Disturb changes</h3><p>Turns on or off.</p></div><div class="tg-card reveal" style="--h:210"><div class="tg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></div><h3>Flight mode changes</h3><p>Turns on or off.</p></div></div>
+                <div class="mix reveal">
+                    <p><b>Mix them if you like.</b> &ldquo;Office Wi-Fi <b>and</b> a weekday&rdquo; or &ldquo;car Bluetooth <b>or</b> navigation starts.&rdquo; With restore on, leaving the place or network puts your earlier apps back. Combining conditions is part of Pro.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="yours" id="yours">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Make it yours</span>
+                    <h2>It should look like <em>your</em> home screen.</h2>
+                    <p class="lead">AutoDeck doesn&rsquo;t force a look on you. Use your own icon pack, change the colours and shapes, and resize it to fit. Everything on this page is free.</p>
+                </div>
+
+                <h3 class="reveal" style="margin-bottom:.4rem">Your icon pack, <em>every profile.</em></h3>
+                <p class="lead reveal" style="font-size:1.05rem">Pick an installed icon pack once, or give a profile its own: Work stays buttoned-up, Gym gets playful. Packs made for Nova, ADW and GO launchers work. Same widget, same apps, five packs:</p>
+                <div class="packs">
+                    <figure class="reveal"><img src="/autodeck/images/pack-aura.webp" width="640" height="196" alt="Widget with the Aura icon pack: red Gmail, blue Teams, a calendar showing 14" loading="lazy" decoding="async"><figcaption>Aura</figcaption></figure>
+                    <figure class="reveal" style="--d:.05s"><img src="/autodeck/images/pack-delta.webp" width="640" height="196" alt="Widget with the Delta icon pack: soft flat icons" loading="lazy" decoding="async"><figcaption>Delta</figcaption></figure>
+                    <figure class="reveal" style="--d:.1s"><img src="/autodeck/images/pack-juno.webp" width="640" height="196" alt="Widget with the Juno icon pack: glossy rounded icons" loading="lazy" decoding="async"><figcaption>Juno</figcaption></figure>
+                    <figure class="reveal"><img src="/autodeck/images/pack-nothing.webp" width="640" height="196" alt="Widget with the Nothing Icons pack: dark rounded tiles with white glyphs" loading="lazy" decoding="async"><figcaption>Nothing Icons</figcaption></figure>
+                    <figure class="reveal" style="--d:.05s"><img src="/autodeck/images/pack-whicons.webp" width="640" height="196" alt="Widget with the Whicons pack: white outline icons" loading="lazy" decoding="async"><figcaption>Whicons</figcaption></figure>
+                </div>
+
+                <div class="qs" style="margin-top:clamp(3rem,7vw,5rem)">
+                    <div class="reveal">
+                        <h3>Quick Switch: <em>borrow apps for a minute.</em></h3>
+                        <p class="lead" style="font-size:1.05rem;margin-top:.7rem">Turn on a small dot on the widget. Tap it, choose another profile, and its apps join the widget. Tap the dot again and they leave. You don&rsquo;t change profile and nothing else is interrupted. It&rsquo;s the easy way to grab one app from another part of your day.</p>
+                    </div>
+                    <div class="qs-pair reveal" style="--d:.1s">
+                        <figure><img src="/autodeck/images/qs-before-960.webp" srcset="/autodeck/images/qs-before-480.webp 480w, /autodeck/images/qs-before-960.webp 960w" sizes="(max-width: 880px) calc(100vw - 64px), 520px" width="960" height="267" alt="Widget showing the Work apps, with the Quick Switch dot above its top right corner" loading="lazy" decoding="async"><figcaption>Work is on. The dot sits on the widget.</figcaption></figure>
+                        <div class="arrow" aria-hidden="true">tap the dot, pick Gym &darr;</div>
+                        <figure><img src="/autodeck/images/qs-after-960.webp" srcset="/autodeck/images/qs-after-480.webp 480w, /autodeck/images/qs-after-960.webp 960w" sizes="(max-width: 880px) calc(100vw - 64px), 520px" width="960" height="267" alt="The same widget now showing YouTube Music, Clock and Camera first, with Gmail, Teams and other Work apps in the group" loading="lazy" decoding="async"><figcaption>Gym&rsquo;s apps join in. Tap again to send them away.</figcaption></figure>
+                    </div>
+                </div>
+
+                <div style="margin-top:clamp(3rem,7vw,5rem)">
+                    <h3 class="reveal" style="margin-bottom:.4rem">Pick a style, <em>then tweak it.</em></h3>
+                    <p class="lead reveal" style="font-size:1.05rem">Start from a ready-made look, then change what you like.</p>
+                    <div class="styles" style="margin-top:1.6rem">
+                        <figure class="reveal"><img src="/autodeck/images/style-labels-960.webp" srcset="/autodeck/images/style-labels-480.webp 480w, /autodeck/images/style-labels-960.webp 960w" sizes="(max-width: 760px) calc(100vw - 72px), 310px" width="960" height="373" alt="Widget with app names under each icon" loading="lazy" decoding="async"><figcaption>With labels</figcaption></figure>
+                        <figure class="reveal" style="--d:.06s"><img src="/autodeck/images/style-glass-960.webp" srcset="/autodeck/images/style-glass-480.webp 480w, /autodeck/images/style-glass-960.webp 960w" sizes="(max-width: 760px) calc(100vw - 72px), 310px" width="960" height="373" alt="Widget on a dark translucent panel" loading="lazy" decoding="async"><figcaption>Glass panel</figcaption></figure>
+                        <figure class="reveal" style="--d:.12s"><img src="/autodeck/images/style-dock-960.webp" srcset="/autodeck/images/style-dock-480.webp 480w, /autodeck/images/style-dock-960.webp 960w" sizes="(max-width: 760px) calc(100vw - 72px), 310px" width="960" height="373" alt="Widget on a light translucent panel" loading="lazy" decoding="async"><figcaption>Dock</figcaption></figure>
+                    </div>
+                    <div class="knobs reveal">
+                        <span class="chip">Background colour</span><span class="chip">Icon size</span><span class="chip">Icon shape</span><span class="chip">Round, circle or original icons</span><span class="chip">Show or hide labels</span><span class="chip">Themed icons</span><span class="chip">Show the profile name</span><span class="chip">Favourite apps that stay in every profile</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:clamp(3rem,7vw,5rem)">
+                    <h3 class="reveal" style="margin-bottom:.4rem">Any size, <em>from one tile to a full grid.</em></h3>
+                    <p class="lead reveal" style="font-size:1.05rem;margin-bottom:2rem">Drag the widget&rsquo;s handles on your home screen. It can be as small as a single tile or as big as your screen has room for. Apps that don&rsquo;t fit tuck into a neat group instead of disappearing.</p>
+                    <div class="sizes">
+                        <figure class="reveal" style="--w:99px"><img src="/autodeck/images/resize-1x1.webp" width="260" height="255" alt="Widget at 1 by 1: a single tile that holds four app icons" loading="lazy" decoding="async"><figcaption><b>1 &times; 1</b></figcaption></figure>
+                        <figure class="reveal" style="--w:152px;--d:.05s"><img src="/autodeck/images/resize-2x1.webp" width="400" height="218" alt="Widget at 2 by 1: one big app icon and a group tile" loading="lazy" decoding="async"><figcaption><b>2 &times; 1</b></figcaption></figure>
+                        <figure class="reveal" style="--w:154px;--d:.1s"><img src="/autodeck/images/resize-2x2.webp" width="400" height="396" alt="Widget at 2 by 2: three app icons and a group tile" loading="lazy" decoding="async"><figcaption><b>2 &times; 2</b></figcaption></figure>
+                        <figure class="reveal" style="--w:243px;--d:.15s"><img src="/autodeck/images/resize-4x1.webp" width="640" height="182" alt="Widget at 4 by 1: three app icons and a group tile" loading="lazy" decoding="async"><figcaption><b>4 &times; 1</b></figcaption></figure>
+                        <figure class="reveal" style="--w:243px;--d:.2s"><img src="/autodeck/images/resize-4x2.webp" width="640" height="362" alt="Widget at 4 by 2: seven app icons and a group tile" loading="lazy" decoding="async"><figcaption><b>4 &times; 2</b></figcaption></figure>
+                    </div>
+                    <p class="sizes-note reveal">Same profile, same apps, five sizes. And it works with the launcher you already use, because AutoDeck is a normal home screen widget.</p>
+                    <div class="tools reveal" style="justify-content:center" aria-label="Launchers that support widgets">
+                        <span class="chip">Samsung One UI</span><span class="chip">Pixel Launcher</span><span class="chip">Nova Launcher</span><span class="chip">Lawnchair</span><span class="chip">Microsoft Launcher</span><span class="chip">Action Launcher</span><span class="chip">&hellip;and any launcher with widgets</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plays-well">
+            <div class="wrap two">
+                <div class="reveal">
+                    <span class="free-badge">Completely free</span>
+                    <span class="eyebrow">Plays well with automation apps</span>
+                    <h2>Already automate things? <em>Plug it in.</em></h2>
+                    <p class="lead" style="margin-top:1rem">Every profile can be switched by the tools you already use. Pick it as an action in Samsung Routines, Tasker or MacroDroid, or put a shortcut on your home screen. None of this needs Pro, and it never counts against the free rules.</p>
+                    <div class="tools"><span class="chip">Samsung Modes &amp; Routines</span><span class="chip">Tasker</span><span class="chip">MacroDroid</span><span class="chip">Home screen shortcuts</span></div>
+                </div>
+                <div class="reveal" style="--d:.1s">
+                    <div class="note"><b>How it feels</b><p>Say a Routine turns things on when you get home. Add your Home profile as one of its actions and the widget changes in the same moment. No AutoDeck rule needed. The app shows each profile&rsquo;s shortcut and link, ready to copy.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="privacy" id="privacy">
+            <div class="wrap">
+                <span class="eyebrow">Privacy</span>
+                <h2>Your places and networks <em>stay on your phone.</em></h2>
+                <p class="lead" style="margin-top:1rem">AutoDeck needs to know where you are and what you&rsquo;re connected to in order to do its job. It doesn&rsquo;t need to tell anyone.</p>
+                <div class="priv-grid">
+                    <div class="priv-card"><h3>Kept on your phone</h3><p>Your location is checked against your own places on your phone. Wi-Fi names, Bluetooth devices and schedules work the same way.</p></div>
+                    <div class="priv-card"><h3>No account, no tracking</h3><p>No sign-up, no servers of ours, no ads, and no analytics or crash-reporting tools inside the app.</p></div>
+                    <div class="priv-card"><h3>Asked for, one at a time</h3><p>A permission is requested only when you pick the trigger that needs it. Skip location and everything else still works.</p></div>
+                </div>
+                <blockquote class="quote">&ldquo;Your location is matched on this device against the places you set up. It is never uploaded, stored on a server, sold, or shared with anyone.&rdquo;<cite>From the notice AutoDeck shows before it asks for background location</cite></blockquote>
+                <p style="margin-top:2rem;color:rgba(255,255,255,.78);max-width:44rem;font-size:.98rem">For the details, including the few Google services involved, read the <a class="link" href="/autodeck/privacy-policy.html">full privacy policy</a>.</p>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Free and Pro</span>
+                    <h2>Almost everything is free. <em>Pro lifts one limit.</em></h2>
+                </div>
+                <div class="plans">
+                    <div class="plan reveal"><h3>Free</h3><p class="sub">Everything you need to try it properly.</p>
+                        <ul><li>All 12 triggers</li><li>Profiles, the widget and every way to customise it</li><li>Samsung Routines, Tasker and MacroDroid, with no limit</li><li>2 automatic rules</li></ul></div>
+                    <div class="plan pro reveal" style="--d:.08s"><h3>Pro</h3><p class="sub">For a home screen that follows your whole day.</p>
+                        <ul><li>As many automatic rules as you like</li><li>Rules that combine conditions</li><li>Future Pro features</li></ul></div>
+                </div>
+                <p class="plans-foot">Pro is monthly, yearly or a one-time lifetime purchase. Prices are shown in Google Play for your country.</p>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <div class="wrap">
+                <div class="section-head reveal"><span class="eyebrow">Questions</span><h2>Good questions.</h2></div>
+                <div class="faq-list">
+                    <details><summary>Does it work with my launcher?</summary><p>AutoDeck is a normal home screen widget, so it works with any launcher that supports widgets, such as Samsung One UI, Pixel Launcher, Nova, Lawnchair, Microsoft Launcher and Action Launcher. You keep the launcher you already use.</p></details><details><summary>Is AutoDeck a launcher?</summary><p>No. It&rsquo;s an app plus a home screen widget. The widget is the part that changes as your profile changes.</p></details><details><summary>Can I use my own icon pack?</summary><p>Yes. Pick an installed icon pack for every profile, or give one profile its own. Packs made for Nova, ADW and GO launchers are supported.</p></details><details><summary>Why does a Wi-Fi rule ask for location?</summary><p>Android treats the name of the Wi-Fi network you are connected to as location information, so an app can only read it with the location permission. AutoDeck reads the name when you connect, not all the time, and it does not read your position for a Wi-Fi rule.</p></details><details><summary>Does it need an account or the internet?</summary><p>There is no account. Rules run on your phone. The internet is used by the map where you pick a place, and by Google Play when you buy Pro.</p></details><details><summary>What is free and what is Pro?</summary><p>Every trigger is free, and so is every customisation. The free plan runs 2 rules; Pro removes that limit and lets a rule combine conditions. Switching profiles from Tasker, MacroDroid, Samsung Routines or a shortcut is free too.</p></details><details><summary>Which Android versions and languages?</summary><p>Android 8.0 or newer. The app is available in 18 languages: English, Arabic, Chinese, Danish, Dutch, French, German, Greek, Indonesian, Japanese, Korean, Persian, Polish, Brazilian Portuguese, Russian, Spanish, Thai and Turkish.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="wrap reveal">
+                <img src="/autodeck/images/icon-176.webp" width="88" height="88" alt="" loading="lazy" decoding="async">
+                <h2>Let your home screen <em>keep up.</em></h2>
+                <p>Make a profile, add one rule, place the widget. The rest happens on its own.</p>
+                <a class="btn" href="https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <span>AutoDeck by <a href="https://dpkay.com">Deepak Jha</a></span>
+            <nav aria-label="Footer"><a href="/autodeck/privacy-policy.html">Privacy policy</a><a href="/projects">Other apps</a><a href="mailto:hello@dpkay.com">hello@dpkay.com</a></nav>
+        </div>
+    </footer>
+    <script src="/shared/analytics.js" defer></script>
+    <script>
+    (function () {
+        document.documentElement.classList.add('js');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        /* day tabs */
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+        var panes = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+        var current = 0, timer = null, manual = false;
+        function select(i) {
+            current = i;
+            tabs.forEach(function (t, n) {
+                var on = n === i;
+                t.setAttribute('aria-selected', on);
+                t.tabIndex = on ? 0 : -1;
+                panes[n].classList.toggle('active', on);
+            });
+        }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        function start() { if (!reduce && !manual && !timer) timer = setInterval(function () { select((current + 1) % tabs.length); }, 5500); }
+        tabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { manual = true; stop(); select(i); });
+            t.addEventListener('keydown', function (e) {
+                var k = e.key, n = null;
+                if (k === 'ArrowDown' || k === 'ArrowRight') n = (i + 1) % tabs.length;
+                if (k === 'ArrowUp' || k === 'ArrowLeft') n = (i + tabs.length - 1) % tabs.length;
+                if (n !== null) { e.preventDefault(); manual = true; stop(); select(n); tabs[n].focus(); }
+            });
+        });
+        var day = document.getElementById('day');
+        /* the three hidden panes are lazy: fetch them when the section is on screen (or the tabs are touched), never at first paint */
+        var paneImgs = day.querySelectorAll('.pane img'), warmed = false;
+        function warmUp() { if (warmed) return; warmed = true; paneImgs.forEach(function (im) { im.loading = 'eager'; }); }
+        day.addEventListener('pointerenter', warmUp); day.addEventListener('focusin', warmUp);
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (es) { if (es[0].isIntersecting) { warmUp(); start(); } else { stop(); } }, { threshold: 0.4 }).observe(day);
+        }
+        /* a tab the visitor has hovered or focused should not move under them, and a tab they chose stays chosen */
+        day.addEventListener('mouseenter', stop); day.addEventListener('focusin', stop);
+
+
+        /* "how much time" calculator: the visitor's own numbers, nothing measured */
+        var cn = document.getElementById('c-n'), cs = document.getElementById('c-s');
+        function calc() {
+            var n = +cn.value, s = +cs.value;
+            document.getElementById('c-nv').textContent = n; document.getElementById('c-sv').textContent = s;
+            document.getElementById('c-out').textContent = Math.round(n * s * 365 / 3600);
+        }
+        if (cn && cs) { cn.addEventListener('input', calc); cs.addEventListener('input', calc); calc(); }
+
+        /* reveal on scroll */
+        var els = document.querySelectorAll('.reveal');
+        els.forEach(function (el) { if (el.style.getPropertyValue('--d')) el.style.transitionDelay = el.style.getPropertyValue('--d'); });
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (es) {
+                es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        } else { els.forEach(function (el) { el.classList.add('visible'); }); }
+    })();
+    </script>
+</body>
+</html>

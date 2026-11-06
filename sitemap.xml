@@ -16,6 +16,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dpkay.com/autodeck/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dpkay.com/autodeck/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://dpkay.com/toggldev</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

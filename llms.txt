@@ -38,7 +38,7 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 ## Personal Projects
 
 - TogglDev: Android Developer Options toggle, 8K+ downloads (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler
-- AutoDeck: Named Android app drawers that auto-switch via triggers (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck
+- AutoDeck: Android home screen apps that switch by themselves via profiles, rules and one widget (Kotlin) — https://dpkay.com/autodeck/ — https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck
 - CloseLink: Offline Bluetooth voice intercom for Android (Kotlin, C++) — https://play.google.com/store/apps/details?id=com.dpkay.apps.closelink
 - AfterCall Shield: Post-call overlay dismissal (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner
 - Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://github.com/dpkay-io/terminal-studio
