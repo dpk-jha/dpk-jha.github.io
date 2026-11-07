@@ -91,7 +91,7 @@ a           { color: inherit; text-decoration: none; }
     .stack-tag { font-size: 0.625rem; }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 640px) {
     .container { padding-inline: 1.25rem; }
 }
 

@@ -16,7 +16,11 @@
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
-.site-header > nav { display: flex; justify-content: space-between; align-items: center; padding-block: 1.1rem; }
+/* The header owns its own width and side gutter instead of inheriting them from .wrap (site.css) or .container (styles.css).
+ * Those two classes are the same except for their phone breakpoint, and that difference once put /projects' header 12px
+ * further in than the other pages. `.site-header > nav` is more specific, so it wins whichever class the page's nav carries. */
+.site-header > nav { display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w, 72rem); margin-inline: auto; padding: 1.1rem 2rem; }
+@media (max-width: 640px) { .site-header > nav { padding-inline: 1.25rem; } }
 .logo { font-weight: 600; font-size: 1rem; letter-spacing: 0.01em; line-height: 1.65; }
 .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; font-size: 0.9375rem; text-transform: none; letter-spacing: 0; color: rgba(244, 244, 245, 0.76); }
 .nav-links a { padding: 0.5rem 0.1rem; color: inherit; cursor: pointer; transition: color 0.2s; }
