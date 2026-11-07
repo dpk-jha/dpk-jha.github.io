@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0c0a09">
-    <meta name="description" content="Double your Claude Max productivity. claude-shift aligns 5-hour usage windows with your actual schedule by sending strategic pings during downtime. Open source, cross-platform CLI tool.">
+    <meta name="description" content="claude-shift aligns your Claude Max 5-hour usage windows with your schedule by sending pings during downtime. Open source, cross-platform CLI.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dpkay.com/claude-shift">
+    <meta property="og:site_name" content="Deepak Jha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://dpkay.com/claude-shift/">
     <meta property="og:title" content="claude-shift — Double Your Claude Sessions">
     <meta property="og:description" content="Align your Claude Max 5-hour windows with your work schedule. Auto-pings during downtime = fresh session every time you sit down to code.">
-    <meta property="og:image" content="https://dpkay.com/claude-shift/images/cli.png">
+    <meta property="og:image" content="https://dpkay.com/claude-shift/images/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="claude-shift terminal output: a weekly timeline of 5-hour Claude usage windows with pings, renewals and work blocks.">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="claude-shift — Double Your Claude Sessions">
     <meta name="twitter:description" content="Stop wasting Claude Max windows. Auto-align 5h usage slots with your actual schedule.">
-    <meta name="twitter:image" content="https://dpkay.com/claude-shift/images/cli.png">
+    <meta name="twitter:image" content="https://dpkay.com/claude-shift/images/og.jpg">
+    <meta name="twitter:image:alt" content="claude-shift terminal output: a weekly timeline of 5-hour Claude usage windows with pings, renewals and work blocks.">
 
     <title>claude-shift — Double Your Claude Sessions</title>
-    <link rel="canonical" href="https://dpkay.com/claude-shift">
+    <link rel="canonical" href="https://dpkay.com/claude-shift/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0a09'/><path d='M50 20 L78 50 L62 50 L62 80 L38 80 L38 50 L22 50 Z' fill='%23cc785c'/></svg>" type="image/svg+xml">
 
     <script type="application/ld+json">
@@ -28,20 +35,51 @@
         "name": "claude-shift",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Windows, macOS, Linux",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
         "description": "Optimize your Claude Max 5-hour slots by scheduling strategic session pings during downtime. Double your productive AI coding sessions.",
-        "author": { "@type": "Person", "name": "Deepak Jha", "url": "https://dpkay.com" },
-        "url": "https://dpkay.com/claude-shift",
+        "author": {
+            "@type": "Person",
+            "@id": "https://dpkay.com/#person",
+            "name": "Deepak Jha",
+            "url": "https://dpkay.com/"
+        },
+        "url": "https://dpkay.com/claude-shift/",
         "downloadUrl": "https://www.npmjs.com/package/claude-shift",
-        "softwareVersion": "1.0.0",
-        "license": "https://opensource.org/licenses/MIT"
+        "softwareVersion": "1.0.1",
+        "license": "https://opensource.org/licenses/MIT",
+        "image": "https://dpkay.com/claude-shift/images/og.jpg"
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://dpkay.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "claude-shift",
+                "item": "https://dpkay.com/claude-shift/"
+            }
+        ]
+    }
+    </script>
 
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="/shared/product-header.css?v=7878c804d4">
     <style>
         :root {
             --bg: #0c0a09;
@@ -72,7 +110,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: clip; }
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -86,7 +124,7 @@
             background-size: 28px 28px;
             pointer-events: none; z-index: 0;
         }
-        h1, h2, h3 { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+        h1, h2, h3 { font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
         a { color: inherit; text-decoration: none; }
         ::selection { background: var(--accent); color: var(--bg); }
         img { max-width: 100%; height: auto; display: block; }
@@ -516,12 +554,12 @@
 
     <header class="site-header">
         <nav class="container">
-            <a href="/claude-shift" class="header-logo">
+            <a href="/claude-shift/" class="header-logo">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                     <rect width="24" height="24" rx="5" fill="var(--accent)"/>
                     <path d="M12 5 L19 12.5 L15.5 12.5 L15.5 19 L8.5 19 L8.5 12.5 L5 12.5 Z" fill="var(--bg)"/>
                 </svg>
-                claude-<span class="logo-accent">shift</span>
+                <span>claude-<span class="logo-accent">shift</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="#problem">Problem</a></li>
@@ -689,7 +727,7 @@
                         <span class="panel-dot panel-dot--g"></span>
                         <span class="cli-chrome-title">claude-shift week</span>
                     </div>
-                    <img src="/claude-shift/images/cli.png" alt="claude-shift weekly schedule timeline showing ping times, slot coverage, and work windows across the week" loading="eager">
+                    <img src="/claude-shift/images/cli.png" alt="claude-shift weekly schedule timeline showing ping times, slot coverage, and work windows across the week" width="781" height="647" decoding="async">
                 </div>
             </div>
         </section>
@@ -843,7 +881,8 @@
         </div>
     </footer>
 
-    <script src="/shared/analytics.js" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
+    <script src="/shared/back-to-portfolio.js?v=ba58c65ace" defer></script>
     <script>
         (function () {
             var observer = new IntersectionObserver(function (entries) {

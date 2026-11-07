@@ -7,20 +7,27 @@
     <meta name="theme-color" content="#080A12" media="(prefers-color-scheme: dark)">
 
     <title>AutoDeck: Android home screen apps that switch by themselves</title>
-    <meta name="description" content="AutoDeck swaps the apps on your Android home screen when you join Wi-Fi, connect to your car, arrive somewhere or the clock says so. Works with any launcher. Free to use.">
+    <meta name="description" content="AutoDeck swaps the apps on your Android home screen when you join Wi-Fi, connect to your car, arrive somewhere or at a set time. Works with any launcher.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://dpkay.com/autodeck/">
     <link rel="icon" href="/autodeck/images/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="/autodeck/images/apple-touch-icon.png">
 
     <meta property="og:type"        content="website">
+    <meta property="og:site_name" content="Deepak Jha">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url"         content="https://dpkay.com/autodeck/">
     <meta property="og:title"       content="AutoDeck: the right apps, at the right moment">
     <meta property="og:description" content="Your Android home screen changes by itself: car, office, gym, bedtime. Works with any launcher.">
     <meta property="og:image"       content="https://dpkay.com/autodeck/images/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="AutoDeck home screen widgets: Driving apps when the car Bluetooth connects, Work apps when the office Wi-Fi joins.">
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="AutoDeck: the right apps, at the right moment">
     <meta name="twitter:description" content="Your Android home screen changes by itself. Works with any launcher.">
     <meta name="twitter:image"       content="https://dpkay.com/autodeck/images/og.jpg">
+    <meta name="twitter:image:alt" content="AutoDeck home screen widgets: Driving apps when the car Bluetooth connects, Work apps when the office Wi-Fi joins.">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -37,8 +44,9 @@
         },
         "author": {
             "@type": "Person",
+            "@id": "https://dpkay.com/#person",
             "name": "Deepak Jha",
-            "url": "https://dpkay.com"
+            "url": "https://dpkay.com/"
         },
         "url": "https://dpkay.com/autodeck/",
         "downloadUrl": "https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck",
@@ -129,6 +137,30 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://dpkay.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "AutoDeck",
+                "item": "https://dpkay.com/autodeck/"
+            }
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/shared/product-header.css?v=7878c804d4">
     <style>
         /* Tokens come from the app: ui/theme/GlassColors.kt (colours), Dimens.kt (radii), Theme.kt (follows the system light/dark setting). */
         :root {
@@ -147,7 +179,7 @@
             --glow-a: rgba(42, 79, 208, .10); --glow-b: rgba(120, 150, 240, .16);
             --layer-a: #D7E0FB; --layer-b: #C2CFF7;
             --shadow: 0 1px 2px rgba(20,24,50,.05), 0 14px 34px -14px rgba(30,40,100,.25);
-            --sans: "Google Sans Text", "Google Sans", Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+            --sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
             --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
             --r-card: 20px; --r-row: 14px; --r-chip: 12px; --r-sheet: 28px;
             --max: 70rem;
@@ -182,9 +214,9 @@
         .skip:focus { left: 0; }
         :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
-        h1, h2, h3 { font-weight: 400; line-height: 1.06; letter-spacing: -0.03em; }
-        h1 { font-size: clamp(2.8rem, 6.4vw, 5rem); letter-spacing: -0.04em; }
-        h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); }
+        h1, h2, h3 { font-weight: 400; line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; }
+        h1 { font-size: clamp(2.6rem, 6vw, 4.25rem); letter-spacing: -0.04em; } /* sized for self-hosted Inter (wider than the Google Sans this page was first set in) */
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
         h3 { font-size: 1.35rem; font-weight: 500; letter-spacing: -0.015em; line-height: 1.2; }
         em { font-style: normal; color: var(--accent); }
         .eyebrow { font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block; }
@@ -197,7 +229,7 @@
         .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-weight: 500; font-size: 1.1rem; }
         .brand img { width: 34px; height: 34px; }
         .nav { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
-        .nav a { text-decoration: none; font-size: .95rem; color: var(--muted); }
+        .nav a { text-decoration: none; font-size: .95rem; color: var(--muted); white-space: nowrap; }
         .nav a:hover { color: var(--ink); }
         .btn { display: inline-flex; align-items: center; gap: .55rem; background: var(--btn-bg); color: var(--btn-fg) !important; text-decoration: none; padding: .8rem 1.4rem; border-radius: 999px; font-weight: 500; font-size: 1rem; transition: transform .2s, opacity .2s; }
         .btn:hover { opacity: .88; transform: translateY(-1px); }
@@ -205,7 +237,7 @@
         .btn-sm { padding: .55rem 1rem; font-size: .9rem; }
         .btn-ghost { background: transparent; color: var(--ink) !important; border: 1px solid var(--line); }
         .btn-ghost:hover { background: var(--indicator); opacity: 1; }
-        @media (max-width: 760px) { .nav li:not(:last-child) { display: none; } }
+        @media (max-width: 900px) { .nav li:not(:last-child) { display: none; } } /* Inter is wider than the face this page was first set in: the text links need the room until 900px */
 
         /* hero */
         .hero { padding-block: clamp(3rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
@@ -662,7 +694,8 @@
             <nav aria-label="Footer"><a href="/autodeck/privacy-policy.html">Privacy policy</a><a href="/projects">Other apps</a><a href="mailto:hello@dpkay.com">hello@dpkay.com</a></nav>
         </div>
     </footer>
-    <script src="/shared/analytics.js" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
+    <script src="/shared/back-to-portfolio.js?v=ba58c65ace" defer></script>
     <script>
     (function () {
         document.documentElement.classList.add('js');

@@ -1,0 +1,131 @@
+/* ═══════════════════════════════════════════════════════════════
+   projects-v2.css — bridge layer for /projects
+   Loaded AFTER shared/styles.css and shared/projects.css.
+   Brings the page's header, type scale, accent and motion in line
+   with the new site (shared/site.css) without touching the page's
+   interactive structure (case-study tabs, filters, card grid).
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Fonts: declared once in shared/fonts.css; every page that loads this file also links that one. */
+
+:root {
+    --bg:      #0a0a0b;
+    --accent:  #f2b35a;
+    --warm:    #f2b35a;
+    --arch:    #60a5fa;
+    --fg-2:    rgba(244, 244, 245, 0.76);
+    --fg-3:    rgba(244, 244, 245, 0.60);
+    --line-2:  rgba(255, 255, 255, 0.16);
+}
+body { background: var(--bg); font-size: 1.0625rem; }
+:focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--warm); color: #000; }
+
+/* Content visible by default; reveals are progressive enhancement */
+.reveal, .reveal-zoom, .reveal-left { opacity: 1; transform: none; }
+.js .reveal:not(.visible)      { opacity: 0; transform: translateY(1.25rem); }
+.js .reveal-zoom:not(.visible) { opacity: 0; transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal:not(.visible), .js .reveal-zoom:not(.visible) { opacity: 1 !important; transform: none !important; }
+}
+
+.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 300; background: #fff; color: #000; padding: 0.6rem 1rem; border-radius: 0.5rem; font-weight: 600; }
+.skip-link:focus { top: 1rem; }
+
+/* ── Header (matches home) ─────────────────────────────────── */
+.site-header::before { background: rgba(10, 10, 11, 0.74); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.site-header > nav { padding-block: 1.1rem; }
+.logo { font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; }
+.nav-links { gap: 2rem; font-size: 0.9375rem; text-transform: none; letter-spacing: 0; align-items: center; }
+.nav-links a { color: var(--fg-2); padding: 0.5rem 0.1rem; }
+.nav-links a:hover, .nav-links a.active { color: var(--fg); }
+.nav-links .nav-cta { padding: 0.55rem 1.15rem; border: 1px solid rgba(242, 179, 90, 0.55); border-radius: 99px; color: var(--fg); transition: background 0.25s, border-color 0.25s, box-shadow 0.25s; }
+.nav-links .nav-cta:hover { background: rgba(242, 179, 90, 0.10); border-color: var(--warm); box-shadow: 0 0 18px -4px rgba(242, 179, 90, 0.45); }
+@media (max-width: 640px) { .nav-links { font-size: 1.375rem; gap: 1.75rem; } .nav-links .nav-cta { padding: 0.7rem 1.5rem; } }
+
+/* ── Type scale: nothing under 12px, readable contrast ─────── */
+.eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8125rem; letter-spacing: 0.14em; color: var(--warm); }
+.projects-lead { color: var(--fg-2); font-weight: 400; font-size: 1.25rem; }
+.section-sub { font-size: 0.8125rem; color: var(--fg-3); }
+.card-category, .cs-metric-label, .cs-block-label, .tech-group-label { font-size: 0.75rem; letter-spacing: 0.14em; }
+.cs-tab-num-text, .cs-role-period, .cs-step-num, .cs-tag, .card-metric { font-size: 0.8125rem; }
+.filter-btn { font-size: 0.8125rem; letter-spacing: 0.12em; color: var(--fg-3); }
+.filter-btn:hover, .filter-btn.active { color: var(--fg); }
+.card-link { font-size: 0.8125rem; letter-spacing: 0.08em; }
+.card-desc { font-size: 0.9375rem; color: var(--fg-2); }
+.card-features li { font-size: 0.875rem; color: var(--fg-2); }
+.stack-tag { font-size: 0.75rem; color: var(--fg-2); }
+.cs-tab-title { font-size: 0.875rem; }
+.cs-step-body p, .cs-step-body li { font-size: 1rem; }
+
+/* ── New banner: link to the AI case study ─────────────────── */
+.ai-banner { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; border: 1px solid var(--line-2); border-radius: 1.25rem; padding: 1.5rem 1.75rem; margin-bottom: clamp(3.5rem, 7vw, 5.5rem); background: radial-gradient(70% 140% at 100% 0%, rgba(242, 179, 90, 0.10), transparent 60%), rgba(255, 255, 255, 0.02); transition: border-color 0.35s var(--ease), transform 0.35s var(--ease); }
+.ai-banner:hover { border-color: rgba(242, 179, 90, 0.45); transform: translateY(-2px); }
+.ai-banner b { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; display: block; line-height: 1.2; margin-bottom: 0.25rem; }
+.ai-banner span { color: var(--fg-2); font-size: 0.9375rem; }
+.ai-banner em { font-style: normal; font-weight: 600; color: var(--fg); display: inline-flex; gap: 0.5rem; align-items: center; }
+.ai-banner:hover em { color: var(--warm); }
+.ai-banner .tag-new { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm); display: block; margin-bottom: 0.5rem; }
+
+/* font stacks with metric-matched fallbacks */
+body { font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+h1, h2, h3 { font-family: 'Playfair Display', 'Playfair Fallback', Georgia, serif; }
+
+/* ── One accent: retire the blue / purple / green card colours ───
+   Category is already named by each card's label and the filter tabs, so the
+   cards share the site's amber instead of four competing hues. To bring
+   per-category colours back, delete this block. */
+.project-card[data-category] { --card-accent: var(--warm); }
+.projects-hero::before { background: radial-gradient(ellipse, rgba(242, 179, 90, 0.04) 0%, transparent 70%); }
+.cs-metric { background: rgba(242, 179, 90, 0.06); border-color: rgba(242, 179, 90, 0.18); }
+.cs-step-num { border-color: rgba(242, 179, 90, 0.35); }
+/* the three case-study steps keep a meaning: challenge = amber, architecture = blue, outcome = green.
+   All three labels sit at full strength (measured 10.7 / 18 / 8.7 : 1 on the page background). */
+.cs-step--challenge .cs-step-num { border-color: rgba(242, 179, 90, 0.35); color: var(--warm); }
+.cs-step--arch .cs-step-num { border-color: rgba(96, 165, 250, 0.5); color: var(--arch); }
+.cs-step--outcome .cs-block-label { color: #22c55e; }
+
+/* Sticky sub-bars (case-study tabs, filters) sit flush under the header.
+   --header-h is set from the header's real height by a small script in projects.html;
+   the fallback matches the desktop header so there is no gap even before it runs. */
+.cs-tabs, .filters { top: var(--header-h, 3.8rem); }
+
+/* Closed menu / dialog must not be tabbable or announced (opacity alone hides them only visually). */
+@media (max-width: 640px) {
+    .nav-links { visibility: hidden; transition: opacity 0.3s var(--ease), visibility 0s linear 0.3s; }
+    .nav-links.open { visibility: visible; transition-delay: 0s; }
+}
+.resume-modal { visibility: hidden; transition: opacity 0.3s var(--ease), visibility 0s linear 0.3s; }
+.resume-modal[aria-hidden="false"] { visibility: visible; transition-delay: 0s; }
+
+/* Hero entrance is CSS-only so it never waits for JavaScript (keeps LCP early on slow networks). */
+@keyframes rise-in { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: none; } }
+.hero-in { animation: rise-in 0.8s var(--ease) both; animation-delay: var(--delay, 0s); }
+@media (prefers-reduced-motion: reduce) { .hero-in { animation: none; } }
+
+/* ── Shorter cards (kept quiet): tighter padding, real app icons, two feature bullets ── */
+.project-card { padding: 1.75rem; }
+.card-icon { margin-bottom: 1.1rem; }
+.card-icon.has-img { padding: 0; overflow: hidden; background: #141417; }
+.card-icon.has-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.card-divider { margin: 1.1rem 0; }
+.card-features { margin-bottom: 1.25rem; }
+.card-features li:nth-child(n+3) { display: none; }
+.project-card.has-shot .card-features { display: none; }
+.card-shot { margin: 0 0 1.25rem; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 0.75rem; overflow: hidden; background: #0c0c0e; }
+.card-shot img { display: block; width: 100%; height: auto; }
+
+/* ── Same type system as home (added with the type-scale pass) ───────────────
+   One white, one heading rhythm, one label style (amber/grey mono caps), one link style (amber). */
+:root { --fg: #f4f4f5; }
+h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+.section-title { font-size: var(--fs-section); }
+.section-header .kicker, .tech-heading .kicker { margin-bottom: 0.9rem; }
+.card-category, .cs-block-label, .cs-metric-label { font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-weight: 500; }
+.cs-step--challenge .cs-block-label { color: var(--warm); }
+.cs-step--arch .cs-block-label { color: var(--arch); }
+.card-link { font-size: 0.9375rem; text-transform: none; letter-spacing: 0; color: var(--warm); }
+.card-link:hover, .project-card:hover .card-link { color: #f7d9a6; }
+.ai-banner em { color: var(--warm); }
+.logo { line-height: 1.65; } /* same header height as home (62px): home inherits body line-height 1.65 */
+.menu-toggle svg { display: block; } /* same 46px hamburger as home: an inline svg adds line-height and made the mobile header 3px taller */

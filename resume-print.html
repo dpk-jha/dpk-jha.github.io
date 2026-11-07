@@ -6,21 +6,21 @@
     <meta name="robots" content="noindex">
     <base target="_blank">
     <title>Deepak Jha - Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <style>
         @page { size: letter; margin: 0; }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --blue: #2B7AC6;
-            --dark: #1a1a1a;
-            --body: #333;
-            --muted: #666;
-            --light: #999;
-            --line: #ddd;
+            --ink: #14161a;
+            --accent: #a8651a;
+            --amber: #f2b35a;
+            --body: #2e3238;
+            --muted: #5b616b;
+            --light: #5f6672;
+            --line: #e3e5e8;
         }
 
         html { background: #e0e0e0; }
@@ -34,7 +34,7 @@
             width: 8.5in;
             height: 11in;
             margin: 0 auto;
-            padding: 0.18in 0.45in 0.1in;
+            padding: 0.2in 0.45in 0.1in;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
@@ -42,7 +42,7 @@
 
         @media print {
             html { background: #fff; height: 100%; overflow: hidden; }
-            body { page-break-after: avoid; zoom: 1 !important; height: 11in !important; padding: 0.18in 0.45in 0.1in !important; overflow: hidden !important; }
+            body { page-break-after: avoid; zoom: 1 !important; height: 11in !important; padding: 0.2in 0.45in 0.1in !important; overflow: hidden !important; }
             .print-hint { display: none !important; }
         }
 
@@ -55,307 +55,93 @@
         html.in-iframe .print-hint { display: none !important; }
 
         .print-hint {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 0.5rem;
-            font-size: 11px;
-            z-index: 100;
+            position: fixed; top: 0; left: 0; right: 0;
+            background: #1a1a1a; color: #fff; text-align: center;
+            padding: 0.5rem; font-size: 11px; z-index: 100;
             font-family: 'Inter', system-ui, sans-serif;
         }
-        .print-hint kbd {
-            background: #333;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-        }
+        .print-hint kbd { background: #333; padding: 2px 6px; border-radius: 3px; font-size: 10px; }
 
-        /* ── Header ────────────────────────────────────────────── */
+        /* ── Header ─────────────────────────────────────────── */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-bottom: 0.05in;
-            border-bottom: 1pt solid var(--blue);
-            margin-bottom: 0.06in;
+            display: flex; justify-content: space-between; align-items: flex-end;
+            padding-bottom: 0.07in; border-bottom: 1pt solid var(--amber); margin-bottom: 0.08in;
         }
-
         .header-left h1 {
-            font-family: 'Inter', system-ui, sans-serif;
-            font-size: 22pt;
-            font-weight: 700;
-            color: var(--blue);
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 0.04in;
+            font-size: 23pt; font-weight: 700; color: var(--ink);
+            letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 0.04in;
         }
-        .header-subtitle {
-            font-size: 7.5pt;
-            color: var(--muted);
-            font-weight: 400;
-            letter-spacing: 0.01em;
-        }
+        .header-subtitle { font-size: 8pt; color: var(--muted); font-weight: 500; letter-spacing: 0.01em; }
+        .header-subtitle b { color: var(--accent); font-weight: 700; }
+        .header-right .site-link { color: var(--accent); }
+        .header-right { text-align: right; font-size: 7.5pt; color: var(--body); line-height: 1.65; padding-top: 0.05in; }
+        .header-right a { color: var(--ink); text-decoration: none; }
 
-        .header-right {
-            text-align: right;
-            font-size: 7.5pt;
-            color: var(--body);
-            line-height: 1.7;
-            padding-top: 0.06in;
-        }
-        .header-right a {
-            color: var(--blue);
-            text-decoration: none;
-        }
+        /* ── Summary ────────────────────────────────────────── */
+        .summary-section { margin-bottom: 0.09in; padding-bottom: 0.08in; border-bottom: 0.75pt solid var(--line); }
+        .summary-text { font-size: 8.4pt; color: var(--body); line-height: 1.55; }
+        .summary-text strong { font-weight: 600; color: var(--ink); }
 
-        /* ── Summary ───────────────────────────────────────────── */
-        .summary-section {
-            margin-bottom: 0.1in;
-            padding-bottom: 0.08in;
-            border-bottom: 1pt solid #eee;
-        }
-        .summary-text {
-            font-size: 8pt;
-            color: var(--body);
-            line-height: 1.55;
-            text-align: justify;
-        }
-        .summary-text strong {
-            font-weight: 600;
-            color: var(--dark);
-        }
+        /* ── Experience strip ───────────────────────────────── */
+        .exp-strip { margin-bottom: 0.08in; padding-bottom: 0.07in; border-bottom: 0.75pt solid var(--line); }
+        .exp-strip-row { display: flex; gap: 0.15in; margin-top: 0.03in; }
+        .exp-strip-company { font-size: 8pt; line-height: 1.6; white-space: nowrap; }
+        .exp-strip-name { font-weight: 700; color: var(--ink); }
+        .exp-strip-role { color: var(--body); }
+        .exp-strip-dates { color: var(--light); font-size: 7pt; }
+        .exp-strip-sep { color: var(--muted); margin: 0 0.04in; }
+        .exp-strip-pipe { color: var(--muted); align-self: center; }
 
-        /* ── Experience Strip ──────────────────────────────────── */
-        .exp-strip {
-            margin-bottom: 0.08in;
-            padding-bottom: 0.08in;
-            border-bottom: 1pt solid #eee;
-        }
-        .exp-strip-row {
-            display: flex;
-            gap: 0.15in;
-            margin-top: 0.04in;
-        }
-        .exp-strip-company {
-            font-size: 8pt;
-            line-height: 1.6;
-            white-space: nowrap;
-        }
-        .exp-strip-name {
-            font-weight: 700;
-            color: var(--dark);
-        }
-        .exp-strip-role {
-            color: var(--body);
-        }
-        .exp-strip-dates {
-            color: var(--light);
-            font-size: 7pt;
-        }
-        .exp-strip-sep {
-            color: var(--muted);
-            margin: 0 0.04in;
-        }
-        .exp-strip-pipe {
-            color: var(--muted);
-            align-self: center;
-        }
-
-        /* ── Section Titles ────────────────────────────────────── */
+        /* ── Section titles ─────────────────────────────────── */
         .section-title {
-            font-family: 'Inter', system-ui, sans-serif;
-            font-size: 8pt;
-            font-weight: 700;
-            color: var(--blue);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 0.08in;
+            font-size: 7.5pt; font-weight: 700; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.06in;
         }
 
-        /* ── Main Two-Column Layout ────────────────────────────── */
-        .main {
-            display: flex;
-            gap: 0.3in;
-        }
+        .main { display: flex; gap: 0.28in; }
 
-        /* ── Left Sidebar ──────────────────────────────────────── */
-        .sidebar {
-            flex: 0 0 1.6in;
-            border-right: 1pt solid #eee;
-            padding-right: 0.2in;
-        }
-
-        .skill-group {
-            margin-bottom: 0.07in;
-        }
-        .skill-group-icon {
-            display: flex;
-            align-items: center;
-            gap: 0.04in;
-            margin-bottom: 0.02in;
-        }
-        .skill-group-icon svg {
-            width: 10pt;
-            height: 10pt;
-            color: var(--light);
-            flex-shrink: 0;
-        }
+        /* ── Sidebar ────────────────────────────────────────── */
+        .sidebar { flex: 0 0 1.55in; border-right: 0.75pt solid var(--line); padding-right: 0.18in; }
+        .skill-group { margin-bottom: 0.075in; }
         .skill-group-label {
-            font-size: 5.5pt;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--light);
+            display: block; font-size: 6.3pt; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.03in; padding-bottom: 0.02in;
+            border-bottom: 0.75pt solid var(--line);
         }
-        .skill-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .skill-list li {
-            font-size: 7.5pt;
-            color: var(--body);
-            padding: 0.4pt 0;
-            line-height: 1.4;
-        }
+        .skill-list { list-style: none; }
+        .skill-list li { font-size: 7.5pt; color: var(--body); padding: 0; line-height: 1.32; }
+        .skill-group.ai .skill-list li { font-weight: 600; color: var(--ink); }
 
-        /* ── Education ─────────────────────────────────────────── */
-        .edu-section {
-            margin-top: 0.1in;
-            padding-top: 0.08in;
-            border-top: 1pt solid #eee;
-        }
-        .edu-degree {
-            font-size: 7.5pt;
-            font-weight: 600;
-            color: var(--dark);
-            line-height: 1.4;
-        }
-        .edu-school {
-            font-size: 7pt;
-            color: var(--muted);
-            line-height: 1.4;
-        }
-        .edu-school a {
-            color: var(--body);
-            text-decoration: none;
-        }
+        .edu-section { margin-top: 0.08in; padding-top: 0.07in; border-top: 0.75pt solid var(--line); }
+        .edu-degree { font-size: 7.5pt; font-weight: 600; color: var(--ink); line-height: 1.4; }
+        .edu-school { font-size: 7pt; color: var(--muted); line-height: 1.4; }
 
-        /* ── Right Content ─────────────────────────────────────── */
-        .content {
-            flex: 1;
-            min-width: 0;
-        }
+        /* ── Right content ──────────────────────────────────── */
+        .content { flex: 1; min-width: 0; }
+        .block { margin-bottom: 0.1in; }
+        .block:last-child { margin-bottom: 0; }
+        .project { margin-bottom: 0.095in; }
+        .project-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.01in; }
+        .project-name { font-size: 8.8pt; font-weight: 700; color: var(--ink); }
+        .project-dates { font-size: 6.5pt; color: var(--light); font-weight: 500; white-space: nowrap; flex-shrink: 0; margin-left: 0.1in; }
+        .project-role { font-size: 6.8pt; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.02in; }
+        .project-desc { font-size: 8pt; color: var(--body); line-height: 1.48; margin-bottom: 0.02in; }
+        .project-desc strong { font-weight: 600; color: var(--ink); }
+        .project-meta { font-size: 7.5pt; line-height: 1.45; margin-bottom: 0.008in; }
+        .project-meta-label { font-weight: 600; color: var(--ink); }
+        .project-meta-value { color: var(--muted); }
+        .project-meta-value strong { font-weight: 600; color: var(--ink); }
 
-        .project {
-            margin-bottom: 0.12in;
-        }
-        .project:last-of-type {
-            margin-bottom: 0;
-        }
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.015in;
-        }
-        .project-name {
-            font-size: 8.5pt;
-            font-weight: 700;
-            color: var(--blue);
-        }
-        .project-dates {
-            font-size: 6.5pt;
-            color: var(--light);
-            font-weight: 500;
-            white-space: nowrap;
-            flex-shrink: 0;
-            margin-left: 0.1in;
-        }
-        .project-role {
-            font-size: 7pt;
-            font-weight: 600;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.025in;
-        }
-        .project-desc {
-            font-size: 8pt;
-            color: var(--body);
-            line-height: 1.5;
-            margin-bottom: 0.025in;
-            text-align: justify;
-        }
-        .project-desc strong {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        .project-meta {
-            font-size: 7.5pt;
-            line-height: 1.5;
-            margin-bottom: 0.01in;
-            text-align: justify;
-        }
-        .project-meta-label {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        .project-meta-value {
-            color: var(--muted);
-        }
-        .project-meta-value strong {
-            font-weight: 600;
-            color: var(--dark);
-        }
+        /* AI block gets a subtle left rule to lead the eye */
+        .ai-block { border-left: 2pt solid var(--amber); padding-left: 0.1in; }
+        .ai-block .project:last-child { margin-bottom: 0; }
 
-        /* ── OSS Section (in main area) ────────────────────────── */
-        .oss-section {
-            margin-top: 0.1in;
-            padding-top: 0.08in;
-            border-top: 1pt solid #eee;
-        }
-        .oss-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.08in 0.15in;
-            margin-bottom: 0.06in;
-        }
-        .oss-name {
-            font-size: 7.5pt;
-            font-weight: 700;
-            color: var(--dark);
-            line-height: 1.3;
-        }
-        .oss-desc {
-            font-size: 6.5pt;
-            color: var(--muted);
-            line-height: 1.4;
-            margin-top: 1pt;
-        }
-        .oss-tech {
-            font-size: 6pt;
-            color: var(--light);
-            font-style: normal;
-            margin-top: 1pt;
-        }
-        .oss-also {
-            font-size: 7pt;
-            color: var(--light);
-            line-height: 1.5;
-        }
-        .oss-also strong {
-            font-weight: 600;
-            color: var(--muted);
-        }
-        .oss-ai-tools { font-size: 7pt; line-height: 1.5; margin-top: 0.04in; }
-        .oss-ai-tools strong { font-weight: 700; color: var(--blue); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
-        .oss-ai-tools span { color: var(--body); font-weight: 500; }
+        .oss-section { margin-top: 0.09in; padding-top: 0.07in; border-top: 0.75pt solid var(--line); }
+        .oss-text { font-size: 7.6pt; color: var(--body); line-height: 1.5; }
+        .oss-text strong { font-weight: 600; color: var(--ink); }
+        .oss-text + .oss-text { margin-top: 0.03in; }
     </style>
-    <script src="/shared/analytics.js" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
 </head>
 <body>
 
@@ -367,18 +153,18 @@
     <div class="header">
         <div class="header-left">
             <h1>DEEPAK JHA</h1>
-            <p class="header-subtitle">Associate Architect, Apra Labs | 10 Years | Full-Stack Systems & Agentic AI</p>
+            <p class="header-subtitle"><b>AI-native Product Builder</b> &middot; Associate Architect, Apra Labs &middot; 10 Years in Industry</p>
         </div>
         <div class="header-right">
             <div>+91 9572 36 2138</div>
-            <div><a href="mailto:deepakjha.dpk@gmail.com" target="_self">deepakjha.dpk@gmail.com</a></div>
-            <div><a href="https://dpkay.com">dpkay.com</a> &middot; <a href="https://github.com/dpkay-io">github.com/dpkay-io</a> &middot; <a href="https://linkedin.com/in/dpkjha">linkedin.com/in/dpkjha</a></div>
+            <div><a href="mailto:hello@dpkay.com" target="_self">hello@dpkay.com</a></div>
+            <div><a href="https://dpkay.com" class="site-link">dpkay.com</a> &middot; <a href="https://github.com/dpkay-io">github.com/dpkay-io</a> &middot; <a href="https://linkedin.com/in/dpkjha">linkedin.com/in/dpkjha</a></div>
         </div>
     </div>
 
     <!-- Summary -->
     <div class="summary-section">
-        <p class="summary-text"><strong>10 years</strong> building distributed real-time systems at scale &mdash; orchestrating <strong>8,000+ concurrent devices</strong> across multi-tenant, multi-region deployments with <strong>zero-downtime failovers</strong>. Authored product specs, defined features from scratch, and led cross-functional teams from requirements through production delivery. Building for the web since 2014 &mdash; shipped <strong>15+ products</strong> (4 Play Store apps, 11 npm tools for AI coding agents) with <strong>25K+ users</strong> and 11 open-source repos, as an early adopter of <strong>agent-driven development</strong>.</p>
+        <p class="summary-text">Product engineer and architect, building end to end since <strong>2013</strong>, sharpened by <strong>startup culture and fast-paced delivery</strong>: I ship quickly and own outcomes. At work I designed and built an <strong>agent-driven delivery pipeline from spec to deployment</strong> and I architect and lead a real-time platform running <strong>8,000+ concurrent cameras</strong>. Outside work I publish <strong>10 open-source tools for AI coding agents</strong> and ship Android and desktop products, including <strong>TogglDev (4.5&#9733;, 10K+ downloads)</strong>.</p>
     </div>
 
     <!-- Experience -->
@@ -403,199 +189,172 @@
         </div>
     </div>
 
-    <!-- Main Two-Column Layout -->
     <div class="main">
 
-        <!-- Left Sidebar: Skills -->
+        <!-- Sidebar -->
         <div class="sidebar">
             <h2 class="section-title">Skills</h2>
 
-            <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    <span class="skill-group-label">Languages</span>
-                </div>
+            <div class="skill-group ai">
+                <span class="skill-group-label">AI-native</span>
                 <ul class="skill-list">
-                    <li>C#</li>
-                    <li>JavaScript / TypeScript</li>
-                    <li>Python</li>
-                    <li>Java</li>
-                    <li>C / C++</li>
-                    <li>PHP</li>
-                    <li>Dart</li>
+                    <li>Spec-to-deploy pipelines</li>
+                    <li>MCP servers &amp; plugins</li>
+                    <li>AI test &amp; PR automation</li>
+                    <li>Agent verification</li>
                 </ul>
             </div>
 
             <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    <span class="skill-group-label">Frontend</span>
-                </div>
+                <span class="skill-group-label">Languages</span>
+                <ul class="skill-list">
+                    <li>C#</li>
+                    <li>TypeScript / JavaScript</li>
+                    <li>Kotlin</li>
+                    <li>Rust</li>
+                    <li>Go</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C / C++</li>
+                    <li>Dart</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-group-label">Frontend &amp; Mobile</span>
                 <ul class="skill-list">
                     <li>React / Redux</li>
                     <li>Angular</li>
                     <li>HTML5 Canvas</li>
                     <li>Electron</li>
-                </ul>
-            </div>
-
-            <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                    <span class="skill-group-label">Databases</span>
-                </div>
-                <ul class="skill-list">
-                    <li>MySQL</li>
-                    <li>MongoDB</li>
-                    <li>Redis</li>
-                    <li>CouchDB / PouchDB</li>
-                    <li>Neo4j GraphDB</li>
-                </ul>
-            </div>
-
-            <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
-                    <span class="skill-group-label">Cloud &amp; Infra</span>
-                </div>
-                <ul class="skill-list">
-                    <li>Azure</li>
-                    <li>AWS</li>
-                    <li>GCP</li>
-                    <li>Nginx</li>
-                </ul>
-            </div>
-
-            <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                    <span class="skill-group-label">Mobile</span>
-                </div>
-                <ul class="skill-list">
-                    <li>Flutter</li>
                     <li>Android</li>
+                    <li>Flutter</li>
                     <li>React Native</li>
                     <li>Ionic</li>
                 </ul>
             </div>
 
             <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                    <span class="skill-group-label">Realtime &amp; AI</span>
-                </div>
+                <span class="skill-group-label">Backend &amp; Data</span>
                 <ul class="skill-list">
-                    <li>WebSockets / SignalR</li>
-                    <li>WebRTC</li>
-                    <li>MQTT / IoT</li>
-                    <li>Machine Learning</li>
-                    <li>NLTK</li>
+                    <li>Node.js / Express</li>
+                    <li>.NET</li>
+                    <li>SignalR</li>
+                    <li>GraphQL</li>
+                    <li>MySQL</li>
+                    <li>MongoDB</li>
+                    <li>Redis</li>
+                    <li>CouchDB / PouchDB</li>
+                    <li>Neo4j</li>
                 </ul>
             </div>
 
             <div class="skill-group">
-                <div class="skill-group-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-                    <span class="skill-group-label">More</span>
-                </div>
+                <span class="skill-group-label">Cloud &amp; Realtime</span>
                 <ul class="skill-list">
-                    <li>Node.js / Express</li>
-                    <li>Agentic AI / MCP</li>
+                    <li>Azure</li>
+                    <li>AWS</li>
+                    <li>GCP</li>
                     <li>Docker</li>
                     <li>CI / CD</li>
                     <li>Microservices</li>
-                    <li>GraphQL</li>
+                    <li>WebRTC</li>
+                    <li>WebSockets</li>
+                    <li>MQTT / IoT</li>
+                    <li>Nginx</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-group-label">Also</span>
+                <ul class="skill-list">
+                    <li>Machine Learning</li>
+                    <li>NLTK</li>
                 </ul>
             </div>
 
             <div class="edu-section">
                 <h2 class="section-title">Education</h2>
                 <p class="edu-degree">B.E. in Computer Science &amp; Engineering</p>
-                <p class="edu-school">SDMCET (2017), Karnataka</p>
+                <p class="edu-school">VTU (2017), Karnataka</p>
             </div>
         </div>
 
-        <!-- Right Content: Key Projects + OSS -->
+        <!-- Right content -->
         <div class="content">
-            <h2 class="section-title">Key Projects</h2>
 
-            <!-- Project 1: VMS -->
-            <div class="project">
-                <div class="project-header">
-                    <span class="project-name">Video Surveillance System</span>
-                    <span class="project-dates">2020 &ndash; Present</span>
+            <div class="block ai-block">
+                <h2 class="section-title">AI-Native Engineering</h2>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-name">Agent-Driven Software Delivery Pipeline</span>
+                    </div>
+                    <p class="project-role">Apra Labs</p>
+                    <p class="project-desc">Designed and built a pipeline that automates software delivery <strong>from spec to deployment</strong>: AI-assisted <strong>code writing</strong>, <strong>test-case generation</strong>, <strong>e2e automation code generation</strong>, an <strong>e2e test stack spanning 10 moving infrastructures</strong>, with development and test status synced in real time to <strong>Azure DevOps (VSO)</strong>, automated <strong>PR reviews</strong>, and <strong>reporting</strong>.</p>
                 </div>
-                <p class="project-role">Apra Labs &middot; Associate Architect / Lead</p>
-                <p class="project-desc">Architected an end-to-end cloud platform for orchestrating stable, <strong>low-latency live streams</strong>, configuration changes, and event captures for thousands of <strong>geo-distributed cameras</strong> across multiple tenants and regions. Engineered a scalable middleware layer with <strong>localized brokers and edge protocols</strong> for camera interfacing. Implemented reliable cross-region message routing via a <strong>distributed service bus</strong> and engineered <strong>real-time signaling and streaming state management</strong> across cloud boundaries for multi-region tenant isolation and seamless failovers. Led and mentored a cross-functional team &mdash; developers, QA, and support &mdash; driving stakeholder alignment across engineering, operations, and client teams from requirements through multi-region production rollouts.</p>
-                <p class="project-meta">
-                    <span class="project-meta-label">Impact: </span>
-                    <span class="project-meta-value">Achieved <strong>zero-downtime regional failovers</strong> and sub-second stream switching, scaling to <strong>8,000+ concurrent cameras</strong> while onboarding new enterprise tenants without additional infrastructure investment</span>
-                </p>
-                <p class="project-meta">
-                    <span class="project-meta-label">Tech stack: </span>
-                    <span class="project-meta-value">C# (.NET), Azure Service Bus, SignalR, Azure Functions, Redis, WebRTC, MQTT, ONVIF, Milestone VMS, React, Redux, NSIS</span>
-                </p>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-name">Tooling for AI Coding Agents</span>
+                    </div>
+                    <p class="project-role">Independent &middot; 11 npm packages (10 MIT)</p>
+                    <p class="project-desc">Published tools for Claude Code and MCP-compatible agents: <strong>claude-shift</strong> (3K+ downloads) schedules Claude Max usage windows around your work hours; <strong>claude-ticker</strong> (2.5K+) shows context, limits and cost in one status line; <strong>GhostPM</strong> (1.5K+) keeps a local task ledger synced to GitHub Issues or Azure DevOps; <strong>claude-wingman</strong> hands work to agents on other machines; <strong>AntiBluff</strong> and <strong>AntiClimax</strong> keep agents honest and self-reviewing; <strong>toggldev-remote</strong> lets agents drive real Android devices over MCP.</p>
+                </div>
             </div>
 
-            <!-- Project 2: Dashboard -->
-            <div class="project">
-                <div class="project-header">
-                    <span class="project-name">Real-Time Multipurpose Dashboard</span>
-                    <span class="project-dates">2023 &ndash; Present</span>
+            <div class="block">
+                <h2 class="section-title">Systems &amp; Architecture</h2>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-name">Video Surveillance System</span>
+                        <span class="project-dates">2020 &ndash; Present</span>
+                    </div>
+                    <p class="project-role">Apra Labs &middot; Lead &amp; Architect</p>
+                    <p class="project-desc">Architect and lead a cloud platform for <strong>low-latency live streams</strong>, configuration and event capture across thousands of <strong>geo-distributed cameras</strong>, multiple tenants and regions. Built a middleware layer with <strong>localized brokers and edge protocols</strong>, cross-region routing over a <strong>distributed service bus</strong>, and <strong>real-time signaling and streaming state</strong> for tenant isolation and seamless failover. Mentor a cross-functional team from requirements to production rollout.</p>
+                    <p class="project-meta">
+                        <span class="project-meta-label">Impact: </span>
+                        <span class="project-meta-value"><strong>Zero-downtime regional failovers</strong>, sub-second stream switching, <strong>8,000+ concurrent cameras</strong>, new enterprise tenants onboarded without extra infrastructure</span>
+                    </p>
+                    <p class="project-meta">
+                        <span class="project-meta-label">Stack: </span>
+                        <span class="project-meta-value">C# (.NET), Azure Service Bus, SignalR, Azure Functions, Redis, WebRTC, MQTT, ONVIF, Milestone VMS, React, Redux</span>
+                    </p>
                 </div>
-                <p class="project-role">Apra Labs &middot; Associate Architect / Lead</p>
-                <p class="project-desc">As lead engineer, mentored a junior developer while designing and building a modular, content-heavy dashboard system <strong>from scratch</strong> — rendering hundreds of <strong>live-updating widgets</strong> and <strong>millions of concurrent data points</strong> on a complex, cross-building timeline without blocking the UI main thread. Engineered a <strong>custom HTML5 Canvas rendering pipeline</strong> bypassing traditional DOM limitations. Offloaded heavy calculations, stream parsing, and data manipulation to background <strong>Web Workers</strong>. Applied <strong>progressive data fetching</strong>, localized slice queries, and <strong>lazy evaluation</strong> of off-screen states to minimize memory overhead.</p>
-                <p class="project-meta">
-                    <span class="project-meta-label">Impact: </span>
-                    <span class="project-meta-value">Sustained a <strong>locked 60 FPS</strong> across millions of live data points with <strong>zero browser memory leaks</strong> — powering 24/7 facility operations across multi-building security and access-control environments</span>
-                </p>
-                <p class="project-meta">
-                    <span class="project-meta-label">Tech stack: </span>
-                    <span class="project-meta-value">C#, SignalR, SQL, Stored Procedures, React, Redux, HTML5 Canvas, Web Workers, TypeScript</span>
-                </p>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-name">Real-Time Multipurpose Dashboard</span>
+                        <span class="project-dates">2023 &ndash; Present</span>
+                    </div>
+                    <p class="project-role">Apra Labs &middot; Lead &amp; Architect</p>
+                    <p class="project-desc">Designed and built from scratch a modular dashboard rendering hundreds of <strong>live-updating widgets</strong> and <strong>millions of concurrent data points</strong> without blocking the UI thread: a <strong>custom HTML5 Canvas pipeline</strong>, heavy work offloaded to <strong>Web Workers</strong>, <strong>progressive data fetching</strong> and lazy evaluation of off-screen state. Mentor a junior developer on the project.</p>
+                    <p class="project-meta">
+                        <span class="project-meta-label">Impact: </span>
+                        <span class="project-meta-value">A <strong>locked 60 FPS</strong> with <strong>zero browser memory leaks</strong>, powering 24/7 multi-building security and access-control operations</span>
+                    </p>
+                    <p class="project-meta">
+                        <span class="project-meta-label">Stack: </span>
+                        <span class="project-meta-value">C#, SignalR, SQL, React, Redux, HTML5 Canvas, Web Workers, TypeScript</span>
+                    </p>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-name">E-Commerce Middleware &amp; POS Platform</span>
+                        <span class="project-dates">2017 &ndash; 2019</span>
+                    </div>
+                    <p class="project-role">AlienHu &middot; Software Engineer</p>
+                    <p class="project-desc">Built a full-stack <strong>B2B point-of-sale app</strong> with a team, and <strong>single-handedly</strong> the <strong>B2C e-commerce mobile app</strong> plus the shared sync middleware across <strong>fragmented POS networks</strong>, with a fault-tolerant <strong>offline transaction queue</strong> that gave <strong>zero data loss</strong> on resync. <span class="project-meta-value">Stack: Node.js, CouchDB / PouchDB, Angular, Electron, React Native, Ionic.</span></p>
+                </div>
             </div>
 
-            <!-- Project 3: E-Commerce Middleware -->
-            <div class="project">
-                <div class="project-header">
-                    <span class="project-name">E-Commerce Middleware &amp; POS Platform</span>
-                    <span class="project-dates">2017 &ndash; 2019</span>
-                </div>
-                <p class="project-role">AlienHu &middot; Software Engineer</p>
-                <p class="project-desc">Designed and developed a full-stack <strong>B2B point-of-sale application</strong> with a team, and <strong>single-handedly built</strong> the end-to-end <strong>B2C e-commerce mobile app</strong> and the shared sync middleware managing inventory, order notifications, and payment flows across <strong>fragmented POS networks</strong>. Engineered a fault-tolerant <strong>transaction queue with offline state management</strong>, eliminating double-selling and inventory conflicts with <strong>zero data loss</strong> during resync.</p>
-                <p class="project-meta">
-                    <span class="project-meta-label">Tech: </span>
-                    <span class="project-meta-value">Node.js, CouchDB/PouchDB, Angular, Electron, React Native, Ionic, WebSocket</span>
-                </p>
-            </div>
-
-            <!-- OSS -->
             <div class="oss-section">
-                <h2 class="section-title">Open Source &amp; Shipped Products</h2>
-                <div class="oss-grid">
-                    <div class="oss-entry">
-                        <p class="oss-name">TogglDev</p>
-                        <p class="oss-desc">Toggle Android Developer Options instantly &mdash; widget, Quick Settings tile, Banking App Shield, Remote Access Control, Automation, and more. 4.5&#9733; rated &middot; 10K+ downloads.</p>
-                        <p class="oss-tech">Kotlin, Android</p>
-                    </div>
-                    <div class="oss-entry">
-                        <p class="oss-name">Terminal Studio</p>
-                        <p class="oss-desc">GPU-accelerated terminal multiplexer with built-in file browser, git diff viewer, code editor, and workspace persistence. Cross-platform, 120+ features, 15 themes.</p>
-                        <p class="oss-tech">Rust, wgpu, egui</p>
-                    </div>
-                    <div class="oss-entry">
-                        <p class="oss-name">Claude Shift</p>
-                        <p class="oss-desc">Align Claude Max 5-hour usage windows with your work schedule by scheduling strategic session pings during downtime. Cross-platform native OS schedulers.</p>
-                        <p class="oss-tech">TypeScript, Node.js</p>
-                    </div>
-                    <div class="oss-entry">
-                        <p class="oss-name">Claude Lifecycle Core</p>
-                        <p class="oss-desc">Middleware hub for Claude Code plugins &mdash; register once, dispatch all lifecycle events to subscriber plugins. Eliminates per-plugin hooks.json boilerplate.</p>
-                        <p class="oss-tech">Node.js, JavaScript</p>
-                    </div>
-                </div>
-                <p class="oss-ai-tools"><strong>Agentic AI Tools:</strong> <span>GhostPM &middot; TogglDev MCP &middot; Claude Comedy &middot; AntiBluff &middot; AntiClimax &middot; Ingred &middot; SplitGame &middot; Claude Ticker</span></p>
-                <p class="oss-ai-tools"><strong>Also:</strong> <span>AutoDeck, CloseLink, AfterCall Shield (Kotlin) &middot; GitReg (Rust) &middot; tTag (Go) &middot; Workspace ID Pro (VS Code)</span></p>
+                <h2 class="section-title">Shipped Products &amp; Open Source</h2>
+                <p class="oss-text"><strong>TogglDev</strong> (Android, Kotlin): toggles Developer Options via widget, Quick Settings tile and remote access; <strong>4.5&#9733;, 10K+ downloads</strong>. <strong>AutoDeck</strong>, <strong>CloseLink</strong> and <strong>AfterCall Shield</strong> are also on Google Play. <strong>Terminal Studio</strong>: GPU-accelerated terminal multiplexer in Rust (wgpu, egui).</p>
+                <p class="oss-text"><strong>12 open-source projects</strong> (MIT / Apache-2.0) at github.com/dpkay-io, including Terminal Studio (Rust), GitReg (Rust), AntiBluff and AntiClimax.</p>
             </div>
 
         </div>
@@ -603,6 +362,16 @@
     </div>
 
 
+    <script>
+        /* Lets scripts/build-resume-pdf.mjs confirm the content fits one page (the body is clipped at 11in when printed). */
+        addEventListener('load', function () {
+            (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+                var b = document.body;
+                document.documentElement.setAttribute('data-content-h', String(b.scrollHeight));
+                document.documentElement.setAttribute('data-box-h', String(b.clientHeight));
+            });
+        });
+    </script>
     <script>
         if (window !== window.top) {
             document.documentElement.classList.add('in-iframe');

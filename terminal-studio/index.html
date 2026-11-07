@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e1e2e">
     <meta name="description" content="GPU-accelerated terminal multiplexer with built-in git, file browser, editor, and workspace management. Built in Rust for developers who live in the terminal.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://dpkay.com/terminal-studio">
+    <meta property="og:site_name" content="Deepak Jha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url"         content="https://dpkay.com/terminal-studio/">
     <meta property="og:title"       content="Terminal Studio — GPU-Accelerated Terminal Multiplexer">
     <meta property="og:description" content="Terminal multiplexing, git, file browser, editor — all in one GPU-accelerated window. Built in Rust.">
-    <meta property="og:image"       content="https://dpkay.com/terminal-studio/images/screenshot.png">
+    <meta property="og:image"       content="https://dpkay.com/terminal-studio/images/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="644">
+    <meta property="og:image:alt" content="Terminal Studio window showing a sessions list, a workspace list, terminal panes and a file browser.">
 
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="Terminal Studio — GPU-Accelerated Terminal Multiplexer">
     <meta name="twitter:description" content="One window. Every project. Built in Rust with GPU acceleration.">
-    <meta name="twitter:image"       content="https://dpkay.com/terminal-studio/images/screenshot.png">
+    <meta name="twitter:image"       content="https://dpkay.com/terminal-studio/images/og.jpg">
+    <meta name="twitter:image:alt" content="Terminal Studio window showing a sessions list, a workspace list, terminal panes and a file browser.">
 
     <title>Terminal Studio — GPU-Accelerated Terminal Multiplexer</title>
-    <link rel="canonical" href="https://dpkay.com/terminal-studio">
+    <link rel="canonical" href="https://dpkay.com/terminal-studio/">
     <link rel="icon" href="/terminal-studio/images/icon.png" type="image/png">
 
     <script type="application/ld+json">
@@ -28,20 +35,51 @@
         "name": "Terminal Studio",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Windows, macOS, Linux",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
         "description": "GPU-accelerated terminal multiplexer with built-in git integration, file browser, code editor, and workspace management. Built in Rust.",
-        "author": { "@type": "Person", "name": "Deepak Jha", "url": "https://dpkay.com" },
-        "url": "https://dpkay.com/terminal-studio",
+        "author": {
+            "@type": "Person",
+            "@id": "https://dpkay.com/#person",
+            "name": "Deepak Jha",
+            "url": "https://dpkay.com/"
+        },
+        "url": "https://dpkay.com/terminal-studio/",
         "downloadUrl": "https://github.com/dpkay-io/terminal-studio/releases/latest",
-        "softwareVersion": "0.15.1",
-        "license": "https://www.apache.org/licenses/LICENSE-2.0"
+        "softwareVersion": "0.15.4",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "image": "https://dpkay.com/terminal-studio/images/icon.png"
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://dpkay.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Terminal Studio",
+                "item": "https://dpkay.com/terminal-studio/"
+            }
+        ]
+    }
+    </script>
 
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="/shared/product-header.css?v=7878c804d4">
     <style>
         /* ── Variables ─────────────────────────────────────────── */
         :root {
@@ -79,7 +117,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: clip; }
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -95,7 +133,7 @@
             pointer-events: none;
             z-index: 0;
         }
-        h1, h2, h3 { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+        h1, h2, h3 { font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
         a { color: inherit; text-decoration: none; }
         ::selection { background: var(--accent); color: var(--bg-deep); }
         img { max-width: 100%; height: auto; display: block; }
@@ -194,7 +232,7 @@
             padding: 0.875rem 2rem; border-radius: 99px;
             font-weight: 600; font-size: 0.875rem;
             transition: 0.25s var(--ease); cursor: pointer; border: none;
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
         }
         .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
         .btn-primary { background: var(--green); color: var(--bg-deep); }
@@ -517,6 +555,7 @@
             }
             .nav-links.open { opacity: 1; pointer-events: auto; }
             .nav-links a { color: var(--text); }
+            .nav-links a.nav-cta { color: var(--bg-deep); } /* keep the button label dark on its light fill */
         }
 
         /* ── Responsive ────────────────────────────────────────── */
@@ -550,7 +589,7 @@
     <!-- Header -->
     <header class="site-header">
         <nav class="container">
-            <a href="/terminal-studio" class="header-logo">
+            <a href="/terminal-studio/" class="header-logo">
                 <img src="/terminal-studio/images/icon.png" alt="Terminal Studio" width="28" height="28">
                 Terminal <span class="logo-dim">Studio</span>
             </a>
@@ -599,7 +638,7 @@
                 </div>
                 <div class="app-frame-wrapper reveal" style="--delay: .15s">
                     <div class="app-frame">
-                        <img src="/terminal-studio/images/screenshot.png" alt="Terminal Studio — multi-pane terminal with file browser, git integration, and workspace management" loading="eager" width="1920" height="1080">
+                        <img src="/terminal-studio/images/screenshot.webp" alt="Terminal Studio — multi-pane terminal with file browser, git integration, and workspace management" width="1400" height="752" decoding="async" fetchpriority="high">
                     </div>
                     <svg class="anno-svg" aria-hidden="true"></svg>
                     <div class="anno anno-l" style="top:1%;  --ad:.7s"  data-tx="25" data-ty="1"><span class="anno-dot" style="background:var(--yellow)"></span>Status Bar</div>
@@ -832,7 +871,7 @@
                         <div class="stat-label">Scrollback Lines</div>
                     </div>
                     <div class="stat reveal" style="--delay:.15s">
-                        <div class="stat-value">19K</div>
+                        <div class="stat-value">45K+</div>
                         <div class="stat-label">Lines of Rust</div>
                     </div>
                     <div class="stat reveal" style="--delay:.2s">
@@ -1038,7 +1077,8 @@
         </div>
     </footer>
 
-    <script src="/shared/analytics.js" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
+    <script src="/shared/back-to-portfolio.js?v=ba58c65ace" defer></script>
     <script>
         (function () {
             var observer = new IntersectionObserver(function (entries) {

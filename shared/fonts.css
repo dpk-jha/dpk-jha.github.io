@@ -1,0 +1,10 @@
+/* Self-hosted fonts (latin subset, variable): the single declaration every page links (site.css and projects-v2.css no longer carry their own).
+   Replaces the Google Fonts request: no third-party connection, no render-blocking stylesheet.
+   The two "Fallback" faces are Georgia and Arial rescaled to the web fonts' measured metrics,
+   so text does not jump when the web font swaps in. Put them after the web font in font-family. */
+@font-face { font-family: 'Inter'; src: url('/shared/fonts/inter-var-latin.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Playfair Display'; src: url('/shared/fonts/playfair-var-latin.woff2') format('woff2'); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Playfair Display'; src: url('/shared/fonts/playfair-italic-600-latin.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('/shared/fonts/jetbrains-mono-var-latin.woff2') format('woff2'); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Playfair Fallback'; src: local('Georgia'); size-adjust: 88.87%; ascent-override: 121.53%; descent-override: 28.13%; line-gap-override: 0%; }
+@font-face { font-family: 'Inter Fallback'; src: local('Arial'); size-adjust: 107.31%; ascent-override: 90.39%; descent-override: 22.36%; line-gap-override: 0%; }

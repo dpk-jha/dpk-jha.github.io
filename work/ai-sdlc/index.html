@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0b">
+    <!-- DRAFT: remove this noindex line (and add the page to sitemap.xml) once Deepak has reviewed the copy. -->
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Case study: an agent-driven software delivery pipeline that takes a spec through code, test-case generation, e2e automation code, an e2e stack across ten moving infrastructures, PR review, reporting and deployment.">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:site_name" content="Deepak Jha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url"         content="https://dpkay.com/work/ai-sdlc/">
+    <meta property="og:title"       content="Spec to deployment, automated | Deepak Jha">
+    <meta property="og:description" content="An agent-driven delivery pipeline: spec, code, tests, e2e automation, PR review, reporting, deploy.">
+    <meta property="og:image"       content="https://dpkay.com/shared/og/ai-sdlc.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Spec to deployment, automated: an agent-driven delivery pipeline, case study by Deepak Jha.">
+    <meta name="twitter:card"       content="summary_large_image">
+    <meta name="twitter:title"      content="Spec to deployment, automated | Deepak Jha">
+    <meta name="twitter:description" content="An agent-driven delivery pipeline from spec to deployment.">
+    <meta name="twitter:image"       content="https://dpkay.com/shared/og/ai-sdlc.jpg">
+    <meta name="twitter:image:alt" content="Spec to deployment, automated: an agent-driven delivery pipeline, case study by Deepak Jha.">
+
+    <title>Spec to deployment, automated | Deepak Jha</title>
+    <link rel="canonical" href="https://dpkay.com/work/ai-sdlc/">
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__rv)document.documentElement.classList.remove('js')},4000);</script>
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="stylesheet" href="/shared/site.css?v=35829a2cb5">
+    <link rel="stylesheet" href="/shared/shell.css?v=e6a7df67f1">
+    <!-- Fonts are self-hosted (@font-face in the stylesheet). Preload only the two used for first paint, after the CSS so they never delay it. -->
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/shared/fonts/playfair-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="/shared/components.js?v=e76a165e20" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
+    <script src="/shared/back-to-top.js?v=78a4947c1b" defer></script>
+    <style>
+        .cs-hero { padding-block: var(--page-top) 2rem; }
+        .cs-hero h1 { font-size: var(--fs-page-title); max-width: 16ch; margin-bottom: 1.5rem; }
+        .cs-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line); max-width: 44rem; }
+        .cs-meta dt { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 0.35rem; }
+        .cs-meta dd { color: var(--fg); font-size: 1rem; }
+        @media (max-width: 640px) { .cs-meta { grid-template-columns: 1fr; gap: 1rem; } }
+        .stages { list-style: none; counter-reset: st; display: grid; gap: 0.75rem; margin: 1.5rem 0 2rem; padding: 0; }
+        .stages li { counter-increment: st; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 1rem; padding: 1.1rem 1.25rem; background: rgba(255, 255, 255, 0.02); margin: 0; }
+        .stages li::before { content: counter(st, decimal-leading-zero); font-family: var(--mono); font-size: 0.8125rem; color: var(--warm); padding-top: 0.2rem; }
+        .stages b { display: block; color: var(--fg); font-weight: 600; margin-bottom: 0.15rem; }
+        .stages span { color: var(--fg-2); font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-header" class="site-header">
+        <nav class="wrap" aria-label="Primary">
+            <a href="/" class="logo">Deepak Jha</a>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/resume/">Resume</a></li>
+                <li><a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Blog</a></li>
+                <li><a href="#contact" class="nav-cta">Work with me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="cs-hero">
+            <div class="wrap">
+                <a href="/#ai" class="back-link">← AI-native engineering</a>
+                <p class="kicker">Case study</p>
+                <h1>Spec to deployment, automated.</h1>
+                <p class="lead">An agent-driven delivery pipeline: a spec goes in, and a tested, reviewed, deployed and reported change comes out.</p>
+                <dl class="cs-meta">
+                    <div><dt>Context</dt><dd>Production product team, employer anonymized</dd></div>
+                    <div><dt>My role</dt><dd>Designed and built the automation, solo</dd></div>
+                    <div><dt>Scope</dt><dd>Spec to deployment, across roughly ten code repositories</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 2rem;">
+            <div class="wrap">
+                <div class="prose">
+                    <h2 style="margin-top: 0;">What it is</h2>
+                    <p>Before the pipeline, AI had sped up one step: writing code. Quality checks, review, deployment and releases were as slow as ever, so the rest of the lifecycle set the pace. The pipeline automates those stages as well as the code, so a spec goes in and a reviewed, tested, deployed and reported change comes out.</p>
+                    <p>I designed and built it on my own, for the product team I work in. It spans roughly ten code repositories.</p>
+                </div>
+
+                <figure class="diagram reveal" aria-label="Pipeline diagram: spec, code, test cases, e2e code, ten-environment e2e stack, PR review, reporting, deploy">
+                    <svg viewBox="0 30 1000 190" role="img" aria-labelledby="dg-t dg-d" xmlns="http://www.w3.org/2000/svg">
+                        <title id="dg-t">Agent-driven delivery pipeline</title>
+                        <desc id="dg-d">Eight stages in sequence: spec, code, test case generation, e2e code, e2e stack across ten infrastructures, PR review, reporting, deploy. The e2e stack stage spans ten moving infrastructures with development and test status synced to Azure DevOps in real time.</desc>
+                        <defs>
+                            <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                <path d="M1 1L9 5L1 9" fill="none" stroke="#f2b35a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </marker>
+                        </defs>
+                        <g font-family="Inter, system-ui, sans-serif" fill="#f4f4f5">
+                            <g stroke="rgba(255,255,255,0.18)" fill="#111113">
+                                <rect x="10"  y="50" width="104" height="76" rx="12"/>
+                                <rect x="136" y="50" width="104" height="76" rx="12"/>
+                                <rect x="262" y="50" width="104" height="76" rx="12"/>
+                                <rect x="388" y="50" width="104" height="76" rx="12"/>
+                                <rect x="514" y="50" width="104" height="76" rx="12" stroke="#f2b35a" stroke-opacity="0.7"/>
+                                <rect x="640" y="50" width="104" height="76" rx="12"/>
+                                <rect x="766" y="50" width="104" height="76" rx="12"/>
+                                <rect x="892" y="50" width="98"  height="76" rx="12"/>
+                            </g>
+                            <g font-family="JetBrains Mono, monospace" font-size="12" fill="#f2b35a" text-anchor="middle">
+                                <text x="62"  y="76">01</text><text x="188" y="76">02</text><text x="314" y="76">03</text><text x="440" y="76">04</text>
+                                <text x="566" y="76">05</text><text x="692" y="76">06</text><text x="818" y="76">07</text><text x="941" y="76">08</text>
+                            </g>
+                            <g font-size="14" font-weight="600" text-anchor="middle">
+                                <text x="62"  y="104">Spec</text>
+                                <text x="188" y="104">Code</text>
+                                <text x="314" y="98">Test case</text><text x="314" y="116">generation</text>
+                                <text x="440" y="98">E2E</text><text x="440" y="116">code</text>
+                                <text x="566" y="98">E2E stack</text><text x="566" y="116">(10 infras)</text>
+                                <text x="692" y="104">PR review</text>
+                                <text x="818" y="104">Reporting</text>
+                                <text x="941" y="104">Deploy</text>
+                            </g>
+                            <g stroke="#f2b35a" stroke-width="1.6" fill="none" marker-end="url(#ar)">
+                                <path d="M116 88H132"/><path d="M242 88H258"/><path d="M368 88H384"/><path d="M494 88H510"/>
+                                <path d="M620 88H636"/><path d="M746 88H762"/><path d="M872 88H888"/>
+                            </g>
+                            <path d="M514 152v10h104v-10" stroke="rgba(242,179,90,0.6)" stroke-width="1.5" fill="none"/>
+                            <text x="566" y="190" font-size="13" fill="rgba(244,244,245,0.76)" text-anchor="middle">Ten moving infrastructures,</text>
+                            <text x="566" y="208" font-size="13" fill="rgba(244,244,245,0.76)" text-anchor="middle">status synced to Azure DevOps</text>
+                        </g>
+                    </svg>
+                </figure>
+
+                <div class="prose">
+                    <h2>The stages</h2>
+                    <p>Every stage is AI-assisted, with a human involved.</p>
+                    <ol class="stages">
+                        <li><div><b>Spec</b><span>A developer or stakeholder writes the spec, assisted by AI. It describes the change end to end: the requirements, the acceptance criteria and the validation the result must pass. A human owns it.</span></div></li>
+                        <li><div><b>Code</b><span>Agents write the implementation from the spec. Developers also use agents as assistants for work that does not start from a full spec.</span></div></li>
+                        <li><div><b>Test case generation</b><span>Test cases are generated for the change, and a human checks that they are the right ones.</span></div></li>
+                        <li><div><b>E2E automation code</b><span>The test cases become runnable end-to-end automation code, and a human watches how that automation runs.</span></div></li>
+                        <li><div><b>E2E stack across ten infrastructures</b><span>The automation runs against an end-to-end stack made of ten moving infrastructures, while development and test status is synced in real time to Azure DevOps (VSO), so the board always reflects what the pipeline is actually doing.</span></div></li>
+                        <li><div><b>PR review</b><span>A separate agent reviews the pull request, not the one that wrote the code.</span></div></li>
+                        <li><div><b>Reporting</b><span>Results are compiled into reports.</span></div></li>
+                        <li><div><b>Deployment</b><span>The change is deployed at the end of the same flow, and a human reviews the outcome after deployment.</span></div></li>
+                    </ol>
+
+                    <h2>Why the e2e stack matters</h2>
+                    <p>Generating code and tests is the easy part to demo. Running them against a realistic end-to-end environment is what makes the output trustworthy. Coordinating around ten infrastructures, and keeping Azure DevOps (VSO) in sync with real-time development and test status, is a systems problem, not a prompting problem.</p>
+
+                    <h2>How the output is verified</h2>
+                    <p>Agent output is checked against the acceptance criteria, requirements and validation written into the spec, not against the agent's own confidence. The agent that reviews the pull request is a different agent from the one that wrote the code, and the end-to-end run supplies evidence from a real environment.</p>
+
+                    <h2>Where people stay in the loop</h2>
+                    <p>AI assists at every stage, and automation does the repeatable work. People keep the judgment calls:</p>
+                    <ul>
+                        <li><strong>The spec.</strong> A developer or stakeholder writes it, assisted by AI, so intent and acceptance criteria stay human decisions.</li>
+                        <li><strong>The test cases.</strong> A human checks that the generated cases are correct.</li>
+                        <li><strong>The automation run.</strong> A human watches how the end-to-end automation behaves.</li>
+                        <li><strong>After deployment.</strong> A human reviews the result once the change is live.</li>
+                    </ul>
+
+                    <h2>What changed for the team</h2>
+                    <p>Everything after the first commit got faster, not just the typing:</p>
+                    <ul>
+                        <li>Writing code, generating test cases, automating tests, PR review, deployment and releases all became faster.</li>
+                        <li>Updates ship more smoothly, with quality handed off better from the AI.</li>
+                        <li>Manual Azure DevOps (VSO) handling is now negligible, because status updates are part of the pipeline.</li>
+                    </ul>
+
+                    <div class="callout">
+                        <strong>How I think about it.</strong> An agent that can write code but cannot prove it works is a liability. I build the verification, review and reporting around the agent, so its work is checked by something other than the agent's own confidence.
+                    </div>
+
+                    <h2>The same ideas, in the open</h2>
+                    <p>The open-source tools on this site come from the same problem: running coding agents in a way that keeps them honest, verifiable and easy to supervise.</p>
+                    <ul>
+                        <li><a href="https://www.npmjs.com/package/antibluff" target="_blank" rel="noopener noreferrer">AntiBluff</a>: rules that stop agents from assuming, bluffing or reporting unverified claims.</li>
+                        <li><a href="https://www.npmjs.com/package/anticlimax" target="_blank" rel="noopener noreferrer">AntiClimax</a>: a strict self-review loop so agents do not declare victory early.</li>
+                        <li><a href="https://www.npmjs.com/package/ghostpm" target="_blank" rel="noopener noreferrer">GhostPM</a>: a local-first task ledger for AI coding sessions, syncing to GitHub Issues or Azure DevOps.</li>
+                        <li><a href="/terminal-studio/" target="dpkay-terminal-studio">Terminal Studio</a>: one focused window for running several agents in the CLI at once. Each project lives in its own color-coded workspace, so it is clear which agent is working where and the contexts stay apart.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="avatar" aria-hidden="true"><span>DJ</span></div>
+            <h2>Work with me.</h2>
+            <p class="sub">Write to me, and let’s take your idea, or a messy engineering process, all the way to production.</p>
+            <a href="mailto:hello@dpkay.com" class="email-link">hello@dpkay.com</a>
+            <nav class="foot-links" aria-label="Site">
+                <a href="/">Home</a>
+                <a href="/projects">Projects</a>
+                <a href="/resume/" data-resume-modal>Resume</a>
+                <a href="https://linkedin.com/in/dpkjha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Medium</a>
+            </nav>
+            <p class="fine">Based in India · <span class="tz"><i class="tz-dot" aria-hidden="true"></i>IST (UTC+05:30)<time id="ist-time" hidden></time></span> · works across time zones</p>
+        </div>
+    </footer>
+</body>
+</html>

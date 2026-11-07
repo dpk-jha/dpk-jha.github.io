@@ -3,7 +3,7 @@
 }
 
 .projects-hero {
-    padding-block: 7rem 3rem;
+    padding-block: var(--page-top) 3rem;
     position: relative;
 }
 .projects-hero::before {
@@ -18,7 +18,7 @@
     pointer-events: none;
 }
 .projects-hero h1 {
-    font-size: clamp(2.75rem, 8vw, 6rem);
+    font-size: var(--fs-page-title);
     margin-bottom: 2rem;
 }
 .projects-lead {
@@ -620,7 +620,7 @@
 }
 
 .tech        { padding-block: 6rem; border-top: 1px solid rgba(255,255,255,0.05); }
-.tech-heading h2 { font-size: 1.5rem; margin-bottom: 3rem; }
+.tech-heading h2 { font-size: var(--fs-section); margin-bottom: 3rem; }
 .tech-groups { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
 @media (min-width: 640px) { .tech-groups { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .tech-groups { grid-template-columns: repeat(3, 1fr); } }
@@ -637,52 +637,12 @@
 .tag         { border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1.25rem; border-radius: 99px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); transition: border-color 0.25s, color 0.25s; }
 .tag:hover   { border-color: var(--accent); color: var(--accent); }
 
-/* ── Back to Top ──────────────────────────────────────── */
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s, border-color 0.3s, color 0.3s;
-    z-index: 45;
-}
-.back-to-top.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-body:has(.nav-links.open) .back-to-top {
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-.back-to-top:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-.back-to-top svg {
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
 @media (max-width: 640px) {
-    .projects-hero { padding-block: 5rem 2rem; }
+    .projects-hero { padding-block: var(--page-top) 2rem; }
     .case-studies { padding-block: 2rem 1.5rem; }
     .projects-section { padding-block: 2rem 4rem; }
     .projects-divider { padding-block: 3rem 0; }
     .tech { padding-block: 4rem; }
     .filter-row { gap: 1.5rem; }
     .cs-metric { border-radius: 1rem; }
-    .back-to-top { bottom: 1.5rem; right: 1.5rem; }
 }

@@ -3,522 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Deepak Jha — Full-Stack Architect &amp; Product Builder. 10 years in industry, 15+ products shipped, partnering with teams to ship resilient, production-ready software.">
+    <meta name="theme-color" content="#0a0a0b">
+    <meta name="description" content="AI-native product builder. Agent-driven spec-to-deployment pipelines, 10 open-source tools for AI coding agents, and Android and desktop apps used by thousands.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://dpkay.com">
-    <meta property="og:title"       content="Deepak Jha | Product Builder">
-    <meta property="og:description" content="Architect &amp; Product Builder. I partner with teams to ship resilient, production-ready software.">
+    <meta property="og:site_name" content="Deepak Jha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url"         content="https://dpkay.com/">
+    <meta property="og:title"       content="Deepak Jha | AI-native Product Builder">
+    <meta property="og:description" content="Idea to production, with agents in the loop. Automated engineering pipelines, 10 open-source agent tools, shipped apps.">
+    <meta property="og:image"       content="https://dpkay.com/shared/og/home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Deepak Jha: I build the systems that let coding agents ship to production.">
 
     <!-- Twitter Card -->
-    <meta name="twitter:card"        content="summary">
-    <meta name="twitter:title"       content="Deepak Jha | Product Builder">
-    <meta name="twitter:description" content="Full-Stack Architect &amp; Product Builder. 10 years in industry, 15+ products shipped.">
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Deepak Jha | AI-native Product Builder">
+    <meta name="twitter:description" content="Idea to production, with agents in the loop. 10 open-source agent tools, shipped Android and desktop apps.">
+    <meta name="twitter:image"       content="https://dpkay.com/shared/og/home.jpg">
+    <meta name="twitter:image:alt" content="Deepak Jha: I build the systems that let coding agents ship to production.">
 
-    <title>Deepak Jha | Product Builder</title>
+    <title>Deepak Jha | AI-native Product Builder</title>
 
     <link rel="canonical" href="https://dpkay.com/">
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Deepak Jha",
-        "url": "https://dpkay.com",
-        "email": "hello@dpkay.com",
-        "jobTitle": "Full-Stack Architect & Product Builder",
-        "knowsAbout": ["Distributed Systems", "Real-Time Platforms", "Cloud Architecture", "IoT", "Full-Stack Development"],
-        "sameAs": [
-            "https://linkedin.com/in/dpkjha",
-            "https://github.com/dpkay-io",
-            "https://medium.com/@dpkay"
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://dpkay.com/#person",
+                "name": "Deepak Jha",
+                "url": "https://dpkay.com/",
+                "email": "hello@dpkay.com",
+                "jobTitle": "AI-native Product Builder",
+                "description": "AI-native product builder and architect. Builds agent-driven software delivery pipelines and open-source tools for AI coding agents.",
+                "knowsAbout": [
+                    "Agentic AI",
+                    "Model Context Protocol (MCP)",
+                    "AI-assisted software development",
+                    "Distributed Systems",
+                    "Real-Time Platforms",
+                    "Android",
+                    "Full-Stack Development"
+                ],
+                "sameAs": [
+                    "https://linkedin.com/in/dpkjha",
+                    "https://github.com/dpkay-io",
+                    "https://medium.com/@dpkay"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://dpkay.com/#website",
+                "url": "https://dpkay.com/",
+                "name": "Deepak Jha",
+                "inLanguage": "en",
+                "publisher": {
+                    "@id": "https://dpkay.com/#person"
+                }
+            }
         ]
     }
     </script>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231e293b'/><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@700&display=swap">
-    <link rel="stylesheet" href="shared/styles.css">
-    <script src="shared/components.js" defer></script>
-
-    <style>
-        .hero {
-            min-height: 90vh;
-            min-height: 90svh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-block: 4rem;
-        }
-        .hero h1     { font-size: clamp(2.75rem, 8vw, 6rem); margin-bottom: 2rem; }
-        .lead        { max-width: 38rem; font-size: 1.25rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 2.5rem; }
-
-        .hero-stats {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.5rem;
-            max-width: 46rem;
-            margin-top: 3.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-        @media (max-width: 767px) { .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.5rem; } }
-        .hero-stat {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            border-radius: 0.5rem;
-        }
-        .hero-stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-        .hero-stat-value {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 700;
-            font-variant-numeric: lining-nums;
-            line-height: 1;
-            color: var(--fg);
-            transition: color 0.25s var(--ease);
-        }
-        .hero-stat:hover .hero-stat-value { color: var(--accent); }
-        .hero-stat-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .philosophy { padding-block: 8rem; }
-        @media (max-width: 640px) { .philosophy { padding-block: 4rem; } }
-        .quote-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            border-radius: 3rem;
-            padding: clamp(3rem, 5vw, 5rem);
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-        @media (min-width: 768px) {
-            .quote-card  { flex-direction: row; align-items: center; }
-            .quote-label { flex: 0 0 33%; }
-        }
-        .quote-label h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
-        .quote-text     { font-size: clamp(1.125rem, 2vw, 1.375rem); font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.75; }
-    </style>
-    <style>
-        /* ── Career Timeline ──────────────────────────────────── */
-        .timeline { padding-block: 8rem; scroll-margin-top: 2rem; }
-        @media (max-width: 640px) { .timeline { padding-block: 4rem; } }
-
-        .timeline-header { margin-bottom: 3rem; }
-
-        .timeline-rail {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-block: 2rem;
-        }
-
-        .timeline-rail::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent) 10%, var(--accent) 90%, transparent);
-            opacity: 0.25;
-        }
-
-        .timeline-node {
-            position: relative;
-            display: grid;
-            grid-template-rows: 1fr auto 1fr;
-            justify-items: center;
-            gap: 0.75rem;
-            z-index: 1;
-            flex: 1;
-        }
-
-        .timeline-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 2px solid var(--bg);
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-            transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
-            grid-row: 2;
-        }
-
-        .timeline-node:hover .timeline-dot {
-            transform: scale(1.3);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2), 0 0 16px rgba(59, 130, 246, 0.3);
-        }
-
-        .timeline-node.current .timeline-dot {
-            width: 14px;
-            height: 14px;
-            animation: pulse-dot 2s ease infinite;
-        }
-
-        .timeline-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.5);
-            white-space: nowrap;
-            grid-row: 1;
-            align-self: end;
-        }
-
-        .timeline-info {
-            text-align: center;
-            grid-row: 3;
-            align-self: start;
-        }
-
-        .timeline-role {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.4;
-        }
-
-        .timeline-company {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent);
-            opacity: 0.85;
-            margin-top: 0.25rem;
-        }
-
-        /* ── Desktop: Apra Labs group + stretch for even height ── */
-        @media (min-width: 768px) {
-            .timeline-rail { align-items: stretch; }
-            .timeline-node:nth-child(n+2) { background: rgba(59, 130, 246, 0.04); }
-            .timeline-node:nth-child(2) { border-radius: 0.75rem 0 0 0.75rem; }
-            .timeline-node:nth-child(4) { border-radius: 0 0.75rem 0.75rem 0; }
-        }
-
-        /* ── Timeline Mobile: vertical, reverse-chrono ─────── */
-        @media (max-width: 767px) {
-            .timeline-rail {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2.5rem;
-                padding-block: 1rem;
-                padding-left: 1.5rem;
-            }
-
-            .timeline-rail::before {
-                top: 0;
-                bottom: 0;
-                left: 6px;
-                right: auto;
-                width: 2px;
-                height: auto;
-                background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 85%, transparent);
-            }
-
-            .timeline-node {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 1rem;
-                flex: unset;
-                width: 100%;
-            }
-
-            .timeline-node:nth-child(1) { order: 4; }
-            .timeline-node:nth-child(2) { order: 3; }
-            .timeline-node:nth-child(3) { order: 2; }
-            .timeline-node:nth-child(4) { order: 1; }
-
-            .timeline-dot {
-                order: 0;
-                flex-shrink: 0;
-                margin-left: -1.5rem;
-            }
-
-            .timeline-date {
-                order: 1;
-                width: 8rem;
-                flex-shrink: 0;
-                align-self: center;
-            }
-
-            .timeline-info {
-                order: 2;
-                text-align: left;
-                align-self: center;
-            }
-        }
-    </style>
-    <style>
-        .page-loader {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .page-loader.loaded { opacity: 0; pointer-events: none; }
-        .page-loader .spinner-ring {
-            width: 36px;
-            height: 36px;
-            border: 2px solid rgba(255, 255, 255, 0.06);
-            border-top-color: #3b82f6;
-            border-radius: 50%;
-            animation: page-spin 0.7s linear infinite;
-        }
-        @keyframes page-spin { to { transform: rotate(360deg); } }
-        @media (prefers-reduced-motion: reduce) {
-            .page-loader { transition: none; }
-            .page-loader .spinner-ring { animation: none; }
-        }
-    </style>
-    <script src="/shared/analytics.js" defer></script>
+    <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__rv)document.documentElement.classList.remove('js')},4000);</script>
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="stylesheet" href="/shared/site.css?v=35829a2cb5">
+    <link rel="stylesheet" href="/shared/shell.css?v=e6a7df67f1">
+    <!-- Fonts are self-hosted (@font-face in the stylesheet). Preload only the two used for first paint, after the CSS so they never delay it. -->
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/shared/fonts/playfair-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="/shared/components.js?v=e76a165e20" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
+    <script src="/shared/back-to-top.js?v=78a4947c1b" defer></script>
 </head>
 <body>
-    <div class="page-loader" id="page-loader"><div class="spinner-ring"></div></div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <header id="site-header" class="site-header">
-        <nav class="container">
-            <a href="/" class="logo">DEEPAK JHA</a>
+        <nav class="wrap" aria-label="Primary">
+            <a href="/" class="logo">Deepak Jha</a>
             <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
             </button>
             <ul class="nav-links">
                 <li><a href="/projects">Projects</a></li>
-                <li><a href="/resume" data-resume-modal>Resume</a></li>
-                <li><a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Blog <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:8px;height:8px;margin-left:2px;opacity:0.4" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2v6"/></svg></a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/resume/" data-resume-modal>Resume</a></li>
+                <li><a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Blog</a></li>
+                <li><a href="#contact" class="nav-cta">Work with me</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- Hero -->
-        <section class="hero container">
-            <div class="reveal">
-                <p class="eyebrow">Architect &amp; Product Builder</p>
-                <h1>I build digital<br>products that scale.</h1>
-                <p class="lead">10 years in industry, shipping web apps since 2014. I partner with stakeholders and teams to transform complex visions into resilient, production-ready software.</p>
-                <div class="btn-group">
-                    <a href="/projects" class="btn btn-primary">See Projects</a>
-                    <a href="mailto:hello@dpkay.com" class="btn btn-ghost">Get in Touch</a>
+        <section class="hero">
+            <div class="wrap">
+                <h1 class="hero-in" style="--delay: .05s">I build the systems that let coding agents <em>ship to production.</em></h1>
+                <div class="btn-group cta-row hero-in" style="--delay: .15s">
+                    <p class="role">AI-native product engineer and architect, building end to end.</p>
+                    <a class="btn btn-accent" href="/projects">See projects<span class="arr" aria-hidden="true">→</span></a>
                 </div>
+                <ul class="proof hero-in" style="--delay: .2s" aria-label="Highlights">
+                    <li><b>10</b><span>open-source tools for AI coding agents</span></li>
+                    <li><b>8,000+</b><span>concurrent cameras on a platform I architect and lead</span></li>
+                    <li><b>4.5★</b><span>TogglDev rating, 10K+ downloads</span></li>
+                    <li><b>10 yrs</b><span>in industry, shipping since 2013</span></li>
+                </ul>
             </div>
-            <ul class="hero-stats reveal" style="--delay: .15s" aria-label="Highlights">
-                <li><a href="#career" class="hero-stat"><span class="hero-stat-value">10</span><span class="hero-stat-label">Years in industry</span></a></li>
-                <li><a href="/projects" class="hero-stat" title="4 Google Play apps, 11 npm packages, a VS Code extension and 3 desktop/CLI tools"><span class="hero-stat-value">15+</span><span class="hero-stat-label">Products shipped</span></a></li>
-                <li><a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer" class="hero-stat" title="MIT / Apache-2.0 licensed on GitHub"><span class="hero-stat-value">11</span><span class="hero-stat-label">Open-source repos</span></a></li>
-                <li><a href="/projects" class="hero-stat" title="Across Google Play, npm, GitHub Releases and VS Code Marketplace"><span class="hero-stat-value">25K+</span><span class="hero-stat-label">Users</span></a></li>
-            </ul>
         </section>
 
-        <!-- About -->
-        <section class="about container">
-            <div class="about-layout">
-                <div class="about-text reveal">
-                    <p class="eyebrow">About</p>
-                    <h2 class="section-title">Full-Stack Architect.<br>Hands-On Builder.</h2>
-                    <p class="about-desc">I specialize in distributed systems, real-time platforms, and cloud-native architecture. Over the past 10 years, I've designed and shipped high-availability infrastructure serving thousands of concurrent users across multiple regions and time zones — in domains spanning IoT, enterprise security, and retail.</p>
-                    <p class="about-desc">I work with startups and enterprises as a hands-on technical partner — from system design through deployment and scale. Based in India, collaborating with teams globally across time zones.</p>
-                </div>
-                <div class="about-facts reveal" style="--delay: .15s">
+        <!-- AI-native engineering -->
+        <section class="section" id="ai">
+            <div class="wrap">
+                <div class="sec-head reveal">
                     <div>
-                        <p class="about-fact-label">Platforms</p>
-                        <p class="about-fact-value">Web &middot; Android<br>Desktop &middot; CLI</p>
+                        <p class="kicker">AI-native engineering</p>
+                        <h2>Agents write the code.<br>I build what makes it trustworthy.</h2>
                     </div>
+                </div>
+
+                <div class="bento">
+                    <a href="/work/ai-sdlc/" class="tile lead-tile span-4 row-2 reveal">
+                        <span class="tag">Case study · Automated software lifecycle</span>
+                        <h3>Spec to deployment, automated.</h3>
+                        <p>An agent-driven pipeline that takes a spec through code, test-case generation, e2e automation code, an e2e stack across ten moving infrastructures, PR review and reporting, with status synced live to Azure DevOps.</p>
+                        <div class="pipe">
+                            <ol aria-label="Pipeline stages">
+                                <li><small>01</small>Spec</li>
+                                <li><small>02</small>Code</li>
+                                <li><small>03</small>Test cases</li>
+                                <li><small>04</small>E2E code</li>
+                                <li><small>05</small>E2E, 10 infras</li>
+                                <li><small>06</small>PR review</li>
+                                <li><small>07</small>Reporting</li>
+                                <li><small>08</small>Deploy</li>
+                            </ol>
+                            <span class="text-link">Read the case study
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <article class="tile span-2 hoverable reveal" style="--delay: .05s">
+                        <span class="tag">Honesty &amp; verification</span>
+                        <h3>Agents that check their work</h3>
+                        <p>Rules that stop coding agents from assuming, bluffing or declaring victory early.</p>
+                        <ul class="pk">
+                            <li><a href="https://www.npmjs.com/package/antibluff" target="_blank" rel="noopener noreferrer">antibluff</a></li>
+                            <li><a href="https://www.npmjs.com/package/anticlimax" target="_blank" rel="noopener noreferrer">anticlimax</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="tile span-2 hoverable reveal" style="--delay: .1s">
+                        <span class="tag">Orchestration</span>
+                        <h3>Many machines, one session</h3>
+                        <p>Hand work to Claude agents on your other computers, keep one task ledger across sessions, and give Claude Code plugins one shared lifecycle hub.</p>
+                        <ul class="pk">
+                            <li><a href="https://www.npmjs.com/package/claude-wingman" target="_blank" rel="noopener noreferrer">claude-wingman</a></li>
+                            <li><a href="https://www.npmjs.com/package/claude-lifecycle-core" target="_blank" rel="noopener noreferrer">claude-lifecycle-core</a></li>
+                            <li><a href="https://www.npmjs.com/package/ghostpm" target="_blank" rel="noopener noreferrer">ghostpm</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="tile span-2 hoverable reveal" style="--delay: .05s">
+                        <span class="tag">MCP &amp; devices</span>
+                        <h3>Agents that drive physical devices</h3>
+                        <p>An MCP server and CLI that let agents control Android Developer Options and wireless ADB on physical test devices.</p>
+                        <ul class="pk">
+                            <li><a href="/toggldev/" target="dpkay-toggldev">toggldev-remote</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="tile span-2 hoverable reveal" style="--delay: .1s">
+                        <span class="tag">Usage &amp; context</span>
+                        <h3>Claude usage you can see and plan</h3>
+                        <p>claude-shift (3K+ downloads) lines Claude Max windows up with your working hours. claude-ticker (2.5K+) puts context, limits and cost in one status line.</p>
+                        <ul class="pk">
+                            <li><a href="/claude-shift/" target="dpkay-claude-shift">claude-shift</a></li>
+                            <li><a href="https://www.npmjs.com/package/claude-ticker" target="_blank" rel="noopener noreferrer">claude-ticker</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="tile span-2 hoverable reveal" style="--delay: .15s">
+                        <span class="tag">Instructions &amp; games</span>
+                        <h3>One set of instructions, every agent</h3>
+                        <p>ingred compiles agent instructions for every tool. splitgame and claude-comedy make long Claude Code sessions more fun.</p>
+                        <ul class="pk">
+                            <li><a href="https://www.npmjs.com/package/ingred" target="_blank" rel="noopener noreferrer">ingred</a></li>
+                            <li><a href="https://www.npmjs.com/package/splitgame" target="_blank" rel="noopener noreferrer">splitgame</a></li>
+                            <li><a href="https://www.npmjs.com/package/claude-comedy" target="_blank" rel="noopener noreferrer">claude-comedy</a></li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="oss-row reveal" role="group" aria-label="Open source at a glance">
+                    <div><b>12</b><span>open-source projects, MIT or Apache-2.0</span></div>
+                    <div><b>16K+</b><span>npm downloads across my agent tools</span></div>
+                    <a class="text-link oss-link" href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer">github.com/dpkay-io
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture, ongoing -->
+        <section class="section" id="depth">
+            <div class="wrap">
+                <div class="sec-head reveal">
                     <div>
-                        <p class="about-fact-label">Domains</p>
-                        <p class="about-fact-value">IoT &amp; Security<br>Enterprise &middot; Retail</p>
+                        <p class="kicker">Systems at scale</p>
+                        <h2>Production systems that carry real load.</h2>
                     </div>
+                </div>
+                <div class="depth reveal">
+                    <a href="/projects#cs-0">
+                        <span class="when on">2020 – Present</span>
+                        <b>8,000+ cameras</b>
+                        <p>Multi-region live streaming and telemetry with zero-downtime failovers.</p>
+                        <small>IoT · WebRTC · Azure</small>
+                    </a>
+                    <a href="/projects#cs-1">
+                        <span class="when on">2023 – Present</span>
+                        <b>Locked 60 FPS</b>
+                        <p>Millions of real-time data points on a custom Canvas rendering engine.</p>
+                        <small>Canvas · Web Workers · React</small>
+                    </a>
+                    <a href="/projects#cs-2">
+                        <span class="when">2017 – 2019</span>
+                        <b>Zero data loss</b>
+                        <p>Offline-to-cloud sync across fragmented point-of-sale networks.</p>
+                        <small>Node.js · CouchDB · Queues</small>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shipped products -->
+        <section class="section" id="products">
+            <div class="wrap">
+                <div class="sec-head reveal">
                     <div>
-                        <p class="about-fact-label">Agentic AI</p>
-                        <p class="about-fact-value">11 Published npm Tools<br>MCP &middot; Claude Code Plugins</p>
+                        <p class="kicker">Shipped products</p>
+                        <h2>Designed, built and shipped on my own.</h2>
                     </div>
+                    <a href="/projects" class="text-link">All projects
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </a>
+                </div>
+
+                <div class="bento">
+                    <a href="/toggldev/" target="dpkay-toggldev" class="tile product feature has-shot is-portrait span-4 reveal">
+                        <div class="shot-text">
+                        <span class="meta">Android · Kotlin</span>
+                        <h3>TogglDev</h3>
+                        <p>Android Developer Options in one tap from a home screen widget, Quick Settings tile or app shortcut. App rules and ADB/shell command automation react to your apps and toggles, and the phone can be controlled remotely from a desktop or by AI agents over MCP.</p>
+                        <div class="stat-row">
+                            <div><b>4.5★</b><span>Google Play rating</span></div>
+                            <div><b>10K+</b><span>downloads</span></div>
+                        </div>
+                        <p class="featured-line">Featured by Android YouTube channels, including HowToMen and ODORIZZI.</p>
+                        <span class="go">Open product page <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                        </div>
+                        <img class="shot" src="/toggldev/images/hero-1.webp" width="600" height="1066" loading="lazy" decoding="async" alt="TogglDev app overview: a Quick Settings toggle row, a home screen widget and Developer Options switches on a dark green background">
+                    </a>
+                    <a href="/autodeck/" target="dpkay-autodeck" class="tile product span-2 reveal" style="--delay: .05s">
+                        <span class="meta">Android · Kotlin</span>
+                        <h3>AutoDeck</h3>
+                        <p>Named app drawers that switch automatically by place, time, Bluetooth, Wi-Fi and more.</p>
+                        <img class="tile-shot" src="/autodeck/images/app-profiles-hero-560.webp" width="560" height="907" loading="lazy" decoding="async" alt="AutoDeck profile list: a Driving profile that is on now, with its maps, music, messages and phone apps, and an Evening profile that runs daily from 7:30 PM">
+                        <span class="go">Open product page <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                    </a>
+                    <a href="/terminal-studio/" target="dpkay-terminal-studio" class="tile product feature span-6 has-shot reveal">
+                        <div class="shot-text">
+                            <span class="meta">Desktop · Rust, wgpu · Alpha</span>
+                            <h3>Terminal Studio</h3>
+                            <p>A GPU-accelerated terminal multiplexer written in Rust: split panes, a file browser, a git diff viewer, markdown preview and named workspaces in one window. Open source, on Windows, macOS and Linux.</p>
+                            <div class="stat-row">
+                                <div><b>45K+</b><span>lines of Rust</span></div>
+                                <div><b>3</b><span>desktop platforms</span></div>
+                                <div><b>Apache-2.0</b><span>open source</span></div>
+                            </div>
+                            <span class="go">Open product page <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                        </div>
+                        <img class="shot" src="/terminal-studio/images/screenshot.webp" width="1400" height="752" loading="lazy" decoding="async" alt="Terminal Studio window with split terminal panes, a file browser, and git integration">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey -->
+        <section class="section" id="career">
+            <div class="wrap">
+                <div class="sec-head reveal">
                     <div>
-                        <p class="about-fact-label">Approach</p>
-                        <p class="about-fact-value">Prototype to Production<br>Ship Fast, Iterate</p>
+                        <p class="kicker">Journey</p>
+                        <h2>From first web apps to architecture and agent-driven engineering.</h2>
                     </div>
                 </div>
+                <ol class="journey reveal">
+                    <li>
+                        <time datetime="2013">2013</time>
+                        <h3>First products</h3>
+                        <p>Started building and shipping web products end to end while still in college.</p>
+                    </li>
+                    <li>
+                        <time datetime="2017">2017</time>
+                        <h3>Software Engineer, AlienHu</h3>
+                        <p>B2B point-of-sale, B2C e-commerce app and the offline-sync middleware between them.</p>
+                    </li>
+                    <li>
+                        <time datetime="2019">2019</time>
+                        <h3>Apra Labs: Engineer, then Senior (2022)</h3>
+                        <p>Cloud video platform for thousands of cameras and a real-time dashboard engine.</p>
+                    </li>
+                    <li>
+                        <time datetime="2024">2024</time>
+                        <h3>Associate Architect, Apra Labs</h3>
+                        <p>Leading architecture across the streaming platform and dashboards, today.</p>
+                    </li>
+                    <li class="now">
+                        <time>Now</time>
+                        <h3>Architecture plus agents</h3>
+                        <p>Architecting at scale, an automated engineering pipeline at work, and 10 open-source tools for AI coding agents.</p>
+                    </li>
+                </ol>
             </div>
         </section>
 
-        <!-- Career Timeline -->
-        <section id="career" class="timeline container">
-            <div class="timeline-header reveal">
-                <p class="eyebrow">Career Progression</p>
-                <h2 class="section-title">The Journey So Far</h2>
-            </div>
-            <div class="timeline-rail reveal" style="--delay: .1s">
-                <div class="timeline-node">
-                    <div class="timeline-dot"></div>
-                    <span class="timeline-date">2017 &ndash; 2019</span>
-                    <div class="timeline-info">
-                        <p class="timeline-role">Software Engineer</p>
-                        <p class="timeline-company">AlienHu</p>
-                    </div>
-                </div>
-                <div class="timeline-node">
-                    <div class="timeline-dot"></div>
-                    <span class="timeline-date">2019 &ndash; 2022</span>
-                    <div class="timeline-info">
-                        <p class="timeline-role">Software Engineer</p>
-                        <p class="timeline-company">Apra Labs</p>
-                    </div>
-                </div>
-                <div class="timeline-node">
-                    <div class="timeline-dot"></div>
-                    <span class="timeline-date">2022 &ndash; 2024</span>
-                    <div class="timeline-info">
-                        <p class="timeline-role">Senior Software Engineer</p>
-                        <p class="timeline-company">Apra Labs</p>
-                    </div>
-                </div>
-                <div class="timeline-node current">
-                    <div class="timeline-dot"></div>
-                    <span class="timeline-date">2024 &ndash; Present</span>
-                    <div class="timeline-info">
-                        <p class="timeline-role">Associate Architect</p>
-                        <p class="timeline-company">Apra Labs</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Key Experiences -->
-        <section class="featured container">
-            <div class="featured-header reveal">
-                <div>
-                    <h2 class="section-title">Key Experiences</h2>
-                    <p class="section-sub">Architectural Case Studies</p>
-                </div>
-                <a href="/projects#case-studies" class="featured-link">
-                    View All
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </a>
-            </div>
-            <div class="featured-grid">
-                <a href="/projects#cs-0" class="featured-card reveal" style="--delay: .05s">
-                    <h3 class="featured-card-name">8,000+ Cameras</h3>
-                    <p class="featured-card-desc">Multi-region live streaming &amp; telemetry at scale</p>
-                    <div class="featured-card-stack">
-                        <span class="stack-tag">IoT</span>
-                        <span class="stack-tag">WebRTC</span>
-                        <span class="stack-tag">Azure</span>
-                    </div>
-                </a>
-                <a href="/projects#cs-1" class="featured-card reveal" style="--delay: .1s">
-                    <h3 class="featured-card-name">Locked 60 FPS</h3>
-                    <p class="featured-card-desc">Millions of real-time data points on custom Canvas engine</p>
-                    <div class="featured-card-stack">
-                        <span class="stack-tag">Canvas</span>
-                        <span class="stack-tag">Web Workers</span>
-                        <span class="stack-tag">React</span>
-                    </div>
-                </a>
-                <a href="/projects#cs-2" class="featured-card reveal" style="--delay: .15s">
-                    <h3 class="featured-card-name">Zero Data Loss</h3>
-                    <p class="featured-card-desc">Offline-to-cloud sync across fragmented POS networks</p>
-                    <div class="featured-card-stack">
-                        <span class="stack-tag">Node.js</span>
-                        <span class="stack-tag">CouchDB</span>
-                        <span class="stack-tag">Queues</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Featured Projects -->
-        <section class="featured container">
-            <div class="featured-header reveal">
-                <div>
-                    <h2 class="section-title">Personal Projects</h2>
-                    <p class="section-sub">Built &amp; Shipped</p>
-                </div>
-                <a href="/projects" class="featured-link">
-                    View All
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </a>
-            </div>
-            <div class="featured-grid">
-                <a href="/projects#toggldev" class="featured-card reveal" style="--delay: .05s">
-                    <h3 class="featured-card-name">TogglDev</h3>
-                    <p class="featured-card-desc">One-tap Android Developer Options toggle via home screen widget, Quick Settings tile, or app shortcut. 4.5★ rated · 10K+ downloads.</p>
-                    <div class="featured-card-stack">
-                        <span class="stack-tag">Android</span>
-                        <span class="stack-tag">Kotlin</span>
-                    </div>
-                </a>
-                <a href="/projects#terminal-studio" class="featured-card reveal" style="--delay: .1s">
-                    <h3 class="featured-card-name">Terminal Studio</h3>
-                    <p class="featured-card-desc">GPU-accelerated terminal multiplexer with integrated file browser, git diff viewer, and workspace system.</p>
-                    <div class="featured-card-stack">
-                        <span class="stack-tag">Rust</span>
-                        <span class="stack-tag">wgpu</span>
-                        <span class="stack-tag">egui</span>
-                    </div>
-                </a>
-                <a href="/projects#claude-shift" class="featured-card reveal" style="--delay: .15s">
-                    <h3 class="featured-card-name">Claude Shift</h3>
-                    <p class="featured-card-desc">Optimize Claude Max 5-hour slots by scheduling strategic session pings during your downtime.</p>
-                    <div class="featured-card-stack">
-                        <span class="stack-tag">TypeScript</span>
-                        <span class="stack-tag">Node.js</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Philosophy -->
-        <section class="philosophy container">
-            <div class="quote-card reveal-zoom">
-                <div class="quote-label">
-                    <h2>The Builder<br>Philosophy</h2>
-                </div>
-                <div>
-                    <p class="quote-text">I don't just deliver features — I deliver foundations. Software that drives your business growth, not one that becomes a technical bottleneck.</p>
-                </div>
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-inner">
+                <!-- Photo placeholder. When the photo is ready, replace the <span> with:
+                     <img src="/shared/photo.webp" width="176" height="176" alt="Deepak Jha" loading="lazy">
+                     (square crop, about 176px or 2x that; compress with scripts/optimize-images.mjs --max-width 352) -->
+                <div class="avatar reveal" aria-hidden="true"><span>DJ</span></div>
+                <h2 class="reveal">Work with me.</h2>
+                <p class="sub reveal" style="--delay: .05s">Write to me, and let’s take your idea, or a messy engineering process, all the way to production.</p>
+                <a href="mailto:hello@dpkay.com" class="email-link reveal" style="--delay: .1s">hello@dpkay.com</a>
+                <nav class="foot-links" aria-label="Site">
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/resume/" data-resume-modal>Resume</a>
+                    <a href="https://linkedin.com/in/dpkjha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Medium</a>
+                </nav>
+                <p class="fine">Based in India · <span class="tz"><i class="tz-dot" aria-hidden="true"></i>IST (UTC+05:30)<time id="ist-time" hidden></time></span> · works across time zones</p>
             </div>
         </section>
 
     </main>
 
-    <footer id="contact" class="site-footer">
-        <div class="container">
-            <div class="reveal">
-                <h2>Get in touch.</h2>
-                <a href="mailto:hello@dpkay.com" class="email-link">hello@dpkay.com</a>
-            </div>
-            <nav class="footer-links" aria-label="Social links">
-                <a href="/resume" data-resume-modal>Resume</a>
-                <a href="https://linkedin.com/in/dpkjha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/dpkay-io" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://medium.com/@dpkay" target="_blank" rel="noopener noreferrer">Medium</a>
-            </nav>
-        </div>
-    </footer>
 
     <div class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-label="Resume">
         <div class="resume-modal-overlay"></div>
@@ -541,12 +386,5 @@
             <iframe class="resume-modal-iframe" src="" title="Resume"></iframe>
         </div>
     </div>
-
-    <script>
-        window.addEventListener('load', function () {
-            var l = document.getElementById('page-loader');
-            if (l) { l.classList.add('loaded'); setTimeout(function () { l.remove(); }, 600); }
-        });
-    </script>
 </body>
 </html>

@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Toggle Android Developer Options on and off instantly with one tap. Quick Settings tiles, home screen widgets, settings snapshot & restore. Free, private, no root required.">
+    <meta name="description" content="Toggle Android Developer Options with one tap. Quick Settings tiles, home screen widgets, settings snapshot and restore. Free to use, no root required.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://dpkay.com/toggldev">
+    <meta property="og:site_name" content="Deepak Jha">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url"         content="https://dpkay.com/toggldev/">
     <meta property="og:title"       content="TogglDev — One Tap Developer Options Toggle for Android">
     <meta property="og:description" content="Toggle Developer Options instantly via widget, tile, or shortcut. Settings auto-saved & restored. Free, private, no root.">
-    <meta property="og:image"       content="https://dpkay.com/toggldev/images/banner.png">
+    <meta property="og:image"       content="https://dpkay.com/toggldev/images/banner.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="586">
+    <meta property="og:image:alt" content="TogglDev: toggle Android Developer Options instantly, shown as an on/off switch on a phone screen.">
 
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="TogglDev — One Tap Developer Options Toggle">
     <meta name="twitter:description" content="Toggle Developer Options instantly. Free, private, no root required.">
-    <meta name="twitter:image"       content="https://dpkay.com/toggldev/images/banner.png">
+    <meta name="twitter:image"       content="https://dpkay.com/toggldev/images/banner.jpg">
+    <meta name="twitter:image:alt" content="TogglDev: toggle Android Developer Options instantly, shown as an on/off switch on a phone screen.">
 
     <title>TogglDev — One Tap Developer Options Toggle for Android</title>
-    <link rel="canonical" href="https://dpkay.com/toggldev">
+    <link rel="canonical" href="https://dpkay.com/toggldev/">
     <link rel="icon" href="/toggldev/images/icon.png" type="image/png">
 
     <script type="application/ld+json">
@@ -28,20 +35,70 @@
         "name": "TogglDev",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Android 8.0+",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
         "description": "Toggle Android Developer Options on and off instantly with one tap via home screen widget, Quick Settings tile, or app shortcut.",
-        "author": { "@type": "Person", "name": "Deepak Jha", "url": "https://dpkay.com" },
-        "url": "https://dpkay.com/toggldev",
+        "author": {
+            "@type": "Person",
+            "@id": "https://dpkay.com/#person",
+            "name": "Deepak Jha",
+            "url": "https://dpkay.com/"
+        },
+        "url": "https://dpkay.com/toggldev/",
         "downloadUrl": "https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler",
-        "softwareVersion": "2.3",
         "fileSize": "<2MB",
-        "inLanguage": ["en","ar","zh","da","nl","es","fr","de","el","id","ja","ko","fa","pl","pt-BR","ru","th","tr"]
+        "inLanguage": [
+            "en",
+            "ar",
+            "zh",
+            "da",
+            "nl",
+            "es",
+            "fr",
+            "de",
+            "el",
+            "id",
+            "ja",
+            "ko",
+            "fa",
+            "pl",
+            "pt-BR",
+            "ru",
+            "th",
+            "tr"
+        ],
+        "image": "https://dpkay.com/toggldev/images/icon.png"
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@700&display=swap">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://dpkay.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "TogglDev",
+                "item": "https://dpkay.com/toggldev/"
+            }
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="stylesheet" href="/shared/product-header.css?v=7878c804d4">
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/shared/fonts/playfair-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
         /* ── Variables ─────────────────────────────────────────── */
@@ -66,14 +123,14 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: clip; }
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             background: var(--bg);
             color: var(--fg);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
+        h1, h2, h3 { font-family: 'Playfair Display', 'Playfair Fallback', Georgia, serif; line-height: 1.15; }
         a { color: inherit; text-decoration: none; }
         ::selection { background: var(--accent); color: #000; }
         img { max-width: 100%; height: auto; display: block; }
@@ -398,7 +455,7 @@
             margin-bottom: 1.25rem;
         }
         .feature-card h3 {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
@@ -464,7 +521,7 @@
             margin-bottom: 1.25rem;
         }
         .access-card h3 {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             font-size: 1.0625rem;
             font-weight: 600;
             margin-bottom: 0.625rem;
@@ -535,7 +592,7 @@
             color: var(--accent);
         }
         .trust-label {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             font-weight: 600;
             font-size: 0.9375rem;
             margin-bottom: 0.5rem;
@@ -620,7 +677,7 @@
             margin-bottom: 0.5rem;
         }
         .video-title {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
             font-size: 0.9375rem;
             font-weight: 600;
             line-height: 1.4;
@@ -638,7 +695,7 @@
             text-align: center;
         }
         .spec-value {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Playfair Display', 'Playfair Fallback', Georgia, serif;
             font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
@@ -798,15 +855,16 @@
             .featured-in-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
-    <script src="/shared/analytics.js" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
+    <script src="/shared/back-to-portfolio.js?v=ba58c65ace" defer></script>
 </head>
 <body>
 
     <!-- Header -->
     <header class="site-header">
         <nav class="container">
-            <a href="/toggldev" class="header-logo">
-                <img src="/toggldev/images/icon.png" alt="" width="32" height="32">
+            <a href="/toggldev/" class="header-logo">
+                <img src="/toggldev/images/icon.webp" alt="" width="32" height="32">
                 <span>Toggl<span class="logo-accent">Dev</span></span>
             </a>
             <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
@@ -845,14 +903,14 @@
                         <span class="hero-chip">10K+ Downloads</span>
                         <span class="hero-chip">No Root</span>
                         <span class="hero-chip">&lt;2 MB</span>
-                        <span class="hero-chip">100% Free</span>
+                        <span class="hero-chip">Free to use</span>
                         <span class="hero-chip">Works Offline</span>
                     </div>
                 </div>
                 <div class="hero-visual reveal" style="--delay: .2s">
                     <div class="phone-frame">
-                        <img class="hero-img" src="/toggldev/images/hero-1.png" alt="TogglDev feature overview" width="1080" height="1920">
-                        <img class="hero-img" src="/toggldev/images/hero-2.png" alt="TogglDev app in action" width="1080" height="1920">
+                        <img class="hero-img" src="/toggldev/images/hero-1.webp" alt="TogglDev feature overview" width="600" height="1066" fetchpriority="high" decoding="async">
+                        <img class="hero-img" src="/toggldev/images/hero-2.webp" alt="TogglDev app in action" width="600" height="1066" decoding="async">
                     </div>
                 </div>
             </div>
@@ -1180,7 +1238,7 @@
         <section id="download" class="download">
             <div class="container">
                 <h2 class="reveal">Take Control of Your<br><span class="accent">Developer Options</span></h2>
-                <p class="download-subtitle reveal" style="--delay: .1s">Free. Private. No strings attached.</p>
+                <p class="download-subtitle reveal" style="--delay: .1s">Free to use. Private. No ads. Optional in-app purchases.</p>
                 <div class="download-actions reveal" style="--delay: .15s">
                     <a href="https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
                         <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M3.5 2.5c0-.6.4-1 .9-1 .2 0 .4.05.5.14L19.6 11.3c.5.3.5 1.1 0 1.4L4.9 22.36c-.1.09-.3.14-.5.14-.5 0-.9-.4-.9-1V2.5z"/></svg>

@@ -1,4 +1,10 @@
 #!/bin/sh
+# Two jobs: (1) refuse a commit whose /shared/*.css|js cache stamps (?v=hash) are stale, (2) keep DeepakJha.pdf in sync.
+# Stamps: after editing anything in shared/*.css or shared/*.js, run  node scripts/stamp-assets.mjs  and stage the pages it touches.
+if ! node scripts/stamp-assets.mjs --check; then
+  echo "pre-commit: asset stamps are stale, commit aborted (a stale stamp lets visitors keep an old cached CSS/JS)." >&2
+  exit 1
+fi
 # Keeps DeepakJha.pdf in sync with resume-print.html (the resume's single source of truth).
 # Enable once per clone:  git config core.hooksPath .githooks
 # Bypass for one commit:  git commit --no-verify

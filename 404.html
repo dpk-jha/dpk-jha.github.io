@@ -3,49 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#0a0a0b">
     <meta name="robots" content="noindex">
     <meta name="description" content="Page not found — Deepak Jha">
     <title>404 | Deepak Jha</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%233b82f6' text-anchor='middle'>D</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap">
-    <link rel="stylesheet" href="shared/styles.css">
+    <!-- Absolute paths on purpose: GitHub Pages serves this file at any URL depth. -->
+    <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
+    <link rel="stylesheet" href="/shared/site.css?v=35829a2cb5">
+    <!-- Fonts are self-hosted (@font-face in the stylesheet). Preload only the two used for first paint, after the CSS so they never delay it. -->
+    <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/shared/fonts/playfair-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
-        .not-found {
-            min-height: 100vh;
-            min-height: 100svh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-        .not-found h1 {
-            font-size: clamp(5rem, 15vw, 10rem);
-            color: rgba(255, 255, 255, 0.06);
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-        .not-found p {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
+        .not-found { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+        .not-found::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 50% at 50% 40%, rgba(242, 179, 90, 0.08), transparent 70%); }
+        .not-found > * { position: relative; }
+        .not-found .big { font-family: var(--serif); font-weight: 700; font-size: clamp(5rem, 15vw, 10rem); color: rgba(255, 255, 255, 0.08); line-height: 1; font-variant-numeric: lining-nums; margin-bottom: 1.25rem; }
+        .not-found h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); color: var(--fg); margin-bottom: 0.75rem; }
+        .not-found .links { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+        .not-found p { font-size: 1.125rem; color: var(--fg-2); margin-bottom: 2.5rem; }
     </style>
-    <script src="/shared/analytics.js" defer></script>
+    <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
 </head>
 <body>
     <main class="not-found">
-        <h1>404</h1>
-        <p>This page doesn't exist.</p>
-        <a href="/" class="btn btn-ghost">Back to Home</a>
+        <p class="big" aria-hidden="true">404</p>
+        <h1>Page not found</h1>
+        <p>This page doesn&rsquo;t exist, or it has moved.</p>
+        <div class="links">
+            <a href="/" class="btn btn-accent">Home</a>
+            <a href="/projects" class="btn btn-ghost">Projects</a>
+            <a href="/resume/" class="btn btn-ghost">Resume</a>
+        </div>
     </main>
 </body>
 </html>

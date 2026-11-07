@@ -1,0 +1,7 @@
+/* Product pages (TogglDev, AutoDeck, Terminal Studio, claude-shift) keep their own colours and type,
+ * but share one header height, so moving between them does not make the bar jump.
+ * Rule for their fonts: only self-hosted families (shared/fonts.css), never a font the visitor must already own. */
+html .site-header nav,
+html .site-header .wrap { box-sizing: border-box; height: 4.125rem; padding-block: 0; }
+/* AutoDeck's header carries its own 1px bottom border outside the bar: take it off the bar so the total stays equal. */
+html .site-header .wrap { height: calc(4.125rem - 1px); }

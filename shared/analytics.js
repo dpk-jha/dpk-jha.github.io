@@ -1,4 +1,8 @@
 (function() {
+    // Only measure real visitors: skip localhost / preview / file:// so local testing never pollutes analytics.
+    var h = location.hostname;
+    if (h !== 'dpkay.com' && h !== 'www.dpkay.com') return;
+
     // Inject the external Google Tag Manager script
     var script = document.createElement('script');
     script.async = true;

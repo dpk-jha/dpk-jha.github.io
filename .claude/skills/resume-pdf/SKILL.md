@@ -17,7 +17,7 @@ After ANY edit to `resume-print.html`, regenerate the PDF in the same change, th
 node scripts/build-resume-pdf.mjs                          # writes DeepakJha.pdf
 node scripts/build-resume-pdf.mjs --out /some/path.pdf     # write elsewhere, e.g. to preview first
 ```
-- No npm install needed. It serves the repo on a random local port and uses Chrome's headless printer (`CHROME_PATH` overrides Chrome discovery). Needs network for the Inter font from Google Fonts.
+- No npm install needed. It serves the repo on a random local port and uses Chrome's headless printer (`CHROME_PATH` overrides Chrome discovery). Works offline: Inter is self-hosted (`shared/fonts.css`, linked by `resume-print.html`).
 - It refuses to write unless the result is exactly **1 page** with **Inter embedded**, and exits 1 otherwise, leaving the existing PDF untouched. Page size comes from `@page { size: letter }` in `resume-print.html`.
 
 ## Verify (do not assume)
@@ -27,9 +27,9 @@ node scripts/build-resume-pdf.mjs --out /some/path.pdf     # write elsewhere, e.
 
 ## Numbers that must agree across the site
 When a shared stat changes, update all of these in the same change, then regenerate the PDF:
-- Years of experience: `index.html` (meta description, twitter description, lead, About, hero stat), `llms.txt`, `resume-print.html` (subtitle and summary). Written as "10" (first job started in 2017, so it is exact from Jan 2027).
-- Users, npm package count, products shipped: `index.html` (hero stats, tooltips, About facts), `llms.txt`, `resume-print.html` summary.
+- Years of experience: `index.html` (proof strip, meta description), `llms.txt`, `resume-print.html` (subtitle).
+- Open-source and npm tool counts: `index.html` (proof strip, meta/OG/twitter descriptions, journey, tools section), `projects.html`, `llms.txt`, `resume-print.html` (summary, AI-native block, Shipped Products). Keep one framing: 11 published npm tools, 10 open source (MIT); toggldev-remote is proprietary.
 - TogglDev rating and downloads: `index.html`, `projects.html`, `toggldev/index.html`, `llms.txt`, `resume-print.html`.
 
-## Not set up
-There is no git pre-commit hook. A commit hook would regenerate the PDF automatically even outside Claude sessions, but it needs `git config core.hooksPath` and the user has not approved it. Ask before adding one.
+## Pre-commit hook
+`.githooks/pre-commit` regenerates and stages `DeepakJha.pdf` whenever `resume-print.html` is staged. It is active once per clone with `git config core.hooksPath .githooks` (bypass one commit with `--no-verify`).

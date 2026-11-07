@@ -1,17 +1,18 @@
 # Deepak Jha — dpkay.com
 
-> Full-Stack Architect & Product Builder with 10 years of industry experience, building web apps since 2014.
+> AI-native product builder and architect with 10 years of industry experience, shipping end to end since 2013. Idea to production, with agents in the loop.
 
 ## Highlights
 
-- 10 years in industry (since 2017); building web apps since 2014
+- 10 years in industry (since 2017); shipping products end to end since 2013
 - 15+ products shipped: 4 Google Play apps, 11 npm packages, 1 VS Code extension, 3 desktop/CLI tools
-- 11 open-source repositories (MIT / Apache-2.0)
-- 25K+ users across Google Play, npm, GitHub Releases and VS Code Marketplace
+- 12 open-source projects (11 MIT, 1 Apache-2.0) at https://github.com/dpkay-io
+- 11 published npm packages for AI coding agents (MCP servers, Claude Code plugins, agent verification rules); 10 are open source under MIT, and toggldev-remote is proprietary
+- TogglDev: 4.5★ on Google Play, 10K+ downloads
 
 ## About
 
-Deepak Jha specializes in distributed systems, real-time platforms, and cloud-native architecture. He has designed and shipped high-availability infrastructure serving thousands of concurrent users across multiple regions — in domains spanning IoT, enterprise security, and retail. Based in India, collaborating with teams globally.
+Deepak Jha is an AI-native product builder. At work he built an agent-driven software delivery pipeline that automates the lifecycle from spec to deployment (code writing, test-case generation, e2e automation code, an e2e stack across 10 moving infrastructures with development and test status synced in real time to Azure DevOps (VSO), PR reviews and reporting). He architects and leads real-time platforms at scale (8,000+ concurrent cameras, multi-region) in IoT, enterprise security and retail. Outside work he publishes open-source tools for AI coding agents and ships Android and desktop products. Based in India, collaborating with teams globally.
 
 ## Contact
 
@@ -22,34 +23,35 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 
 ## Key Experience Areas
 
-- High-availability video surveillance (8,000+ concurrent cameras, multi-region)
-- Real-time dashboards with custom Canvas rendering (millions of data points at 60 FPS)
-- E-commerce middleware with offline state resolution and transactional consistency
+- AI-native engineering: agent-driven delivery pipeline from spec to deployment; open-source tooling for AI coding agents
+- High-availability video surveillance (8,000+ concurrent cameras, multi-region), 2020 to present
+- Real-time dashboards with custom Canvas rendering (millions of data points at 60 FPS), 2023 to present
+- E-commerce middleware with offline state resolution and transactional consistency, 2017 to 2019
 
 ## Core Tech Stack
 
-- Backend: C# / .NET, Node.js, Go, Rust
+- Backend: C# / .NET, Node.js, Go, Rust, TypeScript
 - Frontend: React / Next.js, TypeScript
 - Cloud: AWS, Azure, Redis, SQL / NoSQL
 - Mobile: Flutter / React Native, Kotlin / Android
 - Realtime: WebSockets / SignalR, WebRTC
-- AI: Agentic AI systems
+- AI: Agentic AI systems, MCP servers, Claude Code plugins, AI-assisted code and test generation
 
 ## Personal Projects
 
-- TogglDev: Android Developer Options toggle, 10K+ downloads, 4.5★ on Google Play (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler
+- TogglDev: Android Developer Options toggle with app rules, ADB/shell command automation and remote/MCP control, 10K+ downloads, 4.5★ on Google Play (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.developer_options_toggler
 - AutoDeck: Android home screen apps that switch by themselves via profiles, rules and one widget (Kotlin) — https://dpkay.com/autodeck/ — https://play.google.com/store/apps/details?id=com.dpkay.apps.autodeck
 - AfterCall Shield: Post-call overlay dismissal (Kotlin) — https://play.google.com/store/apps/details?id=com.dpkay.apps.after_call_cleaner
 - CloseLink: Offline Bluetooth voice intercom for Android (Kotlin, C++) — https://play.google.com/store/apps/details?id=com.dpkay.apps.closelink
 - splitgame: Split-terminal games for Claude Code (TypeScript, MCP) — https://www.npmjs.com/package/splitgame
-- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://dpkay.com/terminal-studio — https://github.com/dpkay-io/terminal-studio
-- claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://dpkay.com/claude-shift — https://www.npmjs.com/package/claude-shift
+- Terminal Studio: GPU-accelerated terminal multiplexer (Rust, wgpu, egui) — https://dpkay.com/terminal-studio/ — https://github.com/dpkay-io/terminal-studio
+- claude-shift: Align Claude Max 5-hour usage windows with your schedule (TypeScript) — https://dpkay.com/claude-shift/ — https://www.npmjs.com/package/claude-shift
 - Claude Comedy: Situational developer humor for Claude Code sessions (TypeScript) — https://www.npmjs.com/package/claude-comedy
 - claude-ticker: Real-time status bar for Claude CLI (TypeScript) — https://www.npmjs.com/package/claude-ticker
 - GhostPM: local-first task ledger for AI coding sessions, with optional GitHub Issues / Azure DevOps sync (TypeScript, MCP) — https://www.npmjs.com/package/ghostpm
 - gitreg: Zero-latency Git repository registry (Rust) — https://github.com/dpkay-io/gitreg
 - ingred: Compile AI coding instructions into native agent config files (TypeScript) — https://www.npmjs.com/package/ingred
-- toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://dpkay.com/toggldev — https://www.npmjs.com/package/toggldev-remote
+- toggldev-remote: CLI and MCP server to control TogglDev remotely (Node.js, MCP) — https://dpkay.com/toggldev/ — https://www.npmjs.com/package/toggldev-remote
 - AntiBluff: Honesty and verification rules for AI coding agents (JavaScript) — https://www.npmjs.com/package/antibluff
 - claude-wingman: Use all your computers from one Claude Code session; hand work to Claude agents on your other Mac, Windows or Linux machines over Tailscale (Node.js) — https://www.npmjs.com/package/claude-wingman
 - claude-lifecycle-core: Middleware hub for Claude Code plugins (JavaScript) — https://www.npmjs.com/package/claude-lifecycle-core
@@ -59,5 +61,17 @@ Deepak Jha specializes in distributed systems, real-time platforms, and cloud-na
 
 ## Pages
 
-- Home: https://dpkay.com/
-- Projects: https://dpkay.com/projects
+- Home: https://dpkay.com/ — positioning, proof points, how to get in touch
+- Projects: https://dpkay.com/projects — every project listed above, with features, stack and links
+- Resume: https://dpkay.com/resume/ — web view; download as PDF at https://dpkay.com/DeepakJha.pdf
+- TogglDev: https://dpkay.com/toggldev/ — Android Developer Options toggle, app rules, ADB automation, remote/MCP control
+- AutoDeck: https://dpkay.com/autodeck/ — Android home screen that switches apps by itself
+- Terminal Studio: https://dpkay.com/terminal-studio/ — GPU-accelerated terminal multiplexer
+- claude-shift: https://dpkay.com/claude-shift/ — align Claude Max 5-hour usage windows with your schedule
+
+## Privacy policies (Android apps)
+
+- TogglDev: https://dpkay.com/toggldev/privacy-policy
+- AutoDeck: https://dpkay.com/autodeck/privacy-policy.html
+- AfterCall Shield: https://dpkay.com/after-call-cleaner/privacy-policy.html
+- CloseLink: https://dpkay.com/closelink/privacy-policy.html
