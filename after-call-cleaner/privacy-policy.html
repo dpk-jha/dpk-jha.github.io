@@ -276,7 +276,7 @@
     }
 
     /* Permission cards */
-    .perm-grid { display: grid; gap: .75rem; }
+    .perm-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
 
     .perm-card {
       background: var(--card);
@@ -296,6 +296,8 @@
       border-radius: 5px;
       padding: .1rem .45rem;
       margin-bottom: .35rem;
+      max-width: 100%;
+      overflow-wrap: anywhere; /* long permission names such as REQUEST_IGNORE_BATTERY_OPTIMIZATIONS */
     }
 
     .perm-card p {

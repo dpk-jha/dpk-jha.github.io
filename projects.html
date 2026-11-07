@@ -194,16 +194,17 @@
 
     <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__rv)document.documentElement.classList.remove('js')},4000);</script>
     <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
-    <link rel="stylesheet" href="/shared/styles.css?v=f439358bc4">
+    <link rel="stylesheet" href="/shared/styles.css?v=ccf25b4fcb">
     <link rel="stylesheet" href="/shared/projects.css?v=8724d8e0ce">
-    <link rel="stylesheet" href="/shared/projects-v2.css?v=05dcd4ee7d">
-    <link rel="stylesheet" href="/shared/shell.css?v=e6a7df67f1">
+    <link rel="stylesheet" href="/shared/projects-v2.css?v=2c94d94241">
+    <link rel="stylesheet" href="/shared/shell.css?v=dc1a840632">
     <!-- Fonts are self-hosted (@font-face in the stylesheet). Preload only the two used for first paint, after the CSS so they never delay it. -->
     <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/shared/fonts/playfair-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <script src="/shared/components.js?v=e76a165e20" defer></script>
     <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
-    <script src="/shared/back-to-top.js?v=78a4947c1b" defer></script>
+    <script src="/shared/back-to-top.js?v=8d788f9f54" defer></script>
+    <script src="/shared/scroll-fade.js?v=e96bbc716c" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -249,7 +250,7 @@
                 <h2 class="section-title">Key experiences</h2>
             </div>
 
-            <div class="cs-tabs reveal" style="--delay: .1s" role="tablist" aria-label="Case studies">
+            <div class="cs-tabs reveal" data-scroll-fade style="--delay: .1s" role="tablist" aria-label="Case studies">
                 <button class="cs-tab cs-tab--active" data-cs="0" type="button" role="tab" id="cs-tab-0" aria-controls="cs-panel-0" aria-selected="true">
                     <span class="cs-tab-num">
                         <svg class="cs-tab-ring" viewBox="0 0 36 36"><circle class="cs-tab-ring-track" cx="18" cy="18" r="16"/><circle class="cs-tab-ring-progress" cx="18" cy="18" r="16"/></svg>
@@ -456,7 +457,7 @@
         <!-- Filters -->
         <section class="filters">
             <div class="container">
-                <div class="filter-row">
+                <div class="filter-row" data-scroll-fade>
                     <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
                     <button class="filter-btn" data-filter="agent" aria-pressed="false">AI &amp; Agents</button>
                     <button class="filter-btn" data-filter="devtools" aria-pressed="false">Dev Tools</button>

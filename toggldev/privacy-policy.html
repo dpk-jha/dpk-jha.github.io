@@ -179,6 +179,7 @@
       color: #3ddc84;
       font-weight: 600;
       margin-bottom: 0.35rem;
+      overflow-wrap: anywhere; /* long identifiers such as REQUEST_IGNORE_BATTERY_OPTIMIZATIONS must wrap, not widen the page */
     }
 
     .permission-desc {
@@ -220,6 +221,7 @@
       padding: 0.1em 0.4em;
       border-radius: 5px;
       color: #3ddc84;
+      overflow-wrap: anywhere; /* the package name is one long unbreakable word: it made the page wider than a phone */
     }
 
     footer {
@@ -234,10 +236,7 @@
     @media (max-width: 540px) {
       .card { padding: 1.25rem 1.1rem; }
       header h1 { font-size: 1.4rem; }
-      .feature-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 380px) {
-      .feature-grid { grid-template-columns: 1fr; }
+      /* no 2-column override: the base auto-fill rule gives one readable column on phones (two 150px columns were cramped) */
     }
   </style>
 </head>

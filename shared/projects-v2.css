@@ -32,17 +32,6 @@ body { background: var(--bg); font-size: 1.0625rem; }
 .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 300; background: #fff; color: #000; padding: 0.6rem 1rem; border-radius: 0.5rem; font-weight: 600; }
 .skip-link:focus { top: 1rem; }
 
-/* ── Header (matches home) ─────────────────────────────────── */
-.site-header::before { background: rgba(10, 10, 11, 0.74); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
-.site-header > nav { padding-block: 1.1rem; }
-.logo { font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; }
-.nav-links { gap: 2rem; font-size: 0.9375rem; text-transform: none; letter-spacing: 0; align-items: center; }
-.nav-links a { color: var(--fg-2); padding: 0.5rem 0.1rem; }
-.nav-links a:hover, .nav-links a.active { color: var(--fg); }
-.nav-links .nav-cta { padding: 0.55rem 1.15rem; border: 1px solid rgba(242, 179, 90, 0.55); border-radius: 99px; color: var(--fg); transition: background 0.25s, border-color 0.25s, box-shadow 0.25s; }
-.nav-links .nav-cta:hover { background: rgba(242, 179, 90, 0.10); border-color: var(--warm); box-shadow: 0 0 18px -4px rgba(242, 179, 90, 0.45); }
-@media (max-width: 640px) { .nav-links { font-size: 1.375rem; gap: 1.75rem; } .nav-links .nav-cta { padding: 0.7rem 1.5rem; } }
-
 /* ── Type scale: nothing under 12px, readable contrast ─────── */
 .eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8125rem; letter-spacing: 0.14em; color: var(--warm); }
 .projects-lead { color: var(--fg-2); font-weight: 400; font-size: 1.25rem; }
@@ -90,11 +79,7 @@ h1, h2, h3 { font-family: 'Playfair Display', 'Playfair Fallback', Georgia, seri
    the fallback matches the desktop header so there is no gap even before it runs. */
 .cs-tabs, .filters { top: var(--header-h, 3.8rem); }
 
-/* Closed menu / dialog must not be tabbable or announced (opacity alone hides them only visually). */
-@media (max-width: 640px) {
-    .nav-links { visibility: hidden; transition: opacity 0.3s var(--ease), visibility 0s linear 0.3s; }
-    .nav-links.open { visibility: visible; transition-delay: 0s; }
-}
+/* Closed dialog must not be tabbable or announced (opacity alone hides it only visually). The closed mobile menu does the same, in shell.css. */
 .resume-modal { visibility: hidden; transition: opacity 0.3s var(--ease), visibility 0s linear 0.3s; }
 .resume-modal[aria-hidden="false"] { visibility: visible; transition-delay: 0s; }
 
@@ -127,5 +112,3 @@ h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
 .card-link { font-size: 0.9375rem; text-transform: none; letter-spacing: 0; color: var(--warm); }
 .card-link:hover, .project-card:hover .card-link { color: #f7d9a6; }
 .ai-banner em { color: var(--warm); }
-.logo { line-height: 1.65; } /* same header height as home (62px): home inherits body line-height 1.65 */
-.menu-toggle svg { display: block; } /* same 46px hamburger as home: an inline svg adds line-height and made the mobile header 3px taller */

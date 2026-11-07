@@ -93,7 +93,7 @@
     </script>
     <link rel="stylesheet" href="/shared/fonts.css?v=996f89dfb4">
     <link rel="preload" href="/shared/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/shared/styles.css?v=f439358bc4">
+    <link rel="stylesheet" href="/shared/styles.css?v=ccf25b4fcb">
 
     <style>
         .resume-page-bg {
@@ -127,7 +127,20 @@
                 border-radius: 0;
                 border: none;
             }
+            /* The preview is a fixed letter-size page shrunk to the screen width, so its text is tiny on a phone.
+               The PDF opens in the phone's own viewer with real zoom: make that the obvious action, and give the
+               header buttons 44px touch targets. */
+            .resume-page-bg .resume-modal-btn { width: 2.75rem; height: 2.75rem; }
+            .resume-page-bg .resume-modal-btn[download] {
+                width: auto; padding: 0 1rem; gap: 0.5rem; margin-right: 0.25rem;
+                color: #f2b35a; border: 1px solid rgba(242, 179, 90, 0.5); border-radius: 99px;
+            }
+            .resume-page-bg .resume-modal-btn[download]::after { content: 'Download PDF'; font-size: 0.8125rem; font-weight: 600; white-space: nowrap; }
+            .resume-page-bg .resume-modal-btn[download]:hover { background: rgba(242, 179, 90, 0.10); color: #f7d9a6; }
+            .resume-page-bg .resume-modal-btn svg { width: 18px; height: 18px; }
         }
+        /* very narrow phones (320px): the full label pushed the close button off screen */
+        @media (max-width: 360px) { .resume-page-bg .resume-modal-btn[download]::after { content: 'PDF'; } }
     </style>
     <script src="/shared/analytics.js?v=5f977a5af9" defer></script>
 </head>

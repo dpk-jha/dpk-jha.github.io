@@ -5,6 +5,43 @@
 :root { --page-top: 7rem; }
 @media (max-width: 640px) { :root { --page-top: 5rem; } }
 
+/* ── Site header + mobile menu: the ONE definition, used by home, /projects and the case study ──
+ * It used to live in three stylesheets (site.css, styles.css, projects-v2.css) that disagreed, which gave
+ * /projects shorter menu rows (42px) than home (50px). Do not restyle the header anywhere else.
+ * Product pages (toggldev, autodeck, ...) keep their own brand header (product-header.css). */
+.site-header { position: sticky; top: 0; z-index: 50; line-height: 1.65; }
+.site-header::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: rgba(10, 10, 11, 0.74);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+.site-header > nav { display: flex; justify-content: space-between; align-items: center; padding-block: 1.1rem; }
+.logo { font-weight: 600; font-size: 1rem; letter-spacing: 0.01em; line-height: 1.65; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; font-size: 0.9375rem; text-transform: none; letter-spacing: 0; color: rgba(244, 244, 245, 0.76); }
+.nav-links a { padding: 0.5rem 0.1rem; color: inherit; cursor: pointer; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: #f4f4f5; }
+.nav-links .nav-cta {
+    padding: 0.55rem 1.15rem; border: 1px solid rgba(242, 179, 90, 0.55); border-radius: 99px; color: #f4f4f5;
+    transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.nav-links .nav-cta:hover { background: rgba(242, 179, 90, 0.10); border-color: #f2b35a; box-shadow: 0 0 18px -4px rgba(242, 179, 90, 0.45); }
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.75rem; margin-right: -0.75rem; position: relative; z-index: 101; color: #f4f4f5; }
+.menu-toggle svg { display: block; width: 22px; height: 22px; }
+@media (max-width: 640px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+        position: fixed; inset: 0; z-index: 100; flex-direction: column; justify-content: center; gap: 1.75rem;
+        background: rgba(10, 10, 11, 0.98); font-size: 1.375rem;
+        opacity: 0; pointer-events: none;
+        /* Closed menu must not be tabbable or announced: opacity alone hides it only visually. */
+        visibility: hidden; transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.3s;
+    }
+    .nav-links.open { opacity: 1; pointer-events: auto; visibility: visible; transition-delay: 0s; }
+    /* 50px rows: comfortably above the 44px touch-target minimum */
+    .nav-links a { padding: 0.75rem 1.5rem; }
+}
+
 /* ── Type scale: one value per role, used by every portfolio page ─────────────
  * page title = h1 of inner pages (home's hero h1 is the one larger exception);
  * section    = h2 that opens a page section;
@@ -68,3 +105,11 @@
 /* The open mobile menu covers the page: the button must not float over it. */
 body:has(.nav-links.open) .back-to-top { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
 @media (max-width: 640px) { .back-to-top { bottom: 1.5rem; right: 1.5rem; } }
+
+/* ── Scroll cue for horizontal strips, phones only: shared/scroll-fade.js adds .fade-l / .fade-r while content is hidden that side.
+ * Scoped to phones on purpose: desktop must stay exactly as it was (the case-study tab strip overflows there by a few px). */
+@media (max-width: 640px) {
+    [data-scroll-fade].fade-r { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); }
+    [data-scroll-fade].fade-l { -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5rem); mask-image: linear-gradient(90deg, transparent, #000 2.5rem); }
+    [data-scroll-fade].fade-l.fade-r { -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); }
+}
