@@ -247,7 +247,7 @@
     <img src="icon.png" alt="TogglDev icon" width="72" height="72" />
   </div>
   <h1>TogglDev — <span>Privacy Policy</span></h1>
-  <p>Last updated: September 3, 2026 &nbsp;·&nbsp; App v2.87</p>
+  <p>Last updated: November 17, 2026 &nbsp;·&nbsp; App v2.99</p>
 </header>
 
 <main>
@@ -319,12 +319,12 @@
         <div class="feature-desc">Long-press the app icon to turn Developer Options on or off, toggle it, open Safe Apps, or jump to Developer Settings. Individual safe apps can also be pinned to the home screen.</div>
       </div>
       <div class="feature-item">
-        <div class="feature-label">Auto-Disable</div>
-        <div class="feature-desc">Automatically turns off Developer Options when selected apps launch and restores them after a configurable delay.</div>
+        <div class="feature-label">Auto Dev Options Off</div>
+        <div class="feature-desc">Automatically turns off Developer Options when selected apps launch and restores them after a configurable delay, once those apps are no longer on screen.</div>
       </div>
       <div class="feature-item">
-        <div class="feature-label">Accessibility Hide</div>
-        <div class="feature-desc">Temporarily hides TogglDev's accessibility service from selected apps that crash or block access when an accessibility service is detected.</div>
+        <div class="feature-label">Hide Accessibility</div>
+        <div class="feature-desc">For selected apps that crash or block access when an accessibility service is on: while one of them is open, temporarily turns off every accessibility service on the device (TogglDev's own and any others, such as TalkBack), then turns the same services back on after you leave, after the delay you choose. App Rules can do this too.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">18 Languages</div>
@@ -332,7 +332,7 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">Remote Access</div>
-        <div class="feature-desc">Run a local HTTP server on your device to control developer settings remotely from your computer. Uses mDNS for automatic discovery on your local network.</div>
+        <div class="feature-desc">Run a local HTTP server on your device to control developer settings remotely from your computer. Uses mDNS for automatic discovery on your local network. The pairing code can be shown, hidden, or reset; resetting it disconnects every paired computer.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Battery Optimization</div>
@@ -356,7 +356,15 @@
       </div>
       <div class="feature-item">
         <div class="feature-label">Toggle Zone</div>
-        <div class="feature-desc">Lets you choose exactly which developer settings the App is permitted to change. Unchecked settings are never written by the master toggle, tiles, auto-disable, or turn on/off rules.</div>
+        <div class="feature-desc">Lets you choose exactly which developer settings the App is permitted to change. Unchecked settings are never written by the master toggle, tiles, Auto Dev Options Off, or turn on/off rules.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Apps That Open Apps</div>
+        <div class="feature-desc">Home screen apps are always included. You can add other apps that launch apps for you, so your rules apply before apps opened from them. Only the list of apps you pick is stored.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Settings Export &amp; Import</div>
+        <div class="feature-desc">Only when you tap Export, the App saves your setup to a file at a location you choose. Import reads only the file you pick, shows a preview, and applies nothing until you confirm. Files are never uploaded by the App.</div>
       </div>
       <div class="feature-item">
         <div class="feature-label">Diagnostic &amp; Execution Logs</div>
@@ -415,13 +423,16 @@
     <div class="permission-item">
       <div class="permission-name">BIND_ACCESSIBILITY_SERVICE</div>
       <div class="permission-desc">
-        Used by the optional Auto-Disable and Accessibility Hide features. When enabled, the App
-        runs an accessibility service that detects when selected apps come to the foreground and
-        automatically turns off Developer Options (Auto-Disable) or temporarily hides the
-        accessibility service itself (Accessibility Hide) so those apps don't detect it. Settings
-        are restored after you leave the monitored app. The service does not read, collect, or
-        transmit any screen content, keystrokes, or personal data — it only observes which app
-        is in the foreground. This service must be enabled manually by you in Android Settings
+        Used by the optional Auto Dev Options Off, App Rules and Hide Accessibility features. When
+        enabled, the App runs an accessibility service that detects when selected apps come to the
+        foreground and automatically turns off Developer Options (Auto Dev Options
+        Off) or temporarily turns off accessibility services (Hide Accessibility) so those apps
+        don't detect them. To recognise a protected app as soon as you tap its icon on your home
+        screen, the service reads the name of the icon you tapped in a home screen app (or in an
+        app you added to Apps That Open Apps) — nothing else on screen. Settings are restored
+        after you leave the monitored app. Beyond the foreground app and that icon name, the service
+        does not read, collect, or transmit any screen content, keystrokes, or personal data, and
+        nothing it sees leaves your device. This service must be enabled manually by you in Android Settings
         and can be revoked at any time.
       </div>
     </div>
@@ -429,9 +440,10 @@
     <div class="permission-item">
       <div class="permission-name">PACKAGE_USAGE_STATS</div>
       <div class="permission-desc">
-        Used by the Accessibility Hide feature to detect which app is currently in the foreground.
-        This is required so TogglDev can determine when to hide its accessibility service from
-        apps that would crash or block access. This permission is entirely opt-in, must be granted
+        Used by the Hide Accessibility feature to detect which app is currently in the foreground.
+        This is required so TogglDev can determine when to turn accessibility services off for
+        apps that would crash or block access, and when you have left them so the services can be
+        turned back on. This permission is entirely opt-in, must be granted
         manually by you in Android Settings, and is only used for real-time foreground app
         detection — no usage history is collected, stored, or transmitted.
       </div>
@@ -479,6 +491,24 @@
     </div>
 
     <div class="permission-item">
+      <div class="permission-name">ACCESS_NETWORK_STATE</div>
+      <div class="permission-desc">
+        Lets the optional Remote Access feature notice when your Wi-Fi network changes, so it can
+        show the correct local address. Also used by Android's standard background-task library.
+        It reads only whether and how the device is connected — nothing is sent anywhere.
+      </div>
+    </div>
+
+    <div class="permission-item">
+      <div class="permission-name">WAKE_LOCK</div>
+      <div class="permission-desc">
+        Added by Android's standard background-task library, so scheduled work — such as turning
+        accessibility services back on after Hide Accessibility — can finish while the screen is
+        off. It does not collect or transmit anything.
+      </div>
+    </div>
+
+    <div class="permission-item">
       <div class="permission-name">RECEIVE_BOOT_COMPLETED</div>
       <div class="permission-desc">
         Lets the App restore your widgets, Quick Settings tiles, and any pending settings restore
@@ -521,14 +551,18 @@
     </p>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>UI preferences</strong> — whether the Quick Settings tile has been added, snapshot expand state, etc.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings Snapshot</strong> — a copy of your developer settings captured before turning Developer Options off, including: USB Debugging state, animation scales, Stay On While Plugged In, accessibility service list, and all other toggleable developer settings. These values are read back and restored when you re-enable Developer Options.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>Auto-Disable app list</strong> — the list of apps you selected for automatic Developer Options disabling, and your chosen re-enable delay. No information about your app usage or launch history is stored.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>Accessibility Hide app list</strong> — the list of apps you selected for accessibility service hiding. No information about your app usage or launch history is stored.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Auto Dev Options Off app list</strong> — the list of apps you selected for automatic Developer Options disabling, and your chosen re-enable delay. No information about your app usage or launch history is stored.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Hide Accessibility app list</strong> — the list of apps you selected for accessibility hiding and your chosen delay, plus, while accessibility is hidden, which accessibility services were on so the same ones can be turned back on. No information about your app usage or launch history is stored.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Remote Access preferences</strong> — server port, auto-stop duration, pairing token, and usage statistics (total time active). All stored locally and never transmitted. The pairing token is used to authenticate connections from your computer on the local network.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Supporter status</strong> — whether you have completed an in-app purchase, cached locally to avoid repeated billing queries.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>App Rules</strong> — stored in a local database: the rules you create, the apps you attached to each one, the settings each rule changes, and a snapshot of the values a rule replaced so they can be put back. No app usage or launch history is stored.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Command Automation</strong> — the shell commands you wrote, their triggers, and whether each is enabled, plus the last 100 execution results (timestamp, exit code, and command output). Command output can contain whatever the command you wrote prints, so review it before sharing a log.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Toggle Zone selection</strong> — which developer settings you have allowed the App to change.</span></div>
-    <div class="data-row"><span class="dot dot-green"></span><span><strong>Diagnostic logs</strong> — plain-text files in the App's private storage recording toggle events and timings, automatically deleted after 7 days. They contain no personal data and are only ever exported when you tap Save or Share.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Apps That Open Apps</strong> — the list of extra apps you added whose taps count as app launches.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Home screen icon map</strong> — up to 256 home screen icon names, each paired with the app it opened, learned on your device so a protected app is recognised from the first tap. It holds no times, counts, or history, and is left out of diagnostic exports.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Last-set state of hidden settings</strong> — newer Android versions hide the on/off state of Developer Options and USB Debugging from apps; the App remembers the value it last set so it can show it to you.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Settings export files</strong> — created only when you tap Export, saved where you choose, and containing only the parts you pick: Toggle Zone, Auto Dev Options Off, Hide Accessibility, App Rules, commands, and Apps That Open Apps. They never include your pairing token, supporter status, or logs.</span></div>
+    <div class="data-row"><span class="dot dot-green"></span><span><strong>Diagnostic logs</strong> — plain-text files in the App's private storage recording toggle events and timings, automatically deleted after 7 days. They contain no personal data — apps you have not set up in TogglDev are never named, only counted — and are only ever exported when you tap Save or Share.</span></div>
     <div class="data-row"><span class="dot dot-green"></span><span><strong>Toggle counter</strong> — a single lifetime number of Developer Options flips, used to display the "time saved" figure. It records a count only, not what you toggled or when.</span></div>
     <p style="margin-top: 0.85rem;">
       Because we do not collect any personal data, there is nothing on our servers to retain
